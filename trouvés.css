@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: boder-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+    background-color: #E4E9EB;
+    font-family: 'Merriweather', serif;
+}
+
+.menu {
+    background-color: #2C96C6;
+    position: relative;
+    width: 100%;
+    color: white;
+    padding: 30px;
+}
+
+.inline {
+    display: inline;
+    font-size: 1.5rem;
+    position: relative;
+    left: 120px;
+    padding-left: 40px;
+}
+
+i {
+    font-size: 21px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    cursor:url("http://curseursgogo.free.fr/curanimaux/gromit.cur"),default;
+}
+
+.logoAnim {
+    margin-left: 650px;
+    width: 300px;
+}
+
+.annonceP {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.perdusC {
+    border: 1px solid black;
+    width:70%;
+    margin: auto;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.gauche, .droite {
+    margin-right: -4px;
+}
+
+.gauche, .droite, .cat, .dog, .mâle, .femelle {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.gauche {
+    width: 30%;
+}
+
+.droite {
+    width: 70%;
+    border: 1px solid blue;
+}
+
+.animal, .cat, .dog, .date, .sexe, .jma, .taille, .mâle, .femelle, .poils, .grandeT, .couleurs, .long, .roux, .tricolore, .robe, .race, .raceT, .lieu,
+.lieuT  {
+    margin-bottom: 1.5rem;
+    margin-right: 1rem;
+}
+
+label, button {
+    font-weight: bold;
+    background-color: #2C96C6;
+}
+
+.question4, .question5, .question6, .question7 {
+    line-height: 2.5rem;
+}
+
+.question1, .question2, .question3, .question4, .question5, .question6, .question7, .question8, .question9 {
+    border: 1px solid white;
+}
+
+button {
+    font-size: 2.5rem;
+    margin-left: 25%;
+}

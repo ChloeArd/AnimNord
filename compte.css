@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: boder-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+    background-color: #E4E9EB;
+    font-family: 'Merriweather', serif;
+}
+
+.menu {
+    background-color: #2C96C6;
+    position: relative;
+    width: 100%;
+    color: white;
+    padding: 30px;
+}
+
+.inline {
+    display: inline;
+    font-size: 1.5rem;
+    position: relative;
+    left: 120px;
+    padding-left: 40px;
+}
+
+i {
+    font-size: 21px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    cursor:url("http://curseursgogo.free.fr/curanimaux/gromit.cur"),default;
+}
+
+.logoAnim {
+    margin-left: 650px;
+    width: 300px;
+}
+
+.formulaire {
+    width: 50%;
+    font-size: 1.5rem;
+}
+
+.nom, .prenom, .mail, .tel, .city, .password {
+    margin-bottom: 1.5rem;
+    text-align: right;
+}
+
+.inscription {
+    height: 110px;
+    background-color: #B7B8B8;
+    position:relative;
+    color: white;
+    margin-left: 300px;
+    margin-right: 300px;
+    padding-top: 20px;
+    padding-left: 250px;
+    font-size: 30px;
+}
+
+.completer {
+    margin-left: 300px;
+    margin-right: 300px;
+    background-color: white;
+    padding-left: 300px;
+    padding-top: 50px;
+}
+
+button {
+    background-color: #2C96C6;
+    color: white;
+    margin-left: 18rem;
+    margin-top: 20px;
+}

@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: boder-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+    background-color: #E4E9EB;
+    font-family: 'Merriweather', serif;
+}
+
+.menu {
+    background-color: #2C96C6;
+    width: 100%;
+    color: white;
+    padding: 30px;
+}
+
+.inline {
+    display: inline;
+    font-size: 1.5rem;
+    position: relative;
+    left: 120px;
+    padding-left: 40px;
+}
+
+i {
+    font-size: 21px;
+}
+
+.logoAnim {
+    margin-left: 650px;
+    width: 300px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    cursor:url("http://curseursgogo.free.fr/curanimaux/gromit.cur"),default;
+}
+
+.banniere {
+    position: relative;
+    height:600px;
+}
+
+.chiat {
+    position: absolute;
+}
+
+.tChiat {
+    height: 714px;
+}
+
+.titre {
+    position:relative;
+    border: 2px solid white;
+    top: 120px;
+    margin-left: 10rem;
+    margin-right: 90rem;
+    font-size: 3.2rem;
+    border-radius: 3rem;
+    color: white;
+    background-color: #80BF62;
+}
