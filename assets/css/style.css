@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+    background-color: #E4E9EB;
+    font-family: 'Merriweather', serif;
+    font-size: 15px;
+}
+
+footer {
+    background-color: #B7B8B8;
+    height: 150px;
+    margin-bottom: -20px;
+}
+
+.width_80 {
+    width: 80%;
+    margin: auto;
+}
+
+.menu {
+    background-color: #2C96C6;
+    width: 100%;
+    color: white;
+    padding: 30px;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center {
+    text-align: center;
+}
+
+.align {
+    display: flex;
+    align-items: center;
+}
+
+.linkMenu {
+    font-size: 1.5rem;
+    margin: 0 15px;
+    padding: 5px;
+    cursor: url("http://curseursgogo.free.fr/curanimaux/gromit.cur"),default;
+}
+
+.linkMenu:hover {
+    background-color: #B7B8B8;
+    border-radius: 5px 5px;
+}
+
+.fa-paw {
+    font-size: 21px;
+}
+
+.logoAnim {
+    width: 300px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.backgroundPet {
+    height: 1000px;
+    background-image: url("https://images5.alphacoders.com/312/thumbbig-312431.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.question {
+    position: relative;
+    width: 50%;
+    font-size: 30px;
+    top: -20%;
+}
+
+.buttonWhite {
+    border-radius: 10px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.width_100 {
+    width: 100%;
+}
+
+.colorWhite {
+    color: white;
+}
+
+.title {
+    font-size: 30px;
+    background-color: #B7B8B8;
+    height: 110px;
+}
+
+.backgroundWhite, main{
+    background-color: white;
+}
+
+.width_50 {
+    width: 50%;
+    margin: auto;
+}
+
+input {
+    margin: 8px 0;
+    background-color: #E4E9EB;
+    color: #2C96C6;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+button, input, select {
+    border: none;
+}
+
+.size15 {
+    font-size: 15px;
+}
+
+label {
+    margin: 5px;
+}
+
+#registration {
+    padding: 30px;
+}
+
+.radius10 {
+    border-radius: 10px;
+}
+
+.buttonEnter {
+    padding: 8px;
+    margin: 20px auto;
+    width: 50%;
+    background-color: #2C96C6;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+
+.annonceP {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.categories, .droite, .cat, .dog, .mâle, .femelle {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.categories {
+    width: 20%;
+}
+
+.droite {
+    width: 80%;
+    border: 1px solid blue;
+}
+
+.categoriesAnimal{
+    font-weight: bold;
+    background-color: #2C96C6;
+    margin-top: 15px;
+}
+
+button {
+    font-size: 2.5rem;
+    margin-left: 25%;
+}
+
+.recherche1, .recherche2 {
+    height: 20%;
+    border: 2px solid grey;
+    background-color: white;
+    width: 100%;
+}
+
+.photo1 {
+    width: 30%;
+    height: 70%;
+    margin: 2rem;
+    font-size: 100px;
+}
+
+.bergerAll {
+    width: 200px;
+}
+
+select {
+    text-align-last: center;
+    background-color: #E4E9EB;
+}
+
+.margin_0_20 {
+    margin: 0 20px;
+}
