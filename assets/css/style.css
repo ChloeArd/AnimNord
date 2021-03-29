@@ -219,8 +219,14 @@ button {
 select {
     text-align-last: center;
     background-color: #E4E9EB;
+    padding: 5px;
 }
 
 .margin_0_20 {
     margin: 0 20px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
 }

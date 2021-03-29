@@ -22,7 +22,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
                     <input type="date">
                 </div>
                 <div class="categorie flexColumn flexCenter">
-                    <label class="colorWhite width_100 center categoriesAnimal" for="sexe"> Sexe:</label>
+                    <label class="colorWhite width_100 center categoriesAnimal" for="sexe"> Sexe :</label>
                     <div class="flexRow align">
                         <input  type="radio" name="sexe" value="Mâle">
                         <span class="margin_0_20">Mâle</span>
@@ -32,49 +32,22 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
                 </div>
                 <div class="categorie flexColumn flexCenter">
                     <label class="colorWhite width_100 center categoriesAnimal" for="size"> Taille :</label>
-                    <div>
-                        <div class="flexRow align">
-                            <input type="radio" name="size" value="très petite">
-                            <span class="margin_0_20">Très petite</span>
-                        </div>
-                        <div class="flexRow align">
-                            <input type="radio" name="size" value="petite">
-                            <span class="margin_0_20">Petite</span>
-                        </div>
-                        <div class="flexRow align">
-                            <input type="radio" name="size" value="moyenne">
-                            <span class="margin_0_20">Moyenne</span>
-                        </div>
-                        <div class="flexRow align">
-                            <input type="radio" name="size" value="grande">
-                            <span class="margin_0_20">Grande</span>
-                        </div>
-                        <div class="flexRow align">
-                            <input type="radio" name="size" value="très grande">
-                            <span class="margin_0_20">Très grande</span>
-                        </div>
-                    </div>
+                    <select name="size" class="width_80 size15">
+                        <option>Très petite</option>
+                        <option>Petite</option>
+                        <option>Moyenne</option>
+                        <option>Grande</option>
+                        <option>Très grande</option>
+                    </select>
                 </div>
                 <div class="categorie flexColumn flexCenter">
                     <label class="colorWhite width_100 center categoriesAnimal" for="fur"> Poils :</label>
-                    <div>
-                        <div class="flexRow align">
-                            <input type="radio" name="fur" value="nue">
-                            <span class="margin_0_20">Nue</span>
-                        </div>
-                        <div class="flexRow align">
-                            <input type="radio" name="fur" value="court">
-                            <span class="margin_0_20">Court</span>
-                        </div>
-                        <div class="flexRow align">
-                            <input type="radio" name="fur" value="Mi-long">
-                            <span class="margin_0_20">Mi-long</span>
-                        </div>
-                        <div class="flexRow align">
-                            <input type="radio" name="fur" value="long">
-                            <span class="margin_0_20">Long</span>
-                        </div>
-                    </div>
+                    <select name="fur" class="width_80 size15">
+                        <option>Nue</option>
+                        <option>Court</option>
+                        <option>Mi-long</option>
+                        <option>Long</option>
+                    </select>
                 </div>
                 <div class="categorie flexColumn flexCenter">
                     <label class="colorWhite width_100 center categoriesAnimal" for="colors"> Couleur du pelage :</label>
