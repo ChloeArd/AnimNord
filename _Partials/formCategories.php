@@ -2,37 +2,39 @@
     <div class="categories">
         <div class="categorie flexColumn flexCenter">
             <label class="width_100 center colorWhite categoriesAnimal" for="animal"> Animal : </label>
-            <div class="flexRow align">
-                <input type="radio" name="animal" value="chien">
+            <div class="flexRow align categoriePet">
+                <input type="radio" name="animal" value="chien" required>
                 <span class="margin_0_20"><i class="fas fa-dog"></i></span>
-                <input type="radio" name="animal" value="chat">
+                <input type="radio" name="animal" value="chat" required>
                 <span class="margin_0_20"><i class="fas fa-cat"></i></span>
             </div>
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="date"> Perdu le :</label>
-            <input type="date">
+            <div class="categoriePet">
+                <input id="date" name="date" type="date" required>
+            </div>
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="sexe"> Sexe :</label>
-            <div>
+            <div class="categoriePet">
                 <div class="flexRow align">
-                    <input  type="radio" name="sexe" value="mâle">
+                    <input  type="radio" name="sexe" value="mâle" required>
                     <span class="margin_0_20">Mâle</span>
                 </div>
                 <div class="flexRow align">
-                    <input type="radio" name="sexe" value="femelle">
-                    <span class="margin_0_20">Femelle</span>
+                    <input type="radio" name="sexe" value="femelle" required>
+                    <span class="margin_0_20">Femelle </span>
                 </div>
                 <div class="flexRow align">
-                    <input type="radio" name="sexe" value="inconnu">
+                    <input type="radio" name="sexe" value="inconnu" required>
                     <span class="margin_0_20">Inconnu</span>
                 </div>
             </div>
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="size"> Taille :</label>
-            <select name="size" class="width_80 size15">
+            <select name="size" class="width_80 size15 categoriePet">
                 <option>Très petite</option>
                 <option>Petite</option>
                 <option>Moyenne</option>
@@ -42,7 +44,7 @@
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="fur"> Poils :</label>
-            <select name="fur" class="width_80 size15">
+            <select name="fur" class="width_80 size15 categoriePet">
                 <option>Nue</option>
                 <option>Court</option>
                 <option>Mi-long</option>
@@ -51,7 +53,7 @@
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="colors"> Couleur du pelage :</label>
-            <div>
+            <div class="categoriePet">
                 <div class="flexRow align">
                     <input type="checkbox" name="colors" value="Noir">
                     <span class="margin_0_20 borderBlack black"></span>
@@ -80,7 +82,7 @@
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="colors">Robe :</label>
-            <select name="colors" class="width_80 size15">
+            <select name="colors" class="width_80 size15 categoriePet">
                 <option>Uni</option>
                 <option>Tacheté</option>
                 <option>Rayé</option>
@@ -91,13 +93,13 @@
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="race">Race :</label>
-            <input type="text" name="race" placeholder="berger allemand">
+            <input type="text" name="race" placeholder="ex : berger allemand" class="categoriePet" required>
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="city">Ville :</label>
-            <input type="text" name="city" placeholder="Lille">
+            <input type="text" name="city" id="city" placeholder="ex : Lille" class="categoriePet" required>
         </div>
         <div class="flexCenter">
-            <input type="submit" class="buttonEnter colorWhite" value="Rechercher" >
+            <input type="submit" class="buttonEnter colorWhite" value="Rechercher">
         </div>
     </div>

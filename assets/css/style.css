@@ -62,7 +62,7 @@ footer {
 .linkMenu {
     font-size: 1.5rem;
     margin: 0 15px;
-    padding: 5px;
+    padding: 10px;
     cursor: url("http://curseursgogo.free.fr/curanimaux/gromit.cur"),default;
 }
 
@@ -128,7 +128,7 @@ a {
     margin: auto;
 }
 
-input, textarea {
+input, textarea, select {
     margin: 8px 0;
     background-color: #E4E9EB;
     color: #2C96C6;
@@ -194,7 +194,11 @@ label {
 .categoriesAnimal{
     font-weight: bold;
     background-color: #2C96C6;
-    margin-top: 15px;
+    padding: 5px;
+}
+
+.categoriePet {
+    margin: 13px;
 }
 
 button {
@@ -246,7 +250,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .containerRecentPost:hover {
-    box-shadow: 5px 5px 10px grey;
+    box-shadow: 0 0 5px grey;
     color: #2C96C6;
 }
 
@@ -334,6 +338,10 @@ i {
 
 .orange {
     background-color: orange;
+}
+
+.grey {
+    background-color: #B7B8B8;
 }
 
 #containerLostAd {
@@ -436,10 +444,34 @@ p {
 
 .circle {
     border-radius: 50%;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     background-color: #2C96C6;
     color: white;
-    font-size: 23px;
+    font-size: 20px;
     margin: 15px;
+}
+
+.containerType {
+    border: 1px solid #2C96C6;
+    background-color: #f1f3f5;
+    width: 40%;
+    padding: 30px;
+    text-align: center;
+    margin: 20px;
+    color: #2C96C6;
+}
+
+.containerType:hover {
+    background-color: #2C96C6;
+    color: white;
+    box-shadow: 2px 2px 10px grey;
+}
+
+.marginR {
+    margin-right: 20px;
+}
+
+.margin_15_0 {
+    margin: 15px 0;
 }

@@ -12,10 +12,11 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
         <div id="containerLostAd">
             <?php
             for ($i = 0; $i < 20; $i++) {
+                $id = $i + 1;
                 echo "
                         <a href='#' class='post flexRow colorGrey'>
                         <div class='width_20'>
-                        <img class='imagePet' src='https://www.sciencesetavenir.fr/assets/img/2020/06/05/cover-r4x3w1000-5eda126862738-german-shepherd-3404340-1920.jpg'>
+                        <img class='imagePet' src='https://placedog.net/500/280?id=". $id ."' >
                     </div>
                     <div class='flexColumn width80'>
                         <p class='titlePet'>Chien (mâle)</p>

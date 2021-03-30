@@ -7,10 +7,8 @@
         <a class="linkMenu" href="../index.php">Acceuil</a>
         <a class="linkMenu" href="../pages/lost.php">Perdus</a>
         <a class="linkMenu" href="../pages/find.php">Trouvés</a>
-        <a class="linkMenu" href="#">(Adopter)</a>
+        <a class="linkMenu" href="../pages/adopt">Adopter</a>
         <a class="linkMenu" href="../pages/ad.php">Publier une annonce</a>
-        <a class="linkMenu" href="../pages/donation.php">Demande de don</a>
-        <a class="linkMenu" href="#">(Forum)</a>
         <a class="linkMenu" href="../pages/connect.php">Connexion</a>
         <a class="linkMenu" href="../pages/registration.php">Inscription </a>
         <p class="linkMenu"><i class="fas fa-paw"></i></p>
