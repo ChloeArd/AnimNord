@@ -17,7 +17,7 @@ body {
 }
 
 footer {
-    background-color: #B7B8B8;
+    background-color: #898a8a;
     height: 150px;
     margin-bottom: -20px;
 }
@@ -96,6 +96,7 @@ a {
     width: 50%;
     font-size: 30px;
     top: -20%;
+    line-height: 40px;
 }
 
 .buttonWhite {
@@ -127,7 +128,7 @@ a {
     margin: auto;
 }
 
-input {
+input, textarea {
     margin: 8px 0;
     background-color: #E4E9EB;
     color: #2C96C6;
@@ -136,8 +137,12 @@ input {
     font-size: 18px;
 }
 
-button, input, select {
+button, input, select, textarea {
     border: none;
+}
+
+textarea {
+    height: 120px;
 }
 
 .size15 {
@@ -152,7 +157,7 @@ label {
     padding: 30px;
 }
 
-.radius10 {
+.radius10, .buttonWhite2 {
     border-radius: 10px;
 }
 
@@ -161,12 +166,16 @@ label {
     margin: 20px auto;
     width: 50%;
     background-color: #2C96C6;
+    box-shadow: 5px 5px 10px #B7B8B8;
+}
+
+.buttonEnter:hover {
+    background-color: #1378a5;
 }
 
 .pointer {
     cursor: pointer;
 }
-
 
 .annonceP {
     font-size: 2rem;
@@ -182,11 +191,6 @@ label {
     width: 20%;
 }
 
-.droite {
-    width: 80%;
-    border: 1px solid blue;
-}
-
 .categoriesAnimal{
     font-weight: bold;
     background-color: #2C96C6;
@@ -198,22 +202,12 @@ button {
     margin-left: 25%;
 }
 
-.recherche1, .recherche2 {
-    height: 20%;
-    border: 2px solid grey;
-    background-color: white;
-    width: 100%;
-}
-
-.photo1 {
-    width: 30%;
-    height: 70%;
-    margin: 2rem;
-    font-size: 100px;
-}
-
-.bergerAll {
-    width: 200px;
+.post{
+    background-color: #E4E9EB;
+    width: 95%;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
 }
 
 select {
@@ -229,4 +223,223 @@ select {
 input[type="radio"], input[type="checkbox"] {
     width: 18px;
     height: 18px;
+}
+
+.colorBlue, .title2 {
+    color: #2C96C6;
+}
+
+.title2, .title3 {
+    margin: 20px auto;
+    font-size: 25px;
+}
+
+.title3 {
+    color: white;
+}
+
+.containerRecentPost {
+    background-color: #E4E9EB;
+    width: 15%;
+    color: grey;
+    margin: 20px;
+}
+
+.containerRecentPost:hover {
+    box-shadow: 5px 5px 10px grey;
+    color: #2C96C6;
+}
+
+.width_20 {
+    width: 20%;
+}
+
+.imagePet{
+    width: 90%;
+    margin: 10px;
+}
+
+.margin8, .location{
+    margin: 8px;
+}
+
+.location {
+    background-color: white;
+    width: 100%;
+    text-align: center;
+}
+
+i {
+    margin: 0 5px;
+}
+
+.separatorHorizontal, .separatorHorizontalWhite {
+    border-top: 3px solid #B7B8B8;
+    width: 40%;
+    margin: 10px auto;
+}
+
+.separatorHorizontal2 {
+    border-top: 1px solid #B7B8B8;
+    width: 25%;
+}
+
+.buttonCenter {
+    margin: 20px auto;
+    display: flex;
+    width: fit-content;
+}
+
+.separatorHorizontal:hover {
+    width: 100%;
+}
+
+.accountIndex {
+    background-color: #2C96C6;
+    padding: 100px;
+}
+
+.buttonWhite2 {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #B7B8B8;
+    padding: 20px;
+    font-size: 20px;
+    box-shadow: 5px 5px 10px #1378a5;
+    margin: 15px 30px;
+}
+
+.buttonWhite2:hover {
+    background-color: white;
+    color: #898a8a;
+}
+
+.borderBlack {
+    border: 0.5px solid black;
+    width: 70px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.black {
+    background-color: black;
+}
+
+.brown {
+    background-color: #7e5454;
+}
+
+.beige {
+    background-color: #ece8dc;
+}
+
+.orange {
+    background-color: orange;
+}
+
+#containerLostAd {
+    width: 80%;
+}
+
+.post:hover {
+    background-color: #f0f1f1;
+}
+
+.width80 {
+    width: 80%;
+}
+
+.titlePet {
+    font-weight: bold;
+    color: #2C96C6;
+    text-align: center;
+    font-size: 18px;
+}
+
+p {
+    line-height: 27px;
+}
+
+.colorGrey {
+    color: grey;
+}
+
+.postDate {
+    position: absolute;
+    right: 15%;
+}
+
+#connect, #contact{
+    padding: 200px;
+}
+
+.size18{
+    font-size: 18px;
+}
+
+.size20 {
+    font-size: 20px;
+}
+
+.underline:hover {
+    text-decoration: underline;
+}
+
+.link {
+    font-size: 12px;
+}
+
+.buttonGrey {
+    border: 1px solid #B7B8B8;
+    color: #B7B8B8;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 5px 5px 10px grey;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+.buttonGrey:hover {
+    background-color: #B7B8B8;
+    color: white;
+}
+
+.fa-facebook-square {
+    color: #3b5998;
+}
+
+.fa-twitter-square {
+    color: #1DA1F2;
+}
+
+.fa-instagram-square {
+    color: #C32AA3;
+}
+
+.linkSocial {
+    font-size: 25px;
+    margin: 10px;
+    background-color: white;
+}
+
+.linkSocial:hover {
+    box-shadow: 2px 2px 10px #ffffff;
+}
+
+#containerlinkFooter {
+    margin: 20px;
+    font-size: 12px;
+}
+
+.linkFooter {
+    margin: 0 15px;
+}
+
+.circle {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    background-color: #2C96C6;
+    color: white;
+    font-size: 23px;
+    margin: 15px;
 }

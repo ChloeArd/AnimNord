@@ -12,7 +12,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             <input type="text" id="lastname" name="lastname" required>
             <label class="size15" for="firstname"> Prénom </label>
             <input type="text" id="firstname" name="firstname" required>
-            <label class="size15" for="mail"> Adresse e-mail </label>
+            <label class="size15" for="mail"> Adresse E-mail </label>
             <input type="email" id="mail" name="mail" required>
             <label class="size15" for="tel"> Téléphone </label>
             <input type="tel" id="tel" name="tel" required>
@@ -23,6 +23,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             <label class="size15" for="repeatPassword">Repet du mot de passe</label>
             <input type="password" id="repeatPassword" name="repeatePassword" required>
             <input type="submit" class="buttonEnter colorWhite radius10 pointer" value="Créer mon compte">
+            <a href="connect.php" class="buttonGrey">Déjà un compte ?</a>
         </form>
     </div>
 </main>
