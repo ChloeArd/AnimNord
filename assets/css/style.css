@@ -85,8 +85,8 @@ a {
 }
 
 .backgroundPet {
-    height: 1000px;
-    background-image: url("https://images5.alphacoders.com/312/thumbbig-312431.jpg");
+    height: 850px;
+    background-image: url("https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2020.2F10.2F21.2F0519a0ca-89c8-4d0c-97cf-30b4672f5956.2Ejpeg/850x478/quality/90/crop-from/center/pet-parents-le-match-chien-chat.jpeg");
     background-size: 100%;
     background-repeat: no-repeat;
 }
@@ -298,9 +298,13 @@ i {
     width: 100%;
 }
 
-.accountIndex {
+.accountIndex, .helpIndex {
     background-color: #2C96C6;
     padding: 100px;
+}
+
+.helpIndex {
+    padding: 50px 200px;
 }
 
 .buttonWhite2 {
@@ -474,4 +478,12 @@ p {
 
 .margin_15_0 {
     margin: 15px 0;
+}
+
+.linkPage {
+    margin: 20px 10%;
+}
+
+li {
+    margin: 10px 0;
 }

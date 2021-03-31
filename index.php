@@ -9,6 +9,25 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
         <p class="question buttonWhite colorBlue">Vous avez perdus, trouvés ou vous voulez adopter près de chez vous ? Vous êtes tombés sur le bon site de chiens et de
             chats du Nord (59).</p>
     </div>
+    <div class="helpIndex colorWhite">
+        <p>Chaque année en France, <strong>80 000  chiens et chats sont perdus !</strong> Dû par les départs en vacances.
+            Qui peuvent les perturber, les éffrayer et les ammener à s'enfuir.</p>
+        <p>Dans le Nord en 2018, il y a eu d'avantages de chiens déclarés perdus que de chats.</p>
+        <div class="flexCenter flexRow">
+            <p class="buttonWhite colorBlue margin8 size18">Chats : 23 937 perdus</p>
+            <p class="buttonWhite colorBlue margin8 size18">Chiens : 28 121 perdus</p>
+        </div>
+        <p>Par ce fait, <strong>52 000 </strong> animaux ont dû passer par les fourrières de la France en 2019. En moyenne, près de <strong>4 000</strong> chiens et
+            <strong>420 </strong>chats sont déclarés entrés en fourrière par mois. C’est beaucoup trop !</p>
+        <p>Du fait, leurs maîtres se retrouvent alors confrontés à l’angoisse de ne jamais revoir leur animal de compagnie.
+            Alors, qu'il reste toujours de l'espoire, c'est pour celà que nous sommes là, Anim'Nord vous permet de publier une
+            annonce facilement, rapidement et gratuitement, pour retrouver au plus vite votre compagnon préféré. </p>
+
+        <p>Malgré tous, il y a une hausse des animaux retrouvées est constatés ! Une très bonne nouvelle ! En 2019, ce sont <strong>33 317</strong>
+            animaux qui ont été déclarés retrouvés par leurs propriétaires. Mais aussi grâce aux fourrières, aux associations et grâce à vous, ils ont pu retrouvés leurs nid douillés.</p>
+
+
+    </div>
     <div id="#recentPost">
         <h2 class="center title2">Annonces récentes de chiens et de chats perdus</h2>
         <div class="width_80 flexRow flexCenter">

@@ -13,16 +13,18 @@ else {
 
     <main class="width_80 flexColumn">
         <h1 class="title colorWhite flexCenter"> Chiens et chats perdus</h1>
-        <?php
-        $situation = "Perdu le :";
-        $true = true;
-        include $_SERVER['DOCUMENT_ROOT'] . "/_partials/formCategories.php";
-        ?>
+        <div class="flexRow">
+            <?php
+            $situation = "Perdu le :";
+            $true = true;
+            include $_SERVER['DOCUMENT_ROOT'] . "/_partials/formCategories.php";
+            ?>
             <div id="containerLostAd">
                 <?php
-                $first = ($page - 1) * 20;
-                $last = ($page * 20) - 1;
-                $count = 4;
+                // The page limit is 30 pet.
+                $first = ($page - 1) * 30;
+                $last = ($page * 30) - 1;
+                $count = 10;
                 if ($last > $count) {
                     $last = $count;
                 }
@@ -49,7 +51,7 @@ else {
                     ";
                 }
 
-                if ($count > 19) {
+                if ($count > 29) {
                     if ($page < 2) {
                         $prev = 1;
                     }
@@ -64,12 +66,13 @@ else {
                         $next = $page + 1;
                     }
                     echo "<div class='flexCenter flexRow'>
-                         <a class='underline colorBlue margin_0_20' href='./lost.php?page=$prev'>Page précédente</a>
-                         <a class='underline colorBlue margin_0_20' href='./lost.php?page=$next'>Page suivante</a>
+                         <a class='underline colorBlue linkPage' href='./find.php?page=$prev'><i class='fas fa-arrow-alt-circle-left'></i>Page précédente</a>
+                             <a class='underline colorBlue linkPage' href='./find.php?page=$next'>Page suivante<i class='fas fa-arrow-alt-circle-right'></i></a>
                       </div>";
                 }
                 ?>
             </div>
+        </div>
     </main>
 
 <?php
