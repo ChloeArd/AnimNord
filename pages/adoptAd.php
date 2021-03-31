@@ -6,13 +6,13 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
 
     <main class="width_80">
         <h1 class="flexCenter title colorWhite">Publication d'une annonce pour chien ou chat à adopter</h1>
-        <p class="width_100 center categoriesAnimal colorWhite margin_15_0">1. Connecte toi !</p>
+        <p class="width_100 center categoriesAnimal colorWhite margin_15_0">1. Connecte toi ! <i class="fas fa-user-circle"></i></p>
         <form method="post" action="../assets/php/sendMail.php" class="flexColumn width_50">
             <div class="flexRow align flexCenter">
                 <div class="circle flexCenter">
                     <span>2</span>
                 </div>
-                <p>Informations sur l'animal</p>
+                <p>Informations sur l'animal <i class="fas fa-paw"></i></p>
             </div>
             <div class="flexRow align">
                 <label for="animal" class="marginR">Animal : </label>
@@ -23,6 +23,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             </div>
             <label for="name">Son nom :</label>
             <input type="text" id="name" name="name" required>
+            <label for="age">Son âge :</label>
+            <input type="text" id="age" name="age" required>
             <label for="sexe"> Sexe :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
@@ -96,7 +98,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             <label for="description">Description : </label>
             <textarea id="description" name="description" required></textarea>
             <div class="flexRow align">
-
             </div>
 
 
@@ -104,7 +105,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
                 <div class="circle flexCenter">
                     <span>3</span>
                 </div>
-                <p>Date et lieu de sa disparition</p>
+                <p>Date et lieu de sa disparition <i class="far fa-calendar-alt"></i><i class="fas fa-map-marker-alt"></i></p>
             </div>
             <div class="flexRow align">
                 <label for="date"> Perdu le :</label>
@@ -119,7 +120,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
                 <div class="circle flexCenter">
                     <span>4</span>
                 </div>
-                <p>Importer une photo</p>
+                <p>Importer une photo <i class="far fa-image"></i></p>
             </div>
             <input type="file" required>
             <div class="flexRow align">

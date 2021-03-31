@@ -1,5 +1,5 @@
 <div class="flexRow">
-    <div class="categories">
+    <form action="#" method="post" class="categories">
         <div class="categorie flexColumn flexCenter">
             <label class="width_100 center colorWhite categoriesAnimal" for="animal"> Animal : </label>
             <div class="flexRow align categoriePet">
@@ -9,25 +9,32 @@
                 <span class="margin_0_20"><i class="fas fa-cat"></i></span>
             </div>
         </div>
-        <div class="categorie flexColumn flexCenter">
-            <label class="colorWhite width_100 center categoriesAnimal" for="date"> Perdu le :</label>
-            <div class="categoriePet">
-                <input id="date" name="date" type="date" required>
+        <?php
+        if ($true === true) {
+            echo "
+                <div class='categorie flexColumn flexCenter'>
+            <label class='colorWhite width_100 center categoriesAnimal' for='date'>$situation</label>
+            <div class='categoriePet'>
+                <input id='date' name='date' type='date'>
             </div>
         </div>
+            ";
+        }
+        ?>
+
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="sexe"> Sexe :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
-                    <input  type="radio" name="sexe" value="mâle" required>
+                    <input  type="radio" name="sexe" value="mâle">
                     <span class="margin_0_20">Mâle</span>
                 </div>
                 <div class="flexRow align">
-                    <input type="radio" name="sexe" value="femelle" required>
+                    <input type="radio" name="sexe" value="femelle">
                     <span class="margin_0_20">Femelle </span>
                 </div>
                 <div class="flexRow align">
-                    <input type="radio" name="sexe" value="inconnu" required>
+                    <input type="radio" name="sexe" value="inconnu">
                     <span class="margin_0_20">Inconnu</span>
                 </div>
             </div>
@@ -93,13 +100,13 @@
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="race">Race :</label>
-            <input type="text" name="race" placeholder="ex : berger allemand" class="categoriePet" required>
+            <input type="text" name="race" placeholder="ex : berger allemand" class="categoriePet">
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="city">Ville :</label>
-            <input type="text" name="city" id="city" placeholder="ex : Lille" class="categoriePet" required>
+            <input type="text" name="city" id="city" placeholder="ex : Lille" class="categoriePet">
         </div>
         <div class="flexCenter">
             <input type="submit" class="buttonEnter colorWhite" value="Rechercher">
         </div>
-    </div>
+    </form>

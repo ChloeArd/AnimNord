@@ -12,7 +12,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
                 <div class="circle flexCenter">
                     <span>2</span>
                 </div>
-                <p>Informations sur l'animal</p>
+                <p>Informations sur l'animal <i class="fas fa-paw"></i></p>
             </div>
             <div class="flexRow align">
                 <label for="animal" class="marginR">Animal : </label>
@@ -98,7 +98,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
                 <div class="circle flexCenter">
                     <span>3</span>
                 </div>
-                <p>Date et lieu de sa disparition</p>
+                <p>Date et lieu de sa disparition <i class="far fa-calendar-alt"></i><i class="fas fa-map-marker-alt"></i></p>
             </div>
             <div class="flexRow align">
                 <label for="date"> Perdu le :</label>
@@ -113,7 +113,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
                 <div class="circle flexCenter">
                     <span>4</span>
                 </div>
-                <p>Importer une photo</p>
+                <p>Importer une photo <i class="far fa-image"></i></p>
             </div>
             <input type="file" required>
             <div class="flexRow align">

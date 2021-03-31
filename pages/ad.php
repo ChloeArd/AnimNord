@@ -7,12 +7,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
     <main class="width_80">
         <h1 class="flexCenter title colorWhite"> Publication d'une annonce</h1>
         <div id="publish" class="backgroundWhite flexCenter flexColumn width_100">
-           <div class="flexRow align">
-               <div class="circle flexCenter">
-                   <span>1</span>
-               </div>
-               <p> Type d'annonce</p>
-           </div>
+            <p class="width_100 center categoriesAnimal size20 colorWhite margin_15_0">Type d'annonce</p>
             <a href="lostAd.php" class="containerType">
                 <p><i class="fas fa-chevron-circle-right"></i>J'ai perdu mon chien ou mon chat.</p>
             </a>

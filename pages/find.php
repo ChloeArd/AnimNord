@@ -2,21 +2,37 @@
 $title = "Anim'Nord : Trouvés";
 include $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
 include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
+
+if (isset($_GET["page"])) {
+    $page = $_GET["page"];
+}
+else {
+    $page = 1;
+}
 ?>
 
     <main class="width_80 flexColumn">
         <h1 class="title colorWhite flexCenter"> Chiens et chats trouvés</h1>
         <?php
+        $situation = "Trouvé le :";
+        $true = true;
         include $_SERVER['DOCUMENT_ROOT'] . "/_partials/formCategories.php";
         ?>
         <div id="containerLostAd">
             <?php
-            for ($i = 0; $i < 20; $i++) {
+            // The page limit is 20 pet.
+            $first = ($page - 1) * 20;
+            $last = ($page * 20) - 1;
+            $count = 50;
+            if ($last > $count) {
+                $last = $count;
+            }
+            for ($i = $first; $i < $last; $i++) {
                 $id = $i + 1;
                 echo "
-                        <a href='#' class='post flexRow colorGrey'>
-                        <div class='width_20'>
-                        <img class='imagePet' src='https://placedog.net/500/280?id=". $id ."' >
+                    <a href='#' class='post flexRow colorGrey'>
+                    <div class='width_20 flexCenter'>
+                        <img class='imagePet' src='https://placedog.net/500/280?id=". $id ."' alt='race' >
                     </div>
                     <div class='flexColumn width80'>
                         <p class='titlePet'>Chien (mâle)</p>
@@ -32,6 +48,26 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
                     </div>
                 </a>
                     ";
+            }
+
+            if ($count > 19) {
+                if ($page < 2) {
+                    $prev = 1;
+                }
+                else {
+                    $prev = $page - 1;
+                }
+                $max = ($count / 2);
+                if ($page > ($max - 1)) {
+                    $next = $max;
+                }
+                else {
+                    $next = $page + 1;
+                }
+                echo "<div class='flexCenter flexRow'>
+                         <a class='underline colorBlue margin_0_20' href='./find.php?page=$prev'>Page précédente</a>
+                         <a class='underline colorBlue margin_0_20' href='./find.php?page=$next'>Page suivante</a>
+                      </div>";
             }
             ?>
         </div>

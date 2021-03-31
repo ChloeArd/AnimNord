@@ -16,8 +16,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             <input type="email" id="mail" name="mail" required>
             <label class="size15" for="tel"> Téléphone </label>
             <input type="tel" id="tel" name="tel" required>
-            <label class="size15" for="city"> Ville</label>
-            <input type="text" id="city" name="city" required>
             <label class="size15" for="password"> Mot de passe</label>
             <input type="password" id="password" name="password" required>
             <label class="size15" for="repeatPassword">Repet du mot de passe</label>
