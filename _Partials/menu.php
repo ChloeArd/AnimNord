@@ -1,6 +1,6 @@
 <header>
     <div class="flexCenter">
-        <img class="logoAnim" src="https://www.freelogoservices.com/api/main/images/1j+ojFVDOMkX9Wytexe43D6kifGFqBVJnx3IwXs1M3EMoAJtliArh...Zr9vo8">
+        <img class="logoAnim" src="../assets/img/logoAnimNord_complet.png">
     </div>
     <div class="menu flexCenter flexRow">
         <p><i class="fas fa-paw"></i></p>

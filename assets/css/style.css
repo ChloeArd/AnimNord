@@ -59,6 +59,11 @@ footer {
     align-items: center;
 }
 
+#logoPage {
+    width: 100%;
+    height: 100%;
+}
+
 .linkMenu {
     font-size: 1.5rem;
     margin: 0 15px;
