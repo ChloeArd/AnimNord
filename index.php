@@ -64,6 +64,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
                 }
                 ?>
         </div>
+        <a href="pages/find.php" class="buttonEnter buttonCenter radius10 align">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
+
         <div class="separatorHorizontal"></div>
         <h2 class="center title2">Annonces récentes de chiens et de chats à adopter</h2>
         <div class="width_80 flexRow flexCenter">

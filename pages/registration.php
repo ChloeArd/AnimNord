@@ -7,7 +7,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
 <main class="width_80">
     <h1 class="flexCenter title colorWhite"> Inscrivez-vous ! </h1>
     <div id="registration" class="backgroundWhite flexCenter width_100">
-        <form method="post" action="#" class="flexColumn width_50">
+        <form method="post" id="formRegistration" action="#" class="flexColumn width_50">
             <label class="size15" for="lastname"> Nom </label>
             <input type="text" id="lastname" name="lastname" required>
             <label class="size15" for="firstname"> Prénom </label>

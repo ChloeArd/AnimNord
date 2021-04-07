@@ -2,7 +2,7 @@
     <div class="flexCenter">
         <img class="logoAnim" src="../assets/img/logoAnimNord_complet.png">
     </div>
-    <div class="menu flexCenter flexRow">
+    <div id="menu" class="menu flexCenter flexRow">
         <p><i class="fas fa-paw"></i></p>
         <a class="linkMenu" href="../index.php">Acceuil</a>
         <a class="linkMenu" href="../pages/lost.php">Perdus</a>
