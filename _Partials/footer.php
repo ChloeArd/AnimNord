@@ -1,5 +1,5 @@
     <footer class="flexCenter flexColumn">
-        <img id="logosite" src="../assets/img/logosite.png">
+        <img id="logosite" src="../assets/img/chien_chat_bleu.png">
         <p class="colorWhite size18">Suivez nous :</p>
         <div class="flexRow">
             <a href="#"><i class="fab fa-facebook-square linkSocial"></i></a>
