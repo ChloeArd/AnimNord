@@ -103,7 +103,7 @@
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="city">Ville :</label>
-            <select name size="street" class="width_80 size15 categoriePet">
+            <select name="city" class="width_80 size15 categoriePet">
                 <option>Abancourt (59268)</option>
                 <option>Abscon (59215)</option>
                 <option>Aibes (59149)</option>
