@@ -14,6 +14,19 @@
         <p><i class="fas fa-paw"></i></p>
     </div>
 
+    <div id="menuMobile" class="flexRow align">
+        <p id="logoMenu"><i class="fas fa-bars"></i></p>
+        <img class="logoAnim2" src="../assets/img/logo-animNord.png">
+    </div>
+
+    <div id="subMenu" class="flexColumn">
+        <a class="linkMenuMobile flexRow align" href="../index.php"><i class="fas fa-chevron-circle-right"></i>Acceuil</a>
+        <a class="linkMenuMobile flexRow align" href="../pages/lost.php"><i class="fas fa-chevron-circle-right"></i>Perdus</a>
+        <a class="linkMenuMobile flexRow align" href="../pages/find.php"><i class="fas fa-chevron-circle-right"></i>Trouvés</a>
+        <a class="linkMenuMobile flexRow align" href="../pages/adopt.php"><i class="fas fa-chevron-circle-right"></i>Adopter</a>
+        <a class="linkMenuMobile flexRow align" href="../pages/ad.php"><i class="fas fa-chevron-circle-right"></i>Publier une annonce</a>
+        <a class="linkMenuMobile flexRow align" href="../pages/connect.php"><i class="fas fa-chevron-circle-right"></i>Connexion</a>
+        <a class="linkMenuMobile flexRow align" href="../pages/registration.php"><i class="fas fa-chevron-circle-right"></i>Inscription</a>
+    </div>
+
 </header>
-
-

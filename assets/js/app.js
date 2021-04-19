@@ -12,3 +12,17 @@ $(window).scroll(
         }
     }
 );
+
+//When we click on "logoMenu" we unfold or replicate the drop-down sub menu.
+$subMenu = $("#subMenu");
+
+if ($("#menuMobile")) {
+    $("#logoMenu").click(function () {
+        $subMenu.slideToggle(600, "linear");
+        $subMenu.css({
+            "display": "flex",
+            "flex-direction": "Column"
+        });
+    });
+}
+
