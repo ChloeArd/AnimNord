@@ -9,13 +9,13 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
     <div id="publish" class="backgroundWhite flexCenter flexColumn width_100">
         <p id="typeAd" class="width_100 center categoriesAnimal size20 colorWhite margin_15_0">Type d'annonce</p>
         <a href="lostAd.php" class="containerType">
-            <p><i class="fas fa-chevron-circle-right"></i>J'ai perdu mon chien ou mon chat.</p>
+            <p><i class="fas fa-chevron-circle-right colorBlue"></i>J'ai perdu mon chien ou mon chat.</p>
         </a>
         <a href="findAd.php" class="containerType">
-            <p><i class="fas fa-chevron-circle-right"></i>J'ai trouvé un chien ou un chat.</p>
+            <p><i class="fas fa-chevron-circle-right colorBlue"></i>J'ai trouvé un chien ou un chat.</p>
         </a>
         <a href="adoptAd.php" class="containerType">
-            <p><i class="fas fa-chevron-circle-right"></i>J'ai un chien ou un chat à faire adopter.</p>
+            <p><i class="fas fa-chevron-circle-right colorBlue"></i>J'ai un chien ou un chat à faire adopter.</p>
         </a>
         <p id="freeAd" class="colorGrey margin_15_0">La publication est totalement gratuite et instantanée !</p>
     </div>

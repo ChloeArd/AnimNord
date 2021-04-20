@@ -42,6 +42,7 @@ footer {
 #subMenu {
     background-color: rgba(44, 150, 198, 0.7);
     position: absolute;
+    z-index: 999;
     display: none;
 }
 
@@ -81,6 +82,14 @@ footer {
 
 .center {
     text-align: center;
+}
+
+.postAnimals {
+    padding: 6px;
+}
+
+.marginAuto {
+    margin: auto;
 }
 
 .align {
@@ -126,17 +135,18 @@ a {
 }
 
 .backgroundPet {
-    height: 100vh;
-    background-image: url("https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2020.2F10.2F21.2F0519a0ca-89c8-4d0c-97cf-30b4672f5956.2Ejpeg/850x478/quality/90/crop-from/center/pet-parents-le-match-chien-chat.jpeg");
-    background-size: 100%;
+    width: 100%;
+   <!-- background-image: url("https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2020.2F10.2F21.2F0519a0ca-89c8-4d0c-97cf-30b4672f5956.2Ejpeg/850x478/quality/90/crop-from/center/pet-parents-le-match-chien-chat.jpeg");
+    background-size: 200vh;
     background-repeat: no-repeat;
+    background-attachment: fixed;-->
 }
 
 .question {
-    position: relative;
+    position: absolute;
     width: 50%;
     font-size: 30px;
-    top: -20%;
+    top: 40%;
     line-height: 40px;
 }
 
@@ -260,7 +270,7 @@ button {
 .post{
     background-color: #E4E9EB;
     width: 95%;
-    padding: 20px;
+    padding: 10px 3px;
     margin: 20px auto;
     border-radius: 10px;
 }
@@ -268,7 +278,6 @@ button {
 select {
     text-align-last: center;
     background-color: #E4E9EB;
-    padding: 5px;
 }
 
 .margin_0_20 {
@@ -431,6 +440,7 @@ p {
 
 .postDate {
     position: absolute;
+    z-index: 1;
     right: 15%;
 }
 
@@ -549,9 +559,40 @@ li {
     margin-left: 65%;
 }
 
+.flexWrap {
+    flex-wrap: wrap;
+}
+
+#filterCategories {
+    display: none;
+}
+
+.width_30 {
+    width: 30%;
+}
+
+.width_70 {
+    width: 70%;
+}
+
 @media screen and (max-width: 1100px) {
     .width_80 {
         width: 100%;
+    }
+    .postDate {
+        right: 10%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .categories {
+        width: 30%;
+    }
+    #containerLostAd {
+        width: 70%;
+    }
+    .postDate {
+        right: 6%;
     }
 }
 
@@ -571,13 +612,49 @@ li {
     #logosite {
         width: 70px;
     }
+    .containerRecentPost {
+        width: 20%;
+    }
+    .question {
+        top: 30%;
+        width: 70%;
+    }
+    #connect {
+        padding: 150px 30px;
+    }
+    #filterCategories {
+        display: block;
+    }
+    .categories {
+        display: none;
+        width: 100%;
+        position: absolute;
+        z-index: 2;
+        background-color: rgba(153, 153, 153, 0.7);
+    }
+    #containerLostAd {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 800px) {
     .helpIndex {
         padding: 50px 15%;
     }
+    .containerRecentPost {
+        width: 40%;
+    }
 }
+
+@media screen and (max-width: 700px) {
+    .question {
+        width: 80%;
+    }
+    .title3 {
+        font-size: 20px;
+    }
+}
+
 @media screen and (max-width: 650px){
     .logoAnim2 {
         width: 50%;
@@ -590,6 +667,15 @@ li {
     #formRegistration, #formConnect{
         width: 100%;
     }
+    .question {
+        top: 25%;
+        width: 95%;
+        font-size: 25px;
+    }
+    .postDate {
+        position: relative;
+        margin-left: 20px;
+    }
 }
 @media screen and (max-width: 500px){
     .title {
@@ -598,6 +684,21 @@ li {
     #logosite {
         width: 50px;
         left: 12%;
+    }
+    #catDodLost {
+        flex-direction: column;
+    }
+    .question {
+        position: relative;
+        border: 3px dashed #B7B8B8;
+        margin: 10px;
+    }
+    #connection_disconnection {
+        display: flex;
+        flex-direction: column;
+    }
+    .accountIndex {
+        padding: 100px 50px;
     }
 }
 
@@ -617,6 +718,13 @@ li {
         margin-left: 25%;
     }
     .buttonEnter {
-        width: 100%;
+        width: 80%;
     }
+    .containerRecentPost {
+        width: 80%;
+    }
+    .question {
+        font-size: 17px;
+    }
+
 }

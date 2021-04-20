@@ -5,7 +5,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
 ?>
 
 <main class="width_80">
-    <h1 class="flexCenter title colorWhite"> Connexion  </h1>
+    <h1 class="flexCenter title colorWhite"> Connexion </h1>
     <div id="connect" class="backgroundWhite flexCenter width_100">
         <form method="post" id="formConnect" action="#" class="flexColumn width_50">
             <label for="mail"> Adresse E-mail </label>

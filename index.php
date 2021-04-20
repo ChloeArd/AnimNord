@@ -5,7 +5,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
 ?>
 
 <main class=" width_100 flexColumn">
-    <div class="backgroundPet flexCenter">
+    <div class="flexCenter flexColumn">
+        <img class="backgroundPet" src="https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2020.2F10.2F21.2F0519a0ca-89c8-4d0c-97cf-30b4672f5956.2Ejpeg/850x478/quality/90/crop-from/center/pet-parents-le-match-chien-chat.jpeg" alt="chien et chat">
         <p class="question buttonWhite colorBlue">Vous avez perdus, trouvés ou vous voulez adopter près de chez vous ? Vous êtes tombés sur le bon site de chiens et de
             chats du Nord (59).</p>
     </div>
@@ -13,7 +14,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
         <p>Chaque année en France, <strong>80 000  chiens et chats sont perdus !</strong> Dû par les départs en vacances.
             Qui peuvent les perturber, les éffrayer et les ammener à s'enfuir.</p>
         <p>Dans le Nord en 2018, il y a eu d'avantages de chiens déclarés perdus que de chats.</p>
-        <div class="flexCenter flexRow">
+        <div id="catDodLost" class="flexCenter flexRow">
             <p class="buttonWhite colorBlue margin8 size18">Chats : 23 937 perdus</p>
             <p class="buttonWhite colorBlue margin8 size18">Chiens : 28 121 perdus</p>
         </div>
@@ -30,7 +31,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
     </div>
     <div id="#recentPost">
         <h2 class="center title2">Annonces récentes de chiens et de chats perdus</h2>
-        <div class="width_80 flexRow flexCenter">
+        <div class="width_80 flexRow flexCenter flexWrap">
             <?php
             for ($i = 0; $i < 4; $i++) {
                 $id = $i + 10;
@@ -45,11 +46,11 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             }
             ?>
         </div>
-        <a href="pages/lost.php" class="buttonEnter buttonCenter radius10 align">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
+        <a href="pages/lost.php" class="buttonEnter buttonCenter radius10 align flexCenter">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
 
         <div class="separatorHorizontal"></div>
             <h2 class="center title2">Annonces récentes de chiens et de chats trouvés</h2>
-            <div class="width_80 flexRow flexCenter">
+            <div class="width_80 flexRow flexCenter flexWrap">
                 <?php
                 for ($i = 0; $i < 4; $i++) {
                     $id = $i + 1;
@@ -64,11 +65,11 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
                 }
                 ?>
         </div>
-        <a href="pages/find.php" class="buttonEnter buttonCenter radius10 align">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
+        <a href="pages/find.php" class="buttonEnter buttonCenter radius10 align flexCenter">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
 
         <div class="separatorHorizontal"></div>
         <h2 class="center title2">Annonces récentes de chiens et de chats à adopter</h2>
-        <div class="width_80 flexRow flexCenter">
+        <div class="width_80 flexRow flexCenter flexWrap">
             <?php
             for ($i = 0; $i < 4; $i++) {
                 $id = $i + 6;
@@ -83,14 +84,13 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             }
             ?>
         </div>
-        <a href="pages/adopt.php" class="buttonEnter buttonCenter radius10 align">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
+        <a href="pages/adopt.php" class="buttonEnter buttonCenter radius10 align flexCenter">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
         <div class="accountIndex">
             <h2 class="title3 center">Pas encore incrit ? ou pas encore connecté ?</h2>
-        <div class="flexRow flexCenter">
-            <a href="pages/registration.php" class="buttonWhite2">Inscription</a>
-            <a href="pages/connect.php" class="buttonWhite2">Connexion</a>
-        </div>
-
+            <div id="connection_disconnection" class="flexRow flexCenter">
+                <a href="pages/registration.php" class="buttonWhite2">Inscription</a>
+                <a href="pages/connect.php" class="buttonWhite2">Connexion</a>
+            </div>
         </div>
 
     </div>

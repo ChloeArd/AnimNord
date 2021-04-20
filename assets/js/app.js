@@ -26,3 +26,12 @@ if ($("#menuMobile")) {
     });
 }
 
+$buttonFilter = $("#filterCategories");
+
+if ($buttonFilter) {
+    $buttonFilter.click(function () {
+        $(".categories").slideToggle(600, "linear");
+        $(".categories").css("display", "block");
+    });
+}
+
