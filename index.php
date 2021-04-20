@@ -14,7 +14,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
         <p>Chaque année en France, <strong>80 000  chiens et chats sont perdus !</strong> Dû par les départs en vacances.
             Qui peuvent les perturber, les éffrayer et les ammener à s'enfuir.</p>
         <p>Dans le Nord en 2018, il y a eu d'avantages de chiens déclarés perdus que de chats.</p>
-        <div id="catDodLost" class="flexCenter flexRow">
+        <div id="catDogLost" class="flexCenter flexRow">
             <p class="buttonWhite colorBlue margin8 size18">Chats : 23 937 perdus</p>
             <p class="buttonWhite colorBlue margin8 size18">Chiens : 28 121 perdus</p>
         </div>
