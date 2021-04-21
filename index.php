@@ -10,13 +10,14 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
         <p class="question buttonWhite colorBlue">Vous avez perdus, trouvés ou vous voulez adopter près de chez vous ? Vous êtes tombés sur le bon site de chiens et de
             chats du Nord (59).</p>
     </div>
+
     <div class="helpIndex colorWhite">
         <p>Chaque année en France, <strong>80 000  chiens et chats sont perdus !</strong> Dû par les départs en vacances.
             Qui peuvent les perturber, les éffrayer et les ammener à s'enfuir.</p>
         <p>Dans le Nord en 2018, il y a eu d'avantages de chiens déclarés perdus que de chats.</p>
         <div id="catDogLost" class="flexCenter flexRow">
-            <p class="buttonWhite colorBlue margin8 size18">Chats : 23 937 perdus</p>
-            <p class="buttonWhite colorBlue margin8 size18">Chiens : 28 121 perdus</p>
+            <p class="numberLost buttonWhite colorBlue margin8 size18">Chats : 23 937 perdus</p>
+            <p class="numberLost buttonWhite colorBlue margin8 size18">Chiens : 28 121 perdus</p>
         </div>
         <p>Par ce fait, <strong>52 000 </strong> animaux ont dû passer par les fourrières de la France en 2019. En moyenne, près de <strong>4 000</strong> chiens et
             <strong>420 </strong>chats sont déclarés entrés en fourrière par mois. C’est beaucoup trop !</p>

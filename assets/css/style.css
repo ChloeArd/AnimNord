@@ -136,10 +136,6 @@ a {
 
 .backgroundPet {
     width: 100%;
-   <!-- background-image: url("https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2020.2F10.2F21.2F0519a0ca-89c8-4d0c-97cf-30b4672f5956.2Ejpeg/850x478/quality/90/crop-from/center/pet-parents-le-match-chien-chat.jpeg");
-    background-size: 200vh;
-    background-repeat: no-repeat;
-    background-attachment: fixed;-->
 }
 
 .question {
@@ -314,7 +310,8 @@ input[type="radio"], input[type="checkbox"] {
     box-shadow: 0 0 5px grey;
     opacity: 100%;
     color: #2C96C6;
-    width: 18%;
+    transform-origin: center;
+    transform: scale(1.1);
 }
 
 .width_20 {
@@ -323,6 +320,7 @@ input[type="radio"], input[type="checkbox"] {
 
 .imagePet{
     width: 70%;
+    margin: 10px;
 }
 
 .margin8, .location{
@@ -354,10 +352,6 @@ i {
     margin: 20px auto;
     display: flex;
     width: fit-content;
-}
-
-.separatorHorizontal:hover {
-    width: 100%;
 }
 
 .accountIndex, .helpIndex {
@@ -618,9 +612,6 @@ li {
     .containerRecentPost {
         width: 20%;
     }
-    .containerRecentPost:hover {
-        width: auto;
-    }
     .question {
         top: 30%;
         width: 70%;
@@ -639,6 +630,9 @@ li {
         background-color: rgba(153, 153, 153, 0.7);
     }
     #containerLostAd {
+        width: 100%;
+    }
+    .imagePet {
         width: 100%;
     }
 }
