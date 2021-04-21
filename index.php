@@ -26,9 +26,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
 
         <p>Malgré tous, il y a une hausse des animaux retrouvées est constatés ! Une très bonne nouvelle ! En 2019, ce sont <strong>33 317</strong>
             animaux qui ont été déclarés retrouvés par leurs propriétaires. Mais aussi grâce aux fourrières, aux associations et grâce à vous, ils ont pu retrouvés leurs nid douillés.</p>
-
-
     </div>
+
     <div id="#recentPost">
         <h2 class="center title2">Annonces récentes de chiens et de chats perdus</h2>
         <div class="width_80 flexRow flexCenter flexWrap">

@@ -322,8 +322,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .imagePet{
-    width: 90%;
-    margin: 10px;
+    width: 70%;
 }
 
 .margin8, .location{
@@ -671,8 +670,17 @@ li {
         width: 60px;
         left: 15%;
     }
-    #formRegistration, #formConnect{
+    #formRegistration, #formConnect, #formAd{
         width: 100%;
+    }
+    #formAd > select, #formAd > textarea, #name, #race, #num, #formAd > div > div > input {
+        font-size: 25px;
+    }
+    #formAd > textarea {
+        height: 250px;
+    }
+    #formAd {
+        padding: 15px;
     }
     .question {
         top: 25%;

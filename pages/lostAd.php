@@ -7,7 +7,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
     <main class="width_80">
         <h1 class="flexCenter title colorWhite">Publication d'une annonce pour chien ou chat perdu</h1>
         <p class="width_100 center categoriesAnimal colorWhite margin_15_0">1. Connecte toi !</p>
-        <form method="post" action="../assets/php/sendMail.php" class="flexColumn width_50">
+        <form id="formAd" method="post" action="" class="flexColumn width_50">
             <div class="flexRow align flexCenter">
                 <div class="circle flexCenter">
                     <span>2</span>
@@ -16,9 +16,9 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             </div>
             <div class="flexRow align">
                 <label for="animal" class="marginR">Animal : </label>
-                <input type="radio" name="animal" value="chien" required>
+                <input id="animal" type="radio" name="animal" value="chien" required>
                 <span class="margin_0_20"><i class="fas fa-dog"></i></span>
-                <input type="radio" name="animal" value="chat" required>
+                <input id="animal" type="radio" name="animal" value="chat" required>
                 <span class="margin_0_20"><i class="fas fa-cat"></i></span>
             </div>
             <label for="name">Son nom :</label>
@@ -26,20 +26,20 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             <label for="sexe"> Sexe :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
-                    <input type="radio" name="sexe" value="mâle" required>
+                    <input id="sexe" type="radio" name="sexe" value="mâle" required>
                     <span class="margin_0_20">Mâle</span>
                 </div>
                 <div class="flexRow align">
-                    <input type="radio" name="sexe" value="femelle" required>
+                    <input id="sexe" type="radio" name="sexe" value="femelle" required>
                     <span class="margin_0_20">Femelle</span>
                 </div>
                 <div class="flexRow align">
-                    <input type="radio" name="sexe" value="inconnu" required>
+                    <input id="sexe" type="radio" name="sexe" value="inconnu" required>
                     <span class="margin_0_20">Inconnu</span>
                 </div>
             </div>
             <label for="size"> Taille :</label>
-            <select name="size" class="size15 categoriePet">
+            <select id="size" name="size" class="size15 categoriePet">
                 <option>Très petite</option>
                 <option>Petite</option>
                 <option>Moyenne</option>
@@ -47,7 +47,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
                 <option>Très grande</option>
             </select>
             <label for="fur"> Poils :</label>
-            <select name="fur" class="size15 categoriePet">
+            <select id="fur" name="fur" class="size15 categoriePet">
                 <option>Nue</option>
                 <option>Court</option>
                 <option>Mi-long</option>
@@ -56,32 +56,32 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             <label for="colors"> Couleur du pelage :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
-                    <input type="checkbox" name="colors" value="Noir">
+                    <input id="colors" type="checkbox" name="colors" value="Noir">
                     <span class="margin_0_20 borderBlack black"></span>
                 </div>
                 <div class="flexRow align">
-                    <input type="checkbox" name="colors" value="Blanc">
+                    <input id="colors" type="checkbox" name="colors" value="Blanc">
                     <span class="margin_0_20 borderBlack"></span>
                 </div>
                 <div class="flexRow align">
-                    <input type="checkbox" name="colors" value="Marron">
+                    <input id="colors" type="checkbox" name="colors" value="Marron">
                     <span class="margin_0_20 borderBlack brown"></span>
                 </div>
                 <div class="flexRow align">
-                    <input type="checkbox" name="colors" value="Gris">
+                    <input id="colors" type="checkbox" name="colors" value="Gris">
                     <span class="margin_0_20 borderBlack grey"></span>
                 </div>
                 <div class="flexRow align">
-                    <input type="checkbox" name="colors" value="Beige">
+                    <input id="colors" type="checkbox" name="colors" value="Beige">
                     <span class="margin_0_20 borderBlack beige"></span>
                 </div>
                 <div class="flexRow align">
-                    <input type="checkbox" name="colors" value="Roux">
+                    <input id="colors" type="checkbox" name="colors" value="Roux">
                     <span class="margin_0_20 borderBlack orange"></span>
                 </div>
             </div>
-            <label for="colors">Robe :</label>
-            <select name="colors" class="size15 categoriePet">
+            <label for="dress">Robe :</label>
+            <select id="dress" name="dress" class="size15 categoriePet">
                 <option>Uni</option>
                 <option>Tacheté</option>
                 <option>Rayé</option>
@@ -109,7 +109,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
                 </div>
             </div>
             <label for="city">Ville :</label>
-            <select name="city" class="width_80 size15 categoriePet">
+            <select id="city" name="city" class="width_80 size15 categoriePet">
                 <option>Abancourt (59268)</option>
                 <option>Abscon (59215)</option>
                 <option>Aibes (59149)</option>
