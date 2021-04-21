@@ -82,8 +82,7 @@ setInterval(function () {
         }, 3000);
 
         $(".numberLost").animate({
-            opacity: "1"
+            opacity: "1",
         }, 2000);
     }
 }, 3000);
-
