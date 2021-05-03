@@ -15,7 +15,8 @@ class DB {
     private static ?PDO $dbInstance = null;
 
     /**
-     * Db Static constructor.
+     * DB Static constructor.
+     * test the connection to database
      */
     public function __construct() {
         try {
@@ -36,5 +37,13 @@ class DB {
             new self();
         }
         return self::$dbInstance;
+    }
+
+    public function sanitize($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        $data = addslashes($data);
+        return $data;
     }
 }
