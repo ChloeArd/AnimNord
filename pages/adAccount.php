@@ -23,7 +23,30 @@ include $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
         </div>
 
         <div>
-            <h1 class="titleAccount">Mes annonces</h1>
+            <h1 class="titleAccount">Mes annonces de chiens et chats perdus</h1>
+            <div id="containerLostAd" class="marginAuto">
+                <a class="colorBlack" href=""><i class="far fa-edit"></i></a>
+                <a class="colorBlack" href=""><i class="far fa-trash-alt"></i></a>
+                <a href='#' class='post flexRow flexCenter colorGrey'>
+                    <div class='width_30'>
+                        <img class='imagePet' src='https://placedog.net/200/250?id=". $id ."' >
+                    </div>
+                    <div class='flexColumn width_70 postAnimals'>
+                        <p class='titlePet'>Chien (mâle)</p>
+                        <p class='postDate colorBlue'>Date du post</p>
+                        <p>Perdu le : <span class='colorBlue'>00/00/0000</span></p>
+                        <p>Perdu à : <span class='colorBlue'>ville</span></p>
+                        <p>Race : <span class='colorBlue'> ....</span></p>
+                        <p>Taille: <span class='colorBlue'>...</span></p>
+                        <p>Poils: <span class='colorBlue'>....</span></p>
+                        <p>Couleur du pelage : <span class='colorBlue'>........, ....</span></p>
+                        <p>Robe : <span class='colorBlue'>....</span> </p>
+                        <p>Description : <span class='colorBlue'>........................</span></p>
+                    </div>
+                </a>
+            </div>
+
+            <h1 class="titleAccount">Mes annonces de chiens et chats trouvés</h1>
             <div id="containerLostAd" class="marginAuto">
                 <a class="colorBlack" href=""><i class="far fa-edit"></i></a>
                 <a class="colorBlack" href=""><i class="far fa-trash-alt"></i></a>

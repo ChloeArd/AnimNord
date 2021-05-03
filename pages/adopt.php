@@ -30,6 +30,7 @@ else {
                 for ($i = $first; $i < $last; $i++) {
                     $id = $i + 6;
                     echo "
+                        <a class='colorBlack' href='#'><i class='far fa-star star'></i></a>
                         <a href='#' class='post flexRow flexCenter colorGrey'>
                         <div class='width_30'>
                         <img class='imagePet' src='https://placedog.net/200/250?id=". $id ."' >

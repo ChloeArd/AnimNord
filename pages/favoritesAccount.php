@@ -25,7 +25,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
         <div>
             <h1 class="titleAccount">Mes favoris</h1>
             <div id="containerLostAd" class="marginAuto container2">
-                <a class="colorBlack" href=""><i class="far fa-star"></i></a>
+                <a class="colorBlack" href=""><i class="fas fa-star"></i></a>
                 <a href='#' class='post flexRow flexCenter colorGrey'>
                     <div class='width_30'>
                         <img class='imagePet' src='https://placedog.net/200/250?id=". $id ."' >

@@ -21,12 +21,14 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
     </div>
     <div class="helpIndex flexCenter flexColumn colorWhite">
         <h2 class="title3">Comment publier une annonce ?</h2>
-        <ul class="margin_15_0">
+        <div class="margin_15_0">
             <p class="size18">C'est très simple, il te suffit de :</p>
-            <li>choisir parmis les 3 types d'annonces proposés,</li>
-            <li>completer le formulaire,</li>
-            <li>cliquer sur "publier", et voilà <i class="far fa-laugh-wink"></i></li>
-        </ul>
+            <ul>
+                <li>choisir parmis les 3 types d'annonces proposés,</li>
+                <li>completer le formulaire,</li>
+                <li>cliquer sur "publier", et voilà <i class="far fa-laugh-wink"></i></li>
+            </ul>
+        </div>
     </div>
 </main>
 
