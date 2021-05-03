@@ -11,6 +11,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             chats du Nord (59).</p>
     </div>
 
+    <a href="pages/informationAccount.php" class="colorGrey">Compte</a>
+
     <div class="helpIndex colorWhite">
         <p>Chaque année en France, <strong>80 000  chiens et chats sont perdus !</strong> Dû par les départs en vacances.
             Qui peuvent les perturber, les éffrayer et les ammener à s'enfuir.</p>

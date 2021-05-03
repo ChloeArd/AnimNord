@@ -97,6 +97,18 @@ footer {
     align-items: center;
 }
 
+.textCenter {
+    text-align: center;
+}
+
+.colorBlack {
+    color: black;
+}
+
+input.colorBlack {
+    margin-bottom: 20px;
+}
+
 #logoPage {
     width: 100%;
 }
@@ -570,6 +582,54 @@ li {
 
 #catDogLost {
     margin: 20px 0;
+}
+
+.buttonRed {
+    color: red;
+    background-color: transparent;
+}
+
+#menuAccount {
+    height: 100px;
+    margin: auto;
+}
+
+.titleAccount {
+    text-align: center;
+    color: #1378a5;
+    text-decoration: underline;
+    padding: 15px;
+}
+
+.colorOrange {
+    color: #fcac3d;
+}
+
+.separatorVertical {
+    border-left: 1px solid #B7B8B8;
+    height: 50px;
+}
+
+.linkAccount {
+    padding: 10px;
+}
+
+.linkAccount:hover {
+    background-color: #E4E9EB;
+    border-radius: 10px;
+}
+
+.containerAccount {
+    background-color: #E4E9EB;
+    width: 50%;
+    border-radius: 10px;
+    padding: 15px;
+    margin: auto;
+}
+
+.inputWhite {
+    background-color: white;
+    width: 100%;
 }
 
 @media screen and (max-width: 1100px) {
