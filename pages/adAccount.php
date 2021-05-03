@@ -29,7 +29,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
                 <a class="colorBlack" href=""><i class="far fa-trash-alt"></i></a>
                 <a href='#' class='post flexRow flexCenter colorGrey'>
                     <div class='width_30'>
-                        <img class='imagePet' src='https://placedog.net/200/250?id=". $id ."' >
+                        <img class='imagePet' src='https://placedog.net/200/250?id=3' >
                     </div>
                     <div class='flexColumn width_70 postAnimals'>
                         <p class='titlePet'>Chien (mâle)</p>
@@ -52,7 +52,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
                 <a class="colorBlack" href=""><i class="far fa-trash-alt"></i></a>
                 <a href='#' class='post flexRow flexCenter colorGrey'>
                     <div class='width_30'>
-                        <img class='imagePet' src='https://placedog.net/200/250?id=". $id ."' >
+                        <img class='imagePet' src='https://placedog.net/200/250?id=2' >
                     </div>
                     <div class='flexColumn width_70 postAnimals'>
                         <p class='titlePet'>Chien (mâle)</p>
@@ -68,6 +68,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
                     </div>
                 </a>
             </div>
+            <p class="colorBlue center">Tu n'as pas encore ajouté d'annonce dans tes favoris !</p>
         </div>
     </main>
 

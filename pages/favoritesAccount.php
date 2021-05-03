@@ -23,12 +23,12 @@ include $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
         </div>
 
         <div>
-            <h1 class="titleAccount">Mes favoris</h1>
+            <h1 class="titleAccount">Mes favoris de chiens et chats perdus</h1>
             <div id="containerLostAd" class="marginAuto container2">
                 <a class="colorBlack" href=""><i class="fas fa-star"></i></a>
                 <a href='#' class='post flexRow flexCenter colorGrey'>
                     <div class='width_30'>
-                        <img class='imagePet' src='https://placedog.net/200/250?id=". $id ."' >
+                        <img class='imagePet' src='https://placedog.net/200/250?id=1' >
                     </div>
                     <div class='flexColumn width_70 postAnimals'>
                         <p class='titlePet'>Chien (mâle)</p>
@@ -44,7 +44,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
                     </div>
                 </a>
             </div>
-
+            <h1 class="titleAccount">Mes favoris de chiens et chats perdus</h1>
+            <p class="colorBlue center">Tu n'as pas encore ajouté d'annonce dans tes favoris !</p>
         </div>
     </main>
 
