@@ -24,14 +24,14 @@ include $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
             <h1 class="titleAccount">Mes informations personnelles</h1>
             <div class="containerAccount">
                 <form action="#" method="post">
-                    <label for="lastName" class="colorBlue size20">Nom <span class="size15">*</span></label>
-                    <input type="text" name="lastName" id="lastName" class="inputWhite colorBlack" value="mettre info">
-                    <label for="firstName" class="colorBlue size20">Prénom <span class="size15">*</span></label>
-                    <input type="text" name="fisrtName" id="firstName" class="inputWhite colorBlack" value="mettre info">
-                    <label for="email" class="colorBlue size20">Email <span class="size15">*</span></label>
-                    <input type="text" name="email" id="email" class="inputWhite colorBlack" value="mettre info">
-                    <label for="phone" class="colorBlue size20">Téléphone <span class="size15">*</span></label>
-                    <input type="tel" name="phone" id="phone" class="inputWhite colorBlack" value="mettre info">
+                    <label for="lastName" class="colorBlack size20">Nom <span class="size15">*</span></label>
+                    <input type="text" name="lastName" id="lastName" class="inputWhite colorBlue" value="mettre info">
+                    <label for="firstName" class="colorBlack size20">Prénom <span class="size15">*</span></label>
+                    <input type="text" name="fisrtName" id="firstName" class="inputWhite colorBlue" value="mettre info">
+                    <label for="email" class="colorBlack size20">Email <span class="size15">*</span></label>
+                    <input type="text" name="email" id="email" class="inputWhite colorBlue" value="mettre info">
+                    <label for="phone" class="colorBlack size20">Téléphone <span class="size15">*</span></label>
+                    <input type="tel" name="phone" id="phone" class="inputWhite colorBlue" value="mettre info">
                     <div class="flexCenter">
                         <input type="submit" class="buttonEnter colorWhite" value="Enregistrer">
                     </div>
@@ -41,10 +41,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
             <h1 class="titleAccount">Changer mon Mot de passe</h1>
             <div class="containerAccount">
                 <form action="#" method="post">
-                    <label for="currentPassword" class="colorBlue size20">Mot de passe actuel <span class="size15">*</span></label>
-                    <input type="text" name="currentPassword" id="currentPassword" class="inputWhite colorBlack" value="mettre info">
-                    <label for="newPassword" class="colorBlue size20">Nouveau mot de passe <span class="size15">*</span></label>
-                    <input type="text" name="newPassword" id="newPassword" class="inputWhite colorBlack" value="mettre info">
+                    <label for="currentPassword" class="colorBlack size20">Mot de passe actuel <span class="size15">*</span></label>
+                    <input type="text" name="currentPassword" id="currentPassword" class="inputWhite colorBlue" value="mettre info">
+                    <label for="newPassword" class="colorBlack size20">Nouveau mot de passe <span class="size15">*</span></label>
+                    <input type="text" name="newPassword" id="newPassword" class="inputWhite colorBlue" value="mettre info">
                     <div class="flexCenter">
                         <input type="submit" class="buttonEnter colorWhite" value="Changer">
                     </div>
