@@ -285,6 +285,4 @@ class AdLost {
     public function setUserFk(?int $user_fk): void {
         $this->user_fk = $user_fk;
     }
-
-
 }
