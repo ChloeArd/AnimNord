@@ -8,7 +8,7 @@ use PDOException;
 class DB {
 
     private string $server = 'localhost';
-    private string $db = 'blog_eval';
+    private string $db = 'animnord';
     private string $user = 'root';
     private string $password = '';
 

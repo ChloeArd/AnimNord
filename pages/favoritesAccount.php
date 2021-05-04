@@ -1,8 +1,8 @@
 <?php
-
+session_start();
 $title = "Anim'Nord : Informations";
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
-include $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
 ?>
 
     <main>
@@ -13,11 +13,13 @@ include $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
             <div class="separatorVertical"></div>
             <a href="favoritesAccount.php" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
             <div class="separatorVertical"></div>
-            <a href="#" class="colorBlue margin_0_20 linkAccount">Mes messages</a>
-            <div class="separatorVertical"></div>
-            <a href="#" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
-            <div class="separatorVertical"></div>
-            <form>
+            <?php
+            if ($_SESSION["role_fk"] === "1") { ?>
+                <a href="#" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
+                <div class="separatorVertical"></div>
+                <?php
+            } ?>
+            <form method="post" action="../assets/php/disconnection.php">
                 <input type="submit" class="disconnection buttonRed linkAccount margin_0_20" value="Me déconnecter">
             </form>
         </div>
@@ -50,4 +52,4 @@ include $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
     </main>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";

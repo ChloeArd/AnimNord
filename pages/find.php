@@ -1,7 +1,8 @@
 <?php
+session_start();
 $title = "Anim'Nord : Trouvés";
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
 
 if (isset($_GET["page"])) {
     $page = $_GET["page"];
@@ -77,5 +78,5 @@ else {
     </main>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";
 

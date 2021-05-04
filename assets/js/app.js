@@ -86,3 +86,24 @@ setInterval(function () {
         }, 2000);
     }
 }, 3000);
+
+
+if (document.getElementById("error")) {
+    document.getElementById("closeModal").style.display = "block";
+    closeModal("#error");
+}
+
+if (document.getElementById("success")) {
+    document.getElementById("closeModal").style.display = "block";
+    closeModal("#success");
+}
+
+/**
+ * Gradually folds up the modal window.
+ * @param idModal
+ */
+function closeModal (idModal) {
+    $("#closeModal").click(function () {
+        $(idModal).slideUp();
+    });
+}

@@ -1,17 +1,29 @@
 <?php
+session_start();
 $title = "Anim'Nord : Acceuil";
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
+
+$return = "";
+$id = "";
+
+if (isset($_GET['success'])) {
+    $id = "success";
+    switch ($_GET['success']) {
+        case '0':
+            $return = "Vous êtes bien déconnecté(e) !";
+            break;
+    }
+}
 ?>
 
+<div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
 <main class=" width_100 flexColumn">
     <div class="flexCenter flexColumn">
         <img class="backgroundPet" src="https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2020.2F10.2F21.2F0519a0ca-89c8-4d0c-97cf-30b4672f5956.2Ejpeg/850x478/quality/90/crop-from/center/pet-parents-le-match-chien-chat.jpeg" alt="chien et chat">
         <p class="question buttonWhite colorBlue">Vous avez perdus, trouvés ou vous voulez adopter près de chez vous ? Vous êtes tombés sur le bon site de chiens et de
             chats du Nord (59).</p>
     </div>
-
-    <a href="pages/informationAccount.php" class="colorGrey center">Compte</a>
 
     <div class="helpIndex colorWhite">
         <p>Chaque année en France, <strong>80 000  chiens et chats sont perdus !</strong> Dû par les départs en vacances.
@@ -88,16 +100,29 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
         </div>
         <a href="pages/adopt.php" class="buttonEnter buttonCenter radius10 align flexCenter">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
         <div class="accountIndex">
-            <h2 class="title3 center">Pas encore incrit ? ou pas encore connecté ?</h2>
-            <div id="connection_disconnection" class="flexRow flexCenter">
-                <a href="pages/registration.php" class="buttonWhite2">Inscription</a>
-                <a href="pages/connect.php" class="buttonWhite2">Connexion</a>
-            </div>
+            <?php
+            if (isset($_SESSION["id"])) {
+                ?>
+                <h2 class="title3 center">Vous avez perdus votre animal ? trouvés un animal ? ou vous voulez faire adoptés un animal ?</h2>
+                <div id="connection_disconnection" class="flexRow flexCenter">
+                    <a href="pages/ad.php" class="buttonWhite2">Publier une annonce</a>
+                </div>
+                <?php
+            }
+            else {
+                ?>
+                <h2 class="title3 center">Pas encore incrit ? ou pas encore connecté ?</h2>
+                <div id="connection_disconnection" class="flexRow flexCenter">
+                    <a href="pages/registration.php" class="buttonWhite2">Inscription</a>
+                    <a href="pages/connect.php" class="buttonWhite2">Connexion</a>
+                </div>
+                <?php
+            }
+            ?>
         </div>
-
     </div>
 </main>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";
 

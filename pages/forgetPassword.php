@@ -1,6 +1,7 @@
 <?php
+session_start();
 $title = "Anim'Nord : Mot de passe oublié";
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
 ?>
 
 <main class="width_80">

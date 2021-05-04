@@ -4,44 +4,44 @@ namespace Model\Entity;
 
 class Role {
 
-    private int $id;
-    private string $role;
+    private ?int $id;
+    private ?string $role;
 
     /**
      * Role constructor.
-     * @param int $id
-     * @param string $role
+     * @param int|null $id
+     * @param string|null $role
      */
-    public function __construct(int $id, string $role) {
+    public function __construct(?int $id = null, ?string $role = null) {
         $this->id = $id;
         $this->role = $role;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int {
+    public function getId(): ?int {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      */
-    public function setId(int $id): void {
+    public function setId(?int $id): void {
         $this->id = $id;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRole(): string {
+    public function getRole(): ?string {
         return $this->role;
     }
 
     /**
-     * @param string $role
+     * @param string|null $role
      */
-    public function setRole(string $role): void {
+    public function setRole(?string $role): void {
         $this->role = $role;
     }
 }

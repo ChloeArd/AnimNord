@@ -1,7 +1,8 @@
 <?php
+session_start();
 $title = "Anim'Nord : Publier une annonce";
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
 ?>
 
 <main class="width_80">
@@ -25,7 +26,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             <p class="size18">C'est très simple, il te suffit de :</p>
             <ul>
                 <li>choisir parmis les 3 types d'annonces proposés,</li>
-                <li>completer le formulaire,</li>
+                <li>complêter le formulaire,</li>
                 <li>cliquer sur "publier", et voilà <i class="far fa-laugh-wink"></i></li>
             </ul>
         </div>
@@ -33,4 +34,4 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
 </main>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";

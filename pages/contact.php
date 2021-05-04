@@ -1,7 +1,8 @@
 <?php
+session_start();
 $title = "Anim'Nord : Contact";
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
 ?>
 
 <main class="width_80">
@@ -20,4 +21,4 @@ include $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
 </main>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";

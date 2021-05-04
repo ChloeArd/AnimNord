@@ -56,8 +56,9 @@ class User {
     /**
      * @param string|null $firstname
      */
-    public function setFirstname(?string $firstname): void {
+    public function setFirstname(?string $firstname): string {
         $this->firstname = $firstname;
+        return $firstname;
     }
 
     /**
@@ -70,8 +71,9 @@ class User {
     /**
      * @param string|null $lastname
      */
-    public function setLastname(?string $lastname): void {
+    public function setLastname(?string $lastname): string {
         $this->lastname = $lastname;
+        return $lastname;
     }
 
     /**
@@ -84,8 +86,9 @@ class User {
     /**
      * @param string|null $email
      */
-    public function setEmail(?string $email): void {
+    public function setEmail(?string $email): string {
         $this->email = $email;
+        return $email;
     }
 
     /**
@@ -98,8 +101,9 @@ class User {
     /**
      * @param int|null $phone
      */
-    public function setPhone(?int $phone): void {
+    public function setPhone(?int $phone): string {
         $this->phone = $phone;
+        return $phone;
     }
 
     /**
@@ -112,8 +116,9 @@ class User {
     /**
      * @param string|null $password
      */
-    public function setPassword(?string $password): void {
+    public function setPassword(?string $password): string {
         $this->password = $password;
+        return $password;
     }
 
     /**
@@ -126,8 +131,9 @@ class User {
     /**
      * @param int|null $role_fk
      */
-    public function setRoleFk(?int $role_fk): void {
+    public function setRoleFk(?int $role_fk): int {
         $this->role_fk = $role_fk;
+        return $role_fk;
     }
 
 
