@@ -1,8 +1,8 @@
 <?php
 session_start();
 $title = "Anim'Nord : Informations";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "./_Partials/menu.php"
 ?>
 
     <main>
@@ -54,4 +54,4 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
     </main>
 
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/footer.php";

@@ -25,7 +25,7 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["phon
             $phoneUse = $user['phone'];
 
             if ($mailUse === $email || $phoneUse === $phone) {
-                header("Location: ../../pages/registration.php?error=0");
+                header("Location: ../../View/registration.php?error=0");
             }
         }
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -38,17 +38,17 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["phon
                 $sql = "INSERT INTO user VALUES (null, '$firstname', '$lastname', '$email', '$phone', '$encryptedPassword', 2)";
                 $bdd->exec($sql);
 
-                header("Location: ../../pages/connect.php?success=0");
+                header("Location: ../../View/connect.php?success=0");
             }
             else {
-                header("Location: ../../pages/registration.php?error=1");
+                header("Location: ../../View/registration.php?error=1");
             }
         }
         else {
-            header("Location: ../../pages/registration.php?error=2");
+            header("Location: ../../View/registration.php?error=2");
         }
     }
 }
 else {
-    header("Location: ../../pages/registration.php?error=3");
+    header("Location: ../../View/registration.php?error=3");
 }

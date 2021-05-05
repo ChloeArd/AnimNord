@@ -1,10 +1,6 @@
 <?php
-session_start();
-$title = "Anim'Nord : Informations";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
+if (isset($var['user'])) {
 ?>
-
     <main>
         <div class="flexRow flexCenter" id="menuAccount">
             <a href="informationAccount.php" class="colorBlue margin_0_20 linkAccount">Mes informations</a>
@@ -58,6 +54,5 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
             </div>
         </div>
     </main>
-
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";
+}

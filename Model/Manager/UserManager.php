@@ -55,7 +55,7 @@ class UserManager {
             $user->setPhone($user_data['phone']);
             $user->setPassword(''); // We do not display the password
             $role = $this->roleManager->getRole($user_data['role_fk']);
-            $user->setRoleFk((int)$role);
+            $user->setRoleFk($role);
         }
         return $user;
     }
@@ -66,7 +66,7 @@ class UserManager {
      */
     public function getStaff() {
         // different from 2 because 2 is the user and we want to recover only the staff.
-        $request = DB::getInstance()->prepare("SELECT * FROM user WHERE WHERE role_fk != 2");
+        $request = DB::getInstance()->prepare("SELECT * FROM user WHERE role_fk != 2");
         $request->execute();
         return $this->getUsers();
     }
@@ -121,6 +121,18 @@ class UserManager {
      */
     public function deleteUser(User $user): bool {
         $id = $user->getId();
+        $request = DB::getInstance()->prepare("DELETE FROM adlost WHERE user_fk = $id");
+        $request->execute();
+        $request = DB::getInstance()->prepare("DELETE FROM adfind WHERE user_fk = $id");
+        $request->execute();
+        $request = DB::getInstance()->prepare("DELETE FROM comment_lost WHERE user_fk = $id");
+        $request->execute();
+        $request = DB::getInstance()->prepare("DELETE FROM comment_find WHERE user_fk = $id");
+        $request->execute();
+        $request = DB::getInstance()->prepare("DELETE FROM favorite_lost WHERE user_fk = $id");
+        $request->execute();
+        $request = DB::getInstance()->prepare("DELETE FROM favorite_find WHERE user_fk = $id");
+        $request->execute();
         $request = DB::getInstance()->prepare("DELETE FROM user WHERE id = $id");
         return $request->execute();
     }

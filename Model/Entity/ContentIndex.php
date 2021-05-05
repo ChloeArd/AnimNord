@@ -8,7 +8,7 @@ class ContentIndex {
     private ?string $picture;
     private ?string $text1;
     private ?string $text2;
-    private ?int $user_fk;
+    private ?User $user_fk;
 
     /**
      * ContentIndex constructor.
@@ -16,9 +16,9 @@ class ContentIndex {
      * @param string|null $picture
      * @param string|null $text1
      * @param string|null $text2
-     * @param int|null $user_fk
+     * @param User|null $user_fk
      */
-    public function __construct(?int $id = null, ?string $picture = null, ?string $text1 = null, ?string $text2 = null, ?int $user_fk = null) {
+    public function __construct(?int $id = null, ?string $picture = null, ?string $text1 = null, ?string $text2 = null, ?User $user_fk = null) {
         $this->id = $id;
         $this->picture = $picture;
         $this->text1 = $text1;
@@ -86,19 +86,16 @@ class ContentIndex {
     }
 
     /**
-     * @return int|null
+     * @return User|null
      */
-    public function getUserFk(): ?int {
+    public function getUserFk(): ?User {
         return $this->user_fk;
     }
 
     /**
-     * @param int|null $user_fk
+     * @param User|null $user_fk
      */
-    public function setUserFk(?int $user_fk): int {
+    public function setUserFk(?User $user_fk): void {
         $this->user_fk = $user_fk;
-        return $user_fk;
     }
-
-
 }

@@ -1,13 +1,13 @@
 <?php
 session_start();
 $title = "Anim'Nord : Publier une annonce";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
 ?>
 
     <main class="width_80">
-        <h1 class="flexCenter title colorWhite">Publication d'une annonce pour chien ou chat perdu</h1>
-        <form id="formAd" method="post" action="" class="flexColumn width_50">
+        <h1 class="flexCenter title colorWhite">Publication d'une annonce pour chien ou chat à adopter</h1>
+        <form id="formAd" method="post" action="../assets/php/sendMail.php" class="flexColumn width_50">
             <div class="flexRow align flexCenter">
                 <div class="circle flexCenter">
                     <span>1</span>
@@ -23,6 +23,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             </div>
             <label for="name">Son nom :</label>
             <input type="text" id="name" name="name" required>
+            <label for="age">Son âge :</label>
+            <input type="text" id="age" name="age" required>
             <label for="sexe"> Sexe :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
@@ -95,6 +97,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             <input type="number" name="num" id="num" class="categoriePet" required>
             <label for="description">Description : </label>
             <textarea id="description" name="description" required></textarea>
+            <div class="flexRow align">
+            </div>
+
 
             <div class="flexRow align flexCenter">
                 <div class="circle flexCenter">
@@ -776,4 +781,4 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
     </main>
 
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/footer.php";

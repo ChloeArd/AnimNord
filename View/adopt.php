@@ -1,8 +1,8 @@
 <?php
 session_start();
-$title = "Anim'Nord : Trouvés";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
+$title = "Anim'Nord : Adopter";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
 
 if (isset($_GET["page"])) {
     $page = $_GET["page"];
@@ -13,24 +13,23 @@ else {
 ?>
 
     <main class="width_80 flexColumn">
-        <h1 class="title colorWhite flexCenter"> Chiens et chats trouvés</h1>
+        <h1 class="title colorWhite flexCenter"> Chiens et chats à adopter</h1>
         <div class="flexRow">
             <?php
-            $situation = "Trouvé le :";
-            $true = true;
-            include $_SERVER['DOCUMENT_ROOT'] . "/_partials/formCategories.php";
+            $true = false;
+            include $_SERVER['DOCUMENT_ROOT'] . "/_Partials/formCategories.php";
             ?>
             <div id="containerLostAd">
                 <?php
                 // The page limit is 30 pet.
                 $first = ($page - 1) * 30;
                 $last = ($page * 30) - 1;
-                $count = 66;
+                $count = 35;
                 if ($last > $count) {
                     $last = $count;
                 }
                 for ($i = $first; $i < $last; $i++) {
-                    $id = $i + 1;
+                    $id = $i + 6;
                     echo "
                         <a class='colorBlack' href='#'><i class='far fa-star star'></i></a>
                         <a href='#' class='post flexRow flexCenter colorGrey'>
@@ -78,5 +77,5 @@ else {
     </main>
 
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/footer.php";
 

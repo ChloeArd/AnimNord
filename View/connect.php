@@ -1,8 +1,8 @@
 <?php
 session_start();
 $title = "Anim'Nord : Compte";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
 
 $return = "";
 $id = "";
@@ -45,4 +45,4 @@ elseif (isset($_GET['success'])) {
 </main>
 
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/footer.php";

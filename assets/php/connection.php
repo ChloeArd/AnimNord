@@ -28,13 +28,13 @@ if (isset($_POST["email"], $_POST["password"])) {
             $_SESSION['password'] = $password;
             $_SESSION['role_fk'] = $user['role_fk'];
 
-            header("Location: ../../pages/informationAccount.php?success=0");
+            header("Location: ../../View/informationAccount.php?success=0");
         }
         else {
-            header("Location: ../../pages/connect.php?error=0");
+            header("Location: ../../View/connect.php?error=0");
         }
     }
 }
 else {
-    header("Location: ../../pages/connect.php?error=1");
+    header("Location: ../../View/connect.php?error=1");
 }

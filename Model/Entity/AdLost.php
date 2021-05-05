@@ -19,7 +19,7 @@ class AdLost {
     private ?string $date;
     private ?string $city;
     private ?string $picture;
-    private ?int $user_fk;
+    private ?User $user_fk;
 
     /**
      * AdLost constructor.
@@ -38,12 +38,12 @@ class AdLost {
      * @param string|null $date
      * @param string|null $city
      * @param string|null $picture
-     * @param int|null $user_fk
+     * @param User|null $user_fk
      */
     public function __construct(?int $id = null, ?string $animal = null, ?string $name = null, ?string $sex = null, ?string $size = null,
                                 ?string $fur = null, ?string $color = null, ?string $dress = null, ?string $race = null, ?int $number = null,
                                 ?string $description = null, ?string $date_lost = null, ?string $date = null, ?string $city = null, ?string $picture = null,
-                                ?int $user_fk = null) {
+                                ?User $user_fk = null) {
         $this->id = $id;
         $this->animal = $animal;
         $this->name = $name;
@@ -86,8 +86,9 @@ class AdLost {
     /**
      * @param string|null $animal
      */
-    public function setAnimal(?string $animal): void {
+    public function setAnimal(?string $animal): string {
         $this->animal = $animal;
+        return $animal;
     }
 
     /**
@@ -100,8 +101,9 @@ class AdLost {
     /**
      * @param string|null $name
      */
-    public function setName(?string $name): void {
+    public function setName(?string $name): string {
         $this->name = $name;
+        return $name;
     }
 
     /**
@@ -114,8 +116,9 @@ class AdLost {
     /**
      * @param string|null $sex
      */
-    public function setSex(?string $sex): void {
+    public function setSex(?string $sex): string{
         $this->sex = $sex;
+        return $sex;
     }
 
     /**
@@ -128,8 +131,9 @@ class AdLost {
     /**
      * @param string|null $size
      */
-    public function setSize(?string $size): void {
+    public function setSize(?string $size): string {
         $this->size = $size;
+        return $size;
     }
 
     /**
@@ -142,8 +146,9 @@ class AdLost {
     /**
      * @param string|null $fur
      */
-    public function setFur(?string $fur): void {
+    public function setFur(?string $fur): string {
         $this->fur = $fur;
+        return $fur;
     }
 
     /**
@@ -156,8 +161,9 @@ class AdLost {
     /**
      * @param string|null $color
      */
-    public function setColor(?string $color): void {
+    public function setColor(?string $color): string {
         $this->color = $color;
+        return $color;
     }
 
     /**
@@ -170,8 +176,9 @@ class AdLost {
     /**
      * @param string|null $dress
      */
-    public function setDress(?string $dress): void {
+    public function setDress(?string $dress): string {
         $this->dress = $dress;
+        return $dress;
     }
 
     /**
@@ -184,8 +191,9 @@ class AdLost {
     /**
      * @param string|null $race
      */
-    public function setRace(?string $race): void {
+    public function setRace(?string $race): string {
         $this->race = $race;
+        return $race;
     }
 
     /**
@@ -198,8 +206,9 @@ class AdLost {
     /**
      * @param int|null $number
      */
-    public function setNumber(?int $number): void {
+    public function setNumber(?int $number): int {
         $this->number = $number;
+        return $number;
     }
 
     /**
@@ -212,8 +221,9 @@ class AdLost {
     /**
      * @param string|null $description
      */
-    public function setDescription(?string $description): void {
+    public function setDescription(?string $description): string {
         $this->description = $description;
+        return $description;
     }
 
     /**
@@ -226,8 +236,9 @@ class AdLost {
     /**
      * @param string|null $date_lost
      */
-    public function setDateLost(?string $date_lost): void {
+    public function setDateLost(?string $date_lost): string {
         $this->date_lost = $date_lost;
+        return $date_lost;
     }
 
     /**
@@ -240,8 +251,9 @@ class AdLost {
     /**
      * @param string|null $date
      */
-    public function setDate(?string $date): void {
+    public function setDate(?string $date): string {
         $this->date = $date;
+        return $date;
     }
 
     /**
@@ -254,8 +266,9 @@ class AdLost {
     /**
      * @param string|null $city
      */
-    public function setCity(?string $city): void {
+    public function setCity(?string $city): string {
         $this->city = $city;
+        return $city;
     }
 
     /**
@@ -268,21 +281,24 @@ class AdLost {
     /**
      * @param string|null $picture
      */
-    public function setPicture(?string $picture): void {
+    public function setPicture(?string $picture): string {
         $this->picture = $picture;
+        return $picture;
     }
 
     /**
-     * @return int|null
+     * @return User|null
      */
-    public function getUserFk(): ?int {
+    public function getUserFk(): ?User {
         return $this->user_fk;
     }
 
     /**
-     * @param int|null $user_fk
+     * @param User|null $user_fk
+     * @return User
      */
-    public function setUserFk(?int $user_fk): void {
+    public function setUserFk(?User $user_fk): User {
         $this->user_fk = $user_fk;
+        return $user_fk;
     }
 }

@@ -7,18 +7,18 @@ class CommentFind {
     private ?int $id;
     private ?string $content;
     private ?string $date;
-    private ?int $adFind_fk;
-    private ?int $user_fk;
+    private ?AdFind $adFind_fk;
+    private ?User $user_fk;
 
     /**
      * CommentFind constructor.
      * @param int|null $id
      * @param string|null $content
      * @param string|null $date
-     * @param int|null $adFind_fk
-     * @param int|null $user_fk
+     * @param AdFind|null $adFind_fk
+     * @param User|null $user_fk
      */
-    public function __construct(?int $id = null, ?string $content = null, ?string $date = null, ?int $adFind_fk = null, ?int $user_fk = null) {
+    public function __construct(?int $id = null, ?string $content = null, ?string $date = null, ?AdFind $adFind_fk = null, ?User $user_fk = null) {
         $this->id = $id;
         $this->content = $content;
         $this->date = $date;
@@ -69,30 +69,30 @@ class CommentFind {
     }
 
     /**
-     * @return int|null
+     * @return AdFind|null
      */
-    public function getAdFindFk(): ?int {
+    public function getAdFindFk(): ?AdFind {
         return $this->adFind_fk;
     }
 
     /**
-     * @param int|null $adFind_fk
+     * @param AdFind|null $adFind_fk
      */
-    public function setAdFindFk(?int $adFind_fk): void {
+    public function setAdFindFk(?AdFind $adFind_fk): void {
         $this->adFind_fk = $adFind_fk;
     }
 
     /**
-     * @return int|null
+     * @return User|null
      */
-    public function getUserFk(): ?int {
+    public function getUserFk(): ?User {
         return $this->user_fk;
     }
 
     /**
-     * @param int|null $user_fk
+     * @param User|null $user_fk
      */
-    public function setUserFk(?int $user_fk): void {
+    public function setUserFk(?User $user_fk): void {
         $this->user_fk = $user_fk;
     }
 }

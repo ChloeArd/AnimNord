@@ -18,7 +18,7 @@ class AdFind {
     private ?string $date;
     private ?string $city;
     private ?string $picture;
-    private ?int $user_fk;
+    private ?User $user_fk;
 
     /**
      * AdFind constructor.
@@ -36,11 +36,11 @@ class AdFind {
      * @param string|null $date
      * @param string|null $city
      * @param string|null $picture
-     * @param int|null $user_fk
+     * @param User|null $user_fk
      */
     public function __construct(?int $id = null, ?string $animal = null, ?string $sex = null, ?string $size = null, ?string $fur = null,
                                 ?string $color = null, ?string $dress = null, ?string $race = null, ?int $number = null, ?string $description = null,
-                                ?string $date_find = null, ?string $date = null, ?string $city = null, ?string $picture = null, ?int $user_fk = null) {
+                                ?string $date_find = null, ?string $date = null, ?string $city = null, ?string $picture = null, ?User $user_fk = null) {
         $this->id = $id;
         $this->animal = $animal;
         $this->sex = $sex;
@@ -255,17 +255,19 @@ class AdFind {
     }
 
     /**
-     * @return int|null
+     * @return User|null
      */
-    public function getUserFk(): ?int {
+    public function getUserFk(): ?User {
         return $this->user_fk;
     }
 
     /**
-     * @param int|null $user_fk
+     * @param User|null $user_fk
+     * @return User
      */
-    public function setUserFk(?int $user_fk): void {
+    public function setUserFk(?User $user_fk): User {
         $this->user_fk = $user_fk;
+        return $user_fk;
     }
 
 

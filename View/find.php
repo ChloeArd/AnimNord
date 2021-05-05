@@ -1,8 +1,8 @@
 <?php
 session_start();
-$title = "Anim'Nord : Perdus";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
+$title = "Anim'Nord : Trouvés";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
 
 if (isset($_GET["page"])) {
     $page = $_GET["page"];
@@ -13,25 +13,24 @@ else {
 ?>
 
     <main class="width_80 flexColumn">
-        <h1 class="title colorWhite flexCenter"> Chiens et chats perdus</h1>
-        <button id="filterCategories" class="buttonEnter colorWhite">Filtrer <i class="fas fa-sliders-h"></i></button>
+        <h1 class="title colorWhite flexCenter"> Chiens et chats trouvés</h1>
         <div class="flexRow">
             <?php
-            $situation = "Perdu le :";
+            $situation = "Trouvé le :";
             $true = true;
-            include $_SERVER['DOCUMENT_ROOT'] . "/_partials/formCategories.php";
+            include $_SERVER['DOCUMENT_ROOT'] . "/_Partials/formCategories.php";
             ?>
             <div id="containerLostAd">
                 <?php
                 // The page limit is 30 pet.
                 $first = ($page - 1) * 30;
                 $last = ($page * 30) - 1;
-                $count = 10;
+                $count = 66;
                 if ($last > $count) {
                     $last = $count;
                 }
                 for ($i = $first; $i < $last; $i++) {
-                    $id = $i + 10;
+                    $id = $i + 1;
                     echo "
                         <a class='colorBlack' href='#'><i class='far fa-star star'></i></a>
                         <a href='#' class='post flexRow flexCenter colorGrey'>
@@ -69,9 +68,9 @@ else {
                         $next = $page + 1;
                     }
                     echo "<div class='flexCenter flexRow'>
-                         <a class='underline colorBlue linkPage' href='./find.php?page=$prev'><i class='fas fa-arrow-alt-circle-left'></i>Page précédente</a>
+                             <a class='underline colorBlue linkPage' href='./find.php?page=$prev'><i class='fas fa-arrow-alt-circle-left'></i>Page précédente</a>
                              <a class='underline colorBlue linkPage' href='./find.php?page=$next'>Page suivante<i class='fas fa-arrow-alt-circle-right'></i></a>
-                      </div>";
+                          </div>";
                 }
                 ?>
             </div>
@@ -79,5 +78,5 @@ else {
     </main>
 
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/footer.php";
 

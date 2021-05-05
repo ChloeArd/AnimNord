@@ -5,16 +5,16 @@ namespace Model\Entity;
 class FavoriteFind {
 
     private ?int $id;
-    private ?int $adFind_fk;
-    private ?int $user_fk;
+    private ?AdFind $adFind_fk;
+    private ?User $user_fk;
 
     /**
      * FavoriteFind constructor.
      * @param int|null $id
-     * @param int|null $adFind_fk
-     * @param int|null $user_fk
+     * @param AdFind|null $adFind_fk
+     * @param User|null $user_fk
      */
-    public function __construct(?int $id = null, ?int $adFind_fk = null, ?int $user_fk = null) {
+    public function __construct(?int $id = null, ?AdFind $adFind_fk = null, ?User $user_fk = null) {
         $this->id = $id;
         $this->adFind_fk = $adFind_fk;
         $this->user_fk = $user_fk;
@@ -35,30 +35,30 @@ class FavoriteFind {
     }
 
     /**
-     * @return int|null
+     * @return AdFind|null
      */
-    public function getAdFindFk(): ?int {
+    public function getAdFindFk(): ?AdFind {
         return $this->adFind_fk;
     }
 
     /**
-     * @param int|null $adFind_fk
+     * @param AdFind|null $adFind_fk
      */
-    public function setAdFindFk(?int $adFind_fk): void {
+    public function setAdFindFk(?AdFind $adFind_fk): void {
         $this->adFind_fk = $adFind_fk;
     }
 
     /**
-     * @return int|null
+     * @return User|null
      */
-    public function getUserFk(): ?int {
+    public function getUserFk(): ?User {
         return $this->user_fk;
     }
 
     /**
-     * @param int|null $user_fk
+     * @param User|null $user_fk
      */
-    public function setUserFk(?int $user_fk): void {
+    public function setUserFk(?User $user_fk): void {
         $this->user_fk = $user_fk;
     }
 }

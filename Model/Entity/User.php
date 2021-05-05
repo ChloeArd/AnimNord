@@ -10,7 +10,7 @@ class User {
     private ?string $email;
     private ?int $phone;
     private ?string $password;
-    private ?int $role_fk;
+    private ?Role $role_fk;
 
     /**
      * User constructor.
@@ -20,9 +20,9 @@ class User {
      * @param string|null $email
      * @param int|null $phone
      * @param string|null $password
-     * @param int|null $role_fk
+     * @param Role|null $role_fk
      */
-    public function __construct(?int $id = null, ?string $firstname = null, ?string $lastname = null, ?string $email = null, ?int $phone = null, ?string $password = null, ?int $role_fk = null) {
+    public function __construct(?int $id = null, ?string $firstname = null, ?string $lastname = null, ?string $email = null, ?int $phone = null, ?string $password = null, ?Role $role_fk = null) {
         $this->id = $id;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
@@ -42,8 +42,9 @@ class User {
     /**
      * @param int|null $id
      */
-    public function setId(?int $id): void {
+    public function setId(?int $id): int {
         $this->id = $id;
+        return $id;
     }
 
     /**
@@ -122,19 +123,18 @@ class User {
     }
 
     /**
-     * @return int|null
+     * @return Role|null
      */
-    public function getRoleFk(): ?int {
+    public function getRoleFk(): ?Role {
         return $this->role_fk;
     }
 
     /**
-     * @param int|null $role_fk
+     * @param Role|null $role_fk
+     * @return Role
      */
-    public function setRoleFk(?int $role_fk): int {
+    public function setRoleFk(?Role $role_fk): Role {
         $this->role_fk = $role_fk;
         return $role_fk;
     }
-
-
 }
