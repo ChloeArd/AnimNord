@@ -13,6 +13,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
             <div class="separatorVertical"></div>
             <a href="favoritesAccount.php" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
             <div class="separatorVertical"></div>
+            <a href="favoritesAccount.php" class="colorBlue margin_0_20 linkAccount">Mes messages</a>
+            <div class="separatorVertical"></div>
             <?php
             if ($_SESSION["role_fk"] === "1") { ?>
                 <a href="#" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
@@ -47,7 +49,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "./_partials/menu.php"
                 </a>
             </div>
             <h1 class="titleAccount">Mes favoris de chiens et chats perdus</h1>
-            <p class="colorBlue center">Tu n'as pas encore ajouté d'annonce dans tes favoris !</p>
+            <p class="colorWhite margin_15_0 center categoriesAnimal">Tu n'as pas encore ajouté d'annonce dans tes favoris !</p>
         </div>
     </main>
 

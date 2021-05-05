@@ -7,11 +7,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
 
     <main class="width_80">
         <h1 class="flexCenter title colorWhite">Publication d'une annonce pour chien ou chat à adopter</h1>
-        <p class="width_100 center categoriesAnimal colorWhite margin_15_0">1. Connecte toi ! <i class="fas fa-user-circle"></i></p>
         <form id="formAd" method="post" action="../assets/php/sendMail.php" class="flexColumn width_50">
             <div class="flexRow align flexCenter">
                 <div class="circle flexCenter">
-                    <span>2</span>
+                    <span>1</span>
                 </div>
                 <p>Informations sur l'animal <i class="fas fa-paw"></i></p>
             </div>
@@ -104,7 +103,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
 
             <div class="flexRow align flexCenter">
                 <div class="circle flexCenter">
-                    <span>3</span>
+                    <span>2</span>
                 </div>
                 <p>Date et lieu de sa disparition <i class="far fa-calendar-alt"></i><i class="fas fa-map-marker-alt"></i></p>
             </div>
@@ -767,7 +766,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_partials/menu.php";
             </select>
             <div class="flexRow align flexCenter">
                 <div class="circle flexCenter">
-                    <span>4</span>
+                    <span>3</span>
                 </div>
                 <p>Importer une photo <i class="far fa-image"></i></p>
             </div>

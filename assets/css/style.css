@@ -720,6 +720,11 @@ li {
     display:block;
 }
 
+input:focus, textarea:focus, select:focus {
+    border: 2px solid #1DA1F2;
+    outline: none;
+}
+
 @media screen and (max-width: 1100px) {
     .width_80 {
         width: 100%;
