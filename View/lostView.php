@@ -16,7 +16,7 @@ if (isset($var['ads'])) {
             <?php
             $situation = "Perdu le :";
             $true = true;
-            include $_SERVER['DOCUMENT_ROOT'] . "/_Partials/formCategories.php";
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/formCategories.php";
             ?>
             <div id="containerLostAd">
                 <?php
@@ -38,7 +38,14 @@ if (isset($var['ads'])) {
                         <p class='postDate colorBlue'><?=$ad->getDate() ?></p>
                         <p>Perdu le : <span class='colorBlue'><?=$ad->getDateLost() ?></span></p>
                         <p>Perdu à : <span class='colorBlue'><?=$ad->getCity() ?></span></p>
-                        <p>Race : <span class='colorBlue'> <?=$ad->getRace() ?></span></p>
+                        <p>Nom : <span class="colorBlue"><?=$ad->getName() ?></span></p>
+                        <p>Race : <span class='colorBlue'><?=$ad->getRace() ?></span></p>
+                        <?php
+                        if(!is_null($ad->getNumber())) {?>
+                            <p>Numéro du tatouage ou de la puce : <span class="colorBlue"> <?=$ad->getNumber() ?></span></p>
+                        <?php
+                        }
+                        ?>
                         <p>Taille: <span class='colorBlue'><?=$ad->getSize() ?></span></p>
                         <p>Poils: <span class='colorBlue'><?=$ad->getFur() ?></span></p>
                         <p>Couleur du pelage : <span class='colorBlue'><?=$ad->getColor() ?></span></p>
@@ -47,7 +54,7 @@ if (isset($var['ads'])) {
                     </div>
                 </a>
                     <?php
-                    }
+                }
 
                     if ($count > 29) {
                         if ($page < 2) {

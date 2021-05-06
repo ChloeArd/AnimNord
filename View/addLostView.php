@@ -1,13 +1,10 @@
 <?php
-session_start();
-$title = "Anim'Nord : Publier une annonce";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/header.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
+date_default_timezone_set("Europe/Paris");
 ?>
 
     <main class="width_80">
         <h1 class="flexCenter title colorWhite">Publication d'une annonce pour chien ou chat perdu</h1>
-        <form id="formAd" method="post" action="" class="flexColumn width_50">
+        <form id="formAd" method="post" class="flexColumn width_50">
             <div class="flexRow align flexCenter">
                 <div class="circle flexCenter">
                     <span>1</span>
@@ -16,25 +13,25 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
             </div>
             <div class="flexRow align">
                 <label for="animal" class="marginR">Animal : </label>
-                <input id="animal" type="radio" name="animal" value="chien" required>
+                <input id="animal" type="radio" name="animal" value="Chien" required>
                 <span class="margin_0_20"><i class="fas fa-dog"></i></span>
-                <input id="animal" type="radio" name="animal" value="chat" required>
+                <input id="animal" type="radio" name="animal" value="Chat" required>
                 <span class="margin_0_20"><i class="fas fa-cat"></i></span>
             </div>
             <label for="name">Son nom :</label>
             <input type="text" id="name" name="name" required>
-            <label for="sexe"> Sexe :</label>
+            <label for="sex"> Sexe :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
-                    <input id="sexe" type="radio" name="sexe" value="mâle" required>
+                    <input id="sexe" type="radio" name="sex" value="Mâle" required>
                     <span class="margin_0_20">Mâle</span>
                 </div>
                 <div class="flexRow align">
-                    <input id="sexe" type="radio" name="sexe" value="femelle" required>
+                    <input id="sexe" type="radio" name="sex" value="Femelle" required>
                     <span class="margin_0_20">Femelle</span>
                 </div>
                 <div class="flexRow align">
-                    <input id="sexe" type="radio" name="sexe" value="inconnu" required>
+                    <input id="sexe" type="radio" name="sex" value="Inconnu" required>
                     <span class="margin_0_20">Inconnu</span>
                 </div>
             </div>
@@ -53,30 +50,30 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
                 <option>Mi-long</option>
                 <option>Long</option>
             </select>
-            <label for="colors"> Couleur du pelage :</label>
+            <label for="color"> Couleur du pelage :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="colors" value="Noir">
+                    <input id="colors" type="checkbox" name="color" value="Noir">
                     <span class="margin_0_20 borderBlack black"></span>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="colors" value="Blanc">
+                    <input id="colors" type="checkbox" name="color" value="Blanc">
                     <span class="margin_0_20 borderBlack"></span>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="colors" value="Marron">
+                    <input id="colors" type="checkbox" name="color" value="Marron">
                     <span class="margin_0_20 borderBlack brown"></span>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="colors" value="Gris">
+                    <input id="colors" type="checkbox" name="color" value="Gris">
                     <span class="margin_0_20 borderBlack grey"></span>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="colors" value="Beige">
+                    <input id="colors" type="checkbox" name="color" value="Beige">
                     <span class="margin_0_20 borderBlack beige"></span>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="colors" value="Roux">
+                    <input id="colors" type="checkbox" name="color" value="Roux">
                     <span class="margin_0_20 borderBlack orange"></span>
                 </div>
             </div>
@@ -90,9 +87,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
                 <option>Tricolore</option>
             </select>
             <label for="race">Race :</label>
-            <input type="text" name="race" id="race" placeholder="ex : berger allemand" class="categoriePet" required>
-            <label for="num">Numéro du tatouage ou de la puce :</label>
-            <input type="number" name="num" id="num" class="categoriePet" required>
+            <input type="text" name="race" id="race" placeholder="Ex : berger allemand" class="categoriePet" required>
+            <label for="number">Numéro du tatouage ou de la puce :</label>
+            <input type="text" name="number" id="number" class="categoriePet">
             <label for="description">Description : </label>
             <textarea id="description" name="description" required></textarea>
 
@@ -103,11 +100,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
                 <p>Date et lieu de sa disparition <i class="far fa-calendar-alt"></i><i class="fas fa-map-marker-alt"></i></p>
             </div>
             <div class="flexRow align">
-                <label for="date"> Perdu le :</label>
+                <label for="date_lost"> Perdu le :</label>
                 <div class="categoriePet">
-                    <input id="date" name="date" type="date" required>
+                    <input id="date_lost" name="date_lost" type="date" required>
                 </div>
             </div>
+            <input id="date" name="date" type="hidden" required value="<?= date('Y-m-d')?>">
             <label for="city">Ville :</label>
             <select id="city" name="city" class="width_80 size15 categoriePet">
                 <option>Abancourt (59268)</option>
@@ -759,21 +757,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
                 <option>Zuydcoote (59123)</option>
                 <option>Zuytpeene (59670)</option>
             </select>
+            <input hidden name="user_fk"  type="text" id="user_fk" value="<?= $_SESSION['id']?>">
             <div class="flexRow align flexCenter">
                 <div class="circle flexCenter">
                     <span>3</span>
                 </div>
                 <p>Importer une photo <i class="far fa-image"></i></p>
             </div>
-            <input type="file" required>
-            <div class="flexRow align">
-                <input id="maskPhone" type="checkbox" name="maskPhone" value="masqué le téléphone">
-                <label class="colorGrey" for="maskPhone">Masqué mon numéro de téléphone sur l'annonce.</label>
-            </div>
+            <input type="file" name="picture" id="picture">
 
             <input type="submit" class="buttonEnter colorWhite radius10 pointer" value="Publier">
         </form>
     </main>
-
-<?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/footer.php";

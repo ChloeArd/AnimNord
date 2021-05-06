@@ -11,13 +11,15 @@ class AdLostManager {
 
     use ManagerTrait;
 
+    private $userManager;
+
     /**
      * returns all lost dog and cat ad
      * @return array
      */
     public function getAds(): array {
         $ads = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM adlost");
+        $request = DB::getInstance()->prepare("SELECT * FROM adlost ORDER by id DESC");
         $result = $request->execute();
         if($result) {
             $data = $request->fetchAll();
@@ -65,6 +67,46 @@ class AdLostManager {
         return $ad;
     }
 
+    public function getAd2(int $id): array {
+        $ad = [];
+        $request = DB::getInstance()->prepare("SELECT * FROM adlost WHERE id = $id");
+        $result = $request->execute();
+        if($result) {
+            $data = $request->fetchAll();
+            foreach ($data as $ad_data) {
+                $user = UserManager::getManager()->getUser($ad_data['user_fk']);
+                if($user->getId()) {
+                    $ad[] = new AdLost($ad_data['id'], $ad_data['animal'],  $ad_data['name'], $ad_data['sex'], $ad_data['size'],
+                        $ad_data['fur'], $ad_data['color'], $ad_data['dress'], $ad_data['race'], $ad_data['number'], $ad_data['description'],
+                        $ad_data['date_lost'], $ad_data['date'], $ad_data['city'], $ad_data['picture'] ,$user);
+                }
+            }
+        }
+        return $ad;
+    }
+
+    /**
+     * @param int $user_fk
+     * @return array
+     */
+    public function adsByUser(int $user_fk): array {
+        $ads = [];
+        $request = DB::getInstance()->prepare("SELECT * FROM adlost WHERE user_fk = $user_fk ORDER by id DESC ");
+        $result = $request->execute();
+        if($result) {
+            $data = $request->fetchAll();
+            foreach ($data as $ads_data) {
+                $user = UserManager::getManager()->getUser($user_fk);
+                if($user->getId()) {
+                    $ads[] = new AdLost($ads_data['id'], $ads_data['animal'],  $ads_data['name'], $ads_data['sex'], $ads_data['size'],
+                        $ads_data['fur'], $ads_data['color'], $ads_data['dress'], $ads_data['race'], $ads_data['number'], $ads_data['description'],
+                        $ads_data['date_lost'], $ads_data['date'], $ads_data['city'], $ads_data['picture'] ,$user);
+                }
+            }
+        }
+        return $ads;
+    }
+
     /**
      * add a lost dogs and cats ad
      * @param AdLost $adLost
@@ -90,7 +132,7 @@ class AdLostManager {
         $request->bindValue(':date', $adLost->getDate());
         $request->bindValue(':city', $adLost->getCity());
         $request->bindValue(':picture', $adLost->getPicture());
-        $request->bindValue(':user_fk', $adLost->getUserFk());
+        $request->bindValue(':user_fk', $adLost->getUserFk()->getId());
 
         return $request->execute() && DB::getInstance()->lastInsertId() != 0;
     }
@@ -128,7 +170,7 @@ class AdLostManager {
      * @param AdLost $adLost
      * @return bool
      */
-    public function delete (AdLost $adLost) {
+    public function delete (AdLost $adLost): bool {
         $id = $adLost->getId();
         $request = DB::getInstance()->prepare("DELETE FROM adlost WHERE id = $id");
         return $request->execute();

@@ -35,6 +35,16 @@ if (isset($_GET['controller'])) {
             if(isset($_GET['action'])) {
                 switch($_GET['action']) {
                     case 'new' :
+                        $controller->addAd($_POST);
+                        break;
+                    case 'update' :
+                        $controller->updateAd($_POST);
+                        break;
+                    case 'view' :
+                        $controller->adsUser($_SESSION['id']);
+                        break;
+                    case 'delete' :
+                        $controller->deleteAd($_POST);
                         break;
                     default:
                         break;

@@ -60,6 +60,35 @@ class UserManager {
         return $user;
     }
 
+    public function getById(int $id): array {
+        $user = [];
+        $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = $id");
+        $request->execute();
+        $response = $request->fetchAll();
+        if($response) {
+            foreach($response as $db) {
+                $role = RoleManager::getManager()->getRole($response['role_fk']);
+                if ($role->getId()) {
+                    $user[] = new User($db['id'], $db['firstname'], $db['lastname'] ,$db['email'], $db['phone'],'', $role);
+                }
+            }
+        }
+        return $user;
+    }
+
+    public function user(int $id): array {
+        $user = [];
+        $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = $id");
+        $result = $request->execute();
+        if($result) {
+            $data = $request->fetchAll();
+            foreach ($data as $user_data) {
+                    $ads[] = new User($user_data['id'], $user_data['firstname'], $user_data['lastname'], $user_data['email'], $user_data['phone'], '', $user_data['role_fk']);
+            }
+        }
+        return $user;
+    }
+
     /**
      * get all the staffs
      * @return array

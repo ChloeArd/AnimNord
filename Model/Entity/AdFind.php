@@ -12,7 +12,7 @@ class AdFind {
     private ?string $color;
     private ?string $dress;
     private ?string $race;
-    private ?int $number;
+    private ?string $number;
     private ?string $description;
     private ?string $date_find;
     private ?string $date;
@@ -30,7 +30,7 @@ class AdFind {
      * @param string|null $color
      * @param string|null $dress
      * @param string|null $race
-     * @param int|null $number
+     * @param string|null $number
      * @param string|null $description
      * @param string|null $date_find
      * @param string|null $date
@@ -39,7 +39,7 @@ class AdFind {
      * @param User|null $user_fk
      */
     public function __construct(?int $id = null, ?string $animal = null, ?string $sex = null, ?string $size = null, ?string $fur = null,
-                                ?string $color = null, ?string $dress = null, ?string $race = null, ?int $number = null, ?string $description = null,
+                                ?string $color = null, ?string $dress = null, ?string $race = null, ?string $number = null, ?string $description = null,
                                 ?string $date_find = null, ?string $date = null, ?string $city = null, ?string $picture = null, ?User $user_fk = null) {
         $this->id = $id;
         $this->animal = $animal;
@@ -171,16 +171,16 @@ class AdFind {
     }
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getNumber(): ?int {
+    public function getNumber(): ?string {
         return $this->number;
     }
 
     /**
-     * @param int|null $number
+     * @param string|null $number
      */
-    public function setNumber(?int $number): void {
+    public function setNumber(?string $number): void {
         $this->number = $number;
     }
 

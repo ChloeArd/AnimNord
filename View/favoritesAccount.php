@@ -9,7 +9,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "./_Partials/menu.php"
         <div class="flexRow flexCenter" id="menuAccount">
             <a href="informationAccount.php" class="colorBlue margin_0_20 linkAccount">Mes informations</a>
             <div class="separatorVertical"></div>
-            <a href="adAccount.php" class="colorBlue margin_0_20 linkAccount">Mes annonces</a>
+            <a href="adAccountView.php" class="colorBlue margin_0_20 linkAccount">Mes annonces</a>
             <div class="separatorVertical"></div>
             <a href="favoritesAccount.php" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
             <div class="separatorVertical"></div>

@@ -28,7 +28,8 @@ if (isset($_POST["email"], $_POST["password"])) {
             $_SESSION['password'] = $password;
             $_SESSION['role_fk'] = $user['role_fk'];
 
-            header("Location: ../../View/informationAccount.php?success=0");
+            $id = $_SESSION['id'];
+            header("Location: ../../index.php?controller=user&id=$id");
         }
         else {
             header("Location: ../../View/connect.php?error=0");

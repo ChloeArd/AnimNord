@@ -8,7 +8,7 @@ class User {
     private ?string $firstname;
     private ?string $lastname;
     private ?string $email;
-    private ?int $phone;
+    private ?string $phone;
     private ?string $password;
     private ?Role $role_fk;
 
@@ -18,11 +18,11 @@ class User {
      * @param string|null $firstname
      * @param string|null $lastname
      * @param string|null $email
-     * @param int|null $phone
+     * @param string|null $phone
      * @param string|null $password
      * @param Role|null $role_fk
      */
-    public function __construct(?int $id = null, ?string $firstname = null, ?string $lastname = null, ?string $email = null, ?int $phone = null, ?string $password = null, ?Role $role_fk = null) {
+    public function __construct(?int $id = null, ?string $firstname = null, ?string $lastname = null, ?string $email = null, ?string $phone = null, ?string $password = null, ?Role $role_fk = null) {
         $this->id = $id;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
@@ -93,16 +93,16 @@ class User {
     }
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getPhone(): ?int {
+    public function getPhone(): ?string {
         return $this->phone;
     }
 
     /**
-     * @param int|null $phone
+     * @param string|null $phone
      */
-    public function setPhone(?int $phone): string {
+    public function setPhone(?string $phone): string {
         $this->phone = $phone;
         return $phone;
     }

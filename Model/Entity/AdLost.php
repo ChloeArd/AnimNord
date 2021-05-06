@@ -13,7 +13,7 @@ class AdLost {
     private ?string $color;
     private ?string $dress;
     private ?string $race;
-    private ?int $number;
+    private ?string $number;
     private ?string $description;
     private ?string $date_lost;
     private ?string $date;
@@ -32,7 +32,7 @@ class AdLost {
      * @param string|null $color
      * @param string|null $dress
      * @param string|null $race
-     * @param int|null $number
+     * @param string|null $number
      * @param string|null $description
      * @param string|null $date_lost
      * @param string|null $date
@@ -41,7 +41,7 @@ class AdLost {
      * @param User|null $user_fk
      */
     public function __construct(?int $id = null, ?string $animal = null, ?string $name = null, ?string $sex = null, ?string $size = null,
-                                ?string $fur = null, ?string $color = null, ?string $dress = null, ?string $race = null, ?int $number = null,
+                                ?string $fur = null, ?string $color = null, ?string $dress = null, ?string $race = null, ?string $number = null,
                                 ?string $description = null, ?string $date_lost = null, ?string $date = null, ?string $city = null, ?string $picture = null,
                                 ?User $user_fk = null) {
         $this->id = $id;
@@ -197,16 +197,16 @@ class AdLost {
     }
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getNumber(): ?int {
+    public function getNumber(): ?string {
         return $this->number;
     }
 
     /**
-     * @param int|null $number
+     * @param string|null $number
      */
-    public function setNumber(?int $number): int {
+    public function setNumber(?string $number): string {
         $this->number = $number;
         return $number;
     }

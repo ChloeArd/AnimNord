@@ -1,11 +1,15 @@
 <?php
 if (isset($var['user'])) {
+
+    echo "<pre>";
+    print_r($var['user']);
+    echo "</pre>";
 ?>
     <main>
         <div class="flexRow flexCenter" id="menuAccount">
             <a href="informationAccount.php" class="colorBlue margin_0_20 linkAccount">Mes informations</a>
             <div class="separatorVertical"></div>
-            <a href="adAccount.php" class="colorBlue margin_0_20 linkAccount">Mes annonces</a>
+            <a href="../index.php?controller=adlost&action=view" class="colorBlue margin_0_20 linkAccount">Mes annonces</a>
             <div class="separatorVertical"></div>
             <a href="favoritesAccount.php" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
             <div class="separatorVertical"></div>
@@ -23,6 +27,10 @@ if (isset($var['user'])) {
         </div>
 
         <div>
+            <?php foreach ($var['user'] as $user1) {?>
+            <p class="colorBlue"> <?= $user1->getId() ?></p>
+        <?php }?>
+
             <h1 class="titleAccount">Mes informations personnelles</h1>
             <div class="containerAccount">
                 <form action="#" method="post">

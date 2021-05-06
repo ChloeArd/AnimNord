@@ -8,8 +8,8 @@ require "../../Model/DB.php";
 if (isset($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["phone"], $_POST["password"])) {
     $bdd = DB::getInstance();
 
-    $firstname = sanitize($_POST["firstname"]);
-    $lastname = sanitize($_POST['lastname']);
+    $firstname = sanitize(ucfirst($_POST["firstname"]));
+    $lastname = sanitize(ucfirst($_POST['lastname']));
     $email = trim($_POST["email"]);
     $phone = sanitize($_POST['phone']);
     $password = sanitize($_POST["password"]);

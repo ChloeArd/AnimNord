@@ -23,14 +23,14 @@
             <?php
             if (isset($_SESSION["id"])) {
                 ?>
-                <a class="linkMenu" href="../ad.php">Publier une annonce</a>
+                <a class="linkMenu" href="../../View/ad.php">Publier une annonce</a>
                 <a class="linkMenu" id="pseudo" href="../../index.php?controller=user&id=<?=$_SESSION['id'] ?>"><i class="fas fa-user-circle"></i><?= $_SESSION["firstname"]?></a>
                 <?php
             }
             else {
                 ?>
-                <a class="linkMenu" href="../connect.php">Connexion</a>
-                <a class="linkMenu" href="../registration.php">Inscription </a>
+                <a class="linkMenu" href="../../View/connect.php">Connexion</a>
+                <a class="linkMenu" href="../../View/registration.php">Inscription </a>
                 <?php
             }
             ?>

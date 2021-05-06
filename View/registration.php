@@ -38,7 +38,7 @@ if (isset($_GET['error'])) {
             <label class="size15 tooltip" data-text="L'adresse mail est obligatoire" for="email"> Adresse E-mail <span class="size15 colorBlue required">*</span></label>
             <input type="email" id="email" name="email" required>
             <label class="size15 tooltip" data-text="Le téléphone est obligatoire et doit contenir minimum 9 chiffres et maximum 14 chiffres"  for="phone"> Téléphone <span class="size15 colorBlue required">*</span></label>
-            <input type="tel" id="phone" name="phone" minlength="9" maxlength="14" placeholder="00 00 00 00 00" required>
+            <input type="tel" id="phone" name="phone" minlength="9" maxlength="14" required>
             <label class="size15 tooltip" data-text="Le mot de passe est obligatoire et doit contenir au moins une majuscule, une minuscule, un chiffre, avoir minimum 10 caractères" for="password"> Mot de passe <span class="size15 colorBlue required">*</span></label>
             <input type="password" id="password" name="password" required>
             <input type="submit" class="buttonEnter colorWhite radius10 pointer" value="Créer mon compte">
