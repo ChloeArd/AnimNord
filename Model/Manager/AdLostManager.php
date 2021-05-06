@@ -176,8 +176,46 @@ class AdLostManager {
         return $request->execute();
     }
 
-    public function filter() {
+    public function filter($filterAd): array {
+        $filter = [];
+        $request = DB::getInstance()->prepare("SELECT * FROM adlost WHERE animal = :animal, date_lost = :date_lost, sex = :sex, size = :size, fur = :fur,
+                  color = :color, dress = :dress, race = :race, city = :city");
 
+        $result = $request->execute();
+        if($result) {
+            $data = $request->fetchAll();
+            foreach ($data as $ads_data) {
+                $user = UserManager::getManager()->getUser($ads_data['user_fk']);
+                if($user->getId()) {
+                    $filter[] = new AdLost($ads_data['id'], $ads_data['animal'],  $ads_data['name'], $ads_data['sex'], $ads_data['size'],
+                        $ads_data['fur'], $ads_data['color'], $ads_data['dress'], $ads_data['race'], $ads_data['number'], $ads_data['description'],
+                        $ads_data['date_lost'], $ads_data['date'], $ads_data['city'], $ads_data['picture'] ,$user);
+                }
+            }
+        }
+        return $filter;
+    }
+
+    /**
+     * I retrieve the last 4 IDs, to have 4 recent announcements.
+     * @return array
+     */
+    public function recentAdLost(): array {
+        $recent = [];
+        $request = DB::getInstance()->prepare("SELECT * FROM adlost ORDER by id DESC LIMIT 0,4");
+        $result = $request->execute();
+        if($result) {
+            $data = $request->fetchAll();
+            foreach ($data as $ad) {
+                $user = UserManager::getManager()->getUser($ad['user_fk']);
+                if($user->getId()) {
+                    $recent[] = new AdLost($ad['id'], $ad['animal'],  $ad['name'], $ad['sex'], $ad['size'],
+                        $ad['fur'], $ad['color'], $ad['dress'], $ad['race'], $ad['number'], $ad['description'],
+                        $ad['date_lost'], $ad['date'], $ad['city'], $ad['picture'] ,$user);
+                }
+            }
+        }
+        return $recent;
     }
 
 }

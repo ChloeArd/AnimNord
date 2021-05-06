@@ -10,6 +10,9 @@ if (isset($_GET['success'])) {
             break;
     }
 }
+
+$manager = new \Model\AdLost\AdLostManager();
+$adLost = $manager->recentAdLost();
 ?>
 
     <div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
@@ -42,16 +45,15 @@ if (isset($_GET['success'])) {
             <h2 class="center title2">Annonces récentes de chiens et de chats perdus</h2>
             <div class="width_80 flexRow flexCenter flexWrap">
                 <?php
-                for ($i = 0; $i < 4; $i++) {
-                    $id = $i + 10;
-                    echo "
-                <a href='#' class='containerRecentPost flexColumn flexCenter radius10'>
-                        <img class='imagePet' src='https://placedog.net/500/280?id=". $id ."' >
-                <p class='margin8'>Race de l'animal</p>
-                <p class='margin8'>Date de disparition</p>
-                <p class='location'><i class='fas fa-search-location'></i>Lieu perdu</p>
-            </a>
-                ";
+                foreach ($adLost as $ad) {
+                    $date = new DateTime($ad->getDateLost())?>
+                    <a href='#' class='containerRecentPost flexColumn flexCenter radius10'>
+                        <img class='imagePet' src='<?=$ad->getPicture() ?>'>
+                        <p class='margin8'><?=$ad->getRace() ?></p>
+                        <p class='margin8'><i class="fas fa-calendar-day"></i><?=$date->format('d/m/Y') ?></p>
+                        <p class='location'><i class='fas fa-search-location'></i><?=$ad->getCity() ?></p>
+                    </a>
+                    <?php
                 }
                 ?>
             </div>
@@ -62,7 +64,7 @@ if (isset($_GET['success'])) {
             <div class="width_80 flexRow flexCenter flexWrap">
                 <?php
                 for ($i = 0; $i < 4; $i++) {
-                    $id = $i + 1;
+                    $id = $i + 10;
                     echo "
                 <a href='#' class='containerRecentPost flexColumn flexCenter radius10'>
                         <img class='imagePet' src='https://placedog.net/500/280?id=". $id ."' >

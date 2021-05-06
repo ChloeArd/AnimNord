@@ -27,7 +27,9 @@ if (isset($var['ads'])) {
                 if ($last > $count) {
                     $last = $count;
                 }
-                foreach ($var['ads'] as $ad) {?>
+                foreach ($var['ads'] as $ad) {
+                    $dateLost = new DateTime($ad->getDateLost());
+                    $date = new DateTime($ad->getDate()); ?>
                 <a class='colorBlack' href='#'><i class='far fa-star star'></i></a>
                 <a href='#' class='post flexRow flexCenter colorGrey'>
                     <div class='width_30'>
@@ -35,8 +37,8 @@ if (isset($var['ads'])) {
                     </div>
                     <div class='flexColumn width_70 postAnimals'>
                         <p class='titlePet'><?=$ad->getAnimal() ?> (<?=$ad->getSex()?>)</p>
-                        <p class='postDate colorBlue'><?=$ad->getDate() ?></p>
-                        <p>Perdu le : <span class='colorBlue'><?=$ad->getDateLost() ?></span></p>
+                        <p class='postDate colorBlue'><?=$date->format('d/m/Y') ?></p>
+                        <p>Perdu le : <span class='colorBlue'><?=$dateLost->format('d/m/Y') ?></span></p>
                         <p>Perdu à : <span class='colorBlue'><?=$ad->getCity() ?></span></p>
                         <p>Nom : <span class="colorBlue"><?=$ad->getName() ?></span></p>
                         <p>Race : <span class='colorBlue'><?=$ad->getRace() ?></span></p>

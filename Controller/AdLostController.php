@@ -110,7 +110,7 @@ class AdLostController {
             }
         }
 
-        $this->return('updateLostView', 'Modifier une annonce');
+        $this->return("updateLostView", "Anim'Nord : Modifier une annonce");
     }
 
     /**
@@ -131,7 +131,7 @@ class AdLostController {
                 $adlostManager->delete($adlost);
             }
         }
-        $this->return('deleteLostView', 'Supprimer une annonce');
+        $this->return("deleteLostView", "Anim'Nord : Supprimer une annonce");
 
     }
 }

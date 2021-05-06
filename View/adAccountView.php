@@ -26,7 +26,9 @@ if (isset($var['adsUser'])) {
             <h1 class="titleAccount">Mes annonces de chiens et chats perdus</h1>
             <div id="containerLostAd" class="marginAuto">
                 <?php
-                foreach ($var['adsUser'] as $ad) { ?>
+                foreach ($var['adsUser'] as $ad) {
+                    $dateLost = new DateTime($ad->getDateLost());
+                    $date = new DateTime($ad->getDate()); ?>
                     <a class="colorBlack" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>""><i class="far fa-edit"></i></a>
                     <a class="colorBlack" href="../index.php?controller=adlost&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
                 <a class='colorBlack' href=''><i class='far fa-star star'></i></a>
@@ -36,8 +38,8 @@ if (isset($var['adsUser'])) {
                     </div>
                     <div class='flexColumn width_70 postAnimals'>
                         <p class='titlePet'><?=$ad->getAnimal() ?> (<?=$ad->getSex()?>)</p>
-                        <p class='postDate colorBlue'><?=$ad->getDate() ?></p>
-                        <p>Perdu le : <span class='colorBlue'><?=$ad->getDateLost() ?></span></p>
+                        <p class='postDate colorBlue'><?=$date->format('d/m/Y') ?></p>
+                        <p>Perdu le : <span class='colorBlue'><?=$dateLost->format('d/m/Y') ?></span></p>
                         <p>Perdu à : <span class='colorBlue'><?=$ad->getCity() ?></span></p>
                         <p>Nom : <span class="colorBlue"><?=$ad->getName() ?></span></p>
                         <p>Race : <span class='colorBlue'><?=$ad->getRace() ?></span></p>
