@@ -34,7 +34,7 @@ if (isset($var['adsUser'])) {
                 <a class='colorBlack' href=''><i class='far fa-star star'></i></a>
                 <a href='#' class='post flexRow flexCenter colorGrey'>
                     <div class='width_30'>
-                        <img class='imagePet' src='<?=$ad->getPicture() ?>' >
+                        <img class='imagePet' src='<?=$ad->getPicture()?>' alt="<?=$ad->getAnimal() ?>" >
                     </div>
                     <div class='flexColumn width_70 postAnimals'>
                         <p class='titlePet'><?=$ad->getAnimal() ?> (<?=$ad->getSex()?>)</p>

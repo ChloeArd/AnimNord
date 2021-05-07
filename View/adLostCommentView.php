@@ -12,7 +12,7 @@ if (isset($var['ad'])) {
                 <div class='post flexColumn flexCenter colorGrey'>
                     <h1 class='colorWhite margin_15_0 center categoriesAnimal width_100'><?=$ad->getAnimal() ?> perdu : <?=$ad->getName() ?></h1>
                     <div class='width_70 margin_15_0 flexCenter flexColumn'>
-                        <img class='imagePet' src='<?=$ad->getPicture() ?>'>
+                        <img class='imagePet' src='<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>">
                         <p class='colorGrey size12'>Date de la publication : <span class="colorBlue"><?=$date->format('d/m/Y') ?></span></p>
                     </div>
                     <div class='flexColumn width_70 postAnimals table'>
