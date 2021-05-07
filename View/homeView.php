@@ -57,7 +57,7 @@ $adLost = $manager->recentAdLost();
                 }
                 ?>
             </div>
-            <a href="pages/lost.php" class="buttonEnter buttonCenter radius10 align flexCenter">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
+            <a href="../index.php?controller=adlost" class="buttonEnter buttonCenter radius10 align flexCenter">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
 
             <div class="separatorHorizontal"></div>
             <h2 class="center title2">Annonces récentes de chiens et de chats trouvés</h2>

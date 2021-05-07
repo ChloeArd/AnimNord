@@ -29,9 +29,9 @@ class AdLostController {
      */
     public function ad(int $id) {
         $manager = new AdLostManager();
-        $adLost = $manager->getAd($id);
+        $adLost = $manager->getAd2($id);
 
-        $this->return("", "Anim'Nord : Annonce", ['ad' => $adLost]);
+        $this->return("adLostCommentView", "Anim'Nord : Annonce", ['ad' => $adLost]);
     }
 
     /**

@@ -56,7 +56,7 @@ if (isset($var['adsUser'])) {
                         <p>Description : <span class='colorBlue'><?=$ad->getDescription() ?></span></p>
                     </div>
                 </a>
-                    <?php
+                <?php
                     }
                 ?>
             </div>

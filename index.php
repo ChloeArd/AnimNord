@@ -46,6 +46,9 @@ if (isset($_GET['controller'])) {
                     case 'delete' :
                         $controller->deleteAd($_POST);
                         break;
+                    case 'adComment' :
+                        $controller->ad($_GET["id"]);
+                        break;
                     default:
                         break;
                 }
@@ -62,12 +65,12 @@ if (isset($_GET['controller'])) {
                 switch($_GET['action']) {
                     case 'new' :
                         break;
+                    case "view" :
+                        $controller->user($_GET["id"]);
+                        break;
                     default:
                         break;
                 }
-            }
-            if (isset($_GET['id'])) {
-                $controller->user($_GET["id"]);
             }
             else {
                 $controller->users();

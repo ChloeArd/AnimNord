@@ -31,7 +31,7 @@ if (isset($var['ads'])) {
                     $dateLost = new DateTime($ad->getDateLost());
                     $date = new DateTime($ad->getDate()); ?>
                 <a class='colorBlack' href='#'><i class='far fa-star star'></i></a>
-                <a href='#' class='post flexRow flexCenter colorGrey'>
+                <a href='../index.php?controller=adlost&action=adComment&id=<?=$ad->getId() ?>' class='post flexRow flexCenter colorGrey'>
                     <div class='width_30'>
                         <img class='imagePet' src='<?=$ad->getPicture() ?>' >
                     </div>
@@ -43,7 +43,7 @@ if (isset($var['ads'])) {
                         <p>Nom : <span class="colorBlue"><?=$ad->getName() ?></span></p>
                         <p>Race : <span class='colorBlue'><?=$ad->getRace() ?></span></p>
                         <?php
-                        if(!is_null($ad->getNumber())) {?>
+                        if($ad->getNumber() !== null && $ad->getNumber() !== "") {?>
                             <p>Numéro du tatouage ou de la puce : <span class="colorBlue"> <?=$ad->getNumber() ?></span></p>
                         <?php
                         }

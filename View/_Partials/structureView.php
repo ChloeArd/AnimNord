@@ -24,7 +24,7 @@
             if (isset($_SESSION["id"])) {
                 ?>
                 <a class="linkMenu" href="../../View/ad.php">Publier une annonce</a>
-                <a class="linkMenu" id="pseudo" href="../../index.php?controller=user&id=<?=$_SESSION['id'] ?>"><i class="fas fa-user-circle"></i><?= $_SESSION["firstname"]?></a>
+                <a class="linkMenu" id="pseudo" href="../../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>"><i class="fas fa-user-circle"></i><?= $_SESSION["firstname"]?></a>
                 <?php
             }
             else {
