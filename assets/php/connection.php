@@ -15,9 +15,13 @@ if (isset($_POST["email"], $_POST["password"])) {
     $stmt = $bdd->prepare("SELECT * FROM user WHERE email = '$email'");
     $stmt->execute();
 
+    if ($stmt) {
+        header("Location: ../../View/connect.php?error=0");
+    }
+
     foreach ($stmt->fetchAll() as $user) {
         // I check that the password encrypted on my database that I retrieved using the '$ user [' password ']' loop corresponds to the password entered by the user
-        if (password_verify($password, $user['password']) && $user['email'] === $email) {
+        if (password_verify($password, $user['password'])) {
             // If the 2 password correspond then we open the session and we store the user's data in a session.
             session_start();
             $_SESSION['id'] = $user['id'];
@@ -32,7 +36,6 @@ if (isset($_POST["email"], $_POST["password"])) {
             header("Location: ../../index.php?controller=user&action=view&id=$id");
         }
     }
-    header("Location: ../../View/connect.php?error=0");
 }
 else {
     header("Location: ../../View/connect.php?error=1");
