@@ -43,7 +43,7 @@ class FavoriteLostManager {
      * @param FavoriteLost $favorite
      * @return bool
      */
-    public function add (FavoriteLost$favorite): bool {
+    public function add (FavoriteLost $favorite): bool {
         $request = DB::getInstance()->prepare("
             INSERT INTO favorite_lost (adLost_fk, user_fk)
                 VALUES (:adLost_fk, :user_fk) 

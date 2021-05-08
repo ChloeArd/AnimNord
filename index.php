@@ -19,19 +19,24 @@ require_once './Model/Manager/RoleManager.php';
 require_once './Model/Manager/UserManager.php';
 require_once './Model/Manager/ContentIndexManager.php';
 require_once './Model/Manager/AdLostManager.php';
+require_once './Model/Manager/FavoriteLostManager.php';
 
 require_once './Controller/HomeController.php';
 require_once './Controller/AdLostController.php';
 require_once './Controller/UserController.php';
+require_once './Controller/FavoriteLostController.php';
 
+use Controller\FavoriteLostController;
 use Controller\HomeController;
 use Controller\AdLostController;
 use Controller\UserController;
+use Model\AdLost\FavoriteLostManager;
 
 if (isset($_GET['controller'])) {
     switch ($_GET['controller']) {
         case 'adlost' :
             $controller = new AdLostController();
+            $controllerFavorite = new FavoriteLostController();
             if(isset($_GET['action'])) {
                 switch($_GET['action']) {
                     case 'new' :
@@ -51,6 +56,13 @@ if (isset($_GET['controller'])) {
                         break;
                     default:
                         break;
+                }
+            }
+            if (isset($_GET['favorite'])) {
+                switch ($_GET['favorite']) {
+                    case 'favoriteLost' :
+                        $controllerFavorite->addFavorite($_POST);
+                    break;
                 }
             }
             else {

@@ -29,12 +29,27 @@ if (isset($var['adsUser'])) {
                 foreach ($var['adsUser'] as $ad) {
                     $dateLost = new DateTime($ad->getDateLost());
                     $date = new DateTime($ad->getDate()); ?>
-                    <a class="colorBlack" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>""><i class="far fa-edit"></i></a>
+                    <a class="colorBlack" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit"></i></a>
                     <a class="colorBlack" href="../index.php?controller=adlost&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
                 <a class='colorBlack' href=''><i class='far fa-star star'></i></a>
-                <a href='#' class='post flexRow flexCenter colorGrey'>
+                <a class='post flexRow flexCenter colorGrey'>
                     <div class='width_30'>
-                        <img class='imagePet' src='<?=$ad->getPicture()?>' alt="<?=$ad->getAnimal() ?>" >
+                        <?php
+                        if ($ad->getPicture() === null || $ad->getPicture() === "") {
+                            if ($ad->getAnimal() === "Chien") {?>
+                                <img class='imagePet' src='../assets/img/nonPhotoChien.png' alt="Chien" >
+                                <?php
+                            }
+                            else { ?>
+                                <img class='imagePet' src='../assets/img/nonPhotoChat.png' alt="Chat">
+                                <?php
+                            }
+                        }
+                        else { ?>
+                            <img class='imagePet' src='<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>" >
+                            <?php
+                        }
+                        ?>
                     </div>
                     <div class='flexColumn width_70 postAnimals'>
                         <p class='titlePet'><?=$ad->getAnimal() ?> (<?=$ad->getSex()?>)</p>
@@ -58,6 +73,10 @@ if (isset($var['adsUser'])) {
                 </a>
                 <?php
                     }
+                if ($var['adsUser'] === []) {?>
+                    <p class="colorWhite margin_15_0 center categoriesAnimal">Tu n'as pas encore ajouté d'annonce dans tes favoris !</p>
+                    <?php
+                }
                 ?>
             </div>
 

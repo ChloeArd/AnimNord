@@ -17,6 +17,7 @@ class FavoriteLostController {
     use ReturnViewTrait;
 
     /**
+     * Displays the favorites of the ads of lost dogs and cats to a single user.
      * @param int $user_fk
      */
     public function favoritesUser(int $adLost_fk, int $user_fk) {
@@ -27,60 +28,52 @@ class FavoriteLostController {
     }
 
     /**
-     * add a ad
-     * @param $ad
+     * Add a ad lost in lost favorite.
+     * @param $favoriteLost
      */
-    public function addAd($ad) {
-        if (isset($ad['animal'], $ad['name'], $ad['sex'], $ad['size'], $ad['fur'], $ad['color'], $ad['dress'], $ad['race'],
-            $ad['number'], $ad['description'], $ad['date_lost'], $ad['date'], $ad['city'], $ad['picture'], $ad['user_fk'])) {
+    public function addFavorite($favoriteLost) {
+        if (isset($favoriteLost['adLost_fk'], $favoriteLost['user_fk'])) {
             $userManager = new UserManager();
             $adlostManager = new AdLostManager();
+            $favoriteManager = new FavoriteLostManager();
 
-            $animal = htmlentities($ad['animal']);
-            $name = htmlentities(ucfirst($ad['name']));
-            $sex = htmlentities($ad['sex']);
-            $size = htmlentities($ad['size']);
-            $fur = htmlentities($ad['fur']);
-            $color = htmlentities($ad['color']);
-            $dress = htmlentities($ad['dress']);
-            $race = htmlentities(ucfirst($ad['race']));
-            $number = htmlentities($ad['number']);
-            $description = htmlentities(ucfirst($ad['description']));
-            $date_lost = htmlentities($ad['date_lost']);
-            $date = htmlentities($ad['date']);
-            $city = htmlentities($ad['city']);
-            $picture = htmlentities($ad['picture']);
-            $user_fk = intval($ad['user_fk']);
+            $adLost_fk = intval($favoriteLost['adLost_fk']);
+            $user_fk = intval($favoriteLost['user_fk']);
 
             $user_fk = $userManager->getUser($user_fk);
+            $adLost_fk = $adlostManager->getAd($adLost_fk);
             if($user_fk->getId()) {
-                $ad = new AdLost(null, $animal, $name, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_lost, $date, $city, $picture, $user_fk);
-                $adlostManager->add($ad);
+                if ($adLost_fk->getId()) {
+                    $favorite = new FavoriteLost(null, $adLost_fk, $user_fk);
+                    $favoriteManager->add($favorite);
+                }
             }
         }
-
-        $this->return("addLostView", "Anim'Nord : Ajouter une annonce de chiens et chats perdus");
+        $this->return("adLostCommentView", "Anim'Nord : Annonce");
     }
 
     /**
-     * delete an ad using its id
-     * @param $ad
+     * Delete a favorite lost using its id.
+     * @param $favoriteLost
      */
-    public function deleteAd($ad) {
-        if (isset($ad['id'], $ad['user_fk'])) {
+    public function deleteFavorite($favoriteLost) {
+        if (isset($favoriteLost['id'], $favoriteLost['adLost_fk'], $favoriteLost['user_fk'])) {
             $userManager = new UserManager();
             $adlostManager = new AdLostManager();
+            $favoriteManager = new FavoriteLostManager();
 
-            $id = intval($ad['id']);
-            $user_fk = intval($ad['user_fk']);
+            $id = intval($favoriteLost['id']);
+            $adLost_fk = intval($favoriteLost['adLost_fk']);
+            $user_fk = intval($favoriteLost['user_fk']);
 
             $user_fk = $userManager->getUser($user_fk);
+            $adLost_fk = $adlostManager->getAd($adLost_fk);
             if ($user_fk->getId()) {
-                $adlost = new AdLost($id);
-                $adlostManager->delete($adlost);
+                if ($adLost_fk->getId()) {
+                    $adlost = new AdLost($id);
+                    $adlostManager->delete($adlost);
+                }
             }
         }
-        $this->return("deleteLostView", "Anim'Nord : Supprimer une annonce");
-
     }
 }

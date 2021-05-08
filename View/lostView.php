@@ -29,11 +29,29 @@ if (isset($var['ads'])) {
                 }
                 foreach ($var['ads'] as $ad) {
                     $dateLost = new DateTime($ad->getDateLost());
-                    $date = new DateTime($ad->getDate()); ?>
-                <a class='colorBlack' href='#'><i class='far fa-star star'></i></a>
-                <a href='../index.php?controller=adlost&action=adComment&id=<?=$ad->getId() ?>' class='post flexRow flexCenter colorGrey'>
+                    $date = new DateTime($ad->getDate());
+                    if ($_SESSION['role_fk'] !== "2") {?>
+                    <a class="colorBlack" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit"></i></a>
+                    <a class="colorBlack" href="../index.php?controller=adlost&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
+                    <?php }?>
+                    <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>' class='post flexRow flexCenter colorGrey'>
                     <div class='width_30'>
-                        <img class='imagePet' src='<?=$ad->getPicture() ?>' >
+                        <?php
+                        if ($ad->getPicture() === null || $ad->getPicture() === "") {
+                            if ($ad->getAnimal() === "Chien") {?>
+                                <img class='imagePet' src='../assets/img/nonPhotoChien.png' alt="Chien" >
+                            <?php
+                            }
+                            else { ?>
+                                <img class='imagePet' src='../assets/img/nonPhotoChat.png' alt="Chat">
+                            <?php
+                            }
+                        }
+                        else { ?>
+                            <img class='imagePet' src='<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>">
+                            <?php
+                        }
+                        ?>
                     </div>
                     <div class='flexColumn width_70 postAnimals'>
                         <p class='titlePet'><?=$ad->getAnimal() ?> (<?=$ad->getSex()?>)</p>
@@ -57,26 +75,28 @@ if (isset($var['ads'])) {
                 </a>
                     <?php
                 }
+                if ($var['ads'] === []) {?>
+                    <p class="colorWhite margin_15_0 center categoriesAnimal">Il n'y a pas encore d'annonces !</p>
+                    <?php
+                }
 
-                    if ($count > 29) {
-                        if ($page < 2) {
-                            $prev = 1;
-                        } else {
-                            $prev = $page - 1;
-                        }
-                        $max = ($count / 2);
-                        if ($page > ($max - 1)) {
-                            $next = $max;
-                        } else {
-                            $next = $page + 1;
-                        }
-                        echo "<div class='flexCenter flexRow'>
-                         <a class='underline colorBlue linkPage' href='./find.php?page=$prev'><i class='fas fa-arrow-alt-circle-left'></i>Page précédente</a>
-                             <a class='underline colorBlue linkPage' href='./find.php?page=$next'>Page suivante<i class='fas fa-arrow-alt-circle-right'></i></a>
-                      </div>";
+                if ($count > 29) {
+                    if ($page < 2) {
+                        $prev = 1;
+                    } else {
+                        $prev = $page - 1;
                     }
-
-
+                    $max = ($count / 2);
+                    if ($page > ($max - 1)) {
+                        $next = $max;
+                    } else {
+                        $next = $page + 1;
+                    }
+                    echo "<div class='flexCenter flexRow'>
+                     <a class='underline colorBlue linkPage' href='./find.php?page=$prev'><i class='fas fa-arrow-alt-circle-left'></i>Page précédente</a>
+                         <a class='underline colorBlue linkPage' href='./find.php?page=$next'>Page suivante<i class='fas fa-arrow-alt-circle-right'></i></a>
+                  </div>";
+                }
                 ?>
             </div>
         </div>

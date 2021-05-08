@@ -47,8 +47,23 @@ $adLost = $manager->recentAdLost();
                 <?php
                 foreach ($adLost as $ad) {
                     $date = new DateTime($ad->getDateLost())?>
-                    <a href='#' class='containerRecentPost flexColumn flexCenter radius10'>
-                        <img class='imagePet' src='<?=$ad->getPicture() ?>'>
+                    <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>' class='containerRecentPost flexColumn flexCenter radius10'>
+                        <?php
+                        if ($ad->getPicture() === null || $ad->getPicture() === "") {
+                            if ($ad->getAnimal() === "Chien") {?>
+                                <img class='imagePet' src='../assets/img/nonPhotoChien.png' alt="Chien" >
+                                <?php
+                            }
+                            else { ?>
+                                <img class='imagePet' src='../assets/img/nonPhotoChat.png' alt="Chat">
+                                <?php
+                            }
+                        }
+                        else { ?>
+                            <img class='imagePet' src='<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>">
+                            <?php
+                        }
+                        ?>
                         <p class='margin8'><?=$ad->getRace() ?></p>
                         <p class='margin8'><i class="fas fa-calendar-day"></i><?=$date->format('d/m/Y') ?></p>
                         <p class='location'><i class='fas fa-search-location'></i><?=$ad->getCity() ?></p>
@@ -102,7 +117,7 @@ $adLost = $manager->recentAdLost();
                     ?>
                     <h2 class="title3 center">Vous avez perdus votre animal ? trouvés un animal ? Ou vous voulez faire adopter un animal ?</h2>
                     <div id="connection_disconnection" class="flexRow flexCenter">
-                        <a href="pages/ad.php" class="buttonWhite2">Publier une annonce</a>
+                        <a href="../View/ad.php" class="buttonWhite2">Publier une annonce</a>
                     </div>
                     <?php
                 }

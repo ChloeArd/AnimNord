@@ -7,12 +7,35 @@ if (isset($var['ad'])) {
                 <?php
                 foreach ($var['ad'] as $ad) {
                 $dateLost = new DateTime($ad->getDateLost());
-                $date = new DateTime($ad->getDate()); ?>
-                <a class='colorBlack' href=''><i class='far fa-star star2 size20'></i></a>
+                $date = new DateTime($ad->getDate());
+                if ($_SESSION['role_fk'] !== "2") {?>
+                    <a class="colorWhite position1 edit1 size20" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit"></i></a>
+                    <a class="colorWhite position1 delete1 size20" href="../index.php?controller=adlost&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
+                <?php }?>
+                <form method="post" action="">
+                    <input type="hidden" name="adLost_fk" value="<?=$ad->getId() ?>">
+                    <input type="hidden" name="user_fk" value="<?=$_SESSION['id'] ?>">
+                    <button type="submit" name="send"><i class='far fa-star star2 size20'></i></button>
+                </form>
                 <div class='post flexColumn flexCenter colorGrey'>
                     <h1 class='colorWhite margin_15_0 center categoriesAnimal width_100'><?=$ad->getAnimal() ?> perdu : <?=$ad->getName() ?></h1>
                     <div class='width_70 margin_15_0 flexCenter flexColumn'>
-                        <img class='imagePet' src='<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>">
+                        <?php
+                        if ($ad->getPicture() === null || $ad->getPicture() === "") {
+                            if ($ad->getAnimal() === "Chien") {?>
+                                <img class='imagePet' src='../assets/img/nonPhotoChien.png' alt="Chien" >
+                                <?php
+                            }
+                            else { ?>
+                                <img class='imagePet' src='../assets/img/nonPhotoChat.png' alt="Chat">
+                                <?php
+                            }
+                        }
+                        else { ?>
+                            <img class='imagePet' src='<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>">
+                            <?php
+                        }
+                        ?>
                         <p class='colorGrey size12'>Date de la publication : <span class="colorBlue"><?=$date->format('d/m/Y') ?></span></p>
                     </div>
                     <div class='flexColumn width_70 postAnimals table'>
