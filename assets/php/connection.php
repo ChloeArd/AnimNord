@@ -17,7 +17,7 @@ if (isset($_POST["email"], $_POST["password"])) {
 
     foreach ($stmt->fetchAll() as $user) {
         // I check that the password encrypted on my database that I retrieved using the '$ user [' password ']' loop corresponds to the password entered by the user
-        if (password_verify($password, $user['password'])) {
+        if (password_verify($password, $user['password']) && $user['email'] === $email) {
             // If the 2 password correspond then we open the session and we store the user's data in a session.
             session_start();
             $_SESSION['id'] = $user['id'];
@@ -31,11 +31,10 @@ if (isset($_POST["email"], $_POST["password"])) {
             $id = $_SESSION['id'];
             header("Location: ../../index.php?controller=user&action=view&id=$id");
         }
-        else {
-            header("Location: ../../View/connect.php?error=0");
-        }
     }
+    header("Location: ../../View/connect.php?error=0");
 }
 else {
     header("Location: ../../View/connect.php?error=1");
 }
+echo "hello";
