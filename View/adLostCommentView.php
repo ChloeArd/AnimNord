@@ -71,29 +71,28 @@ if (isset($var['ad'])) {
             </div>
 
             <div class="flexRow width_80">
-                <?php
-                if (isset($_SESSION["id"])) {
-                ?>
-                <a href="#" class="buttonComment"> Ajouter un commentaire</a>
+                <?php if (isset($_SESSION["id"])) {
+                    ?>
+                    <a href="#" class="buttonComment"> Ajouter un commentaire</a>
+                        <?php
+                    }
+                    else { ?>
+                        <a href="/View/connect.php" class="buttonComment"> Ajouter un commentaire</a>
+                        <span class="colorGrey flexCenter size12">Tu dois te connecter pour t'inscrire.</span>
                     <?php
-                }
-                else { ?>
-                    <a href="/View/connect.php" class="buttonComment"> Ajouter un commentaire</a>
-                    <span class="colorGrey flexCenter size12">Tu dois te connecter pour t'inscrire.</span>
-                <?php
-                }
-                ?>
-            </div>
-
-            <div id="comments" class="width_80">
-                <h1 class='colorWhite margin_15_0 center categoriesAnimal width_100'>Commentaires</h1>
-                <div class="commentArticle">
-                    <h3 class="margin_15_0 co">Prénom NOM - date</h3>
-                    <p>contenue..</p>
+                    }
+                    ?>
                 </div>
-            </div>
+
+                <div id="comments" class="width_80">
+                    <h1 class='colorWhite margin_15_0 center categoriesAnimal width_100'>Commentaires</h1>
+                    <div class="commentArticle">
+                        <h3 class="margin_15_0 co">Prénom NOM - date</h3>
+                        <p>contenue..</p>
+                    </div>
+                </div>
                 <?php
-            }
+                }
             ?>
         </div>
     </main>

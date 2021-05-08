@@ -20,23 +20,26 @@ require_once './Model/Manager/UserManager.php';
 require_once './Model/Manager/ContentIndexManager.php';
 require_once './Model/Manager/AdLostManager.php';
 require_once './Model/Manager/FavoriteLostManager.php';
+require_once './Model/Manager/CommentLostManager.php';
 
 require_once './Controller/HomeController.php';
 require_once './Controller/AdLostController.php';
 require_once './Controller/UserController.php';
 require_once './Controller/FavoriteLostController.php';
+require_once './Controller/CommentLostController.php';
 
+use Controller\CommentLostController;
 use Controller\FavoriteLostController;
 use Controller\HomeController;
 use Controller\AdLostController;
 use Controller\UserController;
-use Model\AdLost\FavoriteLostManager;
 
 if (isset($_GET['controller'])) {
     switch ($_GET['controller']) {
         case 'adlost' :
             $controller = new AdLostController();
             $controllerFavorite = new FavoriteLostController();
+            $controllerCommentLost = new CommentLostController();
             if(isset($_GET['action'])) {
                 switch($_GET['action']) {
                     case 'new' :
@@ -62,7 +65,14 @@ if (isset($_GET['controller'])) {
                 switch ($_GET['favorite']) {
                     case 'favoriteLost' :
                         $controllerFavorite->addFavorite($_POST);
-                    break;
+                        break;
+                }
+            }
+            if (isset($_GET['comment'])) {
+                switch ($_GET['comment']) {
+                    case 'commentLost' :
+                        $controllerCommentLost->commentsAd($_GET['id']);
+                        break;
                 }
             }
             else {

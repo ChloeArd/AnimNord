@@ -3,7 +3,7 @@ if (isset($var['adsUser'])) {
 ?>
     <main>
         <div class="flexRow flexCenter" id="menuAccount">
-            <a href="../index.php?controller=user&id=<?=$_SESSION['id'] ?>" class="colorBlue margin_0_20 linkAccount">Mes informations</a>
+            <a href="../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>" class="colorBlue margin_0_20 linkAccount">Mes informations</a>
             <div class="separatorVertical"></div>
             <a href="../index.php?controller=adlost&action=view" class="colorBlue margin_0_20 linkAccount">Mes annonces</a>
             <div class="separatorVertical"></div>
@@ -73,12 +73,14 @@ if (isset($var['adsUser'])) {
                 </a>
                 <?php
                     }
-                if ($var['adsUser'] === []) {?>
-                    <p class="colorWhite margin_15_0 center categoriesAnimal">Tu n'as pas encore ajouté d'annonce dans tes favoris !</p>
-                    <?php
-                }
                 ?>
             </div>
+            <?php
+            if ($var['adsUser'] === []) {?>
+                <p class="colorWhite margin_15_0 center categoriesAnimal">Tu n'as pas encore ajouté d'annonce dans tes favoris !</p>
+                <?php
+            }
+            ?>
 
             <h1 class="titleAccount">Mes annonces de chiens et chats trouvés</h1>
             <p class="colorWhite margin_15_0 center categoriesAnimal">Tu n'as pas encore ajouté d'annonce dans tes favoris !</p>

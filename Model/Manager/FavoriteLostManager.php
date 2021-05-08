@@ -1,5 +1,5 @@
 <?php
-namespace Model\AdLost;
+namespace Model\FavoriteLost;
 
 use Model\DB;
 use Model\Entity\User;

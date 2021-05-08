@@ -50,8 +50,9 @@ class CommentLost {
     /**
      * @param string|null $content
      */
-    public function setContent(?string $content): void {
+    public function setContent(?string $content): ?string {
         $this->content = $content;
+        return $content;
     }
 
     /**

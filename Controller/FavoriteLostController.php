@@ -3,14 +3,12 @@
 namespace Controller;
 
 use Controller\Traits\ReturnViewTrait;
-use Exception;
-use http\Url;
 use Model\Entity\AdLost;
 use Model\AdLost\AdLostManager;
 use Model\Entity\User;
 use Model\User\UserManager;
 use Model\Entity\FavoriteLost;
-use Model\AdLost\FavoriteLostManager;
+use Model\FavoriteLost\FavoriteLostManager;
 
 class FavoriteLostController {
 

@@ -34,7 +34,7 @@ if (isset($var['ads'])) {
                     <a class="colorBlack" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit"></i></a>
                     <a class="colorBlack" href="../index.php?controller=adlost&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
                     <?php }?>
-                    <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>' class='post flexRow flexCenter colorGrey'>
+                    <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>&comment=commentLost' class='post flexRow flexCenter colorGrey'>
                     <div class='width_30'>
                         <?php
                         if ($ad->getPicture() === null || $ad->getPicture() === "") {
