@@ -14,29 +14,26 @@ if (isset($_GET['success'])) {
 
     <div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
     <main class=" width_100 flexColumn">
+        <?php
+        if (isset($var['content'])) {
+            foreach ($var['content'] as $content) {
+                if (isset($_SESSION['role_fk'])) {
+                    if ($_SESSION['role_fk'] !== "2") {?>
+                         <a href="../index.php?controller=content&action=update&id=<?=$content->getId()?>" class="colorWhite"><i class="far fa-edit editIndex"></i></a>
+                        <?php
+                    }
+                }
+                ?>
         <div class="flexCenter flexColumn">
-            <img class="backgroundPet" src="https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2020.2F10.2F21.2F0519a0ca-89c8-4d0c-97cf-30b4672f5956.2Ejpeg/850x478/quality/90/crop-from/center/pet-parents-le-match-chien-chat.jpeg" alt="chien et chat">
-            <p class="question buttonWhite colorBlue">Vous avez perdus, trouvés ou vous voulez adopter près de chez vous ? Vous êtes tombés sur le bon site de chiens et de
-                chats du Nord (59).</p>
+            <img class="backgroundPet" src="<?=$content->getPicture() ?>" alt="chien et chat">
+            <p class="question buttonWhite colorBlue"><?=$content->getText1() ?></p>
         </div>
 
-        <div class="helpIndex colorWhite">
-            <p>Chaque année en France, <strong>80 000  chiens et chats sont perdus !</strong> Dû par les départs en vacances.
-                Qui peuvent les perturber, les éffrayer et les ammener à s'enfuir.</p>
-            <p>Dans le Nord en 2018, il y a eu d'avantages de chiens déclarés perdus que de chats.</p>
-            <div id="catDogLost" class="flexCenter flexRow">
-                <p class="numberLost buttonWhite colorBlue margin8 size18">Chats : 23 937 perdus</p>
-                <p class="numberLost buttonWhite colorBlue margin8 size18">Chiens : 28 121 perdus</p>
-            </div>
-            <p>Par ce fait, <strong>52 000 </strong> animaux ont dû passer par les fourrières de la France en 2019. En moyenne, près de <strong>4 000</strong> chiens et
-                <strong>420 </strong>chats sont déclarés entrés en fourrière par mois. C’est beaucoup trop !</p>
-            <p>Du fait, leurs maîtres se retrouvent alors confrontés à l’angoisse de ne jamais revoir leur animal de compagnie.
-                Alors, qu'il reste toujours de l'espoire, c'est pour celà que nous sommes là, Anim'Nord vous permet de publier une
-                annonce facilement, rapidement et gratuitement, pour retrouver au plus vite votre compagnon préféré. </p>
-
-            <p>Malgré tous, il y a une hausse des animaux retrouvées est constatés ! Une très bonne nouvelle ! En 2019, ce sont <strong>33 317</strong>
-                animaux qui ont été déclarés retrouvés par leurs propriétaires. Mais aussi grâce aux fourrières, aux associations et grâce à vous, ils ont pu retrouvés leurs nid douillés.</p>
-        </div>
+        <div class="helpIndex colorWhite"><?=$content->getText2() ?></div>
+        <?php
+            }
+        }
+        ?>
 
         <div id="#recentPost">
             <h2 class="center title2">Annonces récentes de chiens et de chats perdus</h2>

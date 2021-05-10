@@ -4,6 +4,7 @@
  use Controller\Traits\ReturnViewTrait;
  use Model\AdFind\AdFindManager;
  use Model\AdLost\AdLostManager;
+ use Modele\ContentIndex\ContentIndexManager;
 
  class HomeController {
 
@@ -22,7 +23,9 @@
          $adLost = $manager->recentAdLost();
          $manager = new AdFindManager();
          $adFind = $manager->recentAdFind();
+         $manager = new ContentIndexManager();
+         $content = $manager->getContents();
 
-         $this->return("homeView", "Anim'Nord : Accueil", ["user" => $user, 'recentLost' => $adLost, 'recentFind' => $adFind]);
+         $this->return("homeView", "Anim'Nord : Accueil", ["user" => $user, 'recentLost' => $adLost, 'recentFind' => $adFind, 'content' => $content]);
      }
  }

@@ -1,7 +1,3 @@
-<?php
-$manager = new \Model\User\UserManager();
-$user = $manager->getUserID($_GET ['id'])
-?>
 <main>
     <div class="flexRow flexCenter" id="menuAccount">
         <a href="../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>" class="colorBlue margin_0_20 linkAccount">Mes informations</a>
@@ -24,21 +20,18 @@ $user = $manager->getUserID($_GET ['id'])
     </div>
 
     <div>
-    <?php foreach ($user as $user1) {?>
         <h1 class="titleAccount">Changer mon Mot de passe</h1>
         <div class="containerAccount">
             <form action="" method="post">
                 <label for="currentPassword" class="colorBlack size20">Mot de passe actuel <span class="size15 colorBlue required">*</span></label>
-                <input type="password" name="currentPassword" id="currentPassword" class="inputWhite colorBlue" value="<?=$_SESSION['password'] ?>" required>
+                <input type="password" name="currentPassword" id="currentPassword" class="inputWhite colorBlue" required>
                 <label for="newPassword" class="colorBlack size20">Nouveau mot de passe <span class="size15 colorBlue required">*</span></label>
                 <input type="password" name="newPassword" id="newPassword" class="inputWhite colorBlue" required>
-                <input type="hidden" name="id" value="<?=$user1->getId() ?>">
+                <input type="hidden" name="id" value="<?=$_GET['id']?>">
                 <div class="flexCenter">
                     <input type="submit" class="buttonEnter colorWhite" value="Changer">
                 </div>
             </form>
         </div>
     </div>
-    <?php
-    } ?>
 </main>

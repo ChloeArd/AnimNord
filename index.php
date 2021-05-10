@@ -24,6 +24,7 @@ require_once './Model/Manager/FavoriteLostManager.php';
 require_once './Model/Manager/CommentLostManager.php';
 
 require_once './Controller/HomeController.php';
+require_once './Controller/ContentIndexController.php';
 require_once './Controller/AdLostController.php';
 require_once './Controller/AdFindController.php';
 require_once './Controller/UserController.php';
@@ -31,6 +32,7 @@ require_once './Controller/FavoriteLostController.php';
 require_once './Controller/CommentLostController.php';
 
 use Controller\CommentLostController;
+use Controller\ContentIndexController;
 use Controller\FavoriteLostController;
 use Controller\HomeController;
 use Controller\AdLostController;
@@ -150,6 +152,18 @@ if (isset($_GET['controller'])) {
             }
             else {
                 $controller->users();
+            }
+            break;
+        case 'content' :
+            $controller = new ContentIndexController();
+            if(isset($_GET['action'])) {
+                switch($_GET['action']) {
+                    case "update" :
+                        $controller->update($_POST);
+                        break;
+                    default:
+                        break;
+                }
             }
             break;
         default:
