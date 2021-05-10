@@ -117,7 +117,7 @@ class User {
     /**
      * @param string|null $password
      */
-    public function setPassword(?string $password): string {
+    public function setPassword(?string $password) {
         $this->password = $password;
         return $password;
     }

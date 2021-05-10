@@ -24,7 +24,7 @@ foreach ($adLost as $ad) {
             <span class="margin_0_20"><i class="fas fa-cat"></i></span>
         </div>
         <label for="name">Son nom :</label>
-        <input type="text" id="name" name="name" value="<?=$ad->getName() ?>" required>
+        <input type="text" id="name" name="name" value="<?=$ad->getName() ?>" pattern=".*\S.*" required>
         <label for="sex"> Sexe :</label>
         <div class="categoriePet">
             <div class="flexRow align">
@@ -95,9 +95,9 @@ foreach ($adLost as $ad) {
             <option>Tricolore</option>
         </select>
         <label for="race">Race :</label>
-        <input type="text" name="race" id="race" placeholder="Ex : berger allemand" class="categoriePet" value="<?=$ad->getRace() ?>" required>
+        <input type="text" name="race" id="race" placeholder="Ex : berger allemand" class="categoriePet" value="<?=$ad->getRace() ?>" pattern=".*\S.*" required>
         <label for="number">Numéro du tatouage ou de la puce :</label>
-        <input type="text" name="number" id="number" class="categoriePet" value="<?=$ad->getNumber() ?>">
+        <input type="text" name="number" id="number" class="categoriePet" value="<?=$ad->getNumber() ?>" pattern=".*\S.*">
         <label for="description">Description : </label>
         <textarea id="description" name="description" required><?=$ad->getDescription() ?></textarea>
 

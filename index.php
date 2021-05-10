@@ -138,6 +138,12 @@ if (isset($_GET['controller'])) {
                     case "view" :
                         $controller->user($_GET["id"]);
                         break;
+                    case 'update' :
+                        $controller->update($_POST);
+                        break;
+                    case 'updatePass' :
+                        $controller->updatePass($_POST);
+                        break;
                     default:
                         break;
                 }

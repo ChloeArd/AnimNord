@@ -22,7 +22,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
                 <span class="margin_0_20"><i class="fas fa-cat"></i></span>
             </div>
             <label for="name">Son nom :</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" pattern=".*\S.*" required>
             <label for="age">Son âge :</label>
             <input type="text" id="age" name="age" required>
             <label for="sexe"> Sexe :</label>

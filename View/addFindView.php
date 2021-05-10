@@ -85,9 +85,9 @@ date_default_timezone_set("Europe/Paris");
             <option>Tricolore</option>
         </select>
         <label for="race">Race :</label>
-        <input type="text" name="race" id="race" placeholder="Ex : berger allemand" class="categoriePet" required>
+        <input type="text" name="race" id="race" placeholder="Ex : berger allemand" class="categoriePet" pattern=".*\S.*" required>
         <label for="number">Numéro du tatouage ou de la puce :</label>
-        <input type="text" name="number" id="number" class="categoriePet">
+        <input type="text" name="number" id="number" class="categoriePet" pattern=".*\S.*">
         <label for="description">Description : </label>
         <textarea id="description" name="description" required></textarea>
 

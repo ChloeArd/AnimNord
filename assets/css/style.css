@@ -747,7 +747,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 .table > p {
-    padding: 5px;
+    padding: 7px;
 }
 
 .table >p:nth-child(2n) {
