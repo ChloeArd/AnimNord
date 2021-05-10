@@ -800,6 +800,10 @@ input:focus, textarea:focus, select:focus {
     left: 18%;
 }
 
+.margin100 {
+    margin: 100px auto;
+}
+
 @media screen and (max-width: 1100px) {
     .width_80 {
         width: 100%;

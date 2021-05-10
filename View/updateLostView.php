@@ -8,7 +8,7 @@ foreach ($adLost as $ad) {
 ?>
 
 <main class="width_80">
-    <h1 class="flexCenter title colorWhite">Publication d'une annonce pour chien ou chat perdu</h1>
+    <h1 class="flexCenter title colorWhite">Modification d'une annonce pour chien ou chat perdu</h1>
     <form id="formAd" method="post" class="flexColumn width_50">
         <div class="flexRow align flexCenter">
             <div class="circle flexCenter">

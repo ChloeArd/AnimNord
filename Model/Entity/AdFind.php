@@ -82,8 +82,9 @@ class AdFind {
     /**
      * @param string|null $animal
      */
-    public function setAnimal(?string $animal): void {
+    public function setAnimal(?string $animal): string {
         $this->animal = $animal;
+        return $animal;
     }
 
     /**
@@ -96,8 +97,9 @@ class AdFind {
     /**
      * @param string|null $sex
      */
-    public function setSex(?string $sex): void {
+    public function setSex(?string $sex): string {
         $this->sex = $sex;
+        return $sex;
     }
 
     /**
@@ -110,8 +112,9 @@ class AdFind {
     /**
      * @param string|null $size
      */
-    public function setSize(?string $size): void {
+    public function setSize(?string $size): string {
         $this->size = $size;
+        return $size;
     }
 
     /**
@@ -124,8 +127,9 @@ class AdFind {
     /**
      * @param string|null $fur
      */
-    public function setFur(?string $fur): void {
+    public function setFur(?string $fur): string {
         $this->fur = $fur;
+        return $fur;
     }
 
     /**
@@ -138,8 +142,9 @@ class AdFind {
     /**
      * @param string|null $color
      */
-    public function setColor(?string $color): void {
+    public function setColor(?string $color): string {
         $this->color = $color;
+        return $color;
     }
 
     /**
@@ -152,8 +157,9 @@ class AdFind {
     /**
      * @param string|null $dress
      */
-    public function setDress(?string $dress): void {
+    public function setDress(?string $dress): string {
         $this->dress = $dress;
+        return $dress;
     }
 
     /**
@@ -166,8 +172,9 @@ class AdFind {
     /**
      * @param string|null $race
      */
-    public function setRace(?string $race): void {
+    public function setRace(?string $race): string {
         $this->race = $race;
+        return $race;
     }
 
     /**
@@ -180,8 +187,9 @@ class AdFind {
     /**
      * @param string|null $number
      */
-    public function setNumber(?string $number): void {
+    public function setNumber(?string $number): string {
         $this->number = $number;
+        return $number;
     }
 
     /**
@@ -194,8 +202,9 @@ class AdFind {
     /**
      * @param string|null $description
      */
-    public function setDescription(?string $description): void {
+    public function setDescription(?string $description): string {
         $this->description = $description;
+        return $description;
     }
 
     /**
@@ -208,8 +217,9 @@ class AdFind {
     /**
      * @param string|null $date_find
      */
-    public function setDateFind(?string $date_find): void {
+    public function setDateFind(?string $date_find): string {
         $this->date_find = $date_find;
+        return $date_find;
     }
 
     /**
@@ -222,8 +232,9 @@ class AdFind {
     /**
      * @param string|null $date
      */
-    public function setDate(?string $date): void {
+    public function setDate(?string $date): string {
         $this->date = $date;
+        return $date;
     }
 
     /**
@@ -236,8 +247,9 @@ class AdFind {
     /**
      * @param string|null $city
      */
-    public function setCity(?string $city): void {
+    public function setCity(?string $city): string {
         $this->city = $city;
+        return $city;
     }
 
     /**
@@ -250,8 +262,9 @@ class AdFind {
     /**
      * @param string|null $picture
      */
-    public function setPicture(?string $picture): void {
+    public function setPicture(?string $picture): string {
         $this->picture = $picture;
+        return $picture;
     }
 
     /**

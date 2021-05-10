@@ -18,7 +18,7 @@
             <p><i class="fas fa-paw"></i></p>
             <a class="linkMenu" href="../../index.php">Accueil</a>
             <a class="linkMenu" href="../../index.php?controller=adlost">Perdus</a>
-            <a class="linkMenu" href="../find.php">Trouvés</a>
+            <a class="linkMenu" href="../../index.php?controller=adfind">Trouvés</a>
             <a class="linkMenu" href="../adopt.php">(Adoptés)</a>
             <?php
             if (isset($_SESSION["id"])) {

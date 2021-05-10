@@ -20,13 +20,12 @@ class UserController {
         $this->return("", "Anim'Nord : Gestion des utilisateurs", ['users' => $users]);
     }
 
-    public function user(int $id): User {
+    public function user(int $id) {
         $manager = new UserManager();
-        $user = $manager->getUser($id);
+        $user = $manager->getUserID($id);
 
         $this->return('informationAccount', "Anim'Nord : Informations", [
             'user' => $user,
         ]);
-        return $user;
     }
 }

@@ -2,6 +2,8 @@
  namespace Controller;
 
  use Controller\Traits\ReturnViewTrait;
+ use Model\AdFind\AdFindManager;
+ use Model\AdLost\AdLostManager;
 
  class HomeController {
 
@@ -16,8 +18,11 @@
              $user = $_SESSION["user"];
          }
 
-         $this->return("homeView", "Anim'Nord : Accueil", [
-             "user" => $user,
-         ]);
+         $manager = new AdLostManager();
+         $adLost = $manager->recentAdLost();
+         $manager = new AdFindManager();
+         $adFind = $manager->recentAdFind();
+
+         $this->return("homeView", "Anim'Nord : Accueil", ["user" => $user, 'recentLost' => $adLost, 'recentFind' => $adFind]);
      }
  }

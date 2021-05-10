@@ -30,10 +30,12 @@ if (isset($var['ads'])) {
                 foreach ($var['ads'] as $ad) {
                     $dateLost = new DateTime($ad->getDateLost());
                     $date = new DateTime($ad->getDate());
-                    if ($_SESSION['role_fk'] !== "2") {?>
-                    <a class="colorBlack" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit"></i></a>
-                    <a class="colorBlack" href="../index.php?controller=adlost&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
-                    <?php }?>
+                    if (isset($_SESSION['role_fk'])) {
+                        if ($_SESSION['role_fk'] !== "2") {?>
+                        <a class="colorBlack" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit"></i></a>
+                        <a class="colorBlack" href="../index.php?controller=adlost&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
+                        <?php }
+                    }?>
                     <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>&comment=commentLost' class='post flexRow flexCenter colorGrey'>
                     <div class='width_30'>
                         <?php

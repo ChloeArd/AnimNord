@@ -6,21 +6,21 @@ if (isset($var['ad'])) {
             <div id="containerLostAd" class="marginAuto">
                 <?php
                 foreach ($var['ad'] as $ad) {
-                $dateLost = new DateTime($ad->getDateLost());
+                $dateFind = new DateTime($ad->getDateFind());
                 $date = new DateTime($ad->getDate());
-                    if (isset($_SESSION['role_fk'])) {
-                        if ($_SESSION['role_fk'] !== "2") {?>
-                    <a class="colorWhite position1 edit1 size20" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit"></i></a>
-                    <a class="colorWhite position1 delete1 size20" href="../index.php?controller=adlost&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
-                <?php   }
-                    }?>
+                if (isset($_SESSION['role_fk'])) {
+                    if ($_SESSION['role_fk'] !== "2") {?>
+                        <a class="colorWhite position1 edit1 size20" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit"></i></a>
+                        <a class="colorWhite position1 delete1 size20" href="../index.php?controller=adlost&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
+                    <?php   }
+                }?>
                 <form method="post" action="">
                     <input type="hidden" name="adLost_fk" value="<?=$ad->getId() ?>">
                     <input type="hidden" name="user_fk" value="<?=$_SESSION['id'] ?>">
                     <button type="submit" name="send"><i class='far fa-star star2 size20'></i></button>
                 </form>
                 <div class='post flexColumn flexCenter colorGrey'>
-                    <h1 class='colorWhite margin_15_0 center categoriesAnimal width_100'><?=$ad->getAnimal() ?> perdu : <?=$ad->getName() ?></h1>
+                    <h1 class='colorWhite margin_15_0 center categoriesAnimal width_100'><?=$ad->getAnimal() ?> perdu : <?=$ad->getRace() ?></h1>
                     <div class='width_70 margin_15_0 flexCenter flexColumn'>
                         <?php
                         if ($ad->getPicture() === null || $ad->getPicture() === "") {
@@ -42,9 +42,8 @@ if (isset($var['ad'])) {
                     </div>
                     <div class='flexColumn width_70 postAnimals table'>
                         <p>Sexe : <span class="colorBlue"><?=$ad->getSex()?></span></p>
-                        <p>Perdu le : <span class='colorBlue'><?=$dateLost->format('d/m/Y') ?></span></p>
-                        <p>Perdu à : <span class='colorBlue'><?=$ad->getCity() ?></span></p>
-                        <p>Nom : <span class="colorBlue"><?=$ad->getName() ?></span></p>
+                        <p>Trouvé le : <span class='colorBlue'><?=$dateFind->format('d/m/Y') ?></span></p>
+                        <p>Trouvé à : <span class='colorBlue'><?=$ad->getCity() ?></span></p>
                         <p>Race : <span class='colorBlue'><?=$ad->getRace() ?></span></p>
                         <?php
                         if($ad->getNumber() !== null && $ad->getNumber() !== "") {?>
@@ -76,25 +75,25 @@ if (isset($var['ad'])) {
                 <?php if (isset($_SESSION["id"])) {
                     ?>
                     <a href="../index.php?controller=commentLost&action=new&id=<?=$_GET['id']?>" class="buttonComment"> Ajouter un commentaire</a>
-                        <?php
-                    }
-                    else { ?>
-                        <a href="/View/connect.php" class="buttonComment"> Ajouter un commentaire</a>
-                        <span class="colorGrey flexCenter size12">Tu dois te connecter pour t'inscrire.</span>
                     <?php
-                    }
-                    ?>
-                </div>
-
-                <div id="comments" class="width_80">
-                    <h1 class='colorWhite margin_15_0 center categoriesAnimal width_100'>Commentaires</h1>
-                    <div class="commentArticle">
-                        <h3 class="margin_15_0 co">Prénom NOM - date</h3>
-                        <p>contenue..</p>
-                    </div>
-                </div>
-                <?php
                 }
+                else { ?>
+                    <a href="/View/connect.php" class="buttonComment"> Ajouter un commentaire</a>
+                    <span class="colorGrey flexCenter size12">Tu dois te connecter pour t'inscrire.</span>
+                    <?php
+                }
+                ?>
+            </div>
+
+            <div id="comments" class="width_80">
+                <h1 class='colorWhite margin_15_0 center categoriesAnimal width_100'>Commentaires</h1>
+                <div class="commentArticle">
+                    <h3 class="margin_15_0 co">Prénom NOM - date</h3>
+                    <p>contenue..</p>
+                </div>
+            </div>
+            <?php
+            }
             ?>
         </div>
     </main>

@@ -12,7 +12,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
         <a href="../index.php?controller=adlost&action=new" class="containerType">
             <p><i class="fas fa-chevron-circle-right colorBlue"></i>J'ai perdu mon chien ou mon chat.</p>
         </a>
-        <a href="addFindView.php" class="containerType">
+        <a href="../index.php?controller=adfind&action=new" class="containerType">
             <p><i class="fas fa-chevron-circle-right colorBlue"></i>J'ai trouvé un chien ou un chat.</p>
         </a>
         <a href="addAdoptView.php" class="containerType">

@@ -35,13 +35,13 @@ if (isset($var['user'])) {
             <div class="containerAccount">
                 <form action="#" method="post">
                     <label for="lastName" class="colorBlack size20">Nom <span class="size15 required colorBlue">*</span></label>
-                    <input type="text" name="lastName" id="lastName" class="inputWhite colorBlue" value="mettre info">
+                    <input type="text" name="lastName" id="lastName" class="inputWhite colorBlue" value="<?=$user1->getLastname() ?>">
                     <label for="firstName" class="colorBlack size20">Prénom <span class="size15 colorBlue required">*</span></label>
-                    <input type="text" name="fisrtName" id="firstName" class="inputWhite colorBlue" value="mettre info">
+                    <input type="text" name="fisrtName" id="firstName" class="inputWhite colorBlue" value="<?=$user1->getFirstname() ?>">
                     <label for="email" class="colorBlack size20">Email <span class="size15 colorBlue required">*</span></label>
-                    <input type="text" name="email" id="email" class="inputWhite colorBlue" value="mettre info">
+                    <input type="text" name="email" id="email" class="inputWhite colorBlue" value="<?=$user1->getEmail() ?>">
                     <label for="phone" class="colorBlack size20">Téléphone <span class="size15 colorBlue required">*</span></label>
-                    <input type="tel" name="phone" id="phone" class="inputWhite colorBlue" value="mettre info">
+                    <input type="tel" name="phone" id="phone" class="inputWhite colorBlue" value="<?=$user1->getPhone() ?>">
                     <div class="flexCenter">
                         <input type="submit" class="buttonEnter colorWhite" value="Enregistrer">
                     </div>

@@ -19,11 +19,13 @@ require_once './Model/Manager/RoleManager.php';
 require_once './Model/Manager/UserManager.php';
 require_once './Model/Manager/ContentIndexManager.php';
 require_once './Model/Manager/AdLostManager.php';
+require_once './Model/Manager/AdFindManager.php';
 require_once './Model/Manager/FavoriteLostManager.php';
 require_once './Model/Manager/CommentLostManager.php';
 
 require_once './Controller/HomeController.php';
 require_once './Controller/AdLostController.php';
+require_once './Controller/AdFindController.php';
 require_once './Controller/UserController.php';
 require_once './Controller/FavoriteLostController.php';
 require_once './Controller/CommentLostController.php';
@@ -32,6 +34,7 @@ use Controller\CommentLostController;
 use Controller\FavoriteLostController;
 use Controller\HomeController;
 use Controller\AdLostController;
+use Controller\AdFindController;
 use Controller\UserController;
 
 if (isset($_GET['controller'])) {
@@ -66,6 +69,8 @@ if (isset($_GET['controller'])) {
                     case 'favoriteLost' :
                         $controllerFavorite->addFavorite($_POST);
                         break;
+                    default :
+                        break;
                 }
             }
             if (isset($_GET['comment'])) {
@@ -73,13 +78,56 @@ if (isset($_GET['controller'])) {
                     case 'commentLost' :
                         $controllerCommentLost->commentsAd($_GET['id']);
                         break;
+                    default :
+                        break;
                 }
             }
             else {
                 $controller->ads();
             }
             break;
-        case 'adFind':
+        case 'commentLost' :
+            $controller = new CommentLostController();
+            if(isset($_GET['action'])) {
+                switch($_GET['action']) {
+                    case "new" :
+                        $controller->addComment($_POST);
+                        break;
+                    case "update" :
+                        break;
+                    case "delete" :
+                        break;
+                    default:
+                        break;
+                }
+            }
+            break;
+        case 'adfind':
+            $controller = new AdFindController();
+            if(isset($_GET['action'])) {
+                switch($_GET['action']) {
+                    case 'new' :
+                        $controller->addAd($_POST);
+                        break;
+                    case 'update' :
+                        $controller->updateAd($_POST);
+                        break;
+                    case 'view' :
+                        $controller->adsUser($_SESSION['id']);
+                        break;
+                    case 'delete' :
+                        $controller->deleteAd($_POST);
+                        break;
+                    case 'adComment' :
+                        $controller->ad($_GET["id"]);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else {
+                $controller->ads();
+            }
             break;
         case 'user':
             $controller = new UserController();

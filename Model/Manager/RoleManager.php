@@ -12,9 +12,8 @@
      /**
       * Return a role based on id.
       * @param int $id
-      * @return Role
       */
-     public function getRole(int $id): Role {
+     public function getRole(int $id) {
          $request = DB::getInstance()->prepare("SELECT * FROM role WHERE id = $id");
          $request->execute();
          $role_data = $request->fetch();

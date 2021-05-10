@@ -10,9 +10,6 @@ if (isset($_GET['success'])) {
             break;
     }
 }
-
-$manager = new \Model\AdLost\AdLostManager();
-$adLost = $manager->recentAdLost();
 ?>
 
     <div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
@@ -45,30 +42,32 @@ $adLost = $manager->recentAdLost();
             <h2 class="center title2">Annonces récentes de chiens et de chats perdus</h2>
             <div class="width_80 flexRow flexCenter flexWrap">
                 <?php
-                foreach ($adLost as $ad) {
-                    $date = new DateTime($ad->getDateLost())?>
-                    <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>' class='containerRecentPost flexColumn flexCenter radius10'>
-                        <?php
-                        if ($ad->getPicture() === null || $ad->getPicture() === "") {
-                            if ($ad->getAnimal() === "Chien") {?>
-                                <img class='imagePet' src='../assets/img/nonPhotoChien.png' alt="Chien" >
-                                <?php
+                if (isset($var['recentLost'])) {
+                    foreach ($var['recentLost'] as $ad) {
+                        $date = new DateTime($ad->getDateLost())?>
+                        <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>' class='containerRecentPost flexColumn flexCenter radius10'>
+                            <?php
+                            if ($ad->getPicture() === null || $ad->getPicture() === "") {
+                                if ($ad->getAnimal() === "Chien") {?>
+                                    <img class='imagePet' src='../assets/img/nonPhotoChien.png' alt="Chien" >
+                                    <?php
+                                }
+                                else { ?>
+                                    <img class='imagePet' src='../assets/img/nonPhotoChat.png' alt="Chat">
+                                    <?php
+                                }
                             }
                             else { ?>
-                                <img class='imagePet' src='../assets/img/nonPhotoChat.png' alt="Chat">
+                                <img class='imagePet' src='<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>">
                                 <?php
                             }
-                        }
-                        else { ?>
-                            <img class='imagePet' src='<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>">
-                            <?php
-                        }
-                        ?>
-                        <p class='margin8'><?=$ad->getRace() ?></p>
-                        <p class='margin8'><i class="fas fa-calendar-day"></i><?=$date->format('d/m/Y') ?></p>
-                        <p class='location'><i class='fas fa-search-location'></i><?=$ad->getCity() ?></p>
-                    </a>
-                    <?php
+                            ?>
+                            <p class='margin8'><?=$ad->getRace() ?></p>
+                            <p class='margin8'><i class="fas fa-calendar-day"></i><?=$date->format('d/m/Y') ?></p>
+                            <p class='location'><i class='fas fa-search-location'></i><?=$ad->getCity() ?></p>
+                        </a>
+                        <?php
+                    }
                 }
                 ?>
             </div>
@@ -78,20 +77,36 @@ $adLost = $manager->recentAdLost();
             <h2 class="center title2">Annonces récentes de chiens et de chats trouvés</h2>
             <div class="width_80 flexRow flexCenter flexWrap">
                 <?php
-                for ($i = 0; $i < 4; $i++) {
-                    $id = $i + 10;
-                    echo "
-                <a href='#' class='containerRecentPost flexColumn flexCenter radius10'>
-                        <img class='imagePet' src='https://placedog.net/500/280?id=". $id ."' >
-                <p class='margin8'>Race de l'animal</p>
-                <p class='margin8'>Date d'apparition</p>
-                <p class='location'><i class='fas fa-search-location'></i>Lieu trouvé</p>
-            </a>
-                ";
+                if (isset($var['recentFind'])) {
+                    foreach ($var['recentFind'] as $ad) {
+                        $date = new DateTime($ad->getDateFind())?>
+                        <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>' class='containerRecentPost flexColumn flexCenter radius10'>
+                            <?php
+                            if ($ad->getPicture() === null || $ad->getPicture() === "") {
+                                if ($ad->getAnimal() === "Chien") {?>
+                                    <img class='imagePet' src='../assets/img/nonPhotoChien.png' alt="Chien" >
+                                    <?php
+                                }
+                                else { ?>
+                                    <img class='imagePet' src='../assets/img/nonPhotoChat.png' alt="Chat">
+                                    <?php
+                                }
+                            }
+                            else { ?>
+                                <img class='imagePet' src='<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>">
+                                <?php
+                            }
+                            ?>
+                            <p class='margin8'><?=$ad->getRace() ?></p>
+                            <p class='margin8'><i class="fas fa-calendar-day"></i><?=$date->format('d/m/Y') ?></p>
+                            <p class='location'><i class='fas fa-search-location'></i><?=$ad->getCity() ?></p>
+                        </a>
+                        <?php
+                    }
                 }
                 ?>
             </div>
-            <a href="pages/find.php" class="buttonEnter buttonCenter radius10 align flexCenter">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
+            <a href="../index.php?controller=adfind" class="buttonEnter buttonCenter radius10 align flexCenter">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
 
             <div class="separatorHorizontal"></div>
             <h2 class="center title2">Annonces récentes de chiens et de chats à adopter</h2>

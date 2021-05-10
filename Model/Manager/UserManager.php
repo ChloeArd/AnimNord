@@ -60,6 +60,22 @@ class UserManager {
         return $user;
     }
 
+    public function getUserID(int $id): array {
+        $user = [];
+        $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = $id");
+        $request->execute();
+        $user_response = $request->fetchAll();
+        if($user_response) {
+            foreach($user_response as $db) {
+                $role = RoleManager::getManager()->getRole($db['role_fk']);
+                if ($role->getId()) {
+                    $user[] = new User($db['id'], $db['firstname'], $db['lastname'] ,$db['email'], $db['phone'],'', $role);
+                }
+            }
+        }
+        return $user;
+    }
+
     public function getById(int $id): array {
         $user = [];
         $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = $id");

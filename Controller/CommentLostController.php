@@ -55,16 +55,16 @@ class CommentLostController {
             $adLost_fk = intval($fields['adLost_fk']);
             $user_fk = intval($fields['user_fk']);
 
-            $user_fk = $userManager->getUser($user_fk);
             $adLost_fk = $adManager->getAd($adLost_fk);
-            if($user_fk->getId()) {
-                if ($adLost_fk->getId()) {
+            $user_fk = $userManager->getUser($user_fk);
+
+            if ($adLost_fk->getId()) {
+                if($user_fk->getId()) {
                     $comment = new CommentLost(null, $content, $date, $adLost_fk, $user_fk);
                     $commentManager->add($comment);
                 }
             }
         }
-
         $this->return('addCommentLostView', "Anim'Nord : Ajouter un commentaire");
     }
 
