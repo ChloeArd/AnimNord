@@ -163,11 +163,17 @@ if (isset($_GET['controller'])) {
                     case "view" :
                         $controller->user($_GET["id"]);
                         break;
+                    case 'all' :
+                        $controller->users();
+                        break;
                     case 'update' :
                         $controller->update($_POST);
                         break;
                     case 'updatePass' :
                         $controller->updatePass($_POST);
+                        break;
+                    case 'delete' :
+                        $controller->delete($_GET['id']);
                         break;
                     default:
                         break;
@@ -188,6 +194,22 @@ if (isset($_GET['controller'])) {
                         break;
                 }
             }
+            break;
+        case 'ad' :
+            $controller = new HomeController();
+            $controller->adPage();
+            break;
+        case 'connection' :
+            $controller = new HomeController();
+            $controller->connectionPage();
+            break;
+        case 'registration' :
+            $controller = new HomeController();
+            $controller->registrationPage();
+            break;
+        case 'contact' :
+            $controller = new HomeController();
+            $controller->contactPage();
             break;
         default:
             break;

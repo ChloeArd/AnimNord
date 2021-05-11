@@ -23,14 +23,14 @@
             <?php
             if (isset($_SESSION["id"])) {
                 ?>
-                <a class="linkMenu" href="../../View/ad.php">Publier une annonce</a>
+                <a class="linkMenu" href="../../index.php?controller=ad">Publier une annonce</a>
                 <a class="linkMenu" id="pseudo" href="../../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>"><i class="fas fa-user-circle"></i><?= $_SESSION["firstname"]?></a>
                 <?php
             }
             else {
                 ?>
-                <a class="linkMenu" href="../../View/connect.php">Connexion</a>
-                <a class="linkMenu" href="../../View/registration.php">Inscription </a>
+                <a class="linkMenu" href="../../index.php?controller=connection">Connexion</a>
+                <a class="linkMenu" href="../../index.php?controller=registration">Inscription </a>
                 <?php
             }
             ?>
@@ -51,18 +51,17 @@
             <?php
             if (isset($_SESSION["id"])) {
                 ?>
-                <a class="linkMenuMobile flexRow align" href="../../View/ad.php"><i class="fas fa-chevron-circle-right"></i>Publier une annonce</a>
+                <a class="linkMenuMobile flexRow align" href="../../index.php?controller=ad"><i class="fas fa-chevron-circle-right"></i>Publier une annonce</a>
                 <a class="linkMenuMobile flexRow align" href="../../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>"><i class="fas fa-chevron-circle-right"></i><i class="fas fa-user-circle"></i><?= $_SESSION["firstname"]?></a>
                 <?php
             }
             else {
                 ?>
-                <a class="linkMenuMobile flexRow align" href="../connect.php"><i class="fas fa-chevron-circle-right"></i>Connexion</a>
-                <a class="linkMenuMobile flexRow align" href="../registration.php"><i class="fas fa-chevron-circle-right"></i>Inscription</a>
+                <a class="linkMenuMobile flexRow align" href="../../index.php?controller=connection"><i class="fas fa-chevron-circle-right"></i>Connexion</a>
+                <a class="linkMenuMobile flexRow align" href="../../index.php?controller=registration"><i class="fas fa-chevron-circle-right"></i>Inscription</a>
                 <?php
             }
             ?>
-
         </div>
 
     </header>
@@ -80,7 +79,7 @@
         <div class="separatorHorizontal2"></div>
         <div id="containerlinkFooter" class="flexRow">
             <a href="#" class="linkFooter underline">Mention légales</a>
-            <a href="../contact.php" class="linkFooter underline">Contact</a>
+            <a href="../../index.php?controller=contact" class="linkFooter underline">Contact</a>
         </div>
     </footer>
 

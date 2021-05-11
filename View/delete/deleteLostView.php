@@ -1,21 +1,21 @@
 <?php
 $id = $_GET['id'];
-$manager = new \Model\AdFind\AdFindManager();
-$adFind = $manager->getAd2($id);
+$manager = new \Model\AdLost\AdLostManager();
+$adlost = $manager->getAd2($id);
 
-foreach ($adFind as $ad) {
-    ?>
+foreach ($adlost as $ad) {
+?>
     <main>
         <form id="delete" class="width_80 flexColumn flexCenter" method="post" action="">
             <h1 class="margin_15_0 colorRed">Voulez vous vraiment supprimer l'annonce "<?=$ad->getAnimal() ?> (<?=$ad->getSex() ?>)" ?</h1>
             <?php
             if ($ad->getPicture() === null || $ad->getPicture() === "") {
                 if ($ad->getAnimal() === "Chien") {?>
-                    <img class='imagePet' src='../assets/img/nonPhotoChien.png' alt="Chien" >
+                    <img class='imagePet' src='../../assets/img/nonPhotoChien.png' alt="Chien" >
                     <?php
                 }
                 else { ?>
-                    <img class='imagePet' src='../assets/img/nonPhotoChat.png' alt="Chat">
+                    <img class='imagePet' src='../../assets/img/nonPhotoChat.png' alt="Chat">
                     <?php
                 }
             }
@@ -29,5 +29,7 @@ foreach ($adFind as $ad) {
             <input type="submit" class="buttonEnter colorWhite radius10 pointer backgroundRed" value="Supprimer l'annonce">
         </form>
     </main>
-    <?php
+
+<?php
 }
+?>

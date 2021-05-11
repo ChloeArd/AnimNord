@@ -82,8 +82,7 @@ class AdLostController {
                 $adlostManager->add($ad);
             }
         }
-
-        $this->return("addLostView", "Anim'Nord : Ajouter une annonce de chiens et chats perdus");
+        $this->return("create/addLostView", "Anim'Nord : Ajouter une annonce de chiens et chats perdus");
     }
 
     public function updateAd($ad) {
@@ -115,8 +114,7 @@ class AdLostController {
                 $adlostManager->update($ad);
             }
         }
-
-        $this->return("updateLostView", "Anim'Nord : Modifier une annonce");
+        $this->return("update/updateLostView", "Anim'Nord : Modifier une annonce");
     }
 
     /**
@@ -137,7 +135,6 @@ class AdLostController {
                 $adlostManager->delete($adlost);
             }
         }
-        $this->return("deleteLostView", "Anim'Nord : Supprimer une annonce");
-
+        $this->return("delete/deleteLostView", "Anim'Nord : Supprimer une annonce");
     }
 }

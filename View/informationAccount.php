@@ -13,7 +13,7 @@ if (isset($var['user'])) {
             <div class="separatorVertical"></div>
             <?php
             if ($_SESSION["role_fk"] === "1") { ?>
-                <a href="#" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
+                <a href="../index.php?controller=user&action=all" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
                 <div class="separatorVertical"></div>
                 <?php
             } ?>
@@ -38,6 +38,10 @@ if (isset($var['user'])) {
 
             <div class="flexCenter">
                 <a href="../index.php?controller=user&action=updatePass&id=<?=$_GET['id'] ?>" class="buttonGrey">Changer mon mot de passe <i class="far fa-edit"></i></a>
+            </div>
+
+            <div class="flexCenter">
+                <a href="../index.php?controller=user&action=delete&id=<?=$_GET['id'] ?>" class="buttonRed2 radius10 colorWhite">Supprimer mon compte</a>
             </div>
         </div>
     </main>

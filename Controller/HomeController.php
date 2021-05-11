@@ -28,4 +28,24 @@
 
          $this->return("homeView", "Anim'Nord : Accueil", ["user" => $user, 'recentLost' => $adLost, 'recentFind' => $adFind, 'content' => $content]);
      }
+
+     // Page add ad
+     public function adPage() {
+         $this->return("ad", "Anim'Nord : Publier une annonce");
+     }
+
+     // Page connection
+     public function connectionPage() {
+         $this->return("connect", "Anim'Nord : Connexion");
+     }
+
+     // Page registration
+     public function registrationPage() {
+         $this->return("registration", "Anim'Nord : Inscription");
+     }
+
+     // Page contact
+     public function contactPage() {
+         $this->return("contact", "Anim'Nord : Contact");
+     }
  }

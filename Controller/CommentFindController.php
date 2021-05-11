@@ -52,7 +52,7 @@ class CommentFindController {
                 }
             }
         }
-        $this->return('addCommentFindView', "Anim'Nord : Ajouter un commentaire");
+        $this->return('create/addCommentFindView', "Anim'Nord : Ajouter un commentaire");
     }
 
     /**
@@ -70,7 +70,7 @@ class CommentFindController {
             $commentManager->update($comment);
         }
 
-        $this->return('updateCommentFindView', "Anim'Nord : Modifier un commentaire");
+        $this->return('update/updateCommentFindView', "Anim'Nord : Modifier un commentaire");
     }
 
     /**
@@ -86,6 +86,6 @@ class CommentFindController {
             $commentManager->delete($id);
         }
 
-        $this->return('deleteCommentFindView', "Anim'Nord : Supprimer un commentaire");
+        $this->return('delete/deleteCommentFindView', "Anim'Nord : Supprimer un commentaire");
     }
 }

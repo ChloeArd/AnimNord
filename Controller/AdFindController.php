@@ -76,7 +76,7 @@ class AdFindController {
                 $adFindManager->add($ad);
             }
         }
-        $this->return("addFindView", "Anim'Nord : Ajouter une annonce de chiens et chats trouvés");
+        $this->return("create/addFindView", "Anim'Nord : Ajouter une annonce de chiens et chats trouvés");
     }
 
     public function updateAd($ad) {
@@ -107,7 +107,7 @@ class AdFindController {
                 $adFindManager->update($ad);
             }
         }
-        $this->return("updateFindView", "Anim'Nord : Modifier une annonce");
+        $this->return("update/updateFindView", "Anim'Nord : Modifier une annonce");
     }
 
     /**
@@ -128,6 +128,6 @@ class AdFindController {
                 $adFindManager->delete($adFind);
             }
         }
-        $this->return("deleteFindView", "Anim'Nord : Supprimer une annonce");
+        $this->return("delete/deleteFindView", "Anim'Nord : Supprimer une annonce");
     }
 }

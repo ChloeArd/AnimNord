@@ -1,9 +1,3 @@
-<?php
-session_start();
-$title = "Anim'Nord : Contact";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/header.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
-?>
 
 <main class="width_80">
     <h1 class="flexCenter title colorWhite"> Contactez-nous !  </h1>
@@ -19,6 +13,3 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
         </form>
     </div>
 </main>
-
-<?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/footer.php";

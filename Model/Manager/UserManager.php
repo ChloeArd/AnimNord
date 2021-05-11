@@ -148,11 +148,10 @@ class UserManager {
 
     /**
      * delete a user
-     * @param User $user
+     * @param int $id
      * @return bool
      */
-    public function deleteUser(User $user): bool {
-        $id = $user->getId();
+    public function deleteUser(int $id): bool {
         $request = DB::getInstance()->prepare("DELETE FROM adlost WHERE user_fk = $id");
         $request->execute();
         $request = DB::getInstance()->prepare("DELETE FROM adfind WHERE user_fk = $id");

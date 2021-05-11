@@ -31,6 +31,6 @@ class ContentIndexController {
                 $contentManager->update($contents);
             }
         }
-        $this->return("updateContentIndexView", "Anim'Nord : Modifier le contenu de l'accueil");
+        $this->return("update/updateContentIndexView", "Anim'Nord : Modifier le contenu de l'accueil");
     }
 }

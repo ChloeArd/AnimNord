@@ -1,9 +1,4 @@
 <?php
-session_start();
-$title = "Anim'Nord : Compte";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/header.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
-
 $return = "";
 $id = "";
 
@@ -46,6 +41,3 @@ if (isset($_GET['error'])) {
         </form>
     </div>
 </main>
-
-<?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/footer.php";

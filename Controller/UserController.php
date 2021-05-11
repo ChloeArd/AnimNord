@@ -3,7 +3,6 @@
 namespace Controller;
 
 use Controller\Traits\ReturnViewTrait;
-use Exception;
 use Model\DB;
 use Model\Entity\User;
 use Model\User\UserManager;
@@ -18,16 +17,14 @@ class UserController {
         $manager = new UserManager();
         $users = $manager->getUsers();
 
-        $this->return("", "Anim'Nord : Gestion des utilisateurs", ['users' => $users]);
+        $this->return("userManagementView", "Anim'Nord : Gestion des utilisateurs", ['users' => $users]);
     }
 
     public function user(int $id) {
         $manager = new UserManager();
         $user = $manager->getUserID($id);
 
-        $this->return('informationAccount', "Anim'Nord : Informations", [
-            'user' => $user,
-        ]);
+        $this->return('informationAccount', "Anim'Nord : Informations", ['user' => $user]);
     }
 
     public function update($fields) {
@@ -45,7 +42,7 @@ class UserController {
                 $userManager->updateUser($user);
             }
         }
-        $this->return('updatePersonalInfoUserView', "Anim'Nord : Modification des informations personnelles");
+        $this->return('update/updatePersonalInfoUserView', "Anim'Nord : Modification des informations personnelles");
     }
 
     public function updatePass($fields) {
@@ -74,6 +71,15 @@ class UserController {
                 }
             }
         }
-        $this->return('updatePassUserView', "Anim'Nord :  Changer de mot de passe");
+        $this->return('update/updatePassUserView', "Anim'Nord :  Changer de mot de passe");
+    }
+
+    public function delete(int $id) {
+            $userManager = new UserManager();
+            $id = intval($id);
+
+            $userManager->deleteUser($id);
+
+        $this->return("delete/deleteUserView", "Anim'Nord : Supprimer un utilisateur");
     }
 }
