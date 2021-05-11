@@ -169,6 +169,10 @@ class AdFindManager {
     public function delete (AdFind $adFind): bool {
         $id = $adFind->getId();
         $request = DB::getInstance()->prepare("DELETE FROM adfind WHERE id = $id");
+        $request->execute();
+        $request = DB::getInstance()->prepare("DELETE FROM comment_find WHERE adFind_fk = $id");
+        $request->execute();
+        $request = DB::getInstance()->prepare("DELETE FROM favorite_find WHERE adFind_fk = $id");
         return $request->execute();
     }
 
@@ -213,5 +217,4 @@ class AdFindManager {
         }
         return $recent;
     }
-
 }

@@ -171,6 +171,10 @@ class AdLostManager {
     public function delete (AdLost $adLost): bool {
         $id = $adLost->getId();
         $request = DB::getInstance()->prepare("DELETE FROM adlost WHERE id = $id");
+        $request->execute();
+        $request = DB::getInstance()->prepare("DELETE FROM comment_lost WHERE adLost_fk = $id");
+        $request->execute();
+        $request = DB::getInstance()->prepare("DELETE FROM favorite_lost WHERE adLost_fk = $id");
         return $request->execute();
     }
 

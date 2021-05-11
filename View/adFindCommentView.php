@@ -7,13 +7,7 @@ if (isset($var['ad'])) {
                 <?php
                 foreach ($var['ad'] as $ad) {
                 $dateFind = new DateTime($ad->getDateFind());
-                $date = new DateTime($ad->getDate());
-                if (isset($_SESSION['role_fk'])) {
-                    if ($_SESSION['role_fk'] !== "2") {?>
-                        <a class="colorWhite position1 edit1 size20" href="../index.php?controller=adfind&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit buttonGreen"></i></a>
-                        <a class="colorWhite position1 delete1 size20" href="../index.php?controller=adfind&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt buttonGreen"></i></a>
-                    <?php   }
-                }?>
+                $date = new DateTime($ad->getDate()); ?>
                 <form method="post" action="">
                     <input type="hidden" name="adLost_fk" value="<?=$ad->getId() ?>">
                     <input type="hidden" name="user_fk" value="<?=$_SESSION['id'] ?>">
@@ -39,6 +33,16 @@ if (isset($var['ad'])) {
                         }
                         ?>
                         <p class='colorGrey size12'>Date de la publication : <span class="colorBlue"><?=$date->format('d/m/Y') ?></span></p>
+                        <?php
+                        if (isset($_SESSION['role_fk'])) {
+                            if ($_SESSION['role_fk'] !== "2") {?>
+                                    <div class="flexRow">
+                                        <a class="colorWhite edit1 size20" href="../index.php?controller=adfind&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit buttonGreen"></i></a>
+                                        <a class="colorWhite delete1 size20" href="../index.php?controller=adfind&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt buttonGreen"></i></a>
+
+                                    </div>
+                            <?php   }
+                        }?>
                     </div>
                     <div class='flexColumn width_70 postAnimals table'>
                         <p>Sexe : <span class="colorBlue"><?=$ad->getSex()?></span></p>

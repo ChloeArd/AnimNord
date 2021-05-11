@@ -89,8 +89,8 @@ if (isset($var['ads'])) {
                         $next = $page + 1;
                     }
                     echo "<div class='flexCenter flexRow'>
-                     <a class='underline colorBlue linkPage' href='./find.php?page=$prev'><i class='fas fa-arrow-alt-circle-left'></i>Page précédente</a>
-                         <a class='underline colorBlue linkPage' href='./find.php?page=$next'>Page suivante<i class='fas fa-arrow-alt-circle-right'></i></a>
+                     <a class='underline colorBlue linkPage' href='../index.php?controller=adlost&page=$prev'><i class='fas fa-arrow-alt-circle-left'></i>Page précédente</a>
+                         <a class='underline colorBlue linkPage' href='../../index.php?controller=adlost&page=$next'>Page suivante<i class='fas fa-arrow-alt-circle-right'></i></a>
                   </div>";
                 }
                 ?>

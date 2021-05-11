@@ -315,6 +315,7 @@ input[type="radio"], input[type="checkbox"] {
     color: grey;
     margin: 20px;
     opacity: 70%;
+    height: 360px;
 }
 
 .containerRecentPost:hover {
@@ -790,16 +791,6 @@ input:focus, textarea:focus, select:focus {
     font-weight: bold;
 }
 
-.position1 {
-    position: absolute;
-    top: 46%;
-    left: 15%;
-}
-
-.delete1 {
-    left: 18%;
-}
-
 .margin100 {
     margin: 100px auto;
 }
@@ -847,6 +838,9 @@ input:focus, textarea:focus, select:focus {
     }
     .postDate {
         right: 6%;
+    }
+    .editIndex {
+        top: 20%;
     }
 }
 
@@ -902,6 +896,9 @@ input:focus, textarea:focus, select:focus {
     .postAnimals {
         margin-left: 20px;
     }
+    .star2 {
+        right: 10%;
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -952,6 +949,22 @@ input:focus, textarea:focus, select:focus {
         position: relative;
         margin-left: 20px;
     }
+    .star2 {
+        right: 5%;
+    }
+    .post > .categoriesAnimal {
+        font-size: 18px;
+        padding: 20px;
+    }
+    .buttonGreen {
+        padding: 8px;
+    }
+    .commentArticle {
+        width: 90%;
+    }
+    .editIndex {
+        top: 46%;
+    }
 }
 @media screen and (max-width: 500px){
     .title {
@@ -975,6 +988,15 @@ input:focus, textarea:focus, select:focus {
     }
     .accountIndex {
         padding: 100px 50px;
+    }
+    .table {
+        width: 90%;
+    }
+    .userAd {
+        padding: 15px;
+    }
+    .editIndex {
+        top: 20%;
     }
 }
 
@@ -1002,5 +1024,7 @@ input:focus, textarea:focus, select:focus {
     .question {
         font-size: 17px;
     }
-
+    .post > .categoriesAnimal {
+        font-size: 15px;
+    }
 }
