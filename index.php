@@ -22,6 +22,7 @@ require_once './Model/Manager/AdLostManager.php';
 require_once './Model/Manager/AdFindManager.php';
 require_once './Model/Manager/FavoriteLostManager.php';
 require_once './Model/Manager/CommentLostManager.php';
+require_once './Model/Manager/CommentFindManager.php';
 
 require_once './Controller/HomeController.php';
 require_once './Controller/ContentIndexController.php';
@@ -30,7 +31,9 @@ require_once './Controller/AdFindController.php';
 require_once './Controller/UserController.php';
 require_once './Controller/FavoriteLostController.php';
 require_once './Controller/CommentLostController.php';
+require_once './Controller/CommentFindController.php';
 
+use Controller\CommentFindController;
 use Controller\CommentLostController;
 use Controller\ContentIndexController;
 use Controller\FavoriteLostController;
@@ -131,6 +134,24 @@ if (isset($_GET['controller'])) {
             }
             else {
                 $controller->ads();
+            }
+            break;
+        case 'commentFind' :
+            $controller = new CommentFindController();
+            if(isset($_GET['action'])) {
+                switch($_GET['action']) {
+                    case "new" :
+                        $controller->addComment($_POST);
+                        break;
+                    case "update" :
+                        $controller->updateComment($_POST);
+                        break;
+                    case "delete" :
+                        $controller->deleteComment($_POST);
+                        break;
+                    default:
+                        break;
+                }
             }
             break;
         case 'user':

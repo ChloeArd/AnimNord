@@ -46,13 +46,13 @@
         <div id="subMenu" class="flexColumn">
             <a class="linkMenuMobile flexRow align" href="../../index.php"><i class="fas fa-chevron-circle-right"></i>Acceuil</a>
             <a class="linkMenuMobile flexRow align" href="../../index.php?controller=adlost"><i class="fas fa-chevron-circle-right"></i>Perdus</a>
-            <a class="linkMenuMobile flexRow align" href="../find.php"><i class="fas fa-chevron-circle-right"></i>Trouvés</a>
+            <a class="linkMenuMobile flexRow align" href="../../index.php?controller=adfind"><i class="fas fa-chevron-circle-right"></i>Trouvés</a>
             <a class="linkMenuMobile flexRow align" href="../adopt.php"><i class="fas fa-chevron-circle-right"></i>(Adoptés)</a>
             <?php
             if (isset($_SESSION["id"])) {
                 ?>
-                <a class="linkMenuMobile flexRow align" href="../ad.php"><i class="fas fa-chevron-circle-right"></i>Publier une annonce</a>
-                <a class="linkMenuMobile flexRow align" href="../../index.php?controller=user&id=<?=$_SESSION['id'] ?>"><i class="fas fa-chevron-circle-right"></i><i class="fas fa-user-circle"></i><?= $_SESSION["firstname"]?></a>
+                <a class="linkMenuMobile flexRow align" href="../../View/ad.php"><i class="fas fa-chevron-circle-right"></i>Publier une annonce</a>
+                <a class="linkMenuMobile flexRow align" href="../../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>"><i class="fas fa-chevron-circle-right"></i><i class="fas fa-user-circle"></i><?= $_SESSION["firstname"]?></a>
                 <?php
             }
             else {

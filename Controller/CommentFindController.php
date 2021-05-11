@@ -3,27 +3,27 @@
 namespace Controller;
 
 use Controller\Traits\ReturnViewTrait;
-use Model\Entity\AdLost;
-use Model\AdLost\AdLostManager;
+use Model\Entity\AdFind;
+use Model\AdFind\AdFindManager;
 use Model\Entity\User;
 use Model\User\UserManager;
-use Model\Entity\CommentLost;
-use Model\CommentLost\CommentLostManager;
+use Model\Entity\CommentFind;
+use Model\CommentFind\CommentFindManager;
 
-class CommentLostController {
+class CommentFindController {
 
     use ReturnViewTrait;
 
     /**
      * display the list of comment
-     * @param $adLost_fk
+     * @param $adFind_fk
      * @return array
      */
-    public function commentsAd(int $adLost_fk): array {
-        $manager = new CommentLostManager();
-        $comments = $manager->getCommentsAd($adLost_fk);
+    public function commentsAd(int $adFind_fk): array {
+        $manager = new CommentFindManager();
+        $comments = $manager->getCommentsAd($adFind_fk);
 
-        $this->return("adLostCommentView", "Anim'Nord : Annonce", ['comments' => $comments]);
+        $this->return("adFindCommentView", "Anim'Nord : Annonce", ['comments' => $comments]);
         return $comments;
     }
 
@@ -32,27 +32,27 @@ class CommentLostController {
      * @param $fields
      */
     public function addComment($fields){
-        if(isset($fields['content'], $fields['date'], $fields['adLost_fk'], $fields['user_fk'])) {
+        if(isset($fields['content'], $fields['date'], $fields['adFind_fk'], $fields['user_fk'])) {
             $userManager = new UserManager();
-            $adManager = new AdLostManager();
-            $commentManager = new CommentLostManager();
+            $adManager = new AdFindManager();
+            $commentManager = new CommentFindManager();
 
             $content = htmlentities($fields['content']);
             $date = htmlentities($fields['date']);
-            $adLost_fk = intval($fields['adLost_fk']);
+            $adFind_fk = intval($fields['adFind_fk']);
             $user_fk = intval($fields['user_fk']);
 
-            $adLost_fk = $adManager->getAd($adLost_fk);
+            $adFind_fk = $adManager->getAd($adFind_fk);
             $user_fk = $userManager->getUser($user_fk);
 
-            if ($adLost_fk->getId()) {
+            if ($adFind_fk->getId()) {
                 if($user_fk->getId()) {
-                    $comment = new CommentLost(null, $content, $date, $adLost_fk, $user_fk);
+                    $comment = new CommentFind(null, $content, $date, $adFind_fk, $user_fk);
                     $commentManager->add($comment);
                 }
             }
         }
-        $this->return('addCommentLostView', "Anim'Nord : Ajouter un commentaire");
+        $this->return('addCommentFindView', "Anim'Nord : Ajouter un commentaire");
     }
 
     /**
@@ -61,16 +61,16 @@ class CommentLostController {
      */
     public function updateComment($fields) {
         if (isset($fields['id'], $fields['content'])) {
-            $commentManager = new CommentLostManager();
+            $commentManager = new CommentFindManager();
 
             $id = intval($fields['id']);
             $content = htmlentities($fields['content']);
 
-            $comment = new CommentLost($id, $content);
+            $comment = new CommentFind($id, $content);
             $commentManager->update($comment);
         }
 
-        $this->return('updateCommentLostView', "Anim'Nord : Modifier un commentaire");
+        $this->return('updateCommentFindView', "Anim'Nord : Modifier un commentaire");
     }
 
     /**
@@ -79,13 +79,13 @@ class CommentLostController {
      */
     public function deleteComment($fields) {
         if (isset($fields['id'])) {
-            $commentManager = new CommentLostManager();
+            $commentManager = new CommentFindManager();
 
             $id = intval($fields['id']);
 
             $commentManager->delete($id);
         }
 
-        $this->return('deleteCommentLostView', "Anim'Nord : Supprimer un commentaire");
+        $this->return('deleteCommentFindView', "Anim'Nord : Supprimer un commentaire");
     }
 }

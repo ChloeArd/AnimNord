@@ -3,8 +3,7 @@
 namespace Controller;
 
 use Controller\Traits\ReturnViewTrait;
-use Exception;
-use http\Url;
+use Model\CommentFind\CommentFindManager;
 use Model\Entity\AdFind;
 use Model\AdFind\AdFindManager;
 use Model\Entity\User;
@@ -30,8 +29,10 @@ class AdFindController {
     public function ad(int $id) {
         $manager = new AdFindManager();
         $adFind = $manager->getAd2($id);
+        $manager = new CommentFindManager();
+        $commentFind = $manager->getCommentsAd($id);
 
-        $this->return("adFindCommentView", "Anim'Nord : Annonce", ['ad' => $adFind]);
+        $this->return("adFindCommentView", "Anim'Nord : Annonce", ['ad' => $adFind, 'comment' => $commentFind]);
     }
 
     /**

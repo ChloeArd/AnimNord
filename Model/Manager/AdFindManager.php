@@ -60,8 +60,6 @@ class AdFindManager {
             $ad->setDate($ad_data['date']);
             $ad->setCity($ad_data['city']);
             $ad->setPicture($ad_data['picture']);
-            $user = $this->userManager->getUser($ad_data['user_fk']);
-            $ad->setUserFk($user);
         }
         return $ad;
     }
