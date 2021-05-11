@@ -10,8 +10,8 @@ if (isset($var['ad'])) {
                 $date = new DateTime($ad->getDate());
                 if (isset($_SESSION['role_fk'])) {
                     if ($_SESSION['role_fk'] !== "2") {?>
-                        <a class="colorWhite position1 edit1 size20" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit"></i></a>
-                        <a class="colorWhite position1 delete1 size20" href="../index.php?controller=adlost&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
+                        <a class="colorWhite position1 edit1 size20" href="../index.php?controller=adfind&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit buttonGreen"></i></a>
+                        <a class="colorWhite position1 delete1 size20" href="../index.php?controller=adfind&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt buttonGreen"></i></a>
                     <?php   }
                 }?>
                 <form method="post" action="">

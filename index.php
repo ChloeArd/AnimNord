@@ -96,8 +96,10 @@ if (isset($_GET['controller'])) {
                         $controller->addComment($_POST);
                         break;
                     case "update" :
+                        $controller->updateComment($_POST);
                         break;
                     case "delete" :
+                        $controller->deleteComment($_POST);
                         break;
                     default:
                         break;

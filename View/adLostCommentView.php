@@ -10,8 +10,8 @@ if (isset($var['ad'])) {
                 $date = new DateTime($ad->getDate());
                     if (isset($_SESSION['role_fk'])) {
                         if ($_SESSION['role_fk'] !== "2") {?>
-                    <a class="colorWhite position1 edit1 size20" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit"></i></a>
-                    <a class="colorWhite position1 delete1 size20" href="../index.php?controller=adlost&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
+                    <a class="colorWhite position1 edit1 size20" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit buttonGreen"></i></a>
+                    <a class="colorWhite position1 delete1 size20" href="../index.php?controller=adlost&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt buttonGreen"></i></a>
                 <?php   }
                     }?>
                 <form method="post" action="">
@@ -88,10 +88,29 @@ if (isset($var['ad'])) {
 
                 <div id="comments" class="width_80">
                     <h1 class='colorWhite margin_15_0 center categoriesAnimal width_100'>Commentaires</h1>
-                    <div class="commentArticle">
-                        <h3 class="margin_15_0 co">Prénom NOM - date</h3>
-                        <p>contenue..</p>
-                    </div>
+                    <?php
+                    if (isset($var['comment'])) {
+                        foreach ($var['comment'] as $comment) {
+                            $date = new DateTime($comment->getDate())?>
+                            <div class="commentArticle">
+                                <?php
+                                if (isset($_SESSION['role_fk'])) {
+                                if ($_SESSION['role_fk'] !== "2") {?>
+                                <a href="../index.php?controller=commentLost&action=update&id=<?=$comment->getId() ?>" class="colorBlack" ><i class="far fa-edit"></i></a>
+                                <a href="../index.php?controller=commentLost&action=delete&id=<?=$comment->getId() ?>" class="colorBlack"><i class="far fa-trash-alt"></i></a>
+                                <?php }
+                                }?>
+                                <h3 class="margin_15_0"><?=$comment->getUserFk()->getFirstname() . " " . $comment->getUserFk()->getLastname() . " <span class='colorBlue size12'> - " . $date->format('d/m/Y') . "</span>"?></h3>
+                                <p><?=$comment->getContent() ?></p>
+                            </div>
+                        <?php
+                        }
+                    }
+                    if ($var['comment'] === []) {?>
+                        <p class="colorGrey margin_15_0 flexCenter size20">Il n'y a pas encore de commentaires !</p>
+                        <?php
+                    }
+                    ?>
                 </div>
                 <?php
                 }

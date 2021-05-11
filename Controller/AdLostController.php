@@ -6,6 +6,7 @@ use Controller\Traits\ReturnViewTrait;
 use Exception;
 use http\Url;
 use Model\AdFind\AdFindManager;
+use Model\CommentLost\CommentLostManager;
 use Model\Entity\AdLost;
 use Model\AdLost\AdLostManager;
 use Model\Entity\User;
@@ -31,8 +32,10 @@ class AdLostController {
     public function ad(int $id) {
         $manager = new AdLostManager();
         $adLost = $manager->getAd2($id);
+        $manager = new CommentLostManager();
+        $commentLost = $manager->getCommentsAd($id);
 
-        $this->return("adLostCommentView", "Anim'Nord : Annonce", ['ad' => $adLost]);
+        $this->return("adLostCommentView", "Anim'Nord : Annonce", ['ad' => $adLost, 'comment' => $commentLost]);
     }
 
     /**
@@ -134,7 +137,7 @@ class AdLostController {
                 $adlostManager->delete($adlost);
             }
         }
-        $this->return("deleteFindView", "Anim'Nord : Supprimer une annonce");
+        $this->return("deleteLostView", "Anim'Nord : Supprimer une annonce");
 
     }
 }

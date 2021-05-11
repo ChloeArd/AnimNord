@@ -32,3 +32,4 @@ foreach ($adlost as $ad) {
 
 <?php
 }
+?>

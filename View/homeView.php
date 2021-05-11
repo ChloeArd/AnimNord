@@ -19,7 +19,7 @@ if (isset($_GET['success'])) {
             foreach ($var['content'] as $content) {
                 if (isset($_SESSION['role_fk'])) {
                     if ($_SESSION['role_fk'] !== "2") {?>
-                         <a href="../index.php?controller=content&action=update&id=<?=$content->getId()?>" class="colorWhite"><i class="far fa-edit editIndex"></i></a>
+                         <a href="../index.php?controller=content&action=update&id=<?=$content->getId()?>" class="colorWhite"><i class="far fa-edit editIndex buttonGreen"></i></a>
                         <?php
                     }
                 }
@@ -77,7 +77,7 @@ if (isset($_GET['success'])) {
                 if (isset($var['recentFind'])) {
                     foreach ($var['recentFind'] as $ad) {
                         $date = new DateTime($ad->getDateFind())?>
-                        <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>' class='containerRecentPost flexColumn flexCenter radius10'>
+                        <a href='../index.php?controller=adfind&action=adComment&id=<?=$ad->getId() ?>' class='containerRecentPost flexColumn flexCenter radius10'>
                             <?php
                             if ($ad->getPicture() === null || $ad->getPicture() === "") {
                                 if ($ad->getAnimal() === "Chien") {?>

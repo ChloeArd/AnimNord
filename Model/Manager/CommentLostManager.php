@@ -50,7 +50,7 @@ class CommentLostManager {
             $data = $request->fetchAll();
             foreach ($data as $comment_data) {
                 $user = UserManager::getManager()->getUser($comment_data['user_fk']);
-                $adLost = AdLostManager::getManager()->getAd($comment_data['article_fk']);
+                $adLost = AdLostManager::getManager()->getAd($comment_data['adLost_fk']);
                 if($user->getId()) {
                     if ($adLost->getId()) {
                         $comments[] = new CommentLost($comment_data['id'], $comment_data['content'], $comment_data['date'], $adLost, $user);
@@ -68,7 +68,8 @@ class CommentLostManager {
      */
     public function add(CommentLost $comment): bool {
         $request = DB::getInstance()->prepare("
-            INSERT INTO comment_lost VALUES (:content, :date, :adLost_fk, :user_fk) 
+            INSERT INTO comment_lost (content, date, adLost_fk, user_fk)
+            VALUES (:content, :date, :adLost_fk, :user_fk) 
         ");
 
         $request->bindValue(':content', $comment->getContent());
@@ -85,22 +86,20 @@ class CommentLostManager {
      * @return bool
      */
     public function update (CommentLost $comment): bool {
-        $request = DB::getInstance()->prepare("UPDATE comment_lost SET content = :content, date = :date WHERE id = :id");
+        $request = DB::getInstance()->prepare("UPDATE comment_lost SET content = :content WHERE id = :id");
 
         $request->bindValue(':id', $comment->getId());
         $request->bindValue(':content', $comment->setContent($comment->getContent()));
-        $request->bindValue(':date', $comment->getDate());
 
         return $request->execute();
     }
 
     /**
      * delete a comment
-     * @param CommentLost $comment
+     * @param int $id
      * @return bool
      */
-    public function delete (CommentLost $comment): bool {
-        $id = $comment->getId();
+    public function delete (int $id): bool {
         $request = DB::getInstance()->prepare("DELETE FROM comment_lost WHERE id = $id");
         return $request->execute();
     }

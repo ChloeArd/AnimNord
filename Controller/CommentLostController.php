@@ -73,25 +73,14 @@ class CommentLostController {
      * @param $fields
      */
     public function updateComment($fields) {
-        if (isset($fields['id'], $fields['content'], $fields['date'], $fields['adLost_fk'], $fields['user_fk'])) {
-            $userManager = new UserManager();
-            $adManager = new AdLostManager();
+        if (isset($fields['id'], $fields['content'])) {
             $commentManager = new CommentLostManager();
 
             $id = intval($fields['id']);
             $content = htmlentities($fields['content']);
-            $date = htmlentities($fields['date']);
-            $adLost_fk = intval($fields['adLost_fk']);
-            $user_fk = intval($fields['user_fk']);
 
-            $user_fk = $userManager->getUser($user_fk);
-            $adLost_fk = $adManager->getAd($adLost_fk);
-            if($user_fk->getId()) {
-                if ($adLost_fk->getId()) {
-                    $comment = new CommentLost($id, $content, $date);
-                    $commentManager->update($comment);
-                }
-            }
+            $comment = new CommentLost($id, $content);
+            $commentManager->update($comment);
         }
 
         $this->return('updateCommentLostView', "Anim'Nord : Modifier un commentaire");
@@ -102,24 +91,12 @@ class CommentLostController {
      * @param $fields
      */
     public function deleteComment($fields) {
-        if (isset($fields['id'], $fields['adLost_fk'], $fields['user_fk'])) {
-            $userManager = new UserManager();
-            $adManager = new AdLostManager();
+        if (isset($fields['id'])) {
             $commentManager = new CommentLostManager();
 
             $id = intval($fields['id']);
-            $adLost_fk = intval($fields['adLost_fk']);
-            $user_fk = intval($fields['user_fk']);
 
-            $user_fk = $userManager->getUser($user_fk);
-            $adLost_fk = $adManager->getAd($adLost_fk);
-            if ($user_fk->getId()) {
-                if ($adLost_fk->getId()) {
-                    $comment = new CommentLost($id);
-                    $commentManager->delete($comment);
-                }
-
-            }
+            $commentManager->delete($id);
         }
 
         $this->return('deleteCommentLostView', "Anim'Nord : Supprimer un commentaire");

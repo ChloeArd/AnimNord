@@ -28,13 +28,7 @@ if (isset($var['ads'])) {
                 }
                 foreach ($var['ads'] as $ad) {
                     $dateFind = new DateTime($ad->getDateFind());
-                    $date = new DateTime($ad->getDate());
-                    if (isset($_SESSION['role_fk'])) {
-                        if ($_SESSION['role_fk'] !== "2") {?>
-                            <a class="colorBlack" href=""><i class="far fa-edit"></i></a>
-                            <a class="colorBlack" href=""><i class="far fa-trash-alt"></i></a>
-                        <?php }
-                    }?>
+                    $date = new DateTime($ad->getDate()); ?>
                     <a href='../index.php?controller=adfind&action=adComment&id=<?=$ad->getId()?>' class='post flexRow flexCenter colorGrey'>
                         <div class='width_30'>
                             <?php
