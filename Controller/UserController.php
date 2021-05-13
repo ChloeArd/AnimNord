@@ -6,8 +6,6 @@ use Controller\Traits\ReturnViewTrait;
 use Model\DB;
 use Model\Entity\User;
 use Model\User\UserManager;
-use Model\Entity\Role;
-use Model\Role\RoleManager;
 
 class UserController {
 
@@ -15,16 +13,12 @@ class UserController {
 
     public function users() {
         $manager = new UserManager();
-        $users = $manager->getUsers();
-
-        $this->return("userManagementView", "Anim'Nord : Gestion des utilisateurs", ['users' => $users]);
+        $this->return("userManagementView", "Anim'Nord : Gestion des utilisateurs", ['users' => $manager->getUsers()]);
     }
 
     public function user(int $id) {
         $manager = new UserManager();
-        $user = $manager->getUserID($id);
-
-        $this->return('informationAccount', "Anim'Nord : Informations", ['user' => $user]);
+        $this->return('informationAccount', "Anim'Nord : Informations", ['user' => $manager->getUserID($id)]);
     }
 
     public function update($fields) {
@@ -40,6 +34,8 @@ class UserController {
 
                 $user = new User($id, $firstname, $lastname, $email, $phone);
                 $userManager->updateUser($user);
+
+                header("Location: ../index.php?controller=user&action=view&id=" . $_SESSION['id'] . "&success=0");
             }
         }
         $this->return('update/updatePersonalInfoUserView', "Anim'Nord : Modification des informations personnelles");
@@ -54,7 +50,8 @@ class UserController {
             $currentPassword = htmlentities(ucfirst(trim($fields['currentPassword'])));
             $newPassword = htmlentities(strtoupper(trim($fields['newPassword'])));
 
-            $stmt = $bdd->prepare("SELECT * FROM user WHERE id = '$id'");
+            $stmt = $bdd->prepare("SELECT * FROM user WHERE id = :id");
+            $stmt->bindParam(":id", $id);
             $stmt->execute();
 
             foreach ($stmt->fetchAll() as $user) {
@@ -67,6 +64,7 @@ class UserController {
                         $password = password_hash($newPassword, PASSWORD_BCRYPT);
                         $user = new User($id, $password);
                         $userManager->updatePasswordUser($user);
+                        header("Location: ../index.php?controller=user&action=view&id=" . $_SESSION['id'] . "&success=1");
                     }
                 }
             }
@@ -74,12 +72,26 @@ class UserController {
         $this->return('update/updatePassUserView', "Anim'Nord :  Changer de mot de passe");
     }
 
-    public function delete(int $id) {
+    public function updateRole($fields) {
+        if (isset($fields['id'], $fields['role_fk'])) {
             $userManager = new UserManager();
-            $id = intval($id);
 
+            $id = intval($fields['id']);
+            $role_fk = intval($fields['role_fk']);
+
+            $user = new User($id, $role_fk);
+            $userManager->updateRoleUser($user);
+            header("Location: ../index.php?controller=user&action=all&success=0");
+        }
+        $this->return('update/updateRoleUserView', "Anim'Nord : Modification des informations personnelles");
+    }
+
+    public function delete(int $id) {
+        if ($_GET['id']) {
+            $userManager = new UserManager();
             $userManager->deleteUser($id);
-
+            header("Location: ../index.php?success=1");
+        }
         $this->return("delete/deleteUserView", "Anim'Nord : Supprimer un utilisateur");
     }
 }

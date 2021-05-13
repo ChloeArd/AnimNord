@@ -1,11 +1,28 @@
 <?php
-if (isset($var['ad'])) {
-    ?>
+$return = "";
+$id = "";
+
+if (isset($_GET['success'])) {
+    $id = "success";
+    switch ($_GET['success']) {
+        case '0':
+            $return = "Votre commentaire a bien été ajouté !";
+            break;
+        case '1' :
+            $return = "Le commentaire a bien été modifié !";
+            break;
+        case '2' :
+            $return = "Le commentaire a été supprimé !";
+            break;
+    }
+}
+
+if (isset($var['ad'])) { ?>
+    <div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
     <main>
-        <div>
-            <div id="containerLostAd" class="marginAuto">
-                <?php
-                foreach ($var['ad'] as $ad) {
+        <div id="containerLostAd" class="marginAuto">
+            <?php
+            foreach ($var['ad'] as $ad) {
                 $dateFind = new DateTime($ad->getDateFind());
                 $date = new DateTime($ad->getDate()); ?>
                 <form method="post" action="">
@@ -36,12 +53,13 @@ if (isset($var['ad'])) {
                         <?php
                         if (isset($_SESSION['role_fk'])) {
                             if ($_SESSION['role_fk'] !== "2") {?>
-                                    <div class="flexRow">
-                                        <a class="colorWhite edit1 size20" href="../index.php?controller=adfind&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit buttonGreen"></i></a>
-                                        <a class="colorWhite delete1 size20" href="../index.php?controller=adfind&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt buttonGreen"></i></a>
+                                <div class="flexRow">
+                                    <a class="colorWhite edit1 size20" href="../index.php?controller=adfind&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit buttonGreen"></i></a>
+                                    <a class="colorWhite delete1 size20" href="../index.php?controller=adfind&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt buttonGreen"></i></a>
 
-                                    </div>
-                            <?php   }
+                                </div>
+                                <?php
+                            }
                         }?>
                     </div>
                     <div class='flexColumn width_70 postAnimals table'>
@@ -76,8 +94,8 @@ if (isset($var['ad'])) {
             </div>
 
             <div class="flexRow width_80">
-                <?php if (isset($_SESSION["id"])) {
-                    ?>
+                <?php
+                if (isset($_SESSION["id"])) { ?>
                     <a href="../index.php?controller=commentFind&action=new&id=<?=$_GET['id']?>" class="buttonComment"> Ajouter un commentaire</a>
                     <?php
                 }
@@ -115,10 +133,9 @@ if (isset($var['ad'])) {
                 }
                 ?>
             </div>
-            <?php
-            }
-            ?>
-        </div>
+        <?php
+        }
+        ?>
     </main>
     <?php
 }

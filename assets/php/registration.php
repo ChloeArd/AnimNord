@@ -16,19 +16,17 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["phon
 
     $encryptedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    $requete = $bdd->prepare("SELECT * FROM user WHERE email = '$email' OR phone = '$phone'");
+    $requete = $bdd->prepare("SELECT * FROM user WHERE email = :email OR phone = :phone");
+    $requete->bindParam(":email", $email);
+    $requete->bindParam(":phone", $phone);
     $state = $requete->execute();
 
     if ($state) {
-        foreach ($requete->fetchAll() as $user) {
-            $mailUse = $user['email'];
-            $phoneUse = $user['phone'];
-
-            if ($mailUse === $email || $phoneUse === $phone) {
-                header("Location: ../../View/registration.php?error=0");
-            }
+        $user = $requete->fetch();
+        if ($user['email'] === $email ||  $user['phone'] === $phone) {
+            header("Location: ../../index.php?controller=registration&error=0");
         }
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        elseif (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $maj = preg_match('@[A-Z]@', $password);
             $min = preg_match('@[a-z]@', $password);
             $number = preg_match('@[0-9]@', $password);
@@ -38,17 +36,17 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["phon
                 $sql = "INSERT INTO user VALUES (null, '$firstname', '$lastname', '$email', '$phone', '$encryptedPassword', 2)";
                 $bdd->exec($sql);
 
-                header("Location: ../../View/connect.php?success=0");
+                header("Location: ../../index.php?controller=connection&success=0");
             }
             else {
-                header("Location: ../../View/registration.php?error=1");
+                header("Location: ../../index.php?controller=registration&error=1");
             }
         }
         else {
-            header("Location: ../../View/registration.php?error=2");
+            header("Location: ../../index.php?controller=registration&error=2");
         }
     }
 }
 else {
-    header("Location: ../../View/registration.php?error=3");
+    header("Location: ../../index.php?controller=registration&error=3");
 }

@@ -117,7 +117,7 @@ class User {
     /**
      * @param string|null $password
      */
-    public function setPassword(?string $password) {
+    public function setPassword(?string $password): ?string {
         $this->password = $password;
         return $password;
     }
@@ -133,7 +133,7 @@ class User {
      * @param Role|null $role_fk
      * @return Role
      */
-    public function setRoleFk(?Role $role_fk): Role {
+    public function setRoleFk(?Role $role_fk): ?Role{
         $this->role_fk = $role_fk;
         return $role_fk;
     }

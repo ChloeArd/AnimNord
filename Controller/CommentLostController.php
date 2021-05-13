@@ -3,9 +3,7 @@
 namespace Controller;
 
 use Controller\Traits\ReturnViewTrait;
-use Model\Entity\AdLost;
 use Model\AdLost\AdLostManager;
-use Model\Entity\User;
 use Model\User\UserManager;
 use Model\Entity\CommentLost;
 use Model\CommentLost\CommentLostManager;
@@ -17,14 +15,10 @@ class CommentLostController {
     /**
      * display the list of comment
      * @param $adLost_fk
-     * @return array
      */
-    public function commentsAd(int $adLost_fk): array {
+    public function commentsAd(int $adLost_fk) {
         $manager = new CommentLostManager();
-        $comments = $manager->getCommentsAd($adLost_fk);
-
-        $this->return("adLostCommentView", "Anim'Nord : Annonce", ['comments' => $comments]);
-        return $comments;
+        $this->return("adLostCommentView", "Anim'Nord : Annonce", ['comments' => $manager->getCommentsAd($adLost_fk)]);
     }
 
     /**
@@ -49,6 +43,7 @@ class CommentLostController {
                 if($user_fk->getId()) {
                     $comment = new CommentLost(null, $content, $date, $adLost_fk, $user_fk);
                     $commentManager->add($comment);
+                    header("Location: ../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=" . $fields['adLost_fk'] . "&comment=commentLost&success=0");
                 }
             }
         }
@@ -60,7 +55,7 @@ class CommentLostController {
      * @param $fields
      */
     public function updateComment($fields) {
-        if (isset($fields['id'], $fields['content'])) {
+        if (isset($fields['id'], $fields['content'], $fields['adLost_fk'])) {
             $commentManager = new CommentLostManager();
 
             $id = intval($fields['id']);
@@ -68,8 +63,8 @@ class CommentLostController {
 
             $comment = new CommentLost($id, $content);
             $commentManager->update($comment);
+            header("Location: ../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=" . $fields['adLost_fk'] . "&comment=commentLost&success=1");
         }
-
         $this->return('update/updateCommentLostView', "Anim'Nord : Modifier un commentaire");
     }
 
@@ -78,14 +73,12 @@ class CommentLostController {
      * @param $fields
      */
     public function deleteComment($fields) {
-        if (isset($fields['id'])) {
+        if (isset($fields['id'], $fields['adLost_fk'])) {
             $commentManager = new CommentLostManager();
-
             $id = intval($fields['id']);
-
             $commentManager->delete($id);
+            header("Location: ../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=" . $fields['adLost_fk'] . "&comment=commentLost&success=2");
         }
-
         $this->return('delete/deleteCommentLostView', "Anim'Nord : Supprimer un commentaire");
     }
 }

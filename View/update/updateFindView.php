@@ -4,9 +4,7 @@ $id = $_GET['id'];
 $manager = new \Model\AdFind\AdFindManager();
 $adFind = $manager->getAd2($id);
 
-foreach ($adFind as $ad) {
-    ?>
-
+foreach ($adFind as $ad) { ?>
     <main class="width_80">
         <h1 class="flexCenter title colorWhite">Modification d'une annonce pour chien ou chat perdu</h1>
         <form id="formAd" method="post" class="flexColumn width_50">
@@ -26,16 +24,16 @@ foreach ($adFind as $ad) {
             <label for="sex"> Sexe :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
-                    <input type="radio" name="sex" value="Mâle" <?PHP if($ad->getSex() !== 'Femelle' && $ad->getSex() !== 'Inconnu'){echo "checked";} ?> required>
-                    <span class="margin_0_20">Mâle</span>
+                    <input id="male" type="radio" name="sex" value="Mâle" <?PHP if($ad->getSex() !== 'Femelle' && $ad->getSex() !== 'Inconnu'){echo "checked";} ?> required>
+                    <label for="male" class="margin_0_20">Mâle</label>
                 </div>
                 <div class="flexRow align">
-                    <input type="radio" name="sex" value="Femelle" <?PHP if($ad->getSex() === 'Femelle'){echo "checked";} ?> required>
-                    <span class="margin_0_20">Femelle</span>
+                    <input id="female" type="radio" name="sex" value="Femelle" <?PHP if($ad->getSex() === 'Femelle'){echo "checked";} ?> required>
+                    <label for="female" class="margin_0_20">Femelle</label>
                 </div>
                 <div class="flexRow align">
-                    <input type="radio" name="sex" value="Inconnu" <?PHP if($ad->getSex() === 'Inconnu'){echo "checked";} ?> required>
-                    <span class="margin_0_20">Inconnu</span>
+                    <input id="unknown" type="radio" name="sex" value="Inconnu" <?PHP if($ad->getSex() === 'Inconnu'){echo "checked";} ?> required>
+                    <label for="unknown" class="margin_0_20">Inconnu</label>
                 </div>
             </div>
             <label for="size"> Taille :</label>
@@ -58,28 +56,28 @@ foreach ($adFind as $ad) {
             <label for="color"> Couleur du pelage :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="color" value="Noir" <?PHP if($ad->getColor() === 'Noir'){echo "checked";} ?>>
-                    <span class="margin_0_20 borderBlack black"></span>
+                    <input id="black" type="checkbox" name="color" value="Noir" <?PHP if($ad->getColor() === 'Noir'){echo "checked";} ?>>
+                    <label for="black" class="margin_0_20 borderBlack black"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="color" value="Blanc" <?PHP if($ad->getColor() === 'Blanc'){echo "checked";} ?>>
-                    <span class="margin_0_20 borderBlack"></span>
+                    <input id="white" type="checkbox" name="color" value="Blanc" <?PHP if($ad->getColor() === 'Blanc'){echo "checked";} ?>>
+                    <label for="white" class="margin_0_20 borderBlack"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="color" value="Marron" <?PHP if($ad->getColor() === 'Marron'){echo "checked";} ?>>
-                    <span class="margin_0_20 borderBlack brown"></span>
+                    <input id="brown" type="checkbox" name="color" value="Marron" <?PHP if($ad->getColor() === 'Marron'){echo "checked";} ?>>
+                    <label for="brown" class="margin_0_20 borderBlack brown"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="color" value="Gris" <?PHP if($ad->getColor() === 'Gris'){echo "checked";} ?>>
-                    <span class="margin_0_20 borderBlack grey"></span>
+                    <input id="grey" type="checkbox" name="color" value="Gris" <?PHP if($ad->getColor() === 'Gris'){echo "checked";} ?>>
+                    <label for="grey" class="margin_0_20 borderBlack grey"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="color" value="Beige" <?PHP if($ad->getColor() === 'Beige'){echo "checked";} ?>>
-                    <span class="margin_0_20 borderBlack beige"></span>
+                    <input id="beige" type="checkbox" name="color" value="Beige" <?PHP if($ad->getColor() === 'Beige'){echo "checked";} ?>>
+                    <label for="beige" class="margin_0_20 borderBlack beige"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="color" value="Roux" <?PHP if($ad->getColor() === 'Roux'){echo "checked";} ?>>
-                    <span class="margin_0_20 borderBlack orange"></span>
+                    <input id="orange" type="checkbox" name="color" value="Roux" <?PHP if($ad->getColor() === 'Roux'){echo "checked";} ?>>
+                    <label for="orange" class="margin_0_20 borderBlack orange"></label>
                 </div>
             </div>
             <label for="dress">Robe :</label>

@@ -24,11 +24,10 @@ class UserManager {
     public function getUsers(): array {
         $users = [];
         $request = DB::getInstance()->prepare("SELECT * FROM user");
-        $request->execute();
-        $users_response = $request->fetchAll();
-        if($users_response) {
-            foreach($users_response as $db) {
-                $role = RoleManager::getManager()->getRole($users_response['role_fk']);
+        $result = $request->execute();
+        if($result) {
+            foreach($request->fetchAll() as $db) {
+                $role = RoleManager::getManager()->getRole($db['role_fk']);
                 if ($role->getId()) {
                     $users[] = new User($db['id'], $db['firstname'], $db['lastname'] ,$db['email'], $db['phone'],'', $role);
                 }
@@ -43,7 +42,8 @@ class UserManager {
      * @return User
      */
     public function getUser(int $id): User {
-        $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = $id");
+        $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = :id");
+        $request->bindParam(":id", $id);
         $request->execute();
         $user_data = $request->fetch();
         $user = new User();
@@ -63,27 +63,10 @@ class UserManager {
     public function getUserID(int $id): array {
         $user = [];
         $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = $id");
-        $request->execute();
-        $user_response = $request->fetchAll();
-        if($user_response) {
-            foreach($user_response as $db) {
+        $result = $request->execute();
+        if($result) {
+            foreach($request->fetchAll() as $db) {
                 $role = RoleManager::getManager()->getRole($db['role_fk']);
-                if ($role->getId()) {
-                    $user[] = new User($db['id'], $db['firstname'], $db['lastname'] ,$db['email'], $db['phone'],'', $role);
-                }
-            }
-        }
-        return $user;
-    }
-
-    public function getById(int $id): array {
-        $user = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = $id");
-        $request->execute();
-        $response = $request->fetchAll();
-        if($response) {
-            foreach($response as $db) {
-                $role = RoleManager::getManager()->getRole($response['role_fk']);
                 if ($role->getId()) {
                     $user[] = new User($db['id'], $db['firstname'], $db['lastname'] ,$db['email'], $db['phone'],'', $role);
                 }
@@ -110,9 +93,9 @@ class UserManager {
      */
     public function updatePasswordUser(User $user): bool {
         $request = DB::getInstance()->prepare("UPDATE user SET password = :password WHERE id = :id");
-
         $request->bindValue(':id', $user->getId());
         $request->bindValue(':password', $user->setPassword($user->getPassword()));
+
         return $request->execute();
     }
 
@@ -123,7 +106,6 @@ class UserManager {
      */
     public function updateUser(User $user): bool {
         $request = DB::getInstance()->prepare("UPDATE user SET firstname = :firstname, lastname = :lastname, email = :email, phone = :phone WHERE id = :id");
-
         $request->bindValue(':id', $user->getId());
         $request->bindValue(':firstname', $user->setFirstname($user->getFirstname()));
         $request->bindValue(':lastname', $user->setLastname($user->getLastname()));
@@ -140,9 +122,9 @@ class UserManager {
      */
     public function updateRoleUser(User $user): bool {
         $request = DB::getInstance()->prepare("UPDATE user SET role_fk = :role_fk WHERE id = :id");
-
         $request->bindValue(':id', $user->getId());
         $request->bindValue(':role_fk', $user->setRoleFk($user->getRoleFk()));
+
         return $request->execute();
     }
 
@@ -152,19 +134,29 @@ class UserManager {
      * @return bool
      */
     public function deleteUser(int $id): bool {
-        $request = DB::getInstance()->prepare("DELETE FROM adlost WHERE user_fk = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM adlost WHERE user_fk = :user_fk");
+        $request->bindParam(":user_fk", $id);
         $request->execute();
-        $request = DB::getInstance()->prepare("DELETE FROM adfind WHERE user_fk = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM adfind WHERE user_fk = :user_fk");
+        $request->bindParam(":user_fk", $id);
         $request->execute();
-        $request = DB::getInstance()->prepare("DELETE FROM comment_lost WHERE user_fk = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM comment_lost WHERE user_fk = :user_fk");
+        $request->bindParam(":user_fk", $id);
         $request->execute();
-        $request = DB::getInstance()->prepare("DELETE FROM comment_find WHERE user_fk = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM comment_find WHERE user_fk = :user_fk");
+        $request->bindParam(":user_fk", $id);
         $request->execute();
-        $request = DB::getInstance()->prepare("DELETE FROM favorite_lost WHERE user_fk = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM favorite_lost WHERE user_fk = :user_fk");
+        $request->bindParam(":user_fk", $id);
         $request->execute();
-        $request = DB::getInstance()->prepare("DELETE FROM favorite_find WHERE user_fk = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM favorite_find WHERE user_fk = :user_fk");
+        $request->bindParam(":user_fk", $id);
         $request->execute();
-        $request = DB::getInstance()->prepare("DELETE FROM user WHERE id = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM user WHERE id = :id");
+        $request->bindParam(":id", $id);
+        session_start();
+        session_unset();
+        session_destroy();
         return $request->execute();
     }
 }

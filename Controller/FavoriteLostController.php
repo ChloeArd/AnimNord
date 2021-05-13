@@ -5,7 +5,6 @@ namespace Controller;
 use Controller\Traits\ReturnViewTrait;
 use Model\Entity\AdLost;
 use Model\AdLost\AdLostManager;
-use Model\Entity\User;
 use Model\User\UserManager;
 use Model\Entity\FavoriteLost;
 use Model\FavoriteLost\FavoriteLostManager;
@@ -20,9 +19,7 @@ class FavoriteLostController {
      */
     public function favoritesUser(int $adLost_fk, int $user_fk) {
         $manager = new FavoriteLostManager();
-        $favorites = $manager->favoritesByUser($adLost_fk, $user_fk);
-
-        $this->return("", "Anim'Nord : Mes favoris", ['favoritesUser' => $favorites]);
+        $this->return("", "Anim'Nord : Mes favoris", ['favoritesUser' => $manager->favoritesByUser($adLost_fk, $user_fk)]);
     }
 
     /**

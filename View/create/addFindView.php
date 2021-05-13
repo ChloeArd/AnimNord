@@ -21,16 +21,16 @@ date_default_timezone_set("Europe/Paris");
         <label for="sex"> Sexe :</label>
         <div class="categoriePet">
             <div class="flexRow align">
-                <input id="sexe" type="radio" name="sex" value="Mâle" required>
-                <span class="margin_0_20">Mâle</span>
+                <input id="male" type="radio" name="sex" value="Mâle" required>
+                <label for="male" class="margin_0_20">Mâle</label>
             </div>
             <div class="flexRow align">
-                <input id="sexe" type="radio" name="sex" value="Femelle" required>
-                <span class="margin_0_20">Femelle</span>
+                <input id="female" type="radio" name="sex" value="Femelle" required>
+                <label for="female" class="margin_0_20">Femelle</label>
             </div>
             <div class="flexRow align">
-                <input id="sexe" type="radio" name="sex" value="Inconnu" required>
-                <span class="margin_0_20">Inconnu</span>
+                <input id="unknow" type="radio" name="sex" value="Inconnu" required>
+                <label for="unknow" class="margin_0_20">Inconnu</label>
             </div>
         </div>
         <label for="size"> Taille :</label>
@@ -51,28 +51,28 @@ date_default_timezone_set("Europe/Paris");
         <label for="color"> Couleur du pelage :</label>
         <div class="categoriePet">
             <div class="flexRow align">
-                <input id="colors" type="checkbox" name="color" value="Noir">
-                <span class="margin_0_20 borderBlack black"></span>
+                <input id="black" type="checkbox" name="color" value="Noir">
+                <label for="black" class="margin_0_20 borderBlack black"></label>
             </div>
             <div class="flexRow align">
-                <input id="colors" type="checkbox" name="color" value="Blanc">
-                <span class="margin_0_20 borderBlack"></span>
+                <input id="white" type="checkbox" name="color" value="Blanc">
+                <label for="white" class="margin_0_20 borderBlack"></label>
             </div>
             <div class="flexRow align">
-                <input id="colors" type="checkbox" name="color" value="Marron">
-                <span class="margin_0_20 borderBlack brown"></span>
+                <input id="brown" type="checkbox" name="color" value="Marron">
+                <label for="brown" class="margin_0_20 borderBlack brown"></label>
             </div>
             <div class="flexRow align">
-                <input id="colors" type="checkbox" name="color" value="Gris">
-                <span class="margin_0_20 borderBlack grey"></span>
+                <input id="grey" type="checkbox" name="color" value="Gris">
+                <label for="grey" class="margin_0_20 borderBlack grey"></label>
             </div>
             <div class="flexRow align">
-                <input id="colors" type="checkbox" name="color" value="Beige">
-                <span class="margin_0_20 borderBlack beige"></span>
+                <input id="beige" type="checkbox" name="color" value="Beige">
+                <label for="beige" class="margin_0_20 borderBlack beige"></label>
             </div>
             <div class="flexRow align">
-                <input id="colors" type="checkbox" name="color" value="Roux">
-                <span class="margin_0_20 borderBlack orange"></span>
+                <input id="orange" type="checkbox" name="color" value="Roux">
+                <label for="orange" class="margin_0_20 borderBlack orange"></label>
             </div>
         </div>
         <label for="dress">Robe :</label>
@@ -98,7 +98,7 @@ date_default_timezone_set("Europe/Paris");
             <p>Date et lieu de son apparition <i class="far fa-calendar-alt"></i><i class="fas fa-map-marker-alt"></i></p>
         </div>
         <div class="flexRow align">
-            <label for="date_lost"> Trouvé le :</label>
+            <label for="date_find"> Trouvé le :</label>
             <div class="categoriePet">
                 <input id="date_find" name="date_find" type="date" required>
             </div>
@@ -755,7 +755,7 @@ date_default_timezone_set("Europe/Paris");
             <option>Zuydcoote (59123)</option>
             <option>Zuytpeene (59670)</option>
         </select>
-        <input hidden name="user_fk"  type="text" id="user_fk" value="<?= $_SESSION['id']?>">
+        <input name="user_fk"  type="hidden" id="user_fk" value="<?= $_SESSION['id']?>">
         <div class="flexRow align flexCenter">
             <div class="circle flexCenter">
                 <span>3</span>

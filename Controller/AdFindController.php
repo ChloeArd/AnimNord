@@ -6,7 +6,6 @@ use Controller\Traits\ReturnViewTrait;
 use Model\CommentFind\CommentFindManager;
 use Model\Entity\AdFind;
 use Model\AdFind\AdFindManager;
-use Model\Entity\User;
 use Model\User\UserManager;
 
 class AdFindController {
@@ -18,21 +17,17 @@ class AdFindController {
      */
     public function ads() {
         $manager = new AdFindManager();
-        $adFind = $manager->getAds();
-
-        $this->return("findView", "Anim'Nord : Trouvés", ['ads' => $adFind]);
+        $this->return("findView", "Anim'Nord : Trouvés", ['ads' => $manager->getAds()]);
     }
 
     /**
      * @param int $id
      */
     public function ad(int $id) {
-        $manager = new AdFindManager();
-        $adFind = $manager->getAd2($id);
-        $manager = new CommentFindManager();
-        $commentFind = $manager->getCommentsAd($id);
-
-        $this->return("adFindCommentView", "Anim'Nord : Annonce", ['ad' => $adFind, 'comment' => $commentFind]);
+        $managerAd = new AdFindManager();
+        $managerComment = new CommentFindManager();
+        $this->return("adFindCommentView", "Anim'Nord : Annonce", ['ad' => $managerAd->getAd2($id),
+                                                                             'comment' => $managerComment->getCommentsAd($id)]);
     }
 
     /**
@@ -40,9 +35,7 @@ class AdFindController {
      */
     public function adsUser(int $user_fk) {
         $manager = new AdFindManager();
-        $adFind= $manager->adsByUser($user_fk);
-
-        $this->return("adAccountView", "Anim'Nord : Mes annonces", ['adsUserFind' => $adFind]);
+        $this->return("adAccountView", "Anim'Nord : Mes annonces", ['adsUserFind' => $manager->adsByUser($user_fk)]);
     }
 
     /**
@@ -52,6 +45,7 @@ class AdFindController {
     public function addAd($ad) {
         if (isset($ad['animal'], $ad['sex'], $ad['size'], $ad['fur'], $ad['color'], $ad['dress'], $ad['race'],
             $ad['number'], $ad['description'], $ad['date_find'], $ad['date'], $ad['city'], $ad['picture'], $ad['user_fk'])) {
+
             $userManager = new UserManager();
             $adFindManager = new AdFindManager();
 
@@ -74,6 +68,7 @@ class AdFindController {
             if($user_fk->getId()) {
                 $ad = new AdFind(null, $animal, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_find, $date, $city, $picture, $user_fk);
                 $adFindManager->add($ad);
+                header("Location: ../index.php?controller=adlost&action=view&success=0");
             }
         }
         $this->return("create/addFindView", "Anim'Nord : Ajouter une annonce de chiens et chats trouvés");
@@ -82,6 +77,7 @@ class AdFindController {
     public function updateAd($ad) {
         if (isset($ad['id'], $ad['animal'], $ad['sex'], $ad['size'], $ad['fur'], $ad['color'], $ad['dress'], $ad['race'],
             $ad['number'], $ad['description'], $ad['date_find'], $ad['date'], $ad['city'], $ad['picture'], $ad['user_fk'])) {
+
             $userManager = new UserManager();
             $adFindManager = new AdFindManager();
 
@@ -106,6 +102,7 @@ class AdFindController {
                 $ad = new AdFind($id, $animal, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_find, $date, $city, $picture, $user_fk);
                 $adFindManager->update($ad);
             }
+            header("Location: ../index.php?controller=adlost&action=view&success=1");
         }
         $this->return("update/updateFindView", "Anim'Nord : Modifier une annonce");
     }
@@ -126,6 +123,7 @@ class AdFindController {
             if ($user_fk->getId()) {
                 $adFind = new AdFind($id);
                 $adFindManager->delete($adFind);
+                header("Location: ../index.php?controller=adlost&action=view&success=2");
             }
         }
         $this->return("delete/deleteFindView", "Anim'Nord : Supprimer une annonce");

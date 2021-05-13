@@ -2,7 +2,6 @@
 namespace Model\AdFind;
 
 use Model\DB;
-use Model\Entity\User;
 use Model\Entity\AdFind;
 use Model\User\UserManager;
 use Model\Manager\Traits\ManagerTrait;
@@ -22,8 +21,7 @@ class AdFindManager {
         $request = DB::getInstance()->prepare("SELECT * FROM adfind ORDER by id DESC");
         $result = $request->execute();
         if($result) {
-            $data = $request->fetchAll();
-            foreach ($data as $ads_data) {
+            foreach ($request->fetchAll() as $ads_data) {
                 $user = UserManager::getManager()->getUser($ads_data['user_fk']);
                 if($user->getId()) {
                     $ads[] = new AdFind($ads_data['id'], $ads_data['animal'], $ads_data['sex'], $ads_data['size'],
@@ -41,7 +39,8 @@ class AdFindManager {
      * @return AdFind
      */
     public function getAd($id) {
-        $request = DB::getInstance()->prepare("SELECT * FROM adfind WHERE id = $id");
+        $request = DB::getInstance()->prepare("SELECT * FROM adfind WHERE id = :id");
+        $request->bindParam(":id", $id);
         $request->execute();
         $ad_data = $request->fetch();
         $ad = new AdFind();
@@ -66,11 +65,11 @@ class AdFindManager {
 
     public function getAd2(int $id): array {
         $ad = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM adfind WHERE id = $id");
+        $request = DB::getInstance()->prepare("SELECT * FROM adfind WHERE id = :id");
+        $request->bindParam(":id", $id);
         $result = $request->execute();
         if($result) {
-            $data = $request->fetchAll();
-            foreach ($data as $ad_data) {
+            foreach ($request->fetchAll() as $ad_data) {
                 $user = UserManager::getManager()->getUser($ad_data['user_fk']);
                 if($user->getId()) {
                     $ad[] = new AdFind($ad_data['id'], $ad_data['animal'], $ad_data['sex'], $ad_data['size'],
@@ -88,11 +87,11 @@ class AdFindManager {
      */
     public function adsByUser(int $user_fk): array {
         $ads = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM adfind WHERE user_fk = $user_fk ORDER by id DESC ");
+        $request = DB::getInstance()->prepare("SELECT * FROM adfind WHERE user_fk = :user_fk ORDER by id DESC ");
+        $request->bindParam(":user_fk", $user_fk);
         $result = $request->execute();
         if($result) {
-            $data = $request->fetchAll();
-            foreach ($data as $ads_data) {
+            foreach ($request->fetchAll() as $ads_data) {
                 $user = UserManager::getManager()->getUser($user_fk);
                 if($user->getId()) {
                     $ads[] = new AdFind($ads_data['id'], $ads_data['animal'], $ads_data['sex'], $ads_data['size'],
@@ -167,12 +166,14 @@ class AdFindManager {
      * @return bool
      */
     public function delete (AdFind $adFind): bool {
-        $id = $adFind->getId();
-        $request = DB::getInstance()->prepare("DELETE FROM adfind WHERE id = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM adfind WHERE id = :id");
+        $request->bindValue(":id", $adFind->getId());
         $request->execute();
-        $request = DB::getInstance()->prepare("DELETE FROM comment_find WHERE adFind_fk = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM comment_find WHERE adFind_fk = :adFind_fk");
+        $request->bindValue(":adFind_fk", $adFind->getId());
         $request->execute();
-        $request = DB::getInstance()->prepare("DELETE FROM favorite_find WHERE adFind_fk = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM favorite_find WHERE adFind_fk = :adFind_fk");
+        $request->bindValue(":adFind_fk", $adFind->getId());
         return $request->execute();
     }
 
@@ -205,8 +206,7 @@ class AdFindManager {
         $request = DB::getInstance()->prepare("SELECT * FROM adfind ORDER by id DESC LIMIT 0,4");
         $result = $request->execute();
         if($result) {
-            $data = $request->fetchAll();
-            foreach ($data as $ad) {
+            foreach ($request->fetchAll() as $ad) {
                 $user = UserManager::getManager()->getUser($ad['user_fk']);
                 if($user->getId()) {
                     $recent[] = new AdFind($ad['id'], $ad['animal'], $ad['sex'], $ad['size'],

@@ -2,11 +2,9 @@
 $manager = new \Modele\ContentIndex\ContentIndexManager();
 $content = $manager->getContent($_GET['id']);
 
-foreach ($content as $value) {
-?>
-<main>
-    <div>
-        <h1 class="title colorWhite flexCenter width_80">Changer le contenue de la page d'Accueil</h1>
+foreach ($content as $value) { ?>
+    <main>
+        <h1 class="title colorWhite flexCenter width_80">Changer le contenu de la page d'Accueil</h1>
         <div class="containerAccount">
             <form action="" method="post" class="flexColumn">
                 <label for="picture" class="colorBlack size20">Image <span class="size15 required colorBlue">*</span></label>
@@ -22,7 +20,6 @@ foreach ($content as $value) {
                 </div>
             </form>
         </div>
-    </div>
-</main>
+    </main>
 <?php
 }

@@ -1,13 +1,10 @@
 <?php
-session_start();
-$title = "Anim'Nord : Publier une annonce";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/header.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
+date_default_timezone_set("Europe/Paris");
 ?>
 
-    <main class="width_80">
+<main class="width_80">
         <h1 class="flexCenter title colorWhite">Publication d'une annonce pour chien ou chat à adopter</h1>
-        <form id="formAd" method="post" action="../assets/php/sendMail.php" class="flexColumn width_50">
+        <form id="formAd" method="post" action="../../assets/php/sendMail.php" class="flexColumn width_50">
             <div class="flexRow align flexCenter">
                 <div class="circle flexCenter">
                     <span>1</span>
@@ -28,16 +25,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
             <label for="sexe"> Sexe :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
-                    <input id="sexe" type="radio" name="sexe" value="mâle" required>
-                    <span class="margin_0_20">Mâle</span>
+                    <input id="male" type="radio" name="sex" value="Mâle" required>
+                    <label for="male" class="margin_0_20">Mâle</label>
                 </div>
                 <div class="flexRow align">
-                    <input id="sexe" type="radio" name="sexe" value="femelle" required>
-                    <span class="margin_0_20">Femelle</span>
+                    <input id="female" type="radio" name="sex" value="Femelle" required>
+                    <label for="female" class="margin_0_20">Femelle</label>
                 </div>
                 <div class="flexRow align">
-                    <input id="sexe" type="radio" name="sexe" value="inconnu" required>
-                    <span class="margin_0_20">Inconnu</span>
+                    <input id="unknow" type="radio" name="sex" value="Inconnu" required>
+                    <label for="unknow" class="margin_0_20">Inconnu</label>
                 </div>
             </div>
             <label for="size"> Taille :</label>
@@ -58,28 +55,28 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
             <label for="colors"> Couleur du pelage :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="colors" value="Noir">
-                    <span class="margin_0_20 borderBlack black"></span>
+                    <input id="black" type="checkbox" name="color" value="Noir">
+                    <label for="black" class="margin_0_20 borderBlack black"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="colors" value="Blanc">
-                    <span class="margin_0_20 borderBlack"></span>
+                    <input id="white" type="checkbox" name="color" value="Blanc">
+                    <label for="white" class="margin_0_20 borderBlack"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="colors" value="Marron">
-                    <span class="margin_0_20 borderBlack brown"></span>
+                    <input id="brown" type="checkbox" name="color" value="Marron">
+                    <label for="brown" class="margin_0_20 borderBlack brown"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="colors" value="Gris">
-                    <span class="margin_0_20 borderBlack grey"></span>
+                    <input id="grey" type="checkbox" name="color" value="Gris">
+                    <label for="grey" class="margin_0_20 borderBlack grey"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="colors" value="Beige">
-                    <span class="margin_0_20 borderBlack beige"></span>
+                    <input id="beige" type="checkbox" name="color" value="Beige">
+                    <label for="beige" class="margin_0_20 borderBlack beige"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="colors" type="checkbox" name="colors" value="Roux">
-                    <span class="margin_0_20 borderBlack orange"></span>
+                    <input id="orange" type="checkbox" name="color" value="Roux">
+                    <label for="orange" class="margin_0_20 borderBlack orange"></label>
                 </div>
             </div>
             <label for="dress">Robe :</label>
@@ -779,6 +776,3 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
             <input type="submit" class="buttonEnter colorWhite radius10 pointer" value="Publier">
         </form>
     </main>
-
-<?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/footer.php";

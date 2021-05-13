@@ -3,9 +3,7 @@
 namespace Controller;
 
 use Controller\Traits\ReturnViewTrait;
-use Model\Entity\AdFind;
 use Model\AdFind\AdFindManager;
-use Model\Entity\User;
 use Model\User\UserManager;
 use Model\Entity\CommentFind;
 use Model\CommentFind\CommentFindManager;
@@ -17,14 +15,10 @@ class CommentFindController {
     /**
      * display the list of comment
      * @param $adFind_fk
-     * @return array
      */
-    public function commentsAd(int $adFind_fk): array {
+    public function commentsAd(int $adFind_fk) {
         $manager = new CommentFindManager();
-        $comments = $manager->getCommentsAd($adFind_fk);
-
-        $this->return("adFindCommentView", "Anim'Nord : Annonce", ['comments' => $comments]);
-        return $comments;
+        $this->return("adFindCommentView", "Anim'Nord : Annonce", ['comments' => $manager->getCommentsAd($adFind_fk)]);
     }
 
     /**
@@ -49,6 +43,7 @@ class CommentFindController {
                 if($user_fk->getId()) {
                     $comment = new CommentFind(null, $content, $date, $adFind_fk, $user_fk);
                     $commentManager->add($comment);
+                    header("Location: ../index.php?controller=adfind&action=adComment&id=" . $fields['adFind_fk'] . "&success=0");
                 }
             }
         }
@@ -60,7 +55,7 @@ class CommentFindController {
      * @param $fields
      */
     public function updateComment($fields) {
-        if (isset($fields['id'], $fields['content'])) {
+        if (isset($fields['id'], $fields['content'], $fields['adFind_fk'])) {
             $commentManager = new CommentFindManager();
 
             $id = intval($fields['id']);
@@ -68,6 +63,7 @@ class CommentFindController {
 
             $comment = new CommentFind($id, $content);
             $commentManager->update($comment);
+            header("Location: ../index.php?controller=adfind&action=adComment&id=" . $fields['adFind_fk'] . "&success=1");
         }
 
         $this->return('update/updateCommentFindView', "Anim'Nord : Modifier un commentaire");
@@ -78,14 +74,12 @@ class CommentFindController {
      * @param $fields
      */
     public function deleteComment($fields) {
-        if (isset($fields['id'])) {
+        if (isset($fields['id'], $fields['adFind_fk'])) {
             $commentManager = new CommentFindManager();
-
             $id = intval($fields['id']);
-
             $commentManager->delete($id);
+            header("Location: ../index.php?controller=adfind&action=adComment&id=" . $fields['adFind_fk'] . "&success=2");
         }
-
         $this->return('delete/deleteCommentFindView', "Anim'Nord : Supprimer un commentaire");
     }
 }

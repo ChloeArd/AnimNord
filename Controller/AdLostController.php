@@ -3,13 +3,10 @@
 namespace Controller;
 
 use Controller\Traits\ReturnViewTrait;
-use Exception;
-use http\Url;
 use Model\AdFind\AdFindManager;
 use Model\CommentLost\CommentLostManager;
 use Model\Entity\AdLost;
 use Model\AdLost\AdLostManager;
-use Model\Entity\User;
 use Model\User\UserManager;
 
 class AdLostController {
@@ -21,33 +18,26 @@ class AdLostController {
      */
     public function ads() {
         $manager = new AdLostManager();
-        $adLost = $manager->getAds();
-
-        $this->return("lostView", "Anim'Nord : Perdus", ['ads' => $adLost]);
+        $this->return("lostView", "Anim'Nord : Perdus", ['ads' => $manager->getAds()]);
     }
 
     /**
      * @param int $id
      */
     public function ad(int $id) {
-        $manager = new AdLostManager();
-        $adLost = $manager->getAd2($id);
-        $manager = new CommentLostManager();
-        $commentLost = $manager->getCommentsAd($id);
-
-        $this->return("adLostCommentView", "Anim'Nord : Annonce", ['ad' => $adLost, 'comment' => $commentLost]);
+        $managerAd = new AdLostManager();
+        $managerComment = new CommentLostManager();
+        $this->return("adLostCommentView", "Anim'Nord : Annonce", ['ad' => $managerAd->getAd2($id),
+                                                                             'comment' => $managerComment->getCommentsAd($id)]);
     }
 
     /**
      * @param int $user_fk
      */
     public function adsUser(int $user_fk) {
-        $manager = new AdLostManager();
-        $adLost = $manager->adsByUser($user_fk);
-        $manager = new AdFindManager();
-        $adFind = $manager->adsByUser($user_fk);
-
-        $this->return("adAccountView", "Anim'Nord : Mes annonces", ['adsUser' => $adLost, 'adsUserFind' => $adFind]);
+        $managerLost = new AdLostManager();
+        $managerFind = new AdFindManager();
+        $this->return("adAccountView", "Anim'Nord : Mes annonces", ['adsUser' => $managerLost->adsByUser($user_fk), 'adsUserFind' => $managerFind->adsByUser($user_fk)]);
     }
 
     /**
@@ -57,6 +47,7 @@ class AdLostController {
     public function addAd($ad) {
         if (isset($ad['animal'], $ad['name'], $ad['sex'], $ad['size'], $ad['fur'], $ad['color'], $ad['dress'], $ad['race'],
         $ad['number'], $ad['description'], $ad['date_lost'], $ad['date'], $ad['city'], $ad['picture'], $ad['user_fk'])) {
+
             $userManager = new UserManager();
             $adlostManager = new AdLostManager();
 
@@ -80,6 +71,7 @@ class AdLostController {
             if($user_fk->getId()) {
                 $ad = new AdLost(null, $animal, $name, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_lost, $date, $city, $picture, $user_fk);
                 $adlostManager->add($ad);
+                header("Location: ../index.php?controller=adlost&action=view&success=3");
             }
         }
         $this->return("create/addLostView", "Anim'Nord : Ajouter une annonce de chiens et chats perdus");
@@ -88,6 +80,7 @@ class AdLostController {
     public function updateAd($ad) {
         if (isset($ad['id'], $ad['animal'], $ad['name'], $ad['sex'], $ad['size'], $ad['fur'], $ad['color'], $ad['dress'], $ad['race'],
             $ad['number'], $ad['description'], $ad['date_lost'], $ad['date'], $ad['city'], $ad['picture'], $ad['user_fk'])) {
+
             $userManager = new UserManager();
             $adlostManager = new AdLostManager();
 
@@ -112,6 +105,7 @@ class AdLostController {
             if($user_fk->getId()) {
                 $ad = new AdLost($id, $animal, $name, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_lost, $date, $city, $picture, $user_fk);
                 $adlostManager->update($ad);
+                header("Location: ../index.php?controller=adlost&action=view&success=1");
             }
         }
         $this->return("update/updateLostView", "Anim'Nord : Modifier une annonce");
@@ -133,6 +127,7 @@ class AdLostController {
             if ($user_fk->getId()) {
                 $adlost = new AdLost($id);
                 $adlostManager->delete($adlost);
+                header("Location: ../index.php?controller=adlost&action=view&success=2");
             }
         }
         $this->return("delete/deleteLostView", "Anim'Nord : Supprimer une annonce");

@@ -6,10 +6,13 @@ if (isset($_GET['error'])){
     $id = "error";
     switch ($_GET['error']){
         case '0':
-            $return = "Aucun compte associé à cette email ou ce mot de passe";
+            $return = "Aucun compte associé à cette email";
             break;
         case '1':
             $return = "Problème de connexion.";
+            break;
+        case '2' :
+            $return = "Le mot de passe est incorrect !";
             break;
     }
 }

@@ -172,6 +172,9 @@ if (isset($_GET['controller'])) {
                     case 'updatePass' :
                         $controller->updatePass($_POST);
                         break;
+                    case 'updateRole' :
+                        $controller->updateRole($_POST);
+                        break;
                     case 'delete' :
                         $controller->delete($_GET['id']);
                         break;

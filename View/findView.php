@@ -5,9 +5,8 @@ if (isset($_GET["page"])) {
 else {
     $page = 1;
 }
-if (isset($var['ads'])) {
 
-?>
+if (isset($var['ads'])) {?>
 
     <main class="width_80 flexColumn">
         <h1 class="title colorWhite flexCenter"> Chiens et chats trouvés</h1>
@@ -15,8 +14,7 @@ if (isset($var['ads'])) {
             <?php
             $situation = "Trouvé le :";
             $true = true;
-            include $_SERVER['DOCUMENT_ROOT'] . "/_Partials/formCategories.php";
-            ?>
+            include $_SERVER['DOCUMENT_ROOT'] . "/_Partials/formCategories.php"; ?>
             <div id="containerLostAd">
                 <?php
                 // The page limit is 30 pet.

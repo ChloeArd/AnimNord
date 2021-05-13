@@ -12,7 +12,7 @@
 
     <header>
         <div class="flexCenter">
-            <img class="logoAnim" src="../../assets/img/banniereAnimNord.png">
+            <img class="logoAnim" src="../../assets/img/banniereAnimNord.png" alt="Logo Anim'Nord">
         </div>
         <div id="menu" class="menu flexCenter flexRow">
             <p><i class="fas fa-paw"></i></p>
@@ -40,7 +40,7 @@
 
         <div id="menuMobile" class="flexRow align">
             <p id="logoMenu"><i class="fas fa-bars"></i></p>
-            <img class="logoAnim2" src="/assets/img/logo-animNord.png">
+            <img class="logoAnim2" src="/assets/img/logo-animNord.png" alt="Logo Anim'Nord">
         </div>
 
         <div id="subMenu" class="flexColumn">
@@ -69,7 +69,7 @@
     <?= $html ?>
 
     <footer class="flexCenter flexColumn">
-        <img id="logosite" src="/assets/img/chien_chat_bleu.png">
+        <img id="logosite" src="/assets/img/chien_chat_bleu.png" alt="Logo Anim'Nord">
         <p class="colorWhite size18">Suivez-nous :</p>
         <div class="flexRow">
             <a href="#"><i class="fab fa-facebook-square linkSocial"></i></a>

@@ -9,7 +9,7 @@
         <a href="../index.php?controller=adfind&action=new" class="containerType">
             <p><i class="fas fa-chevron-circle-right colorBlue"></i>J'ai trouvé un chien ou un chat.</p>
         </a>
-        <a href="addAdoptView.php" class="containerType">
+        <a href="create/addAdoptView.php" class="containerType">
             <p><i class="fas fa-chevron-circle-right colorBlue"></i>J'ai un chien ou un chat à faire adopter.</p>
         </a>
         <p id="freeAd" class="colorGrey margin_15_0">La publication est totalement gratuite et instantanée !</p>

@@ -3,8 +3,7 @@ $id = $_GET['id'];
 $manager = new \Model\AdFind\AdFindManager();
 $adFind = $manager->getAd2($id);
 
-foreach ($adFind as $ad) {
-    ?>
+foreach ($adFind as $ad) { ?>
     <main>
         <form id="delete" class="width_80 flexColumn flexCenter" method="post" action="">
             <h1 class="margin_15_0 colorRed">Voulez vous vraiment supprimer l'annonce "<?=$ad->getAnimal() ?> (<?=$ad->getSex() ?>)" ?</h1>

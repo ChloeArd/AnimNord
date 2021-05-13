@@ -20,11 +20,11 @@ class CommentFindManager {
      */
     public function getCommentsAd(int $adFind_fk): array {
         $comments = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM comment_find WHERE adFind_fk = $adFind_fk ORDER BY id DESC");
+        $request = DB::getInstance()->prepare("SELECT * FROM comment_find WHERE adFind_fk = :adFind_fk ORDER BY id DESC");
+        $request->bindParam(":adFind_fk", $adFind_fk);
         $result = $request->execute();
         if($result) {
-            $data = $request->fetchAll();
-            foreach ($data as $comment_data) {
+            foreach ($request->fetchAll() as $comment_data) {
                 $user = UserManager::getManager()->getUser($comment_data['user_fk']);
                 $adFind = AdFindManager::getManager()->getAd($comment_data['adFind_fk']);
                 if($user->getId()) {
@@ -44,7 +44,8 @@ class CommentFindManager {
      */
     public function getCommentAd(int $id): array {
         $comments = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM comment_find WHERE id = $id");
+        $request = DB::getInstance()->prepare("SELECT * FROM comment_find WHERE id = :id");
+        $request->bindParam(":id", $id);
         $result = $request->execute();
         if($result) {
             $data = $request->fetchAll();
@@ -87,7 +88,6 @@ class CommentFindManager {
      */
     public function update (CommentFind $comment): bool {
         $request = DB::getInstance()->prepare("UPDATE comment_find SET content = :content WHERE id = :id");
-
         $request->bindValue(':id', $comment->getId());
         $request->bindValue(':content', $comment->setContent($comment->getContent()));
 
@@ -100,7 +100,8 @@ class CommentFindManager {
      * @return bool
      */
     public function delete (int $id): bool {
-        $request = DB::getInstance()->prepare("DELETE FROM comment_find WHERE id = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM comment_find WHERE id = :id");
+        $request->bindParam(":id", $id);
         return $request->execute();
     }
 }

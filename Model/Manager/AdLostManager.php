@@ -22,8 +22,7 @@ class AdLostManager {
         $request = DB::getInstance()->prepare("SELECT * FROM adlost ORDER by id DESC");
         $result = $request->execute();
         if($result) {
-            $data = $request->fetchAll();
-            foreach ($data as $ads_data) {
+            foreach ($request->fetchAll() as $ads_data) {
                 $user = UserManager::getManager()->getUser($ads_data['user_fk']);
                 if($user->getId()) {
                     $ads[] = new AdLost($ads_data['id'], $ads_data['animal'],  $ads_data['name'], $ads_data['sex'], $ads_data['size'],
@@ -41,7 +40,8 @@ class AdLostManager {
      * @return AdLost
      */
     public function getAd($id) {
-        $request = DB::getInstance()->prepare("SELECT * FROM adlost WHERE id = $id");
+        $request = DB::getInstance()->prepare("SELECT * FROM adlost WHERE id = :id");
+        $request->bindParam(":id", $id);
         $request->execute();
         $ad_data = $request->fetch();
         $ad = new AdLost();
@@ -67,16 +67,16 @@ class AdLostManager {
 
     public function getAd2(int $id): array {
         $ad = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM adlost WHERE id = $id");
+        $request = DB::getInstance()->prepare("SELECT * FROM adlost WHERE id = :id");
+        $request->bindParam(":id", $id);
         $result = $request->execute();
         if($result) {
-            $data = $request->fetchAll();
-            foreach ($data as $ad_data) {
-                $user = UserManager::getManager()->getUser($ad_data['user_fk']);
-                if($user->getId()) {
-                    $ad[] = new AdLost($ad_data['id'], $ad_data['animal'],  $ad_data['name'], $ad_data['sex'], $ad_data['size'],
-                        $ad_data['fur'], $ad_data['color'], $ad_data['dress'], $ad_data['race'], $ad_data['number'], $ad_data['description'],
-                        $ad_data['date_lost'], $ad_data['date'], $ad_data['city'], $ad_data['picture'] ,$user);
+            foreach ($request->fetchAll() as $data) {
+                $user = UserManager::getManager()->getUser($data['user_fk']);
+                if ($user->getId()) {
+                    $ad[] = new AdLost($data['id'], $data['animal'], $data['name'], $data['sex'], $data['size'],
+                        $data['fur'], $data['color'], $data['dress'], $data['race'], $data['number'], $data['description'],
+                        $data['date_lost'], $data['date'], $data['city'], $data['picture'], $user);
                 }
             }
         }
@@ -89,11 +89,11 @@ class AdLostManager {
      */
     public function adsByUser(int $user_fk): array {
         $ads = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM adlost WHERE user_fk = $user_fk ORDER by id DESC ");
+        $request = DB::getInstance()->prepare("SELECT * FROM adlost WHERE user_fk = :user_fk ORDER by id DESC ");
+        $request->bindParam(":user_fk", $user_fk);
         $result = $request->execute();
         if($result) {
-            $data = $request->fetchAll();
-            foreach ($data as $ads_data) {
+            foreach ($request->fetchAll() as $ads_data) {
                 $user = UserManager::getManager()->getUser($user_fk);
                 if($user->getId()) {
                     $ads[] = new AdLost($ads_data['id'], $ads_data['animal'],  $ads_data['name'], $ads_data['sex'], $ads_data['size'],
@@ -169,12 +169,14 @@ class AdLostManager {
      * @return bool
      */
     public function delete (AdLost $adLost): bool {
-        $id = $adLost->getId();
-        $request = DB::getInstance()->prepare("DELETE FROM adlost WHERE id = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM adlost WHERE id = :id");
+        $request->bindValue(":id", $adLost->getId());
         $request->execute();
-        $request = DB::getInstance()->prepare("DELETE FROM comment_lost WHERE adLost_fk = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM comment_lost WHERE adLost_fk = :adLost_fk");
+        $request->bindValue(":adLost_fk", $adLost->getId());
         $request->execute();
-        $request = DB::getInstance()->prepare("DELETE FROM favorite_lost WHERE adLost_fk = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM favorite_lost WHERE adLost_fk = :adLost_fk");
+        $request->bindValue(":adLost_fk", $adLost->getId());
         return $request->execute();
     }
 
@@ -185,8 +187,7 @@ class AdLostManager {
 
         $result = $request->execute();
         if($result) {
-            $data = $request->fetchAll();
-            foreach ($data as $ads_data) {
+            foreach ($request->fetchAll() as $ads_data) {
                 $user = UserManager::getManager()->getUser($ads_data['user_fk']);
                 if($user->getId()) {
                     $filter[] = new AdLost($ads_data['id'], $ads_data['animal'],  $ads_data['name'], $ads_data['sex'], $ads_data['size'],
@@ -207,8 +208,7 @@ class AdLostManager {
         $request = DB::getInstance()->prepare("SELECT * FROM adlost ORDER by id DESC LIMIT 0,4");
         $result = $request->execute();
         if($result) {
-            $data = $request->fetchAll();
-            foreach ($data as $ad) {
+            foreach ($request->fetchAll() as $ad) {
                 $user = UserManager::getManager()->getUser($ad['user_fk']);
                 if($user->getId()) {
                     $recent[] = new AdLost($ad['id'], $ad['animal'],  $ad['name'], $ad['sex'], $ad['size'],

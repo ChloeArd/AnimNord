@@ -2,8 +2,8 @@
 $id = $_GET['id'];
 $manager = new \Model\User\UserManager();
 $user = $manager->getUser($id);
-foreach ($user as $info) {
-?>
+
+foreach ($user as $info) { ?>
     <main>
         <h1 class="margin_15_0 colorRed center">Voulez-vous vraiment supprimer votre compte ?</h1>
         <form id="delete" class="width_80 flexColumn flexCenter" method="post" action="">

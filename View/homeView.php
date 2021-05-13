@@ -8,10 +8,15 @@ if (isset($_GET['success'])) {
         case '0':
             $return = "Vous êtes bien déconnecté(e) !";
             break;
+        case '1' :
+            $return = "Vous avez bien supprimé votre compte";
+            break;
+        case '2' :
+            $return = "Le contenu a été modifié !";
+            break;
     }
 }
 ?>
-
     <div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
     <main class=" width_100 flexColumn">
         <?php
@@ -24,16 +29,14 @@ if (isset($_GET['success'])) {
                     }
                 }
                 ?>
-        <div class="flexCenter flexColumn">
-            <img class="backgroundPet" src="<?=$content->getPicture() ?>" alt="chien et chat">
-            <p class="question buttonWhite colorBlue"><?=$content->getText1() ?></p>
-        </div>
-
-        <div class="helpIndex colorWhite"><?=$content->getText2() ?></div>
-        <?php
+                <div class="flexCenter flexColumn">
+                    <img class="backgroundPet" src="<?=$content->getPicture() ?>" alt="chien et chat">
+                    <p class="question buttonWhite colorBlue"><?=$content->getText1() ?></p>
+                </div>
+                <div class="helpIndex colorWhite"><?=$content->getText2() ?></div>
+                <?php
             }
-        }
-        ?>
+        } ?>
 
         <div id="#recentPost">
             <h2 class="center title2">Annonces récentes de chiens et de chats perdus</h2>
@@ -122,19 +125,17 @@ if (isset($_GET['success'])) {
                 }
                 ?>
             </div>
-            <a href="pages/adopt.php" class="buttonEnter buttonCenter radius10 align flexCenter">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
+            <a href="" class="buttonEnter buttonCenter radius10 align flexCenter">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
             <div class="accountIndex">
                 <?php
-                if (isset($_SESSION["id"])) {
-                    ?>
+                if (isset($_SESSION["id"])) { ?>
                     <h2 class="title3 center">Vous avez perdus votre animal ? trouvés un animal ? Ou vous voulez faire adopter un animal ?</h2>
                     <div id="connection_disconnection" class="flexRow flexCenter">
                         <a href="../View/ad.php" class="buttonWhite2">Publier une annonce</a>
                     </div>
                     <?php
                 }
-                else {
-                    ?>
+                else { ?>
                     <h2 class="title3 center">Pas encore incrit ? ou pas encore connecté ?</h2>
                     <div id="connection_disconnection" class="flexRow flexCenter">
                         <a href="pages/registration.php" class="buttonWhite2">Inscription</a>

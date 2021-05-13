@@ -1,9 +1,4 @@
 <?php
-session_start();
-$title = "Anim'Nord : Adopter";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/header.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/menu.php";
-
 if (isset($_GET["page"])) {
     $page = $_GET["page"];
 }

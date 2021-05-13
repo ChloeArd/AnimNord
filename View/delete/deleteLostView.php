@@ -3,8 +3,7 @@ $id = $_GET['id'];
 $manager = new \Model\AdLost\AdLostManager();
 $adlost = $manager->getAd2($id);
 
-foreach ($adlost as $ad) {
-?>
+foreach ($adlost as $ad) { ?>
     <main>
         <form id="delete" class="width_80 flexColumn flexCenter" method="post" action="">
             <h1 class="margin_15_0 colorRed">Voulez vous vraiment supprimer l'annonce "<?=$ad->getAnimal() ?> (<?=$ad->getSex() ?>)" ?</h1>
@@ -29,7 +28,6 @@ foreach ($adlost as $ad) {
             <input type="submit" class="buttonEnter colorWhite radius10 pointer backgroundRed" value="Supprimer l'annonce">
         </form>
     </main>
-
-<?php
+    <?php
 }
 ?>

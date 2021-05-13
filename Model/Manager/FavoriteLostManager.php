@@ -21,11 +21,11 @@ class FavoriteLostManager {
      */
     public function favoritesByUser(int $adLost_fk, int $user_fk): array {
         $favorites = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM favorite_lost WHERE user_fk = $user_fk ORDER by id DESC ");
+        $request = DB::getInstance()->prepare("SELECT * FROM favorite_lost WHERE user_fk = :user_fk ORDER by id DESC ");
+        $request->bindParam(":user_fk", $user_fk);
         $result = $request->execute();
         if($result) {
-            $data = $request->fetchAll();
-            foreach ($data as $favorites_data) {
+            foreach ($request->fetchAll() as $favorites_data) {
                 $user = UserManager::getManager()->getUser($user_fk);
                 $adLost = AdLostManager::getManager()->getAd($adLost_fk);
                 if($user->getId()) {
@@ -44,11 +44,8 @@ class FavoriteLostManager {
      * @return bool
      */
     public function add (FavoriteLost $favorite): bool {
-        $request = DB::getInstance()->prepare("
-            INSERT INTO favorite_lost (adLost_fk, user_fk)
-                VALUES (:adLost_fk, :user_fk) 
-        ");
-
+        $request = DB::getInstance()->prepare("INSERT INTO favorite_lost (adLost_fk, user_fk) 
+                                                     VALUES (:adLost_fk, :user_fk) ");
         $request->bindValue(':adLost_fk', $favorite->getAdLostFk()->getId());
         $request->bindValue(':user_fk', $favorite->getUserFk()->getId());
 
@@ -61,8 +58,8 @@ class FavoriteLostManager {
      * @return bool
      */
     public function delete (FavoriteLost $favorite): bool {
-        $id = $favorite->getId();
-        $request = DB::getInstance()->prepare("DELETE FROM favorite_lost WHERE id = $id");
+        $request = DB::getInstance()->prepare("DELETE FROM favorite_lost WHERE id = :id");
+        $request->bindValue(":id", $favorite->getId());
         return $request->execute();
     }
 }

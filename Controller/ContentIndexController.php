@@ -3,11 +3,8 @@
 namespace Controller;
 
 use Controller\Traits\ReturnViewTrait;
-use Exception;
-use http\Url;
 use Model\Entity\ContentIndex;
 use Modele\ContentIndex\ContentIndexManager;
-use Model\Entity\User;
 use Model\User\UserManager;
 
 class ContentIndexController {
@@ -29,6 +26,7 @@ class ContentIndexController {
             if($user_fk->getId()) {
                 $contents = new ContentIndex($id, $picture, $text1, $text2, $user_fk);
                 $contentManager->update($contents);
+                header("Location: ../index.php?&success=2");
             }
         }
         $this->return("update/updateContentIndexView", "Anim'Nord : Modifier le contenu de l'accueil");
