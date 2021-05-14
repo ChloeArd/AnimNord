@@ -17,26 +17,23 @@ class FavoriteLostController {
      * Displays the favorites of the ads of lost dogs and cats to a single user.
      * @param int $user_fk
      */
-    public function favoritesUser(int $adLost_fk, int $user_fk) {
+    public function favoritesUser(int $user_fk) {
         $manager = new FavoriteLostManager();
-        $this->return("", "Anim'Nord : Mes favoris", ['favoritesUser' => $manager->favoritesByUser($adLost_fk, $user_fk)]);
+        $this->return("favoritesAccount", "Anim'Nord : Mes favoris", ['favoritesUser' => $manager->favoritesByUser($user_fk)]);
     }
 
     /**
      * Add a ad lost in lost favorite.
      * @param $favoriteLost
      */
-    public function addFavorite($favoriteLost) {
-        if (isset($favoriteLost['adLost_fk'], $favoriteLost['user_fk'])) {
+    public function addFavorite($id, $user) {
+        if ($_GET['id'] && $_GET['user']) {
             $userManager = new UserManager();
             $adlostManager = new AdLostManager();
             $favoriteManager = new FavoriteLostManager();
 
-            $adLost_fk = intval($favoriteLost['adLost_fk']);
-            $user_fk = intval($favoriteLost['user_fk']);
-
-            $user_fk = $userManager->getUser($user_fk);
-            $adLost_fk = $adlostManager->getAd($adLost_fk);
+            $user_fk = $userManager->getUser($user);
+            $adLost_fk = $adlostManager->getAd($id);
             if($user_fk->getId()) {
                 if ($adLost_fk->getId()) {
                     $favorite = new FavoriteLost(null, $adLost_fk, $user_fk);

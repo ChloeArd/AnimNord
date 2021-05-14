@@ -54,7 +54,7 @@ if (isset($_GET['controller'])) {
                         $controller->addAd($_POST, $_FILES);
                         break;
                     case 'update' :
-                        $controller->updateAd($_POST, $_FILES);
+                        $controller->updateAd($_POST);
                         break;
                     case 'view' :
                         $controller->adsUser($_SESSION['id']);
@@ -72,7 +72,10 @@ if (isset($_GET['controller'])) {
             if (isset($_GET['favorite'])) {
                 switch ($_GET['favorite']) {
                     case 'favoriteLost' :
-                        $controllerFavorite->addFavorite($_POST);
+                        $controllerFavorite->addFavorite($_GET['id'], $_SESSION['id']);
+                        break;
+                    case 'view' :
+                        $controllerFavorite->favoritesUser($_SESSION['id']);
                         break;
                     default :
                         break;
@@ -176,7 +179,7 @@ if (isset($_GET['controller'])) {
                         $controller->updateRole($_POST);
                         break;
                     case 'delete' :
-                        $controller->delete($_GET['id']);
+                        $controller->delete($_POST);
                         break;
                     default:
                         break;

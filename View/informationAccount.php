@@ -23,7 +23,7 @@ if (isset($var['user'])) {
             <div class="separatorVertical"></div>
             <a href="../index.php?controller=adlost&action=view" class="colorBlue margin_0_20 linkAccount">Mes annonces</a>
             <div class="separatorVertical"></div>
-            <a href="favoritesAccount.php" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
+            <a href="../index.php?controller=adlost&favorite=view" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
             <div class="separatorVertical"></div>
             <a href="favoritesAccount.php" class="colorBlue margin_0_20 linkAccount">Mes messages</a>
             <div class="separatorVertical"></div>

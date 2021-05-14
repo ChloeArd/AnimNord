@@ -44,28 +44,21 @@ class UserController {
     public function updatePass($fields) {
         if (isset($fields['id'], $fields['currentPassword'], $fields['newPassword'])) {
             $userManager = new UserManager();
-            $bdd = DB::getInstance();
 
             $id = intval($fields['id']);
-            $currentPassword = htmlentities(ucfirst(trim($fields['currentPassword'])));
-            $newPassword = htmlentities(strtoupper(trim($fields['newPassword'])));
+            $currentPassword = htmlentities($fields['currentPassword']);
+            $newPassword = htmlentities($fields['newPassword']);
 
-            $stmt = $bdd->prepare("SELECT * FROM user WHERE id = :id");
-            $stmt->bindParam(":id", $id);
-            $stmt->execute();
+            if ($currentPassword === $_SESSION['password']) {
+                $maj = preg_match('@[A-Z]@', $newPassword);
+                $min = preg_match('@[a-z]@', $newPassword);
+                $number = preg_match('@[0-9]@', $newPassword);
 
-            foreach ($stmt->fetchAll() as $user) {
-                if (password_verify($currentPassword, $user['password'])) {
-                    $maj = preg_match('@[A-Z]@', $newPassword);
-                    $min = preg_match('@[a-z]@', $newPassword);
-                    $number = preg_match('@[0-9]@', $newPassword);
-
-                    if($maj && $min && $number && strlen($newPassword) > 8) {
-                        $password = password_hash($newPassword, PASSWORD_BCRYPT);
-                        $user = new User($id, $password);
-                        $userManager->updatePasswordUser($user);
-                        header("Location: ../index.php?controller=user&action=view&id=" . $_SESSION['id'] . "&success=1");
-                    }
+                if($maj && $min && $number && strlen($newPassword) > 8) {
+                    $password = password_hash($newPassword, PASSWORD_BCRYPT);
+                    $user = new User($id, $password);
+                    $userManager->updatePasswordUser($user);
+                    header("Location: ../index.php?controller=user&action=view&id=" . $_SESSION['id'] . "&success=1");
                 }
             }
         }
@@ -86,9 +79,12 @@ class UserController {
         $this->return('update/updateRoleUserView', "Anim'Nord : Modification des informations personnelles");
     }
 
-    public function delete(int $id) {
-        if ($_GET['id']) {
+    public function delete($user) {
+        if (isset($user['id'])) {
             $userManager = new UserManager();
+
+            $id = intval($user['id']);
+
             $userManager->deleteUser($id);
             header("Location: ../index.php?success=1");
         }

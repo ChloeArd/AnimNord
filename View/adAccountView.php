@@ -155,7 +155,7 @@ if (isset($_GET['success'])) {
                         } ?>
                 </div>
                 <?php
-                    if ($var['adsUser'] === []) {?>
+                    if ($var['adsUserFind'] === []) {?>
                         <p class="colorWhite margin_15_0 center categoriesAnimal">Tu n'as pas encore publié d'annonce !</p>
                         <?php
                     }

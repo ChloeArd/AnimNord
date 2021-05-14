@@ -15,11 +15,10 @@ class FavoriteLostManager {
 
     /**
      * Recover all the lost dog and cat ads that the user has put in his favorites.
-     * @param int $adLost_fk
      * @param int $user_fk
      * @return array
      */
-    public function favoritesByUser(int $adLost_fk, int $user_fk): array {
+    public function favoritesByUser(int $user_fk): array {
         $favorites = [];
         $request = DB::getInstance()->prepare("SELECT * FROM favorite_lost WHERE user_fk = :user_fk ORDER by id DESC ");
         $request->bindParam(":user_fk", $user_fk);
@@ -27,7 +26,7 @@ class FavoriteLostManager {
         if($result) {
             foreach ($request->fetchAll() as $favorites_data) {
                 $user = UserManager::getManager()->getUser($user_fk);
-                $adLost = AdLostManager::getManager()->getAd($adLost_fk);
+                $adLost = AdLostManager::getManager()->getAd($favorites_data['adLost_fk']);
                 if($user->getId()) {
                     if ($adLost->getId()) {
                         $favorites[] = new AdLost($favorites_data['id'], $adLost, $user);

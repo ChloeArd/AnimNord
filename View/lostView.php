@@ -30,7 +30,7 @@ if (isset($var['ads'])) {
                 foreach ($var['ads'] as $ad) {
                     $dateLost = new DateTime($ad->getDateLost());
                     $date = new DateTime($ad->getDate()); ?>
-                    <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>&comment=commentLost' class='post flexRow flexCenter colorGrey'>
+                    <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>&user=<?=$ad->getUserFk()->getId()?>&comment=commentLost' class='post flexRow flexCenter colorGrey'>
                     <div class='width_30'>
                         <?php
                         if ($ad->getPicture() === null || $ad->getPicture() === "") {
