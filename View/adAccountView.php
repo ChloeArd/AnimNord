@@ -67,7 +67,7 @@ if (isset($_GET['success'])) {
                                     }
                                 }
                                 else { ?>
-                                    <img class='imagePet' src='<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>" >
+                                    <img class='imagePet' src='../assets/img/adLost/<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>">
                                     <?php
                                 }
                                 ?>
@@ -127,7 +127,7 @@ if (isset($_GET['success'])) {
                                         }
                                     }
                                     else { ?>
-                                        <img class='imagePet' src='<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>" >
+                                        <img class='imagePet' src='../assets/img/adFind/<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>">
                                         <?php
                                     }
                                     ?>

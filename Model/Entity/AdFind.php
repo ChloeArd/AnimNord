@@ -21,7 +21,7 @@ class AdFind {
     private ?User $user_fk;
 
     /**
-     * AdFind constructor.
+     * adFind constructor.
      * @param int|null $id
      * @param string|null $animal
      * @param string|null $sex

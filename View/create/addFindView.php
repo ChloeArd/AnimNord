@@ -1,10 +1,25 @@
 <?php
+$return = "";
+$id = "";
+
+if (isset($_GET['error'])) {
+    $id = "error";
+    switch ($_GET['error']) {
+        case '0':
+            $return = "Vous avez fourni un mauvais type de fichier !";
+            break;
+        case '1' :
+            $return = "Le poids du fichier est trop élevé, la limite est de 2 Mo !";
+            break;
+    }
+}
 date_default_timezone_set("Europe/Paris");
 ?>
 
+<div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
 <main class="width_80">
     <h1 class="flexCenter title colorWhite">Publication d'une annonce pour chien ou chat trouvé</h1>
-    <form id="formAd" method="post" class="flexColumn width_50">
+    <form id="formAd" method="post" class="flexColumn width_50" enctype="multipart/form-data">
         <div class="flexRow align flexCenter">
             <div class="circle flexCenter">
                 <span>1</span>
@@ -762,7 +777,9 @@ date_default_timezone_set("Europe/Paris");
             </div>
             <p>Importer une photo <i class="far fa-image"></i></p>
         </div>
-        <input type="file" name="picture" id="picture">
+        <label for="picture">Sélectionner des images à télécharger (PNG, JPEG, JPG) : </label>
+        <input type="file" name="picture" id="picture" accept="image/png, image/jpeg, image/jpg" size="2000000">
+        <span>(Max: 2Mo)</span>
 
         <input type="submit" class="buttonEnter colorWhite radius10 pointer" value="Publier">
     </form>

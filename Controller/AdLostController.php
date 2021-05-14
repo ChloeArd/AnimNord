@@ -8,6 +8,7 @@ use Model\CommentLost\CommentLostManager;
 use Model\Entity\AdLost;
 use Model\AdLost\AdLostManager;
 use Model\User\UserManager;
+use function Controller\Traits\getRandomName;
 
 class AdLostController {
 
@@ -44,9 +45,9 @@ class AdLostController {
      * add a ad
      * @param $ad
      */
-    public function addAd($ad) {
+    public function addAd($ad, $files) {
         if (isset($ad['animal'], $ad['name'], $ad['sex'], $ad['size'], $ad['fur'], $ad['color'], $ad['dress'], $ad['race'],
-        $ad['number'], $ad['description'], $ad['date_lost'], $ad['date'], $ad['city'], $ad['picture'], $ad['user_fk'])) {
+        $ad['number'], $ad['description'], $ad['date_lost'], $ad['date'], $ad['city'], $files['picture'], $ad['user_fk'])) {
 
             $userManager = new UserManager();
             $adlostManager = new AdLostManager();
@@ -64,14 +65,30 @@ class AdLostController {
             $date_lost = htmlentities($ad['date_lost']);
             $date = htmlentities($ad['date']);
             $city = htmlentities($ad['city']);
-            $picture = htmlentities($ad['picture']);
             $user_fk = intval($ad['user_fk']);
 
-            $user_fk = $userManager->getUser($user_fk);
-            if($user_fk->getId()) {
-                $ad = new AdLost(null, $animal, $name, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_lost, $date, $city, $picture, $user_fk);
-                $adlostManager->add($ad);
-                header("Location: ../index.php?controller=adlost&action=view&success=3");
+            if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
+                $maxSize = 2 * 1024 * 1024; // = 2 Mo
+
+                if ($files['picture']['size'] <= $maxSize) {
+                    $tmpName = $files['picture']['tmp_name'];
+                    $namePicture = getRandomName($files['picture']['name']);
+
+                    move_uploaded_file($tmpName, "./assets/img/adLost/".$namePicture);
+
+                    $user_fk = $userManager->getUser($user_fk);
+                    if($user_fk->getId()) {
+                        $ad = new AdLost(null, $animal, $name, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_lost, $date, $city, $namePicture, $user_fk);
+                        $adlostManager->add($ad);
+                        header("Location: ../index.php?controller=adlost&action=view&success=3");
+                    }
+                }
+                else {
+                    header("Location: ../index.php?controller=adlost&action=new&error=1");
+                }
+            }
+            else {
+                header("Location: ../index.php?controller=adlost&action=new&error=0");
             }
         }
         $this->return("create/addLostView", "Anim'Nord : Ajouter une annonce de chiens et chats perdus");
@@ -98,7 +115,6 @@ class AdLostController {
             $date_lost = htmlentities($ad['date_lost']);
             $date = htmlentities($ad['date']);
             $city = htmlentities($ad['city']);
-            $picture = htmlentities($ad['picture']);
             $user_fk = intval($ad['user_fk']);
 
             $user_fk = $userManager->getUser($user_fk);
@@ -116,12 +132,15 @@ class AdLostController {
      * @param $ad
      */
     public function deleteAd($ad) {
-        if (isset($ad['id'], $ad['user_fk'])) {
+        if (isset($ad['id'], $ad['user_fk'], $ad['picture'])) {
             $userManager = new UserManager();
             $adlostManager = new AdLostManager();
 
             $id = intval($ad['id']);
             $user_fk = intval($ad['user_fk']);
+            $picture = htmlentities($ad['picture']);
+
+            unlink("./assets/img/adLost/" . $picture);
 
             $user_fk = $userManager->getUser($user_fk);
             if ($user_fk->getId()) {

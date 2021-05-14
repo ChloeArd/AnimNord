@@ -4,7 +4,7 @@ date_default_timezone_set("Europe/Paris");
 
 <main class="width_80">
         <h1 class="flexCenter title colorWhite">Publication d'une annonce pour chien ou chat à adopter</h1>
-        <form id="formAd" method="post" action="../../assets/php/sendMail.php" class="flexColumn width_50">
+        <form id="formAd" method="post" action="../../assets/php/sendMail.php" class="flexColumn width_50" enctype="multipart/form-data">
             <div class="flexRow align flexCenter">
                 <div class="circle flexCenter">
                     <span>1</span>

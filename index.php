@@ -51,10 +51,10 @@ if (isset($_GET['controller'])) {
             if(isset($_GET['action'])) {
                 switch($_GET['action']) {
                     case 'new' :
-                        $controller->addAd($_POST);
+                        $controller->addAd($_POST, $_FILES);
                         break;
                     case 'update' :
-                        $controller->updateAd($_POST);
+                        $controller->updateAd($_POST, $_FILES);
                         break;
                     case 'view' :
                         $controller->adsUser($_SESSION['id']);
@@ -114,7 +114,7 @@ if (isset($_GET['controller'])) {
             if(isset($_GET['action'])) {
                 switch($_GET['action']) {
                     case 'new' :
-                        $controller->addAd($_POST);
+                        $controller->addAd($_POST, $_FILES);
                         break;
                     case 'update' :
                         $controller->updateAd($_POST);

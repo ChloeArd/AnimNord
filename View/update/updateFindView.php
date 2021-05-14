@@ -6,7 +6,7 @@ $adFind = $manager->getAd2($id);
 
 foreach ($adFind as $ad) { ?>
     <main class="width_80">
-        <h1 class="flexCenter title colorWhite">Modification d'une annonce pour chien ou chat perdu</h1>
+        <h1 class="flexCenter title colorWhite">Modification d'une annonce pour chien ou chat trouvé</h1>
         <form id="formAd" method="post" class="flexColumn width_50">
             <div class="flexRow align flexCenter">
                 <div class="circle flexCenter">
@@ -770,7 +770,7 @@ foreach ($adFind as $ad) { ?>
                 </div>
                 <p>Importer une photo <i class="far fa-image"></i></p>
             </div>
-            <!--<input type="file" name="picture" id="picture" > -->
+            <!--<input type="file" name="newPicture" accept="image/*"  value="<?=$ad->getPicture() ?>"> -->
             <input type="hidden" name="picture" value="<?=$ad->getPicture() ?>">
 
             <input type="submit" class="buttonEnter colorWhite radius10 pointer" value="Modifier">

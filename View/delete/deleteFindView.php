@@ -19,10 +19,11 @@ foreach ($adFind as $ad) { ?>
                 }
             }
             else { ?>
-                <img class='imagePet' src='<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>" >
+                <img class='imagePet' src='../assets/img/adFind/<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>">
                 <?php
             }
             ?>
+            <input type="hidden" name="picture" value="<?=$ad->getPicture() ?>">
             <input type="hidden" name="user_fk" value="<?=$ad->getUserFk()->getId() ?>">
             <input type="hidden" name="id" value="<?=$ad->getId()?>">
             <input type="submit" class="buttonEnter colorWhite radius10 pointer backgroundRed" value="Supprimer l'annonce">

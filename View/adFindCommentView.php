@@ -45,7 +45,7 @@ if (isset($var['ad'])) { ?>
                             }
                         }
                         else { ?>
-                            <img class='imagePet' src='<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>">
+                            <img class='imagePet' src='../assets/img/adFind/<?=$ad->getPicture() ?>' alt="<?=$ad->getAnimal() ?>">
                             <?php
                         }
                         ?>
