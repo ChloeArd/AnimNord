@@ -34,7 +34,6 @@
                 <?php
             }
             ?>
-
             <p><i class="fas fa-paw"></i></p>
         </div>
 

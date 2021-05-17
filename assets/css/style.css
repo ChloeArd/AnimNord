@@ -831,6 +831,40 @@ input:focus, textarea:focus, select:focus {
     height: 360px;
 }
 
+.backgroundGrey {
+    background-color: #E4E9EB;
+    color: #2C96C6;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+.containerUsers, .messages {
+    width: 20%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border: 2px solid #B7B8B8;
+    height: 90vh;
+}
+
+.messages {
+    width: 60%;
+}
+
+.containerUser:hover {
+    background-color: #E4E9EB;
+}
+
+.separatorHorizontal3 {
+    border-top: 2px solid #B7B8B8;
+    width: 100%;
+}
+
+.textareaMessage {
+    height: 40px;
+    width: 78%;
+}
+
 @media screen and (max-width: 1100px) {
     .width_80 {
         width: 100%;

@@ -1,4 +1,28 @@
+<?php
+$return = "";
+$id = "";
 
+if (isset($_GET['error'])){
+    $id = "error";
+    switch ($_GET['error']){
+        case '0':
+            $return = "L'email n'est pas valide !";
+            break;
+        case '1':
+            $return = "Problème lors de l'envoie du mail.";
+            break;
+    }
+}
+elseif (isset($_GET['success'])) {
+    $id = "success";
+    switch ($_GET['success']) {
+        case '0':
+            $return = "Votre E-mail a bien été envoyé !";
+            break;
+    }
+}
+?>
+<div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
 <main class="width_80">
     <h1 class="flexCenter title colorWhite"> Contactez-nous !  </h1>
     <div id="contact" class="backgroundWhite flexCenter width_100">

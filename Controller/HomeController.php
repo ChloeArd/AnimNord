@@ -48,4 +48,9 @@
      public function contactPage() {
          $this->return("contact", "Anim'Nord : Contact");
      }
+
+     //Page contact user by mail
+     public function contactUserPage() {
+         $this->return("sendMailUserView", "Anim'Nord : Contacter un utilisateur");
+     }
  }

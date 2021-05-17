@@ -83,7 +83,7 @@ if (isset($var['ad'])) { ?>
                         <p class="size20 center margin8">Vous l'avez trouvés ?</p>
                         <p>Veuillez contacter : <span class="size18 bold"><?=$ad->getUserFk()->getFirstname() ?> <?=$ad->getUserFk()->getLastname() ?></span></p>
                         <a href="#" class="buttonWhite margin8 colorRed"><i class="far fa-comment-dots"></i>Envoyer un message</a>
-                        <a href="#" class="buttonWhite margin8 colorRed"><i class="far fa-envelope"></i>Envoyer un E-mail</a>
+                        <a href="../index.php?controller=sendMail&id=<?=$ad->getUserFk()->getId()?>" class="buttonWhite margin8 colorRed"><i class="far fa-envelope"></i>Envoyer un E-mail</a>
                         <a href="tel:+<?=$ad->getUserFk()->getPhone() ?>" class="buttonWhite margin8 colorRed "><i class="fas fa-phone-alt"></i>Contacter par téléphone : <?=$ad->getUserFk()->getPhone() ?></a>
                     </div>
                 </div>
