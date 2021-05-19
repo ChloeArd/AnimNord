@@ -1,5 +1,4 @@
 <?php
-
 use Model\DB;
 
 if (isset($_GET["page"])) {
@@ -65,8 +64,9 @@ if (isset($var['ads'])) {
 
             if(!empty($_POST['date'])) {
                 $date_lost = htmlentities($_POST['date']);
-                $req .= "AND date_lost LIKE '%$date_lost%' ORDER BY date_lost DESC";
+                $req .= "AND date_lost LIKE '%$date_lost%'";
             }
+            $req .= "ORDER BY date DESC";
 
             $exec = $bdd->query($req);
             $nb_resultats = $exec->rowCount(); // count a result
@@ -77,9 +77,7 @@ if (isset($var['ads'])) {
                     <?php
                     $situation = "Perdu le :";
                     $true = true;?>
-                    <form action="" method="post" class="categories">
                         <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/formCategories.php";  ?>
-                    </form>
                     <div id="containerLostAd">
                         <div class="flexCenter margin_15_0">
                             <?php
@@ -173,9 +171,7 @@ if (isset($var['ads'])) {
                     <?php
                     $situation = "Perdu le :";
                     $true = true;?>
-                    <form action="" method="post" class="categories">
                         <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/formCategories.php";  ?>
-                    </form>
                     <div id="containerLostAd">
                         <div class="flexCenter flexColumn">
                             <h2 class="colorRed margin_15_0">Pas de résultats !</h2>
@@ -193,9 +189,7 @@ if (isset($var['ads'])) {
                 <?php
                 $situation = "Perdu le :";
                 $true = true;?>
-                <form action="" method="post" class="categories">
                     <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/formCategories.php";  ?>
-                </form>
                 <div id="containerLostAd">
                     <?php
                     // The page limit is 30 pet.

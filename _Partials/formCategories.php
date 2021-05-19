@@ -1,3 +1,4 @@
+    <form method="post" action="" class="categories">
         <div class="categorie flexColumn flexCenter">
             <label class="width_100 center colorWhite categoriesAnimal" for="animal"> Animal : </label>
             <div class="flexRow align categoriePet">
@@ -760,3 +761,4 @@
         <div class="flexCenter">
             <input type="submit" class="buttonEnter colorWhite" value="Rechercher">
         </div>
+    </form>
