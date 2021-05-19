@@ -12,17 +12,17 @@ date_default_timezone_set("Europe/Paris");
                 <p>Informations sur l'animal <i class="fas fa-paw"></i></p>
             </div>
             <div class="flexRow align">
-                <label for="animal" class="marginR">Animal : </label>
+                <label for="animal" class="marginR">Animal : <span class="size15 colorBlue required">*</span></label>
                 <input id="animal" type="radio" name="animal" value="chien" required>
                 <span class="margin_0_20"><i class="fas fa-dog"></i></span>
                 <input id="animal" type="radio" name="animal" value="chat" required>
                 <span class="margin_0_20"><i class="fas fa-cat"></i></span>
             </div>
-            <label for="name">Son nom :</label>
+            <label for="name">Son nom : <span class="size15 colorBlue required">*</span></label>
             <input type="text" id="name" name="name" pattern=".*\S.*" required>
-            <label for="age">Son âge :</label>
+            <label for="age">Son âge : <span class="size15 colorBlue required">*</span></label>
             <input type="text" id="age" name="age" required>
-            <label for="sexe"> Sexe :</label>
+            <label for="sexe"> Sexe : <span class="size15 colorBlue required">*</span></label>
             <div class="categoriePet">
                 <div class="flexRow align">
                     <input id="male" type="radio" name="sex" value="Mâle" required>
@@ -37,7 +37,7 @@ date_default_timezone_set("Europe/Paris");
                     <label for="unknown" class="margin_0_20">Inconnu</label>
                 </div>
             </div>
-            <label for="size"> Taille :</label>
+            <label for="size"> Taille : <span class="size15 colorBlue required">*</span></label>
             <select id="size" name="size" class="size15 categoriePet">
                 <option>Très petite</option>
                 <option>Petite</option>
@@ -45,14 +45,14 @@ date_default_timezone_set("Europe/Paris");
                 <option>Grande</option>
                 <option>Très grande</option>
             </select>
-            <label for="fur"> Poils :</label>
+            <label for="fur"> Poils : <span class="size15 colorBlue required">*</span></label>
             <select id="fur" name="fur" class="size15 categoriePet">
                 <option>Nue</option>
                 <option>Court</option>
                 <option>Mi-long</option>
                 <option>Long</option>
             </select>
-            <label for="colors"> Couleur du pelage :</label>
+            <label for="colors"> Couleur du pelage : <span class="size15 colorBlue required">*</span></label>
             <div class="categoriePet">
                 <div class="flexRow align">
                     <input id="black" type="checkbox" name="color" value="Noir">
@@ -79,7 +79,7 @@ date_default_timezone_set("Europe/Paris");
                     <label for="orange" class="margin_0_20 borderBlack orange"></label>
                 </div>
             </div>
-            <label for="dress">Robe :</label>
+            <label for="dress">Robe : <span class="size15 colorBlue required">*</span></label>
             <select id="dress" name="dress" class="size15 categoriePet">
                 <option>Uni</option>
                 <option>Tacheté</option>
@@ -88,11 +88,11 @@ date_default_timezone_set("Europe/Paris");
                 <option>Bicolor</option>
                 <option>Tricolore</option>
             </select>
-            <label for="race">Race :</label>
+            <label for="race">Race : <span class="size15 colorBlue required">*</span></label>
             <input type="text" name="race" id="race" placeholder="ex : berger allemand" class="categoriePet" required>
-            <label for="num">Numéro du tatouage ou de la puce :</label>
+            <label for="num">Numéro du tatouage ou de la puce : <span class="size15 colorBlue required">*</span></label>
             <input type="number" name="num" id="num" class="categoriePet" required>
-            <label for="description">Description : </label>
+            <label for="description">Description : <span class="size15 colorBlue required">*</span></label>
             <textarea id="description" name="description" required></textarea>
             <div class="flexRow align">
             </div>
@@ -102,15 +102,9 @@ date_default_timezone_set("Europe/Paris");
                 <div class="circle flexCenter">
                     <span>2</span>
                 </div>
-                <p>Date et lieu de sa disparition <i class="far fa-calendar-alt"></i><i class="fas fa-map-marker-alt"></i></p>
+                <p>Lieu du refuge <i class="far fa-calendar-alt"></i><i class="fas fa-map-marker-alt"></i></p>
             </div>
-            <div class="flexRow align">
-                <label for="date"> Perdu le :</label>
-                <div class="categoriePet">
-                    <input id="date" name="date" type="date" required>
-                </div>
-            </div>
-            <label for="city">Ville :</label>
+            <label for="city">Ville : <span class="size15 colorBlue required">*</span><span class="size15 colorBlue required">*</span></label>
             <select id="city" name="city" class="width_80 size15 categoriePet">
                 <option>Abancourt (59268)</option>
                 <option>Abscon (59215)</option>
@@ -769,7 +763,6 @@ date_default_timezone_set("Europe/Paris");
             </div>
             <input type="file" required>
             <div class="flexRow align">
-                <input id="maskPhone" type="checkbox" name="maskPhone" value="masqué le téléphone">
                 <label class="colorGrey" for="maskPhone">Masqué mon numéro de téléphone sur l'annonce.</label>
             </div>
 

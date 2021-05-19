@@ -972,6 +972,10 @@ input:focus, textarea:focus, select:focus {
     .containerRecentPost {
         width: 40%;
     }
+    .post {
+        margin: 0;
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 700px) {

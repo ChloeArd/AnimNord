@@ -31,9 +31,9 @@ elseif (isset($_GET['success'])) {
     <h1 class="flexCenter title colorWhite"> Connexion </h1>
     <div id="connect" class="backgroundWhite flexCenter width_100">
         <form method="post" id="formConnect" action="/assets/php/connection.php" class="flexColumn width_50">
-            <label for="email"> Adresse E-mail </label>
+            <label for="email"> Adresse E-mail <span class="size15 colorBlue required">*</span></label>
             <input type="email" id="email" name="email" pattern=".*\S.*" required>
-            <label for="password"> Mot de passe</label>
+            <label for="password"> Mot de passe <span class="size15 colorBlue required">*</span></label>
             <input type="password" id="password" name="password" pattern=".*\S.*" required>
             <a href="forgetPassword.php" class="colorBlue underline link">Mot de passe oublié ?</a>
             <input type="submit" class="buttonEnter colorWhite radius10 pointer" value="Connexion">

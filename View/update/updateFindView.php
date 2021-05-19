@@ -15,13 +15,13 @@ foreach ($adFind as $ad) { ?>
                 <p>Informations sur l'animal <i class="fas fa-paw"></i></p>
             </div>
             <div class="flexRow align">
-                <label for="animal" class="marginR">Animal : </label>
+                <label for="animal" class="marginR">Animal : <span class="size15 colorBlue required">*</span></label>
                 <input id="animal" type="radio" name="animal" value="Chien" <?PHP if($ad->getAnimal() === 'Chien'){echo "checked";}?> required>
                 <span class="margin_0_20"><i class="fas fa-dog"></i></span>
                 <input id="animal" type="radio" name="animal" value="Chat" <?PHP if($ad->getAnimal() === 'Chat'){echo "checked";} ?> required>
                 <span class="margin_0_20"><i class="fas fa-cat"></i></span>
             </div>
-            <label for="sex"> Sexe :</label>
+            <label for="sex"> Sexe : <span class="size15 colorBlue required">*</span></label>
             <div class="categoriePet">
                 <div class="flexRow align">
                     <input id="male" type="radio" name="sex" value="Mâle" <?PHP if($ad->getSex() !== 'Femelle' && $ad->getSex() !== 'Inconnu'){echo "checked";} ?> required>
@@ -36,7 +36,7 @@ foreach ($adFind as $ad) { ?>
                     <label for="unknown" class="margin_0_20">Inconnu</label>
                 </div>
             </div>
-            <label for="size"> Taille :</label>
+            <label for="size"> Taille : <span class="size15 colorBlue required">*</span></label>
             <select id="size" name="size" class="size15 categoriePet">
                 <option><?=$ad->getSize() ?></option>
                 <option>Très petite</option>
@@ -45,7 +45,7 @@ foreach ($adFind as $ad) { ?>
                 <option>Grande</option>
                 <option>Très grande</option>
             </select>
-            <label for="fur"> Poils :</label>
+            <label for="fur"> Poils : <span class="size15 colorBlue required">*</span></label>
             <select id="fur" name="fur" class="size15 categoriePet">
                 <option><?=$ad->getFur() ?></option>
                 <option>Nue</option>
@@ -53,7 +53,7 @@ foreach ($adFind as $ad) { ?>
                 <option>Mi-long</option>
                 <option>Long</option>
             </select>
-            <label for="color"> Couleur du pelage :</label>
+            <label for="color"> Couleur du pelage : <span class="size15 colorBlue required">*</span></label>
             <div class="categoriePet">
                 <div class="flexRow align">
                     <input id="black" type="checkbox" name="color" value="Noir" <?PHP if($ad->getColor() === 'Noir'){echo "checked";} ?>>
@@ -80,7 +80,7 @@ foreach ($adFind as $ad) { ?>
                     <label for="orange" class="margin_0_20 borderBlack orange"></label>
                 </div>
             </div>
-            <label for="dress">Robe :</label>
+            <label for="dress">Robe : <span class="size15 colorBlue required">*</span></label>
             <select id="dress" name="dress" class="size15 categoriePet">
                 <option><?=$ad->getDress() ?></option>
                 <option>Uni</option>
@@ -90,11 +90,11 @@ foreach ($adFind as $ad) { ?>
                 <option>Bicolor</option>
                 <option>Tricolore</option>
             </select>
-            <label for="race">Race :</label>
+            <label for="race">Race : <span class="size15 colorBlue required">*</span></label>
             <input type="text" name="race" id="race" placeholder="Ex : berger allemand" class="categoriePet" value="<?=$ad->getRace() ?>" pattern=".*\S.*" required>
             <label for="number">Numéro du tatouage ou de la puce :</label>
             <input type="text" name="number" id="number" class="categoriePet" value="<?=$ad->getNumber() ?>" pattern=".*\S.*">
-            <label for="description">Description : </label>
+            <label for="description">Description : <span class="size15 colorBlue required">*</span></label>
             <textarea id="description" name="description" required><?=$ad->getDescription() ?></textarea>
 
             <div class="flexRow align flexCenter">
@@ -104,13 +104,13 @@ foreach ($adFind as $ad) { ?>
                 <p>Date et lieu de son apparition <i class="far fa-calendar-alt"></i><i class="fas fa-map-marker-alt"></i></p>
             </div>
             <div class="flexRow align">
-                <label for="date_find"> Trouvé le :</label>
+                <label for="date_find"> Trouvé le : <span class="size15 colorBlue required">*</span></label>
                 <div class="categoriePet">
                     <input id="date_find" name="date_find" type="date" value="<?=$ad->getDateFind() ?>" required>
                 </div>
             </div>
             <input id="date" name="date" type="hidden" required value="<?= date('Y-m-d')?>">
-            <label for="city">Ville :</label>
+            <label for="city">Ville : <span class="size15 colorBlue required">*</span></label>
             <select id="city" name="city" class="width_80 size15 categoriePet">
                 <option><?=$ad->getCity() ?></option>
                 <option>Abancourt (59268)</option>

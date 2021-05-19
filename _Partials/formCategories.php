@@ -1,6 +1,8 @@
     <form method="post" action="" class="categories">
         <div class="categorie flexColumn flexCenter">
-            <label class="width_100 center colorWhite categoriesAnimal" for="animal"> Animal : </label>
+            <label class="width_100 center colorWhite categoriesAnimal" for="animal"> Animal :
+                <span class="size12 required">*</span>
+            </label>
             <div class="flexRow align categoriePet">
                 <input id="animal" type="radio" name="animal" value="Chien" required>
                 <span class="margin_0_20"><i class="fas fa-dog"></i></span>

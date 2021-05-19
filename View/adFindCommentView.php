@@ -89,10 +89,6 @@ if (isset($var['ad'])) { ?>
                 </div>
             </div>
 
-            <div class="width_80">
-                <div class="separatorHorizontal"></div>
-            </div>
-
             <div class="flexRow width_80">
                 <?php
                 if (isset($_SESSION["id"])) { ?>
