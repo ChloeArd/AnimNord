@@ -173,8 +173,9 @@ if (isset($var['ads'])) {?>
                     <div id="containerLostAd">
                         <div class="flexCenter flexColumn">
                             <h2 class="colorRed margin_15_0">Pas de résultats !</h2>
-                            <a class="colorGrey underline" href="../index.php?controller=adlost"><i class="fas fa-hand-point-right"></i>
-                                Afficher tous les chiens et chats perdus <i class="fas fa-hand-point-left"></i></a>
+                            <a class="colorGrey underline" href="../index.php?controller=adfind"><i class="fas fa-hand-point-right"></i>
+                                Afficher tous les chiens et chats trouvés <i class="fas fa-hand-point-left"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

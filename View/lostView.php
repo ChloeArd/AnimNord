@@ -66,7 +66,7 @@ if (isset($var['ads'])) {
                 $date_lost = htmlentities($_POST['date']);
                 $req .= "AND date_lost LIKE '%$date_lost%'";
             }
-            $req .= "ORDER BY date DESC";
+            $req .= " ORDER BY date DESC";
 
             $exec = $bdd->query($req);
             $nb_resultats = $exec->rowCount(); // count a result
