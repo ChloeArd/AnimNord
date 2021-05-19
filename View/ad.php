@@ -17,7 +17,7 @@
     <div class="helpIndex flexCenter flexColumn colorWhite">
         <h2 class="title3">Comment publier une annonce ?</h2>
         <div class="margin_15_0">
-            <p class="size18">C'est très simple, il te suffit de :</p>
+            <p class="size18">C'est très simple, il vous suffit de :</p>
             <ul>
                 <li>choisir parmis les 3 types d'annonces proposés,</li>
                 <li>complêter le formulaire,</li>

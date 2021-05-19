@@ -11,19 +11,29 @@ class UserController {
 
     use ReturnViewTrait;
 
+    /**
+     * retrieve all information from all users
+     */
     public function users() {
         $manager = new UserManager();
         $this->return("userManagementView", "Anim'Nord : Gestion des utilisateurs", ['users' => $manager->getUsers()]);
     }
 
+    /**
+     * retrieve all the information of a user
+     * @param int $id
+     */
     public function user(int $id) {
         $manager = new UserManager();
         $this->return('informationAccount', "Anim'Nord : Informations", ['user' => $manager->getUserID($id)]);
     }
 
+    /**
+     * modify personal information
+     * @param $fields
+     */
     public function update($fields) {
         if (isset($fields['id'], $fields['firstname'], $fields['lastname'], $fields['email'], $fields['phone'])) {
-            if (!empty($fields['firstname']) || $fields['lastname'] !== " " || $fields['email'] !== " " || $fields['phone'] !== " ") {
                 $userManager = new UserManager();
 
                 $id = intval($fields['id']);
@@ -36,11 +46,14 @@ class UserController {
                 $userManager->updateUser($user);
 
                 header("Location: ../index.php?controller=user&action=view&id=" . $_SESSION['id'] . "&success=0");
-            }
         }
         $this->return('update/updatePersonalInfoUserView', "Anim'Nord : Modification des informations personnelles");
     }
 
+    /**
+     * Modify a password
+     * @param $fields
+     */
     public function updatePass($fields) {
         if (isset($fields['id'], $fields['currentPassword'], $fields['newPassword'])) {
             $userManager = new UserManager();
@@ -65,6 +78,10 @@ class UserController {
         $this->return('update/updatePassUserView', "Anim'Nord :  Changer de mot de passe");
     }
 
+    /**
+     * change a user's role.
+     * @param $fields
+     */
     public function updateRole($fields) {
         if (isset($fields['id'], $fields['role_fk'])) {
             $userManager = new UserManager();
@@ -76,9 +93,13 @@ class UserController {
             $userManager->updateRoleUser($user);
             header("Location: ../index.php?controller=user&action=all&success=0");
         }
-        $this->return('update/updateRoleUserView', "Anim'Nord : Modification des informations personnelles");
+        $this->return('update/updateRoleUserView', "Anim'Nord : Modification du rôle");
     }
 
+
+    /*
+     * delete a user
+     */
     public function delete($user) {
         if (isset($user['id'])) {
             $userManager = new UserManager();

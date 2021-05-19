@@ -1,17 +1,17 @@
 let buttonSend = document.getElementById('buttonSend');
-let messagesGroup = document.getElementById('messagesGroup');
+let messagesUser = document.getElementById('messagesUser');
 
 /**
- * My in "messagesGroup", all messages enter in DB by registered users.
+ * My in "messagesUser", all messages enter in DB by registered users.
  */
 let xhr = new XMLHttpRequest();
 xhr.onload = function () {
     const messages = JSON.parse(xhr.responseText);
     messages.forEach(message => {
-        messagesGroup.innerHTML += `
+        messagesUser.innerHTML += `
         <div id='${message.id}' class='flexColumn messages'>
-            <div class='flexRow width100'>
-               <p class='width30 colorBlue bold'>${message.user['pseudo']}</p>
+            <div class='flexRow width_100'>
+               <p class='width_30 colorBlue bold'>${message.sender['firstname']}</p>
                <p class='colorGrey'>${message.date}</p>
             </div>
             <p class='text'>${message.message}</p>
@@ -29,11 +29,13 @@ xhr.send();
 if (buttonSend) {
     buttonSend.addEventListener('click', function (e) {
         e.preventDefault();
-        let inputIdPseudo = document.getElementById('inputIdPseudo').value;
+        let inputSender = document.getElementById('inputSender').value;
+        let inputRecipient = document.getElementById('inputRecipient').value;
         let inputMessage = document.getElementById('inputMessage').value;
         let dateMessage = document.getElementById('inputDate').value;
+        let inputFirstname = document.getElementById('inputFirstname').value;
 
-        if (!inputIdPseudo || !inputMessage) {
+        if (!inputSender || !inputRecipient || !inputMessage) {
             console.log("All data are not set");
         }
         else {
@@ -54,7 +56,7 @@ if (buttonSend) {
             const messageData = {
                 'message': inputMessage,
                 'date': dateMessage.toLocaleString(),
-                'user': inputIdPseudo,
+                'user': inputFirstname,
             }
             xhr.open('POST', '/api/messages');
             xhr.setRequestHeader('Content-Type', 'application/json');
@@ -64,89 +66,7 @@ if (buttonSend) {
     });
 }
 
-// Connection with Ajax
-if ($("#buttonConnection")) {
-    $("#connection").click(function () {
-        $.ajax({
-            'type': 'POST',
-            'url': '../assets/php/connection.php',
-            'data': {
-                'email': $("#emailConnection").val(),
-                'password': $("#passwordConnection").val()
-            },
-            'success': function (data) {
-                if(data === "success"){
-                    window.location.href = "minichat.php?success=0";
-                }
-                if (data === "error=2") {
-                    window.location.href = "index.php?error=2";
-                }
-                if (data === "error=3"){
-                    window.location.href = "index.php?error=3";
-                }
-            }
-        });
-    });
-}
-
-// registration with Ajax
-if ($("#buttonRegistration")) {
-    $("#registration").click(function () {
-        $.ajax({
-            'type': 'POST',
-            'url': '../assets/php/registration.php',
-            'data': {
-                'pseudo': $("#pseudoRegistration").val(),
-                'password': $("#passwordRegistration").val(),
-                'email': $("#emailRegistration").val()
-            },
-            'success': function (data) {
-                if(data === "success") {
-                    window.location.href = "index.php?success=0";
-                }
-                else if (data === "error=0") {
-                    window.location.href = "index.php?error=0";
-                }
-                else if (data === "error=5") {
-                    window.location.href = "index.php?error=5";
-                }
-                else if (data === "error=1") {
-                    window.location.href = "index.php?error=1";
-                }
-                else if (data === "error=4") {
-                    window.location.href = "index.php?error=4"
-                }
-            }
-        });
-    });
-}
-
-// disconnection with Ajax
-$disconnection = $("#disconnection");
-if ($disconnection) {
-    $disconnection.click(function () {
-        $.ajax({
-            'type': 'GET',
-            'url': '../assets/php/disconnection.php',
-            'success': function (data) {
-                if(data === "success") {
-                    window.location.href = "index.php?success=1";
-                }
-            }
-        });
-    });
-}
-
-let buttonRefresh = document.getElementById("buttonRefresh");
-
-//Refresh the page for display the messages.
-if (buttonRefresh) {
-    buttonRefresh.addEventListener("click", function () {
-        document.location.reload();
-    });
-}
-
-if ($("#messagesGroup")) {
+if ($("#messagesUser")) {
     charger();
 }
 
@@ -158,7 +78,7 @@ function charger() {
             'type': 'GET',
             'url': "/api/charger/index.php?id=" + lastIdMessage, // We pass the last ID to the load file
             'success': function (html) {
-                $('#messagesGroup').prepend(html); // We add the new message at first
+                $('#messagesUser').prepend(html); // We add the new message at first
             }
         });
         charger();

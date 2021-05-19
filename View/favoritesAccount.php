@@ -3,17 +3,17 @@
 ?>
     <main>
         <div class="flexRow flexCenter" id="menuAccount">
-            <a href="informationAccount.php" class="colorBlue margin_0_20 linkAccount">Mes informations</a>
+            <a href="../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>" class="colorBlue margin_0_20 linkAccount">Mes informations</a>
             <div class="separatorVertical"></div>
-            <a href="adAccountView.php" class="colorBlue margin_0_20 linkAccount">Mes annonces</a>
+            <a href="../index.php?controller=adlost&action=view" class="colorBlue margin_0_20 linkAccount">Mes annonces</a>
             <div class="separatorVertical"></div>
-            <a href="favoritesAccount.php" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
+            <a href="../index.php?controller=adlost&favorite=view" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
             <div class="separatorVertical"></div>
-            <a href="favoritesAccount.php" class="colorBlue margin_0_20 linkAccount">Mes messages</a>
+            <a href="../index.php?controller=message" class="colorBlue margin_0_20 linkAccount">Mes messages</a>
             <div class="separatorVertical"></div>
             <?php
             if ($_SESSION["role_fk"] === "1") { ?>
-                <a href="#" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
+                <a href="../index.php?controller=user&action=all&search=ok" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
                 <div class="separatorVertical"></div>
                 <?php
             } ?>

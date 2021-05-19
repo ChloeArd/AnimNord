@@ -8,7 +8,7 @@ class Message {
     private ?string $message;
     private ?string $date;
     private ?int $recipient;
-    private ?int $user_fk;
+    private $user_fk;
 
     public function __construct(?int $id = null, ?string $message = null, ?string $date = null, ?int $recipient = null, ?int $user_fk = null) {
         $this->id = $id;

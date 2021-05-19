@@ -10,6 +10,6 @@ class MessageController {
 
     // Page add ad
     public function messagePage() {
-        $this->return("message", "Anim'Nord : Mes messages");
+        $this->return("messageView", "Anim'Nord : Mes messages");
     }
 }

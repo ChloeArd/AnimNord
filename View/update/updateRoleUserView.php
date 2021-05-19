@@ -1,6 +1,9 @@
 <?php
 $manager = new \Model\User\UserManager();
-$user = $manager->getUserID($_GET ['id'])
+$user = $manager->getUserID($_GET ['id']);
+
+$roleManager = new \Model\Role\RoleManager();
+$roles = $roleManager->getRoles();
 ?>
 
 <main>
@@ -11,9 +14,11 @@ $user = $manager->getUserID($_GET ['id'])
             <div class="flexCenter flexColumn margin_15_0">
                 <p class="margin_15_0 colorGrey">Actuellement : <span class="bold"><?=$user1->getRoleFk()->getRole() ?></span></p>
                 <select name="role_fk" class="margin_0_20">
-                    <option value="2">Utilisateur</option>
-                    <option value="3">3</option>
-                    <option value="1">Administrateur</option>
+                    <?php
+                    foreach ($roles as $role) { ?>
+                        <option value="<?=$role->getId() ?>"><?=$role->getRole() ?></option>
+                        <?php
+                    } ?>
                 </select>
             </div>
             <input type="hidden" name="id" value="<?=$user1->getId() ?>">

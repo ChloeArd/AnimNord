@@ -87,7 +87,7 @@ class User {
     /**
      * @param string|null $email
      */
-    public function setEmail(?string $email): string {
+    public function setEmail(?string $email): ?string {
         $this->email = $email;
         return $email;
     }
@@ -102,7 +102,7 @@ class User {
     /**
      * @param string|null $phone
      */
-    public function setPhone(?string $phone): string {
+    public function setPhone(?string $phone): ?string {
         $this->phone = $phone;
         return $phone;
     }

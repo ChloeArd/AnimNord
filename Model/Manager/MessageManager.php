@@ -1,7 +1,7 @@
 <?php
 
 
-namespace MiniChat\Manager;
+namespace Model\Manager;
 
 use Model\DB;
 use Model\Entity\User;
@@ -21,13 +21,13 @@ class MessageManager {
     }
 
     /**
-     * Return a list of messages.
+     * Return a list of messages between recipient and sender
      * @return array|null
      */
     public function getMessagesUser($recipient, $sender): array {
         $messages = [];
         // we retrieve the last 50 messages posted //ORDER BY id DESC LIMIT 0,50
-        $request = DB::getInstance()->prepare("SELECT * FROM message LIMIT 0,50 WHERE recipient = :recipient, user_fk = :user_fk");
+        $request = DB::getInstance()->prepare("SELECT * FROM message WHERE recipient = :recipient, user_fk = :user_fk ORDER BY id DESC LIMIT 0,50");
         $request->bindParam(":recipient", $recipient);
         $request->bindParam(":user_fk", $sender);
         $request->execute();
@@ -38,6 +38,23 @@ class MessageManager {
                 $sender = $this->userManager->getUser($data['user_fk']);
                 $recipient = $this->userManager->getUser($data['recipient']);
                 $messages[] = new Message($data['id'], $data['message'], $data['date'], $recipient, $sender);
+            }
+        }
+
+        return $messages;
+    }
+
+    public function getMessages(int $id): array {
+        $messages = [];
+        // we retrieve the last 50 messages posted //ORDER BY id DESC LIMIT 0,50
+        $request = DB::getInstance()->prepare("SELECT * FROM message WHERE user_fk = :user_fk LIMIT 0,50");
+        $request->bindParam(":user_fk", $id);
+        $request->execute();
+        $messages_response = $request->fetchAll();
+
+        if ($messages_response) {
+            foreach ($messages_response as $data) {
+                $messages[] = new Message($data['id'], $data['message'], $data['date'], $data['recipient'], $data['user_fk']);
             }
         }
 

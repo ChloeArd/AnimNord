@@ -1,4 +1,6 @@
 <?php
+use Model\DB;
+
 $return = "";
 $id = "";
 
@@ -19,13 +21,13 @@ if (isset($var['users'])) { ?>
             <div class="separatorVertical"></div>
             <a href="../index.php?controller=adlost&action=view" class="colorBlue margin_0_20 linkAccount">Mes annonces</a>
             <div class="separatorVertical"></div>
-            <a href="favoritesAccount.php" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
+            <a href="../index.php?controller=adlost&favorite=view" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
             <div class="separatorVertical"></div>
-            <a href="favoritesAccount.php" class="colorBlue margin_0_20 linkAccount">Mes messages</a>
+            <a href="../index.php?controller=message" class="colorBlue margin_0_20 linkAccount">Mes messages</a>
             <div class="separatorVertical"></div>
             <?php
             if ($_SESSION["role_fk"] === "1") { ?>
-                <a href="../index.php?controller=user&action=all" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
+                <a href="../index.php?controller=user&action=all&search=ok" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
                 <div class="separatorVertical"></div>
                 <?php
             } ?>
@@ -34,20 +36,95 @@ if (isset($var['users'])) { ?>
             </form>
         </div>
 
+        <?php
+    $bdd = DB::getInstance();
+
+    if ( isset($_POST['firstname'], $_POST['lastname'], $_POST['role_fk'])) {
+        $firstname = htmlentities(ucfirst($_POST['firstname']));
+        $lastname = htmlentities(strtoupper($_POST['lastname']));
+        $role = intval($_POST['role_fk']);
+
+        if (!empty($firstname && $lastname && $role)) {
+            $req = "SELECT * FROM user WHERE firstname LIKE '%$firstname%' AND lastname LIKE '%$lastname%' AND role_fk LIKE '%$role%'";
+            $exec = $bdd->query($req);
+            $nb_resultats = $exec->rowCount(); // count a result
+
+            if($nb_resultats != 0) { ?>
+                <form method="post" action="" class="flexRow width_80 flexCenter">
+                    <input class="margin_0_20" type="text" name="firstname" placeholder="Prénom" required>
+                    <input class="margin_0_20" type="text" name="lastname" placeholder="Nom" required>
+                    <select name="role_fk" class="margin_0_20">
+                        <option name="role_fk" value="2">Utilisateur</option>
+                        <option name="role_fk" value="3">Modérateur</option>
+                        <option name="role_fk" value="1">Administrateur</option>
+                    </select>
+                    <input type="submit" class="buttonGreen colorWhite" value="Chercher">
+                </form>
+                <div class="flexCenter">
+                    <?php
+                    if($nb_resultats > 1) {?>
+                        <p class="colorBlue">Résultat de votre recherche : <span class="bold colorRed"><?=$nb_resultats?> résultats trouvés</span> dans la base de donnée.</p>
+                        <?php
+                    }
+                    else { ?>
+                   <p class="colorBlue">Résultat de votre recherche : <span class="bold colorRed"><?=$nb_resultats?> résultat trouvé</span> dans la base de donnée.</p>
+                        <?php
+                    } ?>
+                </div>
+
+                <?php
+                while($donnees = $exec->fetch()) {?>
+                    <div class="containerAccount table">
+                        <p class="colorBlack size20">Nom : <span class="colorBlue"><?=$donnees["lastname"]?></span>
+                            <a href="../index.php?controller=user&action=delete&id=<?=$donnees['id'] ?>" class="colorBlack"><i class="far fa-trash-alt"></i></a>
+                        </p>
+                        <p class="colorBlack size20">Prénom : <span class="colorBlue"><?=$donnees["firstname"]?></span></p>
+                        <p class="colorBlack size20">Email : <span class="colorBlue"><?=$donnees["email"]?></span></p>
+                        <p class="colorBlack size20">Téléphone : <span class="colorBlue"><?=$donnees["phone"]?></span></p>
+                        <p class="colorBlack size20">Role : <span class="colorBlue"><?=$donnees["role_fk"]?></span>
+                            <a href="../index.php?controller=user&action=updateRole&id=<?=$donnees['id'] ?>" class="colorBlack"><i class="far fa-edit"></i></a>
+                        </p>
+                    </div>
+                    <?php
+                }
+            }
+            else {?>
+                <form method="post" action="" class="flexRow width_80 flexCenter">
+                    <input class="margin_0_20" type="text" name="firstname" placeholder="Prénom" required>
+                    <input class="margin_0_20" type="text" name="lastname" placeholder="Nom" required>
+                    <select name="role_fk" class="margin_0_20">
+                        <option name="role_fk" value="2">Utilisateur</option>
+                        <option name="role_fk" value="3">Modérateur</option>
+                        <option name="role_fk" value="1">Administrateur</option>
+                    </select>
+                    <input type="submit" class="buttonGreen colorWhite" value="Chercher">
+                </form>
+                <div class="flexCenter flexColumn">
+                    <h2 class="colorRed margin_15_0">Pas de résultats !</h2>
+                    <p class="colorGrey">Nous n'avons trouver aucun résultats pour votre requête <?=$_POST['firstname'] . " " . $_POST['lastname']?> avec pour rôle : <?=$_POST['role_fk']?></p>
+                </div>
+                <?php
+            }
+        }
+    }
+
+    else { ?>
         <div>
-            <form class="flexRow width_80 flexCenter">
-                <input class="margin_0_20" type="text" name="firstname" placeholder="Prénom">
-                <input class="margin_0_20" type="text" name="lastname" placeholder="Nom">
-                <select class="margin_0_20">
-                    <option value="2">Utilisateur</option>
-                    <option value="3">Modérateur</option>
-                    <option value="1">Administrateur</option>
+            <form method="post" action="" class="flexRow width_80 flexCenter">
+                <input class="margin_0_20" type="text" name="firstname" placeholder="Prénom" required>
+                <input class="margin_0_20" type="text" name="lastname" placeholder="Nom" required>
+                <select name="role_fk" class="margin_0_20">
+                    <option name="role_fk" value="2">Utilisateur</option>
+                    <option name="role_fk" value="3">Modérateur</option>
+                    <option name="role_fk" value="1">Administrateur</option>
                 </select>
                 <input type="submit" class="buttonGreen colorWhite" value="Chercher">
             </form>
-
             <h1 class="titleAccount">Tous les utilisateurs</h1>
             <?php
+            if (isset($var['searchUser'])) {
+                echo "hello";
+            }
             foreach ($var['users'] as $users) {?>
                 <div class="containerAccount table">
                     <p class="colorBlack size20">Nom : <span class="colorBlue"><?=$users->getLastname() ?></span>
@@ -62,15 +139,8 @@ if (isset($var['users'])) { ?>
                 </div>
                 <?php
             }?>
-
-            <div class="flexCenter">
-                <a href="../index.php?controller=user&action=updatePass&id=<?=$_GET['id'] ?>" class="buttonGrey">Changer mon mot de passe <i class="far fa-edit"></i></a>
-            </div>
-
-            <div class="flexCenter">
-                <a href="../index.php?controller=user&action=delete&id=<?=$_GET['id'] ?>" class="buttonRed2 radius10 colorWhite">Supprimer mon compte</a>
-            </div>
         </div>
     </main>
 <?php
+    }
 }

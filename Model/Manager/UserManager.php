@@ -62,7 +62,8 @@ class UserManager {
 
     public function getUserID(int $id): array {
         $user = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = $id");
+        $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = :id");
+        $request->bindParam(":id", $id);
         $result = $request->execute();
         if($result) {
             foreach($request->fetchAll() as $db) {
@@ -73,17 +74,6 @@ class UserManager {
             }
         }
         return $user;
-    }
-
-    /**
-     * get all the staffs
-     * @return array
-     */
-    public function getStaff() {
-        // different from 2 because 2 is the user and we want to recover only the staff.
-        $request = DB::getInstance()->prepare("SELECT * FROM user WHERE role_fk != 2");
-        $request->execute();
-        return $this->getUsers();
     }
 
     /**
