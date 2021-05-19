@@ -1,10 +1,9 @@
-<form action="#" method="post" class="categories">
         <div class="categorie flexColumn flexCenter">
             <label class="width_100 center colorWhite categoriesAnimal" for="animal"> Animal : </label>
             <div class="flexRow align categoriePet">
-                <input type="radio" name="animal" value="chien" required>
+                <input id="animal" type="radio" name="animal" value="Chien" required>
                 <span class="margin_0_20"><i class="fas fa-dog"></i></span>
-                <input type="radio" name="animal" value="chat" required>
+                <input id="animal" type="radio" name="animal" value="Chat" required>
                 <span class="margin_0_20"><i class="fas fa-cat"></i></span>
             </div>
         </div>
@@ -22,25 +21,26 @@
         ?>
 
         <div class="categorie flexColumn flexCenter">
-            <label class="colorWhite width_100 center categoriesAnimal" for="sexe"> Sexe :</label>
+            <label class="colorWhite width_100 center categoriesAnimal" for="sex"> Sexe :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
-                    <input  type="radio" name="sexe" value="mâle">
-                    <span class="margin_0_20">Mâle</span>
+                    <input id="male" type="radio" name="sex" value="Mâle">
+                    <label for="male" class="margin_0_20">Mâle</label>
                 </div>
                 <div class="flexRow align">
-                    <input type="radio" name="sexe" value="femelle">
-                    <span class="margin_0_20">Femelle </span>
+                    <input id="female" type="radio" name="sex" value="Femelle">
+                    <label for="female" class="margin_0_20">Femelle</label>
                 </div>
                 <div class="flexRow align">
-                    <input type="radio" name="sexe" value="inconnu">
-                    <span class="margin_0_20">Inconnu</span>
+                    <input id="unknown" type="radio" name="sex" value="Inconnu">
+                    <label for="unknown" class="margin_0_20">Inconnu</label>
                 </div>
             </div>
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="size"> Taille :</label>
-            <select name="size" class="width_80 size15 categoriePet">
+            <select id="size" name="size" class="size15 categoriePet">
+                <option></option>
                 <option>Très petite</option>
                 <option>Petite</option>
                 <option>Moyenne</option>
@@ -50,7 +50,8 @@
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="fur"> Poils :</label>
-            <select name="fur" class="width_80 size15 categoriePet">
+            <select id="fur" name="fur" class="size15 categoriePet">
+                <option></option>
                 <option>Nue</option>
                 <option>Court</option>
                 <option>Mi-long</option>
@@ -61,34 +62,35 @@
             <label class="colorWhite width_100 center categoriesAnimal" for="colors"> Couleur du pelage :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
-                    <input type="checkbox" name="colors" value="Noir">
-                    <span class="margin_0_20 borderBlack black"></span>
+                    <input id="black" type="checkbox" name="color" value="Noir">
+                    <label for="black" class="margin_0_20 borderBlack black"></label>
                 </div>
                 <div class="flexRow align">
-                    <input type="checkbox" name="colors" value="Blanc">
-                    <span class="margin_0_20 borderBlack"></span>
+                    <input id="white" type="checkbox" name="color" value="Blanc">
+                    <label for="white" class="margin_0_20 borderBlack"></label>
                 </div>
                 <div class="flexRow align">
-                    <input type="checkbox" name="colors" value="Marron">
-                    <span class="margin_0_20 borderBlack brown"></span>
+                    <input id="brown" type="checkbox" name="color" value="Marron">
+                    <label for="brown" class="margin_0_20 borderBlack brown"></label>
                 </div>
                 <div class="flexRow align">
-                    <input type="checkbox" name="colors" value="Gris">
-                    <span class="margin_0_20 borderBlack grey"></span>
+                    <input id="grey" type="checkbox" name="color" value="Gris">
+                    <label for="grey" class="margin_0_20 borderBlack grey"></label>
                 </div>
                 <div class="flexRow align">
-                    <input type="checkbox" name="colors" value="Beige">
-                    <span class="margin_0_20 borderBlack beige"></span>
+                    <input id="beige" type="checkbox" name="color" value="Beige">
+                    <label for="beige" class="margin_0_20 borderBlack beige"></label>
                 </div>
                 <div class="flexRow align">
-                    <input type="checkbox" name="colors" value="Roux">
-                    <span class="margin_0_20 borderBlack orange"></span>
+                    <input id="orange" type="checkbox" name="color" value="Roux">
+                    <label for="orange" class="margin_0_20 borderBlack orange"></label>
                 </div>
             </div>
         </div>
         <div class="categorie flexColumn flexCenter">
-            <label class="colorWhite width_100 center categoriesAnimal" for="colors">Robe :</label>
-            <select name="colors" class="width_80 size15 categoriePet">
+            <label class="colorWhite width_100 center categoriesAnimal" for="dress">Robe :</label>
+            <select id="dress" name="dress" class="size15 categoriePet">
+                <option></option>
                 <option>Uni</option>
                 <option>Tacheté</option>
                 <option>Rayé</option>
@@ -99,11 +101,12 @@
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="race">Race :</label>
-            <input type="text" name="race" placeholder="ex : berger allemand" class="categoriePet">
+            <input type="text" name="race" id="race" placeholder="Ex : berger allemand" class="categoriePet">
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="city">Ville :</label>
-            <select name="city" class="width_80 size15 categoriePet">
+            <select name="city" id="city" class="width_80 size15 categoriePet">
+                <option></option>
                 <option>Abancourt (59268)</option>
                 <option>Abscon (59215)</option>
                 <option>Aibes (59149)</option>
@@ -757,4 +760,3 @@
         <div class="flexCenter">
             <input type="submit" class="buttonEnter colorWhite" value="Rechercher">
         </div>
-    </form>

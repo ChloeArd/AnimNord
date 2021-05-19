@@ -33,8 +33,8 @@ date_default_timezone_set("Europe/Paris");
                     <label for="female" class="margin_0_20">Femelle</label>
                 </div>
                 <div class="flexRow align">
-                    <input id="unknow" type="radio" name="sex" value="Inconnu" required>
-                    <label for="unknow" class="margin_0_20">Inconnu</label>
+                    <input id="unknown" type="radio" name="sex" value="Inconnu" required>
+                    <label for="unknown" class="margin_0_20">Inconnu</label>
                 </div>
             </div>
             <label for="size"> Taille :</label>

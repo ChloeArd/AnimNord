@@ -39,19 +39,17 @@ if (isset($var['users'])) { ?>
         <?php
     $bdd = DB::getInstance();
 
-    if ( isset($_POST['firstname'], $_POST['lastname'], $_POST['role_fk'])) {
-        $firstname = htmlentities(ucfirst($_POST['firstname']));
+    if ( isset($_POST['lastname'], $_POST['role_fk'])) {
         $lastname = htmlentities(strtoupper($_POST['lastname']));
         $role = intval($_POST['role_fk']);
 
-        if (!empty($firstname && $lastname && $role)) {
-            $req = "SELECT * FROM user WHERE firstname LIKE '%$firstname%' AND lastname LIKE '%$lastname%' AND role_fk LIKE '%$role%'";
+        if (!empty($lastname || $role)) {
+            $req = "SELECT * FROM user WHERE lastname LIKE '%$lastname%' AND role_fk LIKE '%$role%'";
             $exec = $bdd->query($req);
             $nb_resultats = $exec->rowCount(); // count a result
 
             if($nb_resultats != 0) { ?>
                 <form method="post" action="" class="flexRow width_80 flexCenter">
-                    <input class="margin_0_20" type="text" name="firstname" placeholder="Prénom" required>
                     <input class="margin_0_20" type="text" name="lastname" placeholder="Nom" required>
                     <select name="role_fk" class="margin_0_20">
                         <option name="role_fk" value="2">Utilisateur</option>
@@ -63,17 +61,17 @@ if (isset($var['users'])) { ?>
                 <div class="flexCenter">
                     <?php
                     if($nb_resultats > 1) {?>
-                        <p class="colorBlue">Résultat de votre recherche : <span class="bold colorRed"><?=$nb_resultats?> résultats trouvés</span> dans la base de donnée.</p>
+                        <p class="colorBlue">Résultat de votre recherche : <span class="bold colorRed"><?=$nb_resultats?> résultats trouvés.</span></p>
                         <?php
                     }
                     else { ?>
-                   <p class="colorBlue">Résultat de votre recherche : <span class="bold colorRed"><?=$nb_resultats?> résultat trouvé</span> dans la base de donnée.</p>
+                   <p class="colorBlue">Résultat de votre recherche : <span class="bold colorRed"><?=$nb_resultats?> résultat trouvé.</span></p>
                         <?php
                     } ?>
                 </div>
 
                 <?php
-                while($donnees = $exec->fetch()) {?>
+                foreach ($exec as $donnees) { ?>
                     <div class="containerAccount table">
                         <p class="colorBlack size20">Nom : <span class="colorBlue"><?=$donnees["lastname"]?></span>
                             <a href="../index.php?controller=user&action=delete&id=<?=$donnees['id'] ?>" class="colorBlack"><i class="far fa-trash-alt"></i></a>
@@ -81,7 +79,20 @@ if (isset($var['users'])) { ?>
                         <p class="colorBlack size20">Prénom : <span class="colorBlue"><?=$donnees["firstname"]?></span></p>
                         <p class="colorBlack size20">Email : <span class="colorBlue"><?=$donnees["email"]?></span></p>
                         <p class="colorBlack size20">Téléphone : <span class="colorBlue"><?=$donnees["phone"]?></span></p>
-                        <p class="colorBlack size20">Role : <span class="colorBlue"><?=$donnees["role_fk"]?></span>
+                        <p class="colorBlack size20">Rôle : <span class="colorBlue">
+                                <?php
+                                if ($donnees["role_fk"] == 1) { ?>
+                                    <span class="colorBlue">Administrateur</span>
+                                    <?php
+                                }
+                                elseif ($donnees["role_fk"] == 2) { ?>
+                                    <span class="colorBlue">Utilisateur</span>
+                                   <?php
+                                }
+                               else { ?>
+                                   <span class="colorBlue">Modérateur</span>
+                                   <?php
+                               } ?>
                             <a href="../index.php?controller=user&action=updateRole&id=<?=$donnees['id'] ?>" class="colorBlack"><i class="far fa-edit"></i></a>
                         </p>
                     </div>
@@ -90,7 +101,6 @@ if (isset($var['users'])) { ?>
             }
             else {?>
                 <form method="post" action="" class="flexRow width_80 flexCenter">
-                    <input class="margin_0_20" type="text" name="firstname" placeholder="Prénom" required>
                     <input class="margin_0_20" type="text" name="lastname" placeholder="Nom" required>
                     <select name="role_fk" class="margin_0_20">
                         <option name="role_fk" value="2">Utilisateur</option>
@@ -101,17 +111,15 @@ if (isset($var['users'])) { ?>
                 </form>
                 <div class="flexCenter flexColumn">
                     <h2 class="colorRed margin_15_0">Pas de résultats !</h2>
-                    <p class="colorGrey">Nous n'avons trouver aucun résultats pour votre requête <?=$_POST['firstname'] . " " . $_POST['lastname']?> avec pour rôle : <?=$_POST['role_fk']?></p>
+                    <p class="colorGrey margin_15_0">Nous n'avons trouvé aucun résultat pour le nom <span class="bold colorBlack"><?=$_POST['lastname']?></span> avec pour rôle <span class="bold colorBlack"><?=$_POST['role_fk']?></span></p>
                 </div>
                 <?php
             }
         }
     }
-
     else { ?>
         <div>
             <form method="post" action="" class="flexRow width_80 flexCenter">
-                <input class="margin_0_20" type="text" name="firstname" placeholder="Prénom" required>
                 <input class="margin_0_20" type="text" name="lastname" placeholder="Nom" required>
                 <select name="role_fk" class="margin_0_20">
                     <option name="role_fk" value="2">Utilisateur</option>
@@ -122,9 +130,6 @@ if (isset($var['users'])) { ?>
             </form>
             <h1 class="titleAccount">Tous les utilisateurs</h1>
             <?php
-            if (isset($var['searchUser'])) {
-                echo "hello";
-            }
             foreach ($var['users'] as $users) {?>
                 <div class="containerAccount table">
                     <p class="colorBlack size20">Nom : <span class="colorBlue"><?=$users->getLastname() ?></span>
@@ -133,7 +138,7 @@ if (isset($var['users'])) { ?>
                     <p class="colorBlack size20">Prénom : <span class="colorBlue"><?=$users->getFirstname() ?></span></p>
                     <p class="colorBlack size20">Email : <span class="colorBlue"><?=$users->getEmail() ?></span></p>
                     <p class="colorBlack size20">Téléphone : <span class="colorBlue"><?=$users->getPhone() ?></span></p>
-                    <p class="colorBlack size20">Role : <span class="colorBlue"><?=$users->getRoleFk()->getRole() ?></span>
+                    <p class="colorBlack size20">Rôle : <span class="colorBlue"><?=$users->getRoleFk()->getRole() ?></span>
                         <a href="../index.php?controller=user&action=updateRole&id=<?=$users->getId() ?>" class="colorBlack"><i class="far fa-edit"></i></a>
                     </p>
                 </div>
