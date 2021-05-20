@@ -22,6 +22,8 @@ if (isset($_GET['success'])) {
 ?>
     <div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
     <main>
+        <div id="buttonAccount"class="buttonEnter colorWhite flexCenter">Mon compte <i class="fas fa-caret-down"></i></div>
+
         <div class="flexRow flexCenter" id="menuAccount">
             <a href="../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>" class="colorBlue margin_0_20 linkAccount">Mes informations</a>
             <div class="separatorVertical"></div>
@@ -33,7 +35,7 @@ if (isset($_GET['success'])) {
             <div class="separatorVertical"></div>
             <?php
             if ($_SESSION["role_fk"] === "1") { ?>
-                <a href="../index.php?controller=user&action=all&search=ok" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
+                <a href="../index.php?controller=user&action=all" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
                 <div class="separatorVertical"></div>
                 <?php
             } ?>

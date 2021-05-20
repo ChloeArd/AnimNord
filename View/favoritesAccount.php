@@ -2,6 +2,8 @@
 
 ?>
     <main>
+        <div id="buttonAccount"class="buttonEnter colorWhite flexCenter">Mon compte <i class="fas fa-caret-down"></i></div>
+
         <div class="flexRow flexCenter" id="menuAccount">
             <a href="../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>" class="colorBlue margin_0_20 linkAccount">Mes informations</a>
             <div class="separatorVertical"></div>
@@ -13,7 +15,7 @@
             <div class="separatorVertical"></div>
             <?php
             if ($_SESSION["role_fk"] === "1") { ?>
-                <a href="../index.php?controller=user&action=all&search=ok" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
+                <a href="../index.php?controller=user&action=all" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
                 <div class="separatorVertical"></div>
                 <?php
             } ?>
@@ -21,6 +23,7 @@
                 <input type="submit" class="disconnection buttonRed linkAccount margin_0_20" value="Me déconnecter">
             </form>
         </div>
+
 
         <div>
             <h1 class="titleAccount">Mes favoris de chiens et de chats perdus</h1>

@@ -27,8 +27,9 @@ class Role {
     /**
      * @param int|null $id
      */
-    public function setId(?int $id): void {
+    public function setId(?int $id): ?int {
         $this->id = $id;
+        return $id;
     }
 
     /**
@@ -41,7 +42,8 @@ class Role {
     /**
      * @param string|null $role
      */
-    public function setRole(?string $role): void {
+    public function setRole(?string $role): ?string {
         $this->role = $role;
+        return $role;
     }
 }

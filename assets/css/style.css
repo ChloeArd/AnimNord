@@ -628,7 +628,7 @@ li {
     flex-wrap: wrap;
 }
 
-#filterCategories {
+#filterCategories, #buttonAccount {
     display: none;
 }
 
@@ -900,7 +900,7 @@ input:focus, textarea:focus, select:focus {
     overflow-x: hidden;
     overflow-y: scroll;
     border: 1px solid #B7B8B8;
-    height: 90vh;
+    height: 70vh;
 }
 
 .messages2 {
@@ -908,8 +908,12 @@ input:focus, textarea:focus, select:focus {
 }
 
 .messages {
-    width: 60%;
-    height: 90vh;
+    width: 80%;
+    height: 70vh;
+}
+
+.size40 {
+    font-size: 40px;
 }
 
 .message {
@@ -919,8 +923,12 @@ input:focus, textarea:focus, select:focus {
     margin: 20px;
 }
 
+.containerUser {
+    background-color: #dbe3e7;
+}
+
 .containerUser:hover {
-    background-color: #E4E9EB;
+    background-color: #ffe993;
 }
 
 .separatorHorizontal3 {
@@ -931,6 +939,10 @@ input:focus, textarea:focus, select:focus {
 .textareaMessage {
     height: 40px;
     width: 78%;
+}
+
+.containerUsers > h3 {
+    padding: 15px;
 }
 
 .numberLost {
@@ -979,16 +991,16 @@ input:focus, textarea:focus, select:focus {
 }
 
 @media screen and (max-width: 900px) {
-    #menu {
+    #menu, #menuAccount {
         display: none;
     }
-    #menuMobile {
+    #menuMobile, #buttonAccount {
         display: flex;
     }
     .containerType {
         width: 80%;
     }
-    .logoAnim {
+    .logoAnim, .messages {
         display: none;
     }
     #logosite {
@@ -1017,7 +1029,7 @@ input:focus, textarea:focus, select:focus {
     #containerLostAd {
         width: 100%;
     }
-    .imagePet {
+    .imagePet, .messages, .containerUsers {
         width: 100%;
     }
     #menuAccount {
@@ -1048,6 +1060,11 @@ input:focus, textarea:focus, select:focus {
     .post {
         margin: 0;
         width: 100%;
+    }
+    .message {
+        padding: 8px;
+        margin: 15px;
+        font-size: 18px;
     }
 }
 
@@ -1144,6 +1161,18 @@ input:focus, textarea:focus, select:focus {
     }
     .editIndex {
         top: 20%;
+    }
+    .message {
+        padding: 8px;
+        margin: 15px;
+        font-size: 15px;
+    }
+    #formMessage {
+        width: 95%;
+    }
+    #formMessage > input.buttonEnter {
+        font-size: 15px;
+        width: initial;
     }
 }
 

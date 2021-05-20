@@ -19,6 +19,8 @@ if (document.getElementById("filterCategories")) {
     display(document.getElementById("filterCategories"), document.getElementsByClassName("categories"), "block");
 }
 
+display(document.getElementById("buttonAccount"), document.getElementById("menuAccount"), "flex");
+
 if (document.getElementById("error")) {
     document.getElementById("closeModal").style.display = "block";
     closeModal("error");

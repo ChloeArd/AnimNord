@@ -18,6 +18,8 @@ if (isset($var['user'])) {
 ?>
     <div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
     <main>
+        <div id="buttonAccount"class="buttonEnter colorWhite flexCenter">Mon compte <i class="fas fa-caret-down"></i></div>
+
         <div class="flexRow flexCenter" id="menuAccount">
             <a href="../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>" class="colorBlue margin_0_20 linkAccount">Mes informations</a>
             <div class="separatorVertical"></div>

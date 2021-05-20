@@ -24,10 +24,11 @@ if (!empty($_GET['id'])) { // We check that the id is present and not empty
         $requete2->execute();
 
         foreach ($requete2->fetchAll() as $donnees2) {
+            $date = new DateTime($donnees['date']);
             $messages .= "<div id='" . $donnees['id'] . "' class='flexColumn message'>
                 <div class='flexRow width100'>
                        <p class='width_30 colorGrey bold'>" . $donnees2['firstname'] . "</p>
-                       <p class='colorGrey'>" . $donnees['date'] . "</p>
+                       <p class='colorGrey'>" . $date->format('d/m/Y à H:i') . "</p>
                 </div>
                 <p class='text'>" . $donnees['message'] . "</p>
             </div>";
