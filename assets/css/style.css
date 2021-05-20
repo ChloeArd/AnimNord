@@ -150,11 +150,32 @@ a {
 }
 
 .question {
+    animation-duration: 4s;
+    animation-name: size;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
     position: absolute;
     width: 50%;
     font-size: 30px;
     top: 40%;
     line-height: 40px;
+}
+
+@keyframes size {
+    from {
+        width: 60%;
+        height: 250px;
+        padding: 50px;
+        font-size: 35px;
+    }
+
+    to {
+        width: 50%;
+        height: 150px;
+        padding: 10px;
+        font-size: 20px;
+    }
 }
 
 .buttonWhite {
@@ -355,6 +376,24 @@ i {
     margin: 10px auto;
 }
 
+.separatorHorizontal {
+    animation-duration: 4s;
+    animation-name: width;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+@keyframes width {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 40%;
+    }
+}
+
 .separatorHorizontal2 {
     border-top: 1px solid #B7B8B8;
     width: 25%;
@@ -376,12 +415,29 @@ i {
 }
 
 .buttonWhite2 {
+    animation-duration: 4s;
+    animation-name: size2;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
     background-color: rgba(255, 255, 255, 0.8);
     color: #B7B8B8;
     padding: 20px;
     font-size: 20px;
     box-shadow: 5px 5px 10px #1378a5;
     margin: 15px 30px;
+}
+
+@keyframes size2 {
+    from {
+        padding: 40px;
+        font-size: 25px;
+    }
+
+    to {
+        padding: 20px;
+        font-size: 20px;
+    }
 }
 
 .buttonWhite2:hover {
@@ -877,8 +933,22 @@ input:focus, textarea:focus, select:focus {
     width: 78%;
 }
 
-.formMessage {
+.numberLost {
+    animation-duration: 4s;
+    animation-name: opacity;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
 
+@keyframes opacity {
+    from {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @media screen and (max-width: 1100px) {
@@ -962,6 +1032,9 @@ input:focus, textarea:focus, select:focus {
     }
     .star2 {
         right: 10%;
+    }
+    .question, .buttonWhite2, .separatorHorizontal, .numberLost {
+        animation: none;
     }
 }
 

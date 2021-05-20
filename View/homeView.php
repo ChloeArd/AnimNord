@@ -31,7 +31,7 @@ if (isset($_GET['success'])) {
                 ?>
                 <div class="flexCenter flexColumn">
                     <img class="backgroundPet" src="<?=$content->getPicture() ?>" alt="chien et chat">
-                    <p class="question buttonWhite colorBlue"><?=$content->getText1() ?></p>
+                    <p class="question buttonWhite colorBlue flexCenter"><?=$content->getText1() ?></p>
                 </div>
                 <div class="helpIndex colorWhite"><?=$content->getText2() ?></div>
                 <?php

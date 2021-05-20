@@ -1,100 +1,32 @@
 // allows, thanks to the position of the scrollbar, to change the position of the menu.
-let positionMenu = $('#menu').offset().top;
-$(window).scroll(
-    function() {
-        if ($(window).scrollTop() >= positionMenu) {
-            // fixed
-            $('#menu').addClass("floatable");
-        }
-        else {
-            // relative
-            $('#menu').removeClass("floatable");
-        }
-    }
-);
+let menu = document.getElementById("menu");
+
+if (menu) {
+    window.addEventListener("scroll", function () {
+        let windowHeight = document.body.clientHeight;
+        let currentScroll = document.body.scrollTop || document.documentElement.scrollTop;
+
+        menu.className = (currentScroll >= menu.offsetHeight + 101) ? "menu flexCenter flexRow floatable" : "menu flexCenter flexRow";
+    }, false);
+}
 
 //When we click on "logoMenu" we unfold or replicate the drop-down sub menu.
-$subMenu = $("#subMenu");
-
-if ($("#menuMobile")) {
-    $("#logoMenu").click(function () {
-        $subMenu.slideToggle(600, "linear");
-        $subMenu.css({
-            "display": "flex",
-            "flex-direction": "Column"
-        });
-    });
+if (document.getElementById("logoMenu")) {
+    display(document.getElementById("logoMenu"), document.getElementById("subMenu"), "flex")
 }
 
-$buttonFilter = $("#filterCategories");
-
-if ($buttonFilter) {
-    $buttonFilter.click(function () {
-        $(".categories").slideToggle(600, "linear");
-        $(".categories").css("display", "block");
-    });
+if (document.getElementById("filterCategories")) {
+    display(document.getElementById("filterCategories"), document.getElementsByClassName("categories"), "block");
 }
-
-let x = window.matchMedia("(min-width: 900px)")
-
-// animation every 2 second for a screen min-width : 900px
-setInterval(function () {
-    if (x.matches) {
-        $(".question").animate({
-            width: "60%",
-            height: "250px",
-            padding: "50px",
-            fontSize: "35px",
-        }, 2000);
-
-        $(".buttonWhite2").animate({
-            padding: "40px",
-            fontSize: "25px",
-        }, 2000);
-
-        $(".separatorHorizontal").animate({
-            width: "100%"
-        }, 2000);
-
-        $(".numberLost").animate({
-            opacity: "0.5"
-        }, 2000);
-    }
-}, 2000);
-
-// animation every 3 second or a screen min-width : 900px
-setInterval(function () {
-    if (x.matches) {
-        $(".question").animate({
-            width: "50%",
-            height: "150px",
-            padding: "10px",
-            fontSize: "30px"
-        }, 3000);
-
-        $(".buttonWhite2").animate({
-            padding: "20px",
-            fontSize: "20px",
-        }, 3000);
-
-        $(".separatorHorizontal").animate({
-            width: "40%"
-        }, 3000);
-
-        $(".numberLost").animate({
-            opacity: "1",
-        }, 2000);
-    }
-}, 3000);
 
 if (document.getElementById("error")) {
     document.getElementById("closeModal").style.display = "block";
-    closeModal("#error");
+    closeModal("error");
 }
 
 if (document.getElementById("success")) {
     document.getElementById("closeModal").style.display = "block";
-    closeModal("#success");
+    closeModal("success");
 }
 
 /**
@@ -102,7 +34,22 @@ if (document.getElementById("success")) {
  * @param idModal
  */
 function closeModal (idModal) {
-    $("#closeModal").click(function () {
-        $(idModal).slideUp();
+    document.getElementById("closeModal").addEventListener("click", function () {
+        document.getElementById(idModal).style.display = "none";
+    });
+}
+
+// Allows you to make what you want to appear or disappear
+function display (idClick, id, display) {
+    let nbClick = 0;
+    $(idClick).click(function () {
+        if (nbClick === 0) {
+            $(id).css("display", display);
+            nbClick++;
+        }
+        else {
+            $(id).css("display", "none");
+            nbClick = 0;
+        }
     });
 }
