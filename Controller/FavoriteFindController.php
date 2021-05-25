@@ -31,7 +31,7 @@ class FavoriteFindController {
      * @param $favoriteFind
      */
     public function addFavorite($id, $user) {
-        if ($_GET['id'] && $_GET['user']) {
+        if ($_GET['id']) {
             $userManager = new UserManager();
             $adFindManager = new AdFindManager();
             $favoriteManager = new FavoriteFindManager();

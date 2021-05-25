@@ -4,7 +4,9 @@ namespace Controller;
 
 use Controller\Traits\ReturnViewTrait;
 use Model\DB;
+use Model\Entity\Role;
 use Model\Entity\User;
+use Model\Role\RoleManager;
 use Model\User\UserManager;
 
 class UserController {
@@ -69,10 +71,13 @@ class UserController {
 
                 if($maj && $min && $number && strlen($newPassword) > 8) {
                     $password = password_hash($newPassword, PASSWORD_BCRYPT);
-                    $user = new User($id, $password);
+                    $user = new User($id, '', '', '', '', $password);
                     $userManager->updatePasswordUser($user);
                     header("Location: ../index.php?controller=user&action=view&id=" . $_SESSION['id'] . "&success=1");
                 }
+            }
+            else {
+                header("Location: ../index.php?controller=user&action=updatePass&id=" . $_SESSION['id'] . "&error=0");
             }
         }
         $this->return('update/updatePassUserView', "Anim'Nord :  Changer de mot de passe");
@@ -89,7 +94,7 @@ class UserController {
             $id = intval($fields['id']);
             $role_fk = intval($fields['role_fk']);
 
-            $user = new User($id, $role_fk);
+            $user = new User($id, '', '', '', '', '', RoleManager::getManager()->getRole($role_fk));
             $userManager->updateRoleUser($user);
             header("Location: ../index.php?controller=user&action=all&success=0");
         }

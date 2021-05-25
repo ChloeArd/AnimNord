@@ -36,7 +36,7 @@ class FavoriteLostController {
      * @param $favoriteLost
      */
     public function addFavorite($id, $user) {
-        if ($_GET['id'] && $_GET['user']) {
+        if ($_GET['id']) {
             $userManager = new UserManager();
             $adlostManager = new AdLostManager();
             $favoriteManager = new FavoriteLostManager();

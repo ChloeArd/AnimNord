@@ -274,6 +274,10 @@ if (isset($_GET['controller'])) {
             $controller = new MessageController();
             $controller->messagePage();
             break;
+        case 'forgetPassword' :
+            $controller = new HomeController();
+            $controller->forgetPassword();
+            break;
         default:
             break;
     }

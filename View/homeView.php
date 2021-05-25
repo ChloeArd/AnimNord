@@ -111,7 +111,7 @@ if (isset($_GET['success'])) {
             <div class="accountIndex">
                 <?php
                 if (isset($_SESSION["id"])) { ?>
-                    <h2 class="title3 center">Vous avez perdus votre animal ? trouvés un animal ? Ou vous voulez faire adopter un animal ?</h2>
+                    <h2 class="title3 center">Vous avez perdus votre animal ? Ou vous avez trouvés un animal ?</h2>
                     <div id="connection_disconnection" class="flexRow flexCenter">
                         <a href="../index.php?controller=ad" class="buttonWhite2">Publier une annonce</a>
                     </div>

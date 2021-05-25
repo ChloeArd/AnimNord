@@ -1,3 +1,18 @@
+<?php
+$return = "";
+$id = "";
+
+if (isset($_GET['error'])) {
+    $id = "error";
+    switch ($_GET['error']) {
+        case '0':
+            $return = "Vous devez vous déconnecter puis vous reconnecter pour changer de mot de passe !";
+            break;
+    }
+}
+?>
+
+<div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
 <main>
     <div>
         <h1 class="titleAccount">Changer mon Mot de passe</h1>

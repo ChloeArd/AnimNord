@@ -119,8 +119,6 @@ class AdLostController {
             $user_fk = intval($ad['user_fk']);
 
             if (isset($files['picture'])) {
-                unlink("./assets/img/adLost/" . $picture);
-
                 if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
                     $maxSize = 2 * 1024 * 1024; // = 2 Mo
 
@@ -129,6 +127,7 @@ class AdLostController {
                         $namePicture = getRandomName($files['picture']['name']);
 
                         move_uploaded_file($tmpName, "./assets/img/adLost/".$namePicture);
+                        unlink("./assets/img/adLost/" . $picture);
 
                         $user_fk = $userManager->getUser($user_fk);
                         if ($user_fk->getId()) {

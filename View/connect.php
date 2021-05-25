@@ -35,7 +35,7 @@ elseif (isset($_GET['success'])) {
             <input type="email" id="email" name="email" pattern=".*\S.*" required>
             <label for="password"> Mot de passe <span class="size15 colorBlue required">*</span></label>
             <input type="password" id="password" name="password" pattern=".*\S.*" required>
-            <a href="forgetPassword.php" class="colorBlue underline link">Mot de passe oublié ?</a>
+            <a href="../index.php?controller=forgetPassword" class="colorBlue underline link">Mot de passe oublié ?</a>
             <input type="submit" class="buttonEnter colorWhite radius10 pointer" value="Connexion">
             <a href="registration.php" class="buttonGrey">Pas encore inscrit ?</a>
         </form>

@@ -136,7 +136,7 @@ class AdFindController {
             $user_fk = intval($ad['user_fk']);
             $picture = htmlentities($ad['picture']);
 
-            unlink("./assets/img/adFind/" . $picture);
+            unlink("./assets/img/adFind/$picture");
 
             $user_fk = $userManager->getUser($user_fk);
             if ($user_fk->getId()) {

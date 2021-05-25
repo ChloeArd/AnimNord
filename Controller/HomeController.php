@@ -53,4 +53,9 @@
      public function contactUserPage() {
          $this->return("sendMailUserView", "Anim'Nord : Contacter un utilisateur");
      }
+
+     // page forget password
+     public function forgetPassword() {
+         $this->return("forgetPasswordView", "Anim'Nord : Mot de passe oublié");
+     }
  }

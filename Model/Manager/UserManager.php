@@ -87,6 +87,7 @@ class UserManager {
         $request->bindValue(':password', $user->setPassword($user->getPassword()));
 
         return $request->execute();
+
     }
 
     /**
@@ -113,7 +114,7 @@ class UserManager {
     public function updateRoleUser(User $user): bool {
         $request = DB::getInstance()->prepare("UPDATE user SET role_fk = :role_fk WHERE id = :id");
         $request->bindValue(':id', $user->getId());
-        $request->bindValue(':role_fk', $user->setRoleFk($user->getRoleFk()));
+        $request->bindValue(':role_fk', $user->setRoleFk($user->getRoleFk())->getId());
 
         return $request->execute();
     }
