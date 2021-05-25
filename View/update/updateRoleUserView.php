@@ -13,7 +13,7 @@ $roles = $roleManager->getRoles();
         <form action="" method="post" class="marginAuto width_80">
             <div class="flexCenter flexColumn margin_15_0">
                 <p class="margin_15_0 colorGrey">Actuellement : <span class="bold"><?=$user1->getRoleFk()->getRole() ?></span></p>
-                <select name="role_fk" class="margin_0_20">
+                <select id="role_fk" name="role_fk" class="margin_0_20">
                     <?php
                     foreach ($roles as $role) { ?>
                         <option value="<?=$role->getId() ?>"><?=$role->getRole() ?></option>

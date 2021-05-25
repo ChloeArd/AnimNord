@@ -24,12 +24,29 @@ if (isset($var['ad'])) { ?>
             <?php
             foreach ($var['ad'] as $ad) {
                 $dateLost = new DateTime($ad->getDateLost());
-                $date = new DateTime($ad->getDate()); ?>
-                <form method="post" action="">
-                    <input type="hidden" name="adLost_fk" value="<?=$ad->getId() ?>">
-                    <input type="hidden" name="user_fk" value="<?=$_SESSION['id'] ?>">
-                    <button type="submit" name="send"><i class='far fa-star star2 size20'></i></button>
-                </form>
+                $date = new DateTime($ad->getDate());
+                $favoriteManager = new Model\FavoriteLost\FavoriteLostManager();
+                $favorite = $favoriteManager->favorite($_GET['id'], $_SESSION['id']);
+                if ($favorite) {
+                    foreach ($favorite as $fav) { ?>
+                        <form method="post" action="../index.php?controller=adlost&action=adComment&favorite=delete&id=<?=$ad->getId() ?>&user=<?=$ad->getUserFk()->getId() ?>&comment=commentLost">
+                            <input type="hidden" name="id" value="<?=$fav->getId() ?>">
+                            <input type="hidden" name="adLost_fk" value="<?=$fav->getAdLostFk()->getId() ?>">
+                            <input type="hidden" name="user_fk" value="<?=$fav->getUserFk()->getId() ?>">
+                            <button type="submit" name="send"><i class='fas fa-star star2 size20'></i></button>
+                        </form>
+                        <?php
+                    }
+                }
+                else { ?>
+                    <form method="post" action="../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>&user=<?=$ad->getUserFk()->getId() ?>&comment=commentLost">
+                        <input type="hidden" name="adLost_fk" value="<?=$ad->getId() ?>">
+                        <input type="hidden" name="user_fk" value="<?=$_SESSION['id'] ?>">
+                        <button type="submit" name="send"><i class='far fa-star star2 size20'></i></button>
+                    </form>
+                    <?php
+                } ?>
+
                 <div class='post flexColumn flexCenter colorGrey'>
                     <h1 class='colorWhite margin_15_0 center categoriesAnimal width_100'><?=$ad->getAnimal() ?> perdu : <?=$ad->getName() ?></h1>
                     <div class='width_70 margin_15_0 flexCenter flexColumn'>

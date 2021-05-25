@@ -1,15 +1,15 @@
 <?php
 use Model\DB;
 
-if (isset($_GET["page"])) {
-    $page = $_GET["page"];
-}
-else {
-    $page = 1;
-}
-
 if (isset($var['ads'])) {
-?>
+    $count = count($var['ads']);
+    if (isset($_GET["page"])) {
+        $page = $_GET["page"];
+    }
+    else {
+        $page = 1;
+    }
+    ?>
 
     <main class="width_80 flexColumn">
         <h1 class="title colorWhite flexCenter"> Chiens et chats perdus</h1>
@@ -94,14 +94,13 @@ if (isset($var['ads'])) {
                         // The page limit is 30 pet.
                         $first = ($page - 1) * 30;
                         $last = ($page * 30) - 1;
-                        $count = count($var['ads']);
                         if ($last > $count) {
                             $last = $count;
                         }
                         foreach ($exec as $donnees) {
                             $dateLost = new DateTime($donnees['date_lost']);
                             $date = new DateTime($donnees['date']); ?>
-                            <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$donnees['id']?>&user=<?=$donnees['user_fk']?>&comment=commentLost' class='post flexRow flexCenter colorGrey'>
+                            <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$donnees['id']?>&user=<?=$donnees['user_fk']?>&comment=commentLost' class='post postTransform flexRow flexCenter colorGrey'>
                                 <div class='width_30'>
                                     <?php
                                     if ($donnees['picture'] === null || $donnees['picture'] === "") {
@@ -200,9 +199,9 @@ if (isset($var['ads'])) {
                         $last = $count;
                     }
                     foreach ($var['ads'] as $ad) {
-                        $dateLost = new DateTime($ad->getDateLost());
+                            $dateLost = new DateTime($ad->getDateLost());
                         $date = new DateTime($ad->getDate()); ?>
-                        <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>&user=<?=$ad->getUserFk()->getId()?>&comment=commentLost' class='post flexRow flexCenter colorGrey'>
+                        <a href='../index.php?controller=adlost&action=adComment&id=<?=$ad->getId() ?>&user=<?=$ad->getUserFk()->getId()?>&comment=commentLost' class='post postTransform flexRow flexCenter colorGrey'>
                             <div class='width_30'>
                                 <?php
                                 if ($ad->getPicture() === null || $ad->getPicture() === "") {

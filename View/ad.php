@@ -9,9 +9,6 @@
         <a href="../index.php?controller=adfind&action=new" class="containerType">
             <p><i class="fas fa-chevron-circle-right colorBlue"></i>J'ai trouvé un chien ou un chat.</p>
         </a>
-        <a href="create/addAdoptView.php" class="containerType">
-            <p><i class="fas fa-chevron-circle-right colorBlue"></i>J'ai un chien ou un chat à faire adopter.</p>
-        </a>
         <p id="freeAd" class="colorGrey margin_15_0">La publication est totalement gratuite et instantanée !</p>
     </div>
     <div class="helpIndex flexCenter flexColumn colorWhite">
@@ -19,7 +16,7 @@
         <div class="margin_15_0">
             <p class="size18">C'est très simple, il vous suffit de :</p>
             <ul>
-                <li>choisir parmis les 3 types d'annonces proposés,</li>
+                <li>choisir parmis les 2 types d'annonces proposés,</li>
                 <li>complêter le formulaire,</li>
                 <li>cliquer sur "publier", et voilà <i class="far fa-laugh-wink"></i></li>
             </ul>

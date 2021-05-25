@@ -29,7 +29,27 @@ class FavoriteLostManager {
                 $adLost = AdLostManager::getManager()->getAd($favorites_data['adLost_fk']);
                 if($user->getId()) {
                     if ($adLost->getId()) {
-                        $favorites[] = new AdLost($favorites_data['id'], $adLost, $user);
+                        $favorites[] = new FavoriteLost($favorites_data['id'], $adLost, $user);
+                    }
+                }
+            }
+        }
+        return $favorites;
+    }
+
+    public function favorite($adLost_fk, $user_fk): array {
+        $favorites = [];
+        $request = DB::getInstance()->prepare("SELECT * FROM favorite_lost WHERE user_fk = :user_fk AND adLost_fk = :adLost_fk ");
+        $request->bindParam(":user_fk", $user_fk);
+        $request->bindParam(":adLost_fk", $adLost_fk);
+        $result = $request->execute();
+        if($result) {
+            foreach ($request->fetchAll() as $favorite) {
+                $user = UserManager::getManager()->getUser($user_fk);
+                $adLost = AdLostManager::getManager()->getAd($adLost_fk);
+                if($user->getId()) {
+                    if ($adLost->getId()) {
+                        $favorites[] = new FavoriteLost($favorite['id'], $adLost, $user);
                     }
                 }
             }
@@ -43,8 +63,7 @@ class FavoriteLostManager {
      * @return bool
      */
     public function add (FavoriteLost $favorite): bool {
-        $request = DB::getInstance()->prepare("INSERT INTO favorite_lost (adLost_fk, user_fk) 
-                                                     VALUES (:adLost_fk, :user_fk) ");
+        $request = DB::getInstance()->prepare("INSERT INTO favorite_lost (adLost_fk, user_fk) VALUES (:adLost_fk, :user_fk) ");
         $request->bindValue(':adLost_fk', $favorite->getAdLostFk()->getId());
         $request->bindValue(':user_fk', $favorite->getUserFk()->getId());
 
@@ -52,7 +71,7 @@ class FavoriteLostManager {
     }
 
     /**
-     * Delete a ad lost
+     * Delete a ad lost to favorites.
      * @param FavoriteLost $favorite
      * @return bool
      */

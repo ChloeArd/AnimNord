@@ -772,8 +772,11 @@ foreach ($adLost as $ad) { ?>
                 </div>
                 <p>Importer une photo <i class="far fa-image"></i></p>
             </div>
-            <!--<input type="file" name="picture" id="picture" > -->
-            <input type="hidden" name="picture" value="<?=$ad->getPicture() ?>">
+            <label for="picture">Sélectionner des images à télécharger (PNG, JPEG, JPG) : </label>
+            <input type="file" name="picture" id="picture" accept="image/png, image/jpeg, image/jpg" size="2000000">
+            <span>(Max: 2Mo)</span>
+
+            <input type="hidden" name="picture2" value="<?=$ad->getPicture() ?>">
 
             <input type="submit" class="buttonEnter colorWhite radius10 pointer" value="Modifier">
         </form>

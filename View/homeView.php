@@ -108,38 +108,20 @@ if (isset($_GET['success'])) {
             </div>
             <a href="../index.php?controller=adfind" class="buttonEnter buttonCenter radius10 align flexCenter">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
 
-            <div class="separatorHorizontal"></div>
-            <h2 class="center title2">Annonces récentes de chiens et de chats à adopter</h2>
-            <div class="width_80 flexRow flexCenter flexWrap">
-                <?php
-                for ($i = 0; $i < 4; $i++) {
-                    $id = $i + 6;
-                    echo "
-                <a href='#' class='containerRecentPost flexColumn flexCenter radius10'>
-                        <img class='imagePet' src='https://placedog.net/500/280?id=". $id ."' >
-                <p class='margin8'>Race de l'animal</p>
-                <p class='margin8'>Âge</p>
-                <p class='location'><i class='fas fa-map-marker-alt'></i>Lieu</p>
-            </a>
-                ";
-                }
-                ?>
-            </div>
-            <a href="" class="buttonEnter buttonCenter radius10 align flexCenter">Allez sur les annonces <i class="fas fa-hand-point-right"></i></a>
             <div class="accountIndex">
                 <?php
                 if (isset($_SESSION["id"])) { ?>
                     <h2 class="title3 center">Vous avez perdus votre animal ? trouvés un animal ? Ou vous voulez faire adopter un animal ?</h2>
                     <div id="connection_disconnection" class="flexRow flexCenter">
-                        <a href="../View/ad.php" class="buttonWhite2">Publier une annonce</a>
+                        <a href="../index.php?controller=ad" class="buttonWhite2">Publier une annonce</a>
                     </div>
                     <?php
                 }
                 else { ?>
                     <h2 class="title3 center">Pas encore incrit ? ou pas encore connecté ?</h2>
                     <div id="connection_disconnection" class="flexRow flexCenter">
-                        <a href="pages/registration.php" class="buttonWhite2">Inscription</a>
-                        <a href="pages/connect.php" class="buttonWhite2">Connexion</a>
+                        <a href="../index.php?controller=registration" class="buttonWhite2">Inscription</a>
+                        <a href="../index.php?controller=connection" class="buttonWhite2">Connexion</a>
                     </div>
                     <?php
                 }

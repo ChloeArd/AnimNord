@@ -94,9 +94,9 @@ class AdLostController {
         $this->return("create/addLostView", "Anim'Nord : Ajouter une annonce de chiens et chats perdus");
     }
 
-    public function updateAd($ad) {
+    public function updateAd($ad, $files) {
         if (isset($ad['id'], $ad['animal'], $ad['name'], $ad['sex'], $ad['size'], $ad['fur'], $ad['color'], $ad['dress'], $ad['race'],
-            $ad['number'], $ad['description'], $ad['date_lost'], $ad['date'], $ad['city'], $ad['picture'], $ad['user_fk'])) {
+            $ad['number'], $ad['description'], $ad['date_lost'], $ad['date'], $ad['city'], $ad['picture2'], $ad['user_fk'])) {
 
             $userManager = new UserManager();
             $adlostManager = new AdLostManager();
@@ -115,13 +115,44 @@ class AdLostController {
             $date_lost = htmlentities($ad['date_lost']);
             $date = htmlentities($ad['date']);
             $city = htmlentities($ad['city']);
+            $picture = htmlentities($ad['picture2']);
             $user_fk = intval($ad['user_fk']);
 
-            $user_fk = $userManager->getUser($user_fk);
-            if($user_fk->getId()) {
-                $ad = new AdLost($id, $animal, $name, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_lost, $date, $city, $picture, $user_fk);
-                $adlostManager->update($ad);
-                header("Location: ../index.php?controller=adlost&action=view&success=1");
+            if (isset($files['picture'])) {
+                unlink("./assets/img/adLost/" . $picture);
+
+                if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
+                    $maxSize = 2 * 1024 * 1024; // = 2 Mo
+
+                    if ($files['picture']['size'] <= $maxSize) {
+                        $tmpName = $files['picture']['tmp_name'];
+                        $namePicture = getRandomName($files['picture']['name']);
+
+                        move_uploaded_file($tmpName, "./assets/img/adLost/".$namePicture);
+
+                        $user_fk = $userManager->getUser($user_fk);
+                        if ($user_fk->getId()) {
+                            $ad = new AdLost($id, $animal, $name, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_lost, $date, $city, $namePicture, $user_fk);
+                            $adlostManager->update($ad);
+                            header("Location: ../index.php?controller=adlost&action=view&success=1");
+                        }
+                    }
+                    else {
+                        header("Location: ../index.php?controller=adlost&action=update&id=$id&error=1");
+                    }
+                }
+                else {
+                    header("Location: ../index.php?controller=adlost&action=update&id=$id&error=0");
+                }
+
+            }
+            else {
+                $user_fk = $userManager->getUser($user_fk);
+                if ($user_fk->getId()) {
+                    $ad = new AdLost($id, $animal, $name, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_lost, $date, $city, $picture, $user_fk);
+                    $adlostManager->update($ad);
+                    header("Location: ../index.php?controller=adlost&action=view&success=1");
+                }
             }
         }
         $this->return("update/updateLostView", "Anim'Nord : Modifier une annonce");

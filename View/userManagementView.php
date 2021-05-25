@@ -16,25 +16,42 @@ if (isset($_GET['success'])) {
 if (isset($var['users'])) { ?>
     <div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
     <main>
-        <div class="flexRow flexCenter" id="menuAccount">
-            <a href="../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>" class="colorBlue margin_0_20 linkAccount">Mes informations</a>
-            <div class="separatorVertical"></div>
-            <a href="../index.php?controller=adlost&action=view" class="colorBlue margin_0_20 linkAccount">Mes annonces</a>
-            <div class="separatorVertical"></div>
-            <a href="../index.php?controller=adlost&favorite=view" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
-            <div class="separatorVertical"></div>
-            <a href="../index.php?controller=message" class="colorBlue margin_0_20 linkAccount">Mes messages</a>
+    <div id="buttonAccount" class="buttonEnter colorWhite flexCenter">Mon compte <i class="fas fa-caret-down"></i></div>
+
+    <div class="flexColumn marginAuto width_70" id="menuAccountMobile">
+        <a href="../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>" class="colorGrey margin_0_20 linkAccount"><i class="fas fa-chevron-circle-right colorGrey"></i>Mes informations</a>
+        <a href="../index.php?controller=adlost&action=view" class="colorGrey margin_0_20 linkAccount"><i class="fas fa-chevron-circle-right colorGrey"></i>Mes annonces</a>
+        <a href="../index.php?controller=adlost&favorite=view" class="colorGrey margin_0_20 linkAccount"><i class="fas fa-chevron-circle-right colorGrey"></i>Mes favoris</a>
+        <a href="../index.php?controller=message" class="colorGrey margin_0_20 linkAccount"><i class="fas fa-chevron-circle-right colorGrey"></i>Mes messages</a>
+        <?php
+        if ($_SESSION["role_fk"] === "1") { ?>
+            <a href="../index.php?controller=user&action=all" class="colorOrange margin_0_20 linkAccount"><i class="fas fa-chevron-circle-right colorOrange"></i>Gestion des utilisateurs</a>
+            <?php
+        } ?>
+        <form method="post" action="../assets/php/disconnection.php">
+            <span class="margin_0_20 linkAccount"><i class="fas fa-sign-out-alt colorRed"></i><input type="submit" class="disconnection buttonRed" value="Me déconnecter"></span>
+        </form>
+    </div>
+
+    <div class="flexRow flexCenter" id="menuAccount">
+        <a href="../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>" class="colorBlue margin_0_20 linkAccount">Mes informations</a>
+        <div class="separatorVertical"></div>
+        <a href="../index.php?controller=adlost&action=view" class="colorBlue margin_0_20 linkAccount">Mes annonces</a>
+        <div class="separatorVertical"></div>
+        <a href="../index.php?controller=adlost&favorite=view&delete=ad" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
+        <div class="separatorVertical"></div>
+        <a href="../index.php?controller=message" class="colorBlue margin_0_20 linkAccount">Mes messages</a>
+        <div class="separatorVertical"></div>
+        <?php
+        if ($_SESSION["role_fk"] === "1") { ?>
+            <a href="../index.php?controller=user&action=all" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
             <div class="separatorVertical"></div>
             <?php
-            if ($_SESSION["role_fk"] === "1") { ?>
-                <a href="../index.php?controller=user&action=all&search=ok" class="colorOrange margin_0_20 linkAccount">Gestion des utilisateurs</a>
-                <div class="separatorVertical"></div>
-                <?php
-            } ?>
-            <form method="post" action="../assets/php/disconnection.php">
-                <input type="submit" class="disconnection buttonRed linkAccount margin_0_20" value="Me déconnecter">
-            </form>
-        </div>
+        } ?>
+        <form method="post" action="../assets/php/disconnection.php">
+            <input type="submit" class="disconnection buttonRed linkAccount margin_0_20" value="Me déconnecter">
+        </form>
+    </div>
 
         <?php
     $bdd = DB::getInstance();
@@ -60,7 +77,7 @@ if (isset($var['users'])) { ?>
         $nb_resultats = $exec->rowCount(); // count a result
 
         if($nb_resultats != 0) { ?>
-            <form method="post" action="" class="flexRow width_80 flexCenter">
+            <form id="formSearchUser" method="post" action="" class="flexRow width_80 flexCenter">
                 <input class="margin_0_20" type="text" name="firstname" placeholder="Prénom">
                 <input class="margin_0_20" type="text" name="lastname" placeholder="Nom">
                 <select name="role_fk" class="margin_0_20">
@@ -112,7 +129,7 @@ if (isset($var['users'])) { ?>
             }
         }
         else {?>
-            <form method="post" action="" class="flexRow width_80 flexCenter">
+            <form id="formSearchUser" method="post" action="" class="flexRow width_80 flexCenter">
                 <input class="margin_0_20" type="text" name="firstname" placeholder="Prénom">
                 <input class="margin_0_20" type="text" name="lastname" placeholder="Nom">
                 <select name="role_fk" class="margin_0_20">
@@ -133,7 +150,7 @@ if (isset($var['users'])) { ?>
     }
     else { ?>
         <div>
-            <form method="post" action="" class="flexRow width_80 flexCenter">
+            <form id="formSearchUser" method="post" action="" class="flexRow width_80 flexCenter">
                 <input class="margin_0_20" type="text" name="firstname" placeholder="Prénom">
                 <input class="margin_0_20" type="text" name="lastname" placeholder="Nom">
                 <select name="role_fk" class="margin_0_20">

@@ -22,6 +22,7 @@ require_once './Model/Manager/ContentIndexManager.php';
 require_once './Model/Manager/AdLostManager.php';
 require_once './Model/Manager/AdFindManager.php';
 require_once './Model/Manager/FavoriteLostManager.php';
+require_once './Model/Manager/FavoriteFindManager.php';
 require_once './Model/Manager/CommentLostManager.php';
 require_once './Model/Manager/CommentFindManager.php';
 require_once './Model/Manager/MessageManager.php';
@@ -32,6 +33,7 @@ require_once './Controller/AdLostController.php';
 require_once './Controller/AdFindController.php';
 require_once './Controller/UserController.php';
 require_once './Controller/FavoriteLostController.php';
+require_once './Controller/FavoriteFindController.php';
 require_once './Controller/CommentLostController.php';
 require_once './Controller/CommentFindController.php';
 require_once './Controller/MessageController.php';
@@ -39,6 +41,7 @@ require_once './Controller/MessageController.php';
 use Controller\CommentFindController;
 use Controller\CommentLostController;
 use Controller\ContentIndexController;
+use Controller\FavoriteFindController;
 use Controller\FavoriteLostController;
 use Controller\HomeController;
 use Controller\AdLostController;
@@ -58,7 +61,7 @@ if (isset($_GET['controller'])) {
                         $controller->addAd($_POST, $_FILES);
                         break;
                     case 'update' :
-                        $controller->updateAd($_POST);
+                        $controller->updateAd($_POST, $_FILES);
                         break;
                     case 'view' :
                         $controller->adsUser($_SESSION['id']);
@@ -76,10 +79,27 @@ if (isset($_GET['controller'])) {
             if (isset($_GET['favorite'])) {
                 switch ($_GET['favorite']) {
                     case 'favoriteLost' :
-                        //$controllerFavorite->addFavorite($_GET['id'], $_SESSION['id']);
+                        $controllerFavorite->addFavorite($_GET['id'], $_SESSION['id']);
                         break;
                     case 'view' :
                         $controllerFavorite->favoritesUser($_SESSION['id']);
+                        if (isset($_GET['delete'])) {
+                            switch ($_GET['delete']) {
+                                case 'ok' :
+                                    $controllerFavorite->deleteFavorite($_POST);
+                                    break;
+                                case 'ad' :
+                                    $controllerFavorite->deleteFavorite($_POST);
+                                    $controllerFavorite = new FavoriteFindController();
+                                    $controllerFavorite->deleteFavorite($_POST);
+                                    break;
+                                default :
+                                    break;
+                            }
+                        }
+                        break;
+                    case 'delete' :
+                        $controllerFavorite->deleteFavorite($_POST);
                         break;
                     default :
                         break;
@@ -118,6 +138,7 @@ if (isset($_GET['controller'])) {
             break;
         case 'adfind':
             $controller = new AdFindController();
+            $controllerFavorite = new FavoriteFindController();
             if(isset($_GET['action'])) {
                 switch($_GET['action']) {
                     case 'new' :
@@ -136,6 +157,30 @@ if (isset($_GET['controller'])) {
                         $controller->ad($_GET["id"]);
                         break;
                     default:
+                        break;
+                }
+            }
+            if (isset($_GET['favorite'])) {
+                switch ($_GET['favorite']) {
+                    case 'favoriteLost' :
+                        $controllerFavorite->addFavorite($_GET['id'], $_SESSION['id']);
+                        break;
+                    case 'view' :
+                        $controllerFavorite->favoritesUser($_SESSION['id']);
+                        if (isset($_GET['delete'])) {
+                            switch ($_GET['delete']) {
+                                case 'ok' :
+                                    $controllerFavorite->deleteFavorite($_POST);
+                                    break;
+                                default :
+                                    break;
+                            }
+                        }
+                        break;
+                    case 'delete' :
+                        $controllerFavorite->deleteFavorite($_POST);
+                        break;
+                    default :
                         break;
                 }
             }

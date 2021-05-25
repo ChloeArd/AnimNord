@@ -29,7 +29,7 @@ if (isset($_GET['success'])) {
             <div class="separatorVertical"></div>
             <a href="../index.php?controller=adlost&action=view" class="colorBlue margin_0_20 linkAccount">Mes annonces</a>
             <div class="separatorVertical"></div>
-            <a href="../index.php?controller=adlost&favorite=view" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
+            <a href="../index.php?controller=adlost&favorite=view&delete=ad" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
             <div class="separatorVertical"></div>
             <a href="../index.php?controller=message" class="colorBlue margin_0_20 linkAccount">Mes messages</a>
             <div class="separatorVertical"></div>
@@ -54,8 +54,7 @@ if (isset($_GET['success'])) {
                         $date = new DateTime($ad->getDate()); ?>
                         <a class="colorBlack" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit"></i></a>
                         <a class="colorBlack" href="../index.php?controller=adlost&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
-                        <a class='colorBlack' href=''><i class='far fa-star star'></i></a>
-                        <a class='post flexRow flexCenter colorGrey'>
+                        <a class='post postTransform flexRow flexCenter colorGrey'>
                             <div class='width_30'>
                                 <?php
                                 if ($ad->getPicture() === null || $ad->getPicture() === "") {
@@ -82,7 +81,7 @@ if (isset($_GET['success'])) {
                                 <p>Nom : <span class="colorBlue"><?=$ad->getName() ?></span></p>
                                 <p>Race : <span class='colorBlue'><?=$ad->getRace() ?></span></p>
                                 <?php
-                                if(!is_null($ad->getNumber())) {?>
+                                if($ad->getNumber() !== null && $ad->getNumber() !== "") {?>
                                     <p>Numéro du tatouage ou de la puce : <span class="colorBlue"> <?=$ad->getNumber() ?></span></p>
                                 <?php
                                 } ?>
@@ -114,8 +113,7 @@ if (isset($_GET['success'])) {
                             $date = new DateTime($ad->getDate()); ?>
                             <a class="colorBlack" href="../index.php?controller=adfind&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit"></i></a>
                             <a class="colorBlack" href="../index.php?controller=adfind&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
-                            <a class='colorBlack' href=''><i class='far fa-star star'></i></a>
-                            <a class='post flexRow flexCenter colorGrey'>
+                            <a class='post postTransform flexRow flexCenter colorGrey'>
                                 <div class='width_30'>
                                     <?php
                                     if ($ad->getPicture() === null || $ad->getPicture() === "") {
@@ -141,7 +139,7 @@ if (isset($_GET['success'])) {
                                     <p>Trouvé à : <span class='colorBlue'><?=$ad->getCity() ?></span></p>
                                     <p>Race : <span class='colorBlue'><?=$ad->getRace() ?></span></p>
                                     <?php
-                                    if(!is_null($ad->getNumber())) {?>
+                                    if($ad->getNumber() !== null && $ad->getNumber() !== "") {?>
                                         <p>Numéro du tatouage ou de la puce : <span class="colorBlue"> <?=$ad->getNumber() ?></span></p>
                                         <?php
                                     }

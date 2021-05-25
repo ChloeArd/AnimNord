@@ -19,7 +19,7 @@ if (document.getElementById("filterCategories")) {
     display(document.getElementById("filterCategories"), document.getElementsByClassName("categories"), "block");
 }
 
-display(document.getElementById("buttonAccount"), document.getElementById("menuAccount"), "flex");
+display(document.getElementById("buttonAccount"), document.getElementById("menuAccountMobile"), "flex");
 
 if (document.getElementById("error")) {
     document.getElementById("closeModal").style.display = "block";
@@ -30,6 +30,8 @@ if (document.getElementById("success")) {
     document.getElementById("closeModal").style.display = "block";
     closeModal("success");
 }
+
+display(document.getElementById("buttonUser"), document.getElementById("userList"), "block");
 
 /**
  * Gradually folds up the modal window.

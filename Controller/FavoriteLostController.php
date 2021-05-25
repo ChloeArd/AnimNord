@@ -5,6 +5,7 @@ namespace Controller;
 use Controller\Traits\ReturnViewTrait;
 use Model\Entity\AdLost;
 use Model\AdLost\AdLostManager;
+use Model\FavoriteFind\FavoriteFindManager;
 use Model\User\UserManager;
 use Model\Entity\FavoriteLost;
 use Model\FavoriteLost\FavoriteLostManager;
@@ -19,7 +20,15 @@ class FavoriteLostController {
      */
     public function favoritesUser(int $user_fk) {
         $manager = new FavoriteLostManager();
-        $this->return("favoritesAccount", "Anim'Nord : Mes favoris", ['favoritesUser' => $manager->favoritesByUser($user_fk)]);
+        $managerFind = new FavoriteFindManager();
+        $this->return("favoritesAccount", "Anim'Nord : Mes favoris",
+            ['favoritesUser' => $manager->favoritesByUser($user_fk),
+             'favoritesUserFind' => $managerFind->favoritesByUser($user_fk)]);
+    }
+
+    public function favorite($adLost_fk, $user_fk) {
+        $manager = new FavoriteLostManager();
+        $this->return("adLostCommentView", "Anim'Nord : Annonce", ['favoritesUser' => $manager->favorite($adLost_fk,$user_fk)]);
     }
 
     /**
@@ -62,10 +71,11 @@ class FavoriteLostController {
             $adLost_fk = $adlostManager->getAd($adLost_fk);
             if ($user_fk->getId()) {
                 if ($adLost_fk->getId()) {
-                    $adlost = new AdLost($id);
-                    $adlostManager->delete($adlost);
+                    $favorite = new FavoriteLost($id);
+                    $favoriteManager->delete($favorite);
                 }
             }
         }
+        $this->return("favoritesAccount", "Anim'Nord : Mes favoris");
     }
 }
