@@ -42,7 +42,24 @@ if (isset($var['ads'])) {?>
             }
 
             if(!empty($_POST['color'])) {
-                $color = htmlentities($_POST['color']);
+                if (count($_POST['color']) === 1) {
+                    $color = $_POST['color'][0];
+                }
+                elseif (count($_POST['color']) === 2) {
+                    $color = $_POST['color'][0] . ", " . $_POST['color'][1];
+                }
+                elseif (count($_POST['color']) === 3) {
+                    $color = $_POST['color'][0] . ", " . $_POST['color'][1] . ", " . $_POST['color'][2];
+                }
+                elseif (count($_POST['color']) === 4) {
+                    $color = $_POST['color'][0] . ", " . $_POST['color'][1] . ", " . $_POST['color'][2] . ", " . $_POST['color'][3];
+                }
+                elseif (count($_POST['color']) === 5) {
+                    $color = $_POST['color'][0] . ", " . $_POST['color'][1] . ", " . $_POST['color'][2] . ", " . $_POST['color'][3] . ", " . $_POST['color'][4];
+                }
+                else {
+                    $color = $_POST['color'][0] . ", " . $_POST['color'][1] . ", " . $_POST['color'][2] . ", " . $_POST['color'][3] . ", " . $_POST['color'][4] . ", " . $_POST['color'][5];
+                }
                 $req .= "AND color LIKE '%$color%'";
             }
 

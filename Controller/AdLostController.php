@@ -57,7 +57,6 @@ class AdLostController {
             $sex = htmlentities($ad['sex']);
             $size = htmlentities($ad['size']);
             $fur = htmlentities($ad['fur']);
-            $color = htmlentities($ad['color']);
             $dress = htmlentities($ad['dress']);
             $race = htmlentities(ucfirst($ad['race']));
             $number = htmlentities($ad['number']);
@@ -66,6 +65,25 @@ class AdLostController {
             $date = htmlentities($ad['date']);
             $city = htmlentities($ad['city']);
             $user_fk = intval($ad['user_fk']);
+
+            if (count($ad['color']) === 1) {
+                $color = $ad['color'][0];
+            }
+            elseif (count($ad['color']) === 2) {
+                $color = $ad['color'][0] . ", " . $ad['color'][1];
+            }
+            elseif (count($ad['color']) === 3) {
+                $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2];
+            }
+            elseif (count($ad['color']) === 4) {
+                $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3];
+            }
+            elseif (count($ad['color']) === 5) {
+                $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4];
+            }
+            else {
+                $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " .$ad['color'][4] . ", " . $ad['color'][5];
+            }
 
             if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
                 $maxSize = 2 * 1024 * 1024; // = 2 Mo
@@ -107,7 +125,6 @@ class AdLostController {
             $sex = htmlentities($ad['sex']);
             $size = htmlentities($ad['size']);
             $fur = htmlentities($ad['fur']);
-            $color = htmlentities($ad['color']);
             $dress = htmlentities($ad['dress']);
             $race = htmlentities(ucfirst($ad['race']));
             $number = htmlentities($ad['number']);
@@ -117,6 +134,25 @@ class AdLostController {
             $city = htmlentities($ad['city']);
             $picture = htmlentities($ad['picture2']);
             $user_fk = intval($ad['user_fk']);
+
+            if (count($ad['color']) === 1) {
+                $color = $ad['color'][0];
+            }
+            elseif (count($ad['color']) === 2) {
+                $color = $ad['color'][0] . ", " . $ad['color'][1];
+            }
+            elseif (count($ad['color']) === 3) {
+                $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2];
+            }
+            elseif (count($ad['color']) === 4) {
+                $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3];
+            }
+            elseif (count($ad['color']) === 5) {
+                $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4];
+            }
+            else {
+                $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " .$ad['color'][4] . ", " . $ad['color'][5];
+            }
 
             if (isset($files['picture'])) {
                 if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {

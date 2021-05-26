@@ -59,33 +59,34 @@
                 <option>Court</option>
                 <option>Mi-long</option>
                 <option>Long</option>
+                <option>Bouclé</option>
             </select>
         </div>
         <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="colors"> Couleur du pelage :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
-                    <input id="black" type="checkbox" name="color" value="Noir">
+                    <input id="black" type="checkbox" name="color[]" value="Noir">
                     <label for="black" class="margin_0_20 borderBlack black"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="white" type="checkbox" name="color" value="Blanc">
+                    <input id="white" type="checkbox" name="color[]" value="Blanc">
                     <label for="white" class="margin_0_20 borderBlack"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="brown" type="checkbox" name="color" value="Marron">
+                    <input id="brown" type="checkbox" name="color[]" value="Marron">
                     <label for="brown" class="margin_0_20 borderBlack brown"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="grey" type="checkbox" name="color" value="Gris">
+                    <input id="grey" type="checkbox" name="color[]" value="Gris">
                     <label for="grey" class="margin_0_20 borderBlack grey"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="beige" type="checkbox" name="color" value="Beige">
+                    <input id="beige" type="checkbox" name="color[]" value="Beige">
                     <label for="beige" class="margin_0_20 borderBlack beige"></label>
                 </div>
                 <div class="flexRow align">
-                    <input id="orange" type="checkbox" name="color" value="Roux">
+                    <input id="orange" type="checkbox" name="color[]" value="Roux">
                     <label for="orange" class="margin_0_20 borderBlack orange"></label>
                 </div>
             </div>
@@ -97,9 +98,12 @@
                 <option>Uni</option>
                 <option>Tacheté</option>
                 <option>Rayé</option>
+                <option>Tabby</option>
                 <option>Bringé</option>
+                <option>Colourpoint</option>
                 <option>Bicolor</option>
                 <option>Tricolore</option>
+                <option>Pluricolor</option>
             </select>
         </div>
         <div class="categorie flexColumn flexCenter">
