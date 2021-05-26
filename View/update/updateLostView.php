@@ -132,10 +132,10 @@ foreach ($adLost as $ad) { ?>
                 </div>
                 <p>Date et lieu de sa disparition <i class="far fa-calendar-alt"></i><i class="fas fa-map-marker-alt"></i></p>
             </div>
-            <div class="flexRow align">
+            <div id="date" class="flexRow align">
                 <label for="date_lost"> Perdu le : <span class="size15 colorBlue required">*</span></label>
-                <div class="categoriePet">
-                    <input id="date_lost" name="date_lost" type="date" value="<?=$ad->getDateLost() ?>" required>
+                <div id="date_lost" class="categoriePet">
+                    <input  name="date_lost" type="date" value="<?=$ad->getDateLost() ?>" required>
                 </div>
             </div>
             <input id="date" name="date" type="hidden" required value="<?= date('Y-m-d')?>">

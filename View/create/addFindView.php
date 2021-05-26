@@ -122,10 +122,10 @@ date_default_timezone_set("Europe/Paris");
             </div>
             <p>Date et lieu de son apparition <i class="far fa-calendar-alt"></i><i class="fas fa-map-marker-alt"></i></p>
         </div>
-        <div class="flexRow align">
+        <div id="date" class="flexRow align">
             <label for="date_find"> Trouvé le : <span class="size15 colorBlue required">*</span></label>
-            <div class="categoriePet">
-                <input id="date_find" name="date_find" type="date" required>
+            <div id="date_find" class="categoriePet">
+                <input  name="date_find" type="date" required>
             </div>
         </div>
         <input id="date" name="date" type="hidden" required value="<?= date('Y-m-d')?>">
