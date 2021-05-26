@@ -35,7 +35,8 @@ class UserController {
      * @param $fields
      */
     public function update($fields) {
-        if (isset($fields['id'], $fields['firstname'], $fields['lastname'], $fields['email'], $fields['phone'])) {
+        if (isset($_SESSION["id"])) {
+            if (isset($fields['id'], $fields['firstname'], $fields['lastname'], $fields['email'], $fields['phone'])) {
                 $userManager = new UserManager();
 
                 $id = intval($fields['id']);
@@ -48,39 +49,40 @@ class UserController {
                 $userManager->updateUser($user);
 
                 header("Location: ../index.php?controller=user&action=view&id=" . $_SESSION['id'] . "&success=0");
+            }
+            $this->return('update/updatePersonalInfoUserView', "Anim'Nord : Modification des informations personnelles");
         }
-        $this->return('update/updatePersonalInfoUserView', "Anim'Nord : Modification des informations personnelles");
     }
-
     /**
      * Modify a password
      * @param $fields
      */
     public function updatePass($fields) {
-        if (isset($fields['id'], $fields['currentPassword'], $fields['newPassword'])) {
-            $userManager = new UserManager();
+        if (isset($_SESSION["id"])) {
+            if (isset($fields['id'], $fields['currentPassword'], $fields['newPassword'])) {
+                $userManager = new UserManager();
 
-            $id = intval($fields['id']);
-            $currentPassword = htmlentities($fields['currentPassword']);
-            $newPassword = htmlentities($fields['newPassword']);
+                $id = intval($fields['id']);
+                $currentPassword = htmlentities($fields['currentPassword']);
+                $newPassword = htmlentities($fields['newPassword']);
 
-            if ($currentPassword === $_SESSION['password']) {
-                $maj = preg_match('@[A-Z]@', $newPassword);
-                $min = preg_match('@[a-z]@', $newPassword);
-                $number = preg_match('@[0-9]@', $newPassword);
+                if ($currentPassword === $_SESSION['password']) {
+                    $maj = preg_match('@[A-Z]@', $newPassword);
+                    $min = preg_match('@[a-z]@', $newPassword);
+                    $number = preg_match('@[0-9]@', $newPassword);
 
-                if($maj && $min && $number && strlen($newPassword) > 8) {
-                    $password = password_hash($newPassword, PASSWORD_BCRYPT);
-                    $user = new User($id, '', '', '', '', $password);
-                    $userManager->updatePasswordUser($user);
-                    header("Location: ../index.php?controller=user&action=view&id=" . $_SESSION['id'] . "&success=1");
+                    if ($maj && $min && $number && strlen($newPassword) > 8) {
+                        $password = password_hash($newPassword, PASSWORD_BCRYPT);
+                        $user = new User($id, '', '', '', '', $password);
+                        $userManager->updatePasswordUser($user);
+                        header("Location: ../index.php?controller=user&action=view&id=" . $_SESSION['id'] . "&success=1");
+                    }
+                } else {
+                    header("Location: ../index.php?controller=user&action=updatePass&id=" . $_SESSION['id'] . "&error=0");
                 }
             }
-            else {
-                header("Location: ../index.php?controller=user&action=updatePass&id=" . $_SESSION['id'] . "&error=0");
-            }
+            $this->return('update/updatePassUserView', "Anim'Nord :  Changer de mot de passe");
         }
-        $this->return('update/updatePassUserView', "Anim'Nord :  Changer de mot de passe");
     }
 
     /**
@@ -88,17 +90,21 @@ class UserController {
      * @param $fields
      */
     public function updateRole($fields) {
-        if (isset($fields['id'], $fields['role_fk'])) {
-            $userManager = new UserManager();
+        if (isset($_SESSION["id"])) {
+            if ($_SESSION['role_fk'] == 1) {
+                if (isset($fields['id'], $fields['role_fk'])) {
+                    $userManager = new UserManager();
 
-            $id = intval($fields['id']);
-            $role_fk = intval($fields['role_fk']);
+                    $id = intval($fields['id']);
+                    $role_fk = intval($fields['role_fk']);
 
-            $user = new User($id, '', '', '', '', '', RoleManager::getManager()->getRole($role_fk));
-            $userManager->updateRoleUser($user);
-            header("Location: ../index.php?controller=user&action=all&success=0");
+                    $user = new User($id, '', '', '', '', '', RoleManager::getManager()->getRole($role_fk));
+                    $userManager->updateRoleUser($user);
+                    header("Location: ../index.php?controller=user&action=all&success=0");
+                }
+                $this->return('update/updateRoleUserView', "Anim'Nord : Modification du rôle");
+            }
         }
-        $this->return('update/updateRoleUserView', "Anim'Nord : Modification du rôle");
     }
 
 
@@ -106,14 +112,35 @@ class UserController {
      * delete a user
      */
     public function delete($user) {
-        if (isset($user['id'])) {
-            $userManager = new UserManager();
+        if (isset($_SESSION["id"])) {
+            if (isset($user['id'])) {
+                $userManager = new UserManager();
 
-            $id = intval($user['id']);
+                $id = intval($user['id']);
 
-            $userManager->deleteUser($id);
-            header("Location: ../index.php?success=1");
+                $userManager->deleteUser($id);
+                header("Location: ../index.php?success=1");
+            }
+            $this->return("delete/deleteUserView", "Anim'Nord : Supprimer un utilisateur");
         }
-        $this->return("delete/deleteUserView", "Anim'Nord : Supprimer un utilisateur");
+    }
+
+    /*
+     * delete a user by admin
+     */
+    public function deleteUser($user) {
+        if (isset($_SESSION["id"])) {
+            if ($_SESSION['role_fk'] === "1") {
+                if (isset($user['id'])) {
+                    $userManager = new UserManager();
+
+                    $id = intval($user['id']);
+
+                    $userManager->deleteUser($id);
+                    header("Location: ../index.php?success=1");
+                }
+                $this->return("delete/deleteUsersView", "Anim'Nord : Supprimer un utilisateur");
+            }
+        }
     }
 }

@@ -25,27 +25,29 @@ if (isset($var['ad'])) { ?>
             foreach ($var['ad'] as $ad) {
                 $dateLost = new DateTime($ad->getDateLost());
                 $date = new DateTime($ad->getDate());
-                $favoriteManager = new Model\FavoriteLost\FavoriteLostManager();
-                $favorite = $favoriteManager->favorite($_GET['id'], $_SESSION['id']);
-                if ($favorite) {
-                    foreach ($favorite as $fav) { ?>
-                        <form method="post" action="../index.php?controller=adlost&action=adComment&favorite=delete&id=<?=$ad->getId() ?>&user=<?=$ad->getUserFk()->getId() ?>&comment=commentLost">
-                            <input type="hidden" name="id" value="<?=$fav->getId() ?>">
-                            <input type="hidden" name="adLost_fk" value="<?=$fav->getAdLostFk()->getId() ?>">
-                            <input type="hidden" name="user_fk" value="<?=$fav->getUserFk()->getId() ?>">
-                            <button type="submit" name="send"><i class='fas fa-star star2 size20'></i></button>
+                if (isset($_SESSION["id"])) {
+                    $favoriteManager = new Model\FavoriteLost\FavoriteLostManager();
+                    $favorite = $favoriteManager->favorite($_GET['id'], $_SESSION['id']);
+                    if ($favorite) {
+                        foreach ($favorite as $fav) { ?>
+                            <form method="post" action="../index.php?controller=adlost&action=adComment&favorite=delete&id=<?=$ad->getId() ?>&user=<?=$ad->getUserFk()->getId() ?>&comment=commentLost">
+                                <input type="hidden" name="id" value="<?=$fav->getId() ?>">
+                                <input type="hidden" name="adLost_fk" value="<?=$fav->getAdLostFk()->getId() ?>">
+                                <input type="hidden" name="user_fk" value="<?=$fav->getUserFk()->getId() ?>">
+                                <button type="submit" name="send"><i class='fas fa-star star2 size20'></i></button>
+                            </form>
+                            <?php
+                        }
+                    }
+                    else { ?>
+                        <form method="post" action="../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>&user=<?=$ad->getUserFk()->getId() ?>&comment=commentLost">
+                            <input type="hidden" name="adLost_fk" value="<?=$ad->getId() ?>">
+                            <input type="hidden" name="user_fk" value="<?=$_SESSION['id'] ?>">
+                            <button type="submit" name="send"><i class='far fa-star star2 size20'></i></button>
                         </form>
                         <?php
                     }
-                }
-                else { ?>
-                    <form method="post" action="../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>&user=<?=$ad->getUserFk()->getId() ?>&comment=commentLost">
-                        <input type="hidden" name="adLost_fk" value="<?=$ad->getId() ?>">
-                        <input type="hidden" name="user_fk" value="<?=$_SESSION['id'] ?>">
-                        <button type="submit" name="send"><i class='far fa-star star2 size20'></i></button>
-                    </form>
-                    <?php
-                } ?>
+                }?>
 
                 <div class='post flexColumn flexCenter colorGrey'>
                     <h1 class='colorWhite margin_15_0 center categoriesAnimal width_100'><?=$ad->getAnimal() ?> perdu : <?=$ad->getName() ?></h1>
@@ -113,7 +115,7 @@ if (isset($var['ad'])) { ?>
                 <?php
             }
             else { ?>
-                <a href="/View/connect.php" class="buttonComment"> Ajouter un commentaire</a>
+                <a href="../index.php?controller=connection" class="buttonComment"> Ajouter un commentaire</a>
                 <span class="colorGrey flexCenter size12">Tu dois te connecter pour t'inscrire.</span>
             <?php
             } ?>

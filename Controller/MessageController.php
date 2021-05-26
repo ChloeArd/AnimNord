@@ -10,6 +10,8 @@ class MessageController {
 
     // Page add ad
     public function messagePage() {
-        $this->return("messageView", "Anim'Nord : Mes messages");
+        if (isset($_SESSION["id"])) {
+            $this->return("messageView", "Anim'Nord : Mes messages");
+        }
     }
 }

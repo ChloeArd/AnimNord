@@ -55,18 +55,21 @@ class CommentFindController {
      * @param $fields
      */
     public function updateComment($fields) {
-        if (isset($fields['id'], $fields['content'], $fields['adFind_fk'])) {
-            $commentManager = new CommentFindManager();
+        if (isset($_SESSION["id"])) {
+            if ($_SESSION['role_fk'] !== "2") {
+                if (isset($fields['id'], $fields['content'], $fields['adFind_fk'])) {
+                    $commentManager = new CommentFindManager();
 
-            $id = intval($fields['id']);
-            $content = htmlentities($fields['content']);
+                    $id = intval($fields['id']);
+                    $content = htmlentities($fields['content']);
 
-            $comment = new CommentFind($id, $content);
-            $commentManager->update($comment);
-            header("Location: ../index.php?controller=adfind&action=adComment&id=" . $fields['adFind_fk'] . "&success=1");
+                    $comment = new CommentFind($id, $content);
+                    $commentManager->update($comment);
+                    header("Location: ../index.php?controller=adfind&action=adComment&id=" . $fields['adFind_fk'] . "&success=1");
+                }
+                $this->return('update/updateCommentFindView', "Anim'Nord : Modifier un commentaire");
+            }
         }
-
-        $this->return('update/updateCommentFindView', "Anim'Nord : Modifier un commentaire");
     }
 
     /**
@@ -74,12 +77,16 @@ class CommentFindController {
      * @param $fields
      */
     public function deleteComment($fields) {
-        if (isset($fields['id'], $fields['adFind_fk'])) {
-            $commentManager = new CommentFindManager();
-            $id = intval($fields['id']);
-            $commentManager->delete($id);
-            header("Location: ../index.php?controller=adfind&action=adComment&id=" . $fields['adFind_fk'] . "&success=2");
+        if (isset($_SESSION["id"])) {
+            if ($_SESSION['role_fk'] !== "2") {
+                if (isset($fields['id'], $fields['adFind_fk'])) {
+                    $commentManager = new CommentFindManager();
+                    $id = intval($fields['id']);
+                    $commentManager->delete($id);
+                    header("Location: ../index.php?controller=adfind&action=adComment&id=" . $fields['adFind_fk'] . "&success=2");
+                }
+                $this->return('delete/deleteCommentFindView', "Anim'Nord : Supprimer un commentaire");
+            }
         }
-        $this->return('delete/deleteCommentFindView', "Anim'Nord : Supprimer un commentaire");
     }
 }

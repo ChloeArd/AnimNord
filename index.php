@@ -230,6 +230,9 @@ if (isset($_GET['controller'])) {
                     case 'delete' :
                         $controller->delete($_POST);
                         break;
+                    case 'deleteUser' :
+                        $controller->deleteUser($_POST);
+                        break;
                     default:
                         break;
                 }

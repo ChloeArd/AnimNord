@@ -105,7 +105,13 @@ date_default_timezone_set("Europe/Paris");
         </select>
         <label for="race">Race : <span class="size15 colorBlue required">*</span></label>
         <input type="text" name="race" id="race" placeholder="Ex : berger allemand" class="categoriePet" pattern=".*\S.*" required>
-        <label for="number">Numéro du tatouage ou de la puce :</label>
+        <label for="number">Numéro du tatouage ou de la puce :
+            <span class="size15 colorBlue required tooltip" data-text="Pour le chat : 3 chiffres + 3 lettres ou 3 lettres
+                + 3 chiffres. Pour le chien : 3 chiffres + 3 lettres ou 2 chiffres + 3 lettres + 3 chiffres. En général, le
+                tatouage est situé sur la face interne de l’oreille ou de la cuisse.">
+                <i class="fas fa-question-circle"></i>
+            </span>
+        </label>
         <input type="text" name="number" id="number" class="categoriePet" pattern=".*\S.*">
         <label for="description">Description : <span class="size15 colorBlue required">*</span></label>
         <textarea id="description" name="description" required></textarea>

@@ -22,7 +22,7 @@ if (isset($var['ads'])) {?>
 
             $animal = htmlentities($_POST['animal']);
 
-            // we must know the animal
+            // We must know the animal
             $req = "SELECT * FROM adfind WHERE animal LIKE '%$animal%'";
 
             // If the user adds the sex, size, ... of the animal then we add its "filter" to the request to find it

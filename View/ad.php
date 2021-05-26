@@ -1,4 +1,6 @@
-
+<?php
+if (isset($_SESSION["id"])) {
+?>
 <main class="width_80">
     <h1 class="flexCenter title colorWhite"> Publication d'une annonce</h1>
     <div id="publish" class="backgroundWhite flexCenter flexColumn width_100">
@@ -23,3 +25,5 @@
         </div>
     </div>
 </main>
+<?php
+}

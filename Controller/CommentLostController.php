@@ -55,17 +55,21 @@ class CommentLostController {
      * @param $fields
      */
     public function updateComment($fields) {
-        if (isset($fields['id'], $fields['content'], $fields['adLost_fk'])) {
-            $commentManager = new CommentLostManager();
+        if (isset($_SESSION["id"])) {
+            if ($_SESSION['role_fk'] !== "2") {
+                if (isset($fields['id'], $fields['content'], $fields['adLost_fk'])) {
+                    $commentManager = new CommentLostManager();
 
-            $id = intval($fields['id']);
-            $content = htmlentities($fields['content']);
+                    $id = intval($fields['id']);
+                    $content = htmlentities($fields['content']);
 
-            $comment = new CommentLost($id, $content);
-            $commentManager->update($comment);
-            header("Location: ../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=" . $fields['adLost_fk'] . "&comment=commentLost&success=1");
+                    $comment = new CommentLost($id, $content);
+                    $commentManager->update($comment);
+                    header("Location: ../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=" . $fields['adLost_fk'] . "&comment=commentLost&success=1");
+                }
+                $this->return('update/updateCommentLostView', "Anim'Nord : Modifier un commentaire");
+            }
         }
-        $this->return('update/updateCommentLostView', "Anim'Nord : Modifier un commentaire");
     }
 
     /**
@@ -73,12 +77,16 @@ class CommentLostController {
      * @param $fields
      */
     public function deleteComment($fields) {
-        if (isset($fields['id'], $fields['adLost_fk'])) {
-            $commentManager = new CommentLostManager();
-            $id = intval($fields['id']);
-            $commentManager->delete($id);
-            header("Location: ../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=" . $fields['adLost_fk'] . "&comment=commentLost&success=2");
+        if (isset($_SESSION["id"])) {
+            if ($_SESSION['role_fk'] !== "2") {
+                if (isset($fields['id'], $fields['adLost_fk'])) {
+                    $commentManager = new CommentLostManager();
+                    $id = intval($fields['id']);
+                    $commentManager->delete($id);
+                    header("Location: ../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=" . $fields['adLost_fk'] . "&comment=commentLost&success=2");
+                }
+                $this->return('delete/deleteCommentLostView', "Anim'Nord : Supprimer un commentaire");
+            }
         }
-        $this->return('delete/deleteCommentLostView', "Anim'Nord : Supprimer un commentaire");
     }
 }

@@ -103,7 +103,7 @@ if (isset($var['users'])) { ?>
             foreach ($exec as $donnees) { ?>
                 <div class="containerAccount table">
                     <p class="colorBlack size20">Nom : <span class="colorBlue"><?=$donnees["lastname"]?></span>
-                        <a href="../index.php?controller=user&action=delete&id=<?=$donnees['id'] ?>" class="colorBlack"><i class="far fa-trash-alt"></i></a>
+                        <a href="../index.php?controller=user&action=deleteUser&id=<?=$donnees['id'] ?>" class="colorBlack"><i class="far fa-trash-alt"></i></a>
                     </p>
                     <p class="colorBlack size20">Prénom : <span class="colorBlue"><?=$donnees["firstname"]?></span></p>
                     <p class="colorBlack size20">Email : <span class="colorBlue"><?=$donnees["email"]?></span></p>
@@ -165,7 +165,7 @@ if (isset($var['users'])) { ?>
             foreach ($var['users'] as $users) {?>
                 <div class="containerAccount table">
                     <p class="colorBlack size20">Nom : <span class="colorBlue"><?=$users->getLastname() ?></span>
-                        <a href="../index.php?controller=user&action=delete&id=<?=$users->getId() ?>" class="colorBlack"><i class="far fa-trash-alt"></i></a>
+                        <a href="../index.php?controller=user&action=deleteUser&id=<?=$users->getId() ?>" class="colorBlack"><i class="far fa-trash-alt"></i></a>
                     </p>
                     <p class="colorBlack size20">Prénom : <span class="colorBlue"><?=$users->getFirstname() ?></span></p>
                     <p class="colorBlack size20">Email : <span class="colorBlue"><?=$users->getEmail() ?></span></p>
