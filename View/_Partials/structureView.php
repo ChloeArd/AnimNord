@@ -42,10 +42,9 @@
             </div>
 
             <div id="subMenu" class="flexColumn">
-                <a class="linkMenuMobile flexRow align" href="../../index.php"><i class="fas fa-chevron-circle-right"></i>Acceuil</a>
+                <a class="linkMenuMobile flexRow align" href="../../index.php"><i class="fas fa-chevron-circle-right"></i>Accueil</a>
                 <a class="linkMenuMobile flexRow align" href="../../index.php?controller=adlost"><i class="fas fa-chevron-circle-right"></i>Perdus</a>
                 <a class="linkMenuMobile flexRow align" href="../../index.php?controller=adfind"><i class="fas fa-chevron-circle-right"></i>Trouvés</a>
-                <a class="linkMenuMobile flexRow align" href="../adopt.php"><i class="fas fa-chevron-circle-right"></i>(Adoptés)</a>
                 <?php
                 if (isset($_SESSION["id"])) {
                     ?>

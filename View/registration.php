@@ -37,7 +37,7 @@ if (isset($_GET['error'])) {
             <label class="size15 tooltip" data-text="Le mot de passe est obligatoire et doit contenir au moins une majuscule, une minuscule, un chiffre, avoir minimum 10 caractères" for="password"> Mot de passe <span class="size15 colorBlue required">*</span></label>
             <input type="password" id="password" name="password" pattern=".*\S.*" required>
             <input type="submit" class="buttonEnter colorWhite radius10 pointer" value="Créer mon compte">
-            <a href="connect.php" class="buttonGrey">Déjà un compte ?</a>
+            <a href="../index.php?controller=registration" class="buttonGrey">Déjà un compte ?</a>
         </form>
     </div>
 </main>

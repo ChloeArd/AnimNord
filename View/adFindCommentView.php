@@ -116,7 +116,7 @@ if (isset($var['ad'])) { ?>
                 }
                 else { ?>
                     <a href="../index.php?controller=connection" class="buttonComment"> Ajouter un commentaire</a>
-                    <span class="colorGrey flexCenter size12">Tu dois te connecter pour t'inscrire.</span>
+                    <span class="colorGrey flexCenter size12">Tu dois te connecter pour ajouter un commentaire.</span>
                     <?php
                 }
                 ?>

@@ -28,7 +28,15 @@ elseif (isset($_GET['success'])) {
     <div id="contact" class="backgroundWhite flexCenter width_100">
         <form method="post" action="../assets/php/sendMail.php" class="flexColumn width_50">
             <label for="mail"> Adresse E-mail</label>
-            <input type="email" id="mail" name="mail" pattern=".*\S.*" required>
+            <?php
+            if (isset($_SESSION['email'])) { ?>
+                <input type="email" id="mail" name="mail" pattern=".*\S.*" value="<?=$_SESSION['email'] ?>" required>
+                <?php
+            }
+            else { ?>
+                <input type="email" id="mail" name="mail" pattern=".*\S.*" required>
+            <?php
+            } ?>
             <label for="subject">Sujet</label>
             <input id="subject" type="text" name="subject" pattern=".*\S.*" required>
             <label for="message">Message</label>
