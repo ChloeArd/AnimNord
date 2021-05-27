@@ -19,7 +19,7 @@ if (isset($var['ads'])) {
         $bdd = DB::getInstance();
 
         if (isset($_POST['animal']) || isset($_POST['sex']) || isset($_POST['size']) || isset($_POST['fur']) || isset($_POST['color']) ||
-            isset($_POST['dress']) || isset($_POST['race']) || isset($_POST['date']) || isset($_POST['city'])) {
+            isset($_POST['dress']) || isset($_POST['race']) || isset($_POST['number']) || isset($_POST['date']) || isset($_POST['city'])) {
 
             $animal = htmlentities($_POST['animal']);
 
@@ -72,6 +72,11 @@ if (isset($var['ads'])) {
             if(!empty($_POST['race'])) {
                 $race = htmlentities(ucfirst($_POST['race']));
                 $req .= "AND race LIKE '%$race%'";
+            }
+
+            if(!empty($_POST['number'])) {
+                $number = htmlentities(strtoupper($_POST['number']));
+                $req .= "AND number LIKE '%$number%'";
             }
 
             if(!empty($_POST['city'])) {

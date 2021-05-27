@@ -111,6 +111,10 @@
             <input type="text" name="race" id="race" placeholder="Ex : berger allemand" class="categoriePet">
         </div>
         <div class="categorie flexColumn flexCenter">
+            <label class="colorWhite width_100 center categoriesAnimal" for="number">Numéro du tatouage ou de la puce :</label>
+            <input type="text" name="number" id="number" placeholder="Ex : 123ABC" class="categoriePet">
+        </div>
+        <div class="categorie flexColumn flexCenter">
             <label class="colorWhite width_100 center categoriesAnimal" for="city">Ville :</label>
             <select name="city" id="city" class="width_80 size15 categoriePet">
                 <option></option>
