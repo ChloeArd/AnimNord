@@ -8,7 +8,7 @@ use Model\CommentLost\CommentLostManager;
 use Model\Entity\AdLost;
 use Model\AdLost\AdLostManager;
 use Model\User\UserManager;
-use function Controller\Traits\getRandomName;
+use function Model\getRandomName;
 
 class AdLostController {
 

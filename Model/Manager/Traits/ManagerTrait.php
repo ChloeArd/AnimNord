@@ -7,6 +7,7 @@ trait ManagerTrait {
     private static $manager = null;
 
     /**
+     * Allows you to retrieve a Manager class.
      * @return self
      */
     public static function getManager(): self {

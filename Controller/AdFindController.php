@@ -7,7 +7,7 @@ use Model\CommentFind\CommentFindManager;
 use Model\Entity\AdFind;
 use Model\AdFind\AdFindManager;
 use Model\User\UserManager;
-use function Controller\Traits\getRandomName;
+use function Model\getRandomName;
 
 class AdFindController {
 
