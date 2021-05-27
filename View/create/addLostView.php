@@ -65,7 +65,7 @@ date_default_timezone_set("Europe/Paris");
             <option>Long</option>
             <option>Bouclé</option>
         </select>
-        <label for="color"> Couleur du pelage : <span class="size15 colorBlue required">*</span></label>
+        <label for="color"> Couleur(s) du pelage : <span class="size15 colorBlue required">*</span></label>
         <div class="categoriePet">
             <div class="flexRow align">
                 <input id="black" type="checkbox" name="color[]" value="Noir">

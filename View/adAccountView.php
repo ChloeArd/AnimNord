@@ -87,7 +87,7 @@ if (isset($_GET['success'])) {
                                 } ?>
                                 <p>Taille: <span class='colorBlue'><?=$ad->getSize() ?></span></p>
                                 <p>Poils: <span class='colorBlue'><?=$ad->getFur() ?></span></p>
-                                <p>Couleur du pelage : <span class='colorBlue'><?=$ad->getColor() ?></span></p>
+                                <p>Couleur(s) du pelage : <span class='colorBlue'><?=$ad->getColor() ?></span></p>
                                 <p>Robe : <span class='colorBlue'><?=$ad->getDress() ?></span> </p>
                                 <p>Description : <span class='colorBlue'><?=$ad->getDescription() ?></span></p>
                             </div>
@@ -146,7 +146,7 @@ if (isset($_GET['success'])) {
                                     ?>
                                     <p>Taille: <span class='colorBlue'><?=$ad->getSize() ?></span></p>
                                     <p>Poils: <span class='colorBlue'><?=$ad->getFur() ?></span></p>
-                                    <p>Couleur du pelage : <span class='colorBlue'><?=$ad->getColor() ?></span></p>
+                                    <p>Couleur(s) du pelage : <span class='colorBlue'><?=$ad->getColor() ?></span></p>
                                     <p>Robe : <span class='colorBlue'><?=$ad->getDress() ?></span> </p>
                                     <p>Description : <span class='colorBlue'><?=$ad->getDescription() ?></span></p>
                                 </div>

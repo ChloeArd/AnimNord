@@ -1,13 +1,6 @@
 <?php
 use Model\DB;
 
-if (isset($_GET["page"])) {
-    $page = $_GET["page"];
-}
-else {
-    $page = 1;
-}
-
 if (isset($var['ads'])) {?>
 
     <main class="width_80 flexColumn">
@@ -112,13 +105,6 @@ if (isset($var['ads'])) {?>
                             } ?>
                         </div>
                         <?php
-                        // The page limit is 30 pet.
-                        $first = ($page - 1) * 30;
-                        $last = ($page * 30) - 1;
-                        $count = count($var['ads']);
-                        if ($last > $count) {
-                            $last = $count;
-                        }
                         foreach ($exec as $donnees) {
                             $dateLost = new DateTime($donnees['date_find']);
                             $date = new DateTime($donnees['date']); ?>
@@ -155,30 +141,12 @@ if (isset($var['ads'])) {?>
                                     ?>
                                     <p>Taille: <span class='colorBlue'><?=$donnees['size'] ?></span></p>
                                     <p>Poils: <span class='colorBlue'><?=$donnees['fur'] ?></span></p>
-                                    <p>Couleur du pelage : <span class='colorBlue'><?=$donnees['color'] ?></span></p>
+                                    <p>Couleur(s) du pelage : <span class='colorBlue'><?=$donnees['color'] ?></span></p>
                                     <p>Robe : <span class='colorBlue'><?=$donnees['dress'] ?></span> </p>
                                     <p>Description : <span class='colorBlue'><?=$donnees['description'] ?></span></p>
                                 </div>
                             </a>
                             <?php
-                        }
-
-                        if ($count > 29) {
-                            if ($page < 2) {
-                                $prev = 1;
-                            } else {
-                                $prev = $page - 1;
-                            }
-                            $max = ($count / 2);
-                            if ($page > ($max - 1)) {
-                                $next = $max;
-                            } else {
-                                $next = $page + 1;
-                            }
-                            echo "<div class='flexCenter flexRow'>
-                             <a class='underline colorBlue linkPage' href='../index.php?controller=adlost&page=$prev'><i class='fas fa-arrow-alt-circle-left'></i>Page précédente</a>
-                                 <a class='underline colorBlue linkPage' href='../../index.php?controller=adlost&page=$next'>Page suivante<i class='fas fa-arrow-alt-circle-right'></i></a>
-                          </div>";
                         }
                         ?>
                     </div>
@@ -213,13 +181,6 @@ if (isset($var['ads'])) {?>
                 include $_SERVER['DOCUMENT_ROOT'] . "/_Partials/formCategories.php"; ?>
                 <div id="containerLostAd">
                     <?php
-                    // The page limit is 30 pet.
-                    $first = ($page - 1) * 30;
-                    $last = ($page * 30) - 1;
-                    $count = count($var['ads']);
-                    if ($last > $count) {
-                        $last = $count;
-                    }
                     foreach ($var['ads'] as $ad) {
                         $dateFind = new DateTime($ad->getDateFind());
                         $date = new DateTime($ad->getDate()); ?>
@@ -256,7 +217,7 @@ if (isset($var['ads'])) {?>
                                 ?>
                                 <p>Taille: <span class='colorBlue'><?=$ad->getSize() ?></span></p>
                                 <p>Poils: <span class='colorBlue'><?=$ad->getFur() ?></span></p>
-                                <p>Couleur du pelage : <span class='colorBlue'><?=$ad->getColor() ?></span></p>
+                                <p>Couleur(s) du pelage : <span class='colorBlue'><?=$ad->getColor() ?></span></p>
                                 <p>Robe : <span class='colorBlue'><?=$ad->getDress() ?></span> </p>
                                 <p>Description : <span class='colorBlue'><?=$ad->getDescription() ?></span></p>
                             </div>
@@ -266,26 +227,6 @@ if (isset($var['ads'])) {?>
                     if ($var['ads'] === []) {?>
                         <p class="colorWhite margin_15_0 center categoriesAnimal">Il n'y a pas encore d'annonces !</p>
                         <?php
-                    }
-
-                    if ($count > 29) {
-                        if ($page < 2) {
-                            $prev = 1;
-                        }
-                        else {
-                            $prev = $page - 1;
-                        }
-                        $max = ($count / 2);
-                        if ($page > ($max - 1)) {
-                            $next = $max;
-                        }
-                        else {
-                            $next = $page + 1;
-                        }
-                        echo "<div class='flexCenter flexRow'>
-                             <a class='underline colorBlue linkPage' href='./find.php?page=$prev'><i class='fas fa-arrow-alt-circle-left'></i>Page précédente</a>
-                             <a class='underline colorBlue linkPage' href='./find.php?page=$next'>Page suivante<i class='fas fa-arrow-alt-circle-right'></i></a>
-                          </div>";
                     }
                     ?>
                 </div>

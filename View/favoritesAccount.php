@@ -83,7 +83,7 @@
                             } ?>
                             <p>Taille: <span class='colorBlue'><?=$ad->getAdLostFk()->getSize() ?></span></p>
                             <p>Poils: <span class='colorBlue'><?=$ad->getAdLostFk()->getFur() ?></span></p>
-                            <p>Couleur du pelage : <span class='colorBlue'><?=$ad->getAdLostFk()->getColor() ?></span></p>
+                            <p>Couleur(s) du pelage : <span class='colorBlue'><?=$ad->getAdLostFk()->getColor() ?></span></p>
                             <p>Robe : <span class='colorBlue'><?=$ad->getAdLostFk()->getDress() ?></span> </p>
                             <p>Description : <span class='colorBlue'><?=$ad->getAdLostFk()->getDescription() ?></span></p>
                         </div>
@@ -144,7 +144,7 @@
                         } ?>
                         <p>Taille: <span class='colorBlue'><?=$ad->getAdFindFk()->getSize() ?></span></p>
                         <p>Poils: <span class='colorBlue'><?=$ad->getAdFindFk()->getFur() ?></span></p>
-                        <p>Couleur du pelage : <span class='colorBlue'><?=$ad->getAdFindFk()->getColor() ?></span></p>
+                        <p>Couleur(s) du pelage : <span class='colorBlue'><?=$ad->getAdFindFk()->getColor() ?></span></p>
                         <p>Robe : <span class='colorBlue'><?=$ad->getAdFindFk()->getDress() ?></span> </p>
                         <p>Description : <span class='colorBlue'><?=$ad->getAdFindFk()->getDescription() ?></span></p>
                     </div>

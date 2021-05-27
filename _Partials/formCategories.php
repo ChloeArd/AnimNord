@@ -63,7 +63,7 @@
             </select>
         </div>
         <div class="categorie flexColumn flexCenter">
-            <label class="colorWhite width_100 center categoriesAnimal" for="colors"> Couleur du pelage :</label>
+            <label class="colorWhite width_100 center categoriesAnimal" for="colors"> Couleur(s) du pelage :</label>
             <div class="categoriePet">
                 <div class="flexRow align">
                     <input id="black" type="checkbox" name="color[]" value="Noir">
