@@ -23,6 +23,7 @@ class AdLostController {
     }
 
     /**
+     * Displays an ad by its ID, and displays comments by the ad ID.
      * @param int $id
      */
     public function ad(int $id) {
@@ -33,6 +34,7 @@ class AdLostController {
     }
 
     /**
+     * Displays user announcements.
      * @param int $user_fk
      */
     public function adsUser(int $user_fk) {

@@ -11,6 +11,10 @@ class ContentIndexController {
 
     use ReturnViewTrait;
 
+    /**
+     * Modifies the content of the home page
+     * @param $contents
+     */
     public function update($contents) {
         if (isset($_SESSION["id"])) {
             if ($_SESSION['role_fk'] !== "2") {

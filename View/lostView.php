@@ -90,7 +90,7 @@ if (isset($var['ads'])) { ?>
                     <?php
                     $situation = "Perdu le :";
                     $true = true;?>
-                        <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/formCategories.php";  ?>
+                        <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/View/_Partials/formCategories.php";  ?>
                     <div id="containerLostAd">
                         <div class="flexCenter margin_15_0">
                             <?php
@@ -159,7 +159,7 @@ if (isset($var['ads'])) { ?>
                     <?php
                     $situation = "Perdu le :";
                     $true = true;?>
-                        <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/formCategories.php";  ?>
+                        <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/View/_Partials/formCategories.php";  ?>
                     <div id="containerLostAd">
                         <div class="flexCenter flexColumn">
                             <h2 class="colorRed margin_15_0">Pas de résultats !</h2>
@@ -177,7 +177,7 @@ if (isset($var['ads'])) { ?>
                 <?php
                 $situation = "Perdu le :";
                 $true = true;?>
-                    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/_Partials/formCategories.php";  ?>
+                    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/View/_Partials/formCategories.php";  ?>
                 <div id="containerLostAd">
                     <?php
                     foreach ($var['ads'] as $ad) {

@@ -18,7 +18,7 @@ class ContentIndexManager {
     }
 
     /**
-     * Return all content on index.php
+     * Return all content on home page
      */
     public function getContents(): array {
         $contentIndex = [];
@@ -35,6 +35,11 @@ class ContentIndexManager {
         return $contentIndex;
     }
 
+    /**
+     * return a content on home page
+     * @param int $id
+     * @return array
+     */
     public function getContent(int $id): array {
         $contentIndex = [];
         $request = DB::getInstance()->prepare("SELECT * FROM content_index WHERE id = :id");

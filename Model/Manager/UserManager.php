@@ -60,6 +60,11 @@ class UserManager {
         return $user;
     }
 
+    /**
+     * Display a user based on id.
+     * @param int $id
+     * @return array
+     */
     public function getUserID(int $id): array {
         $user = [];
         $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = :id");
@@ -77,7 +82,7 @@ class UserManager {
     }
 
     /**
-     * change the user's password
+     * Change the user's password.
      * @param User $user
      * @return bool
      */
@@ -91,7 +96,7 @@ class UserManager {
     }
 
     /**
-     * modifies the user's personal information
+     * Modifies the user's personal information.
      * @param User $user
      * @return bool
      */
@@ -107,7 +112,7 @@ class UserManager {
     }
 
     /**
-     * change a user's role
+     * Change a user's role.
      * @param User $user
      * @return bool
      */
@@ -120,7 +125,7 @@ class UserManager {
     }
 
     /**
-     * delete a user
+     * Deletes a user but also deletes the ads, comments they have posted and their favorites.
      * @param int $id
      * @return bool
      */

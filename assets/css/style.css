@@ -41,14 +41,16 @@ main {
 }
 
 .menu, #menu, #menuMobile {
-    background-color: #2C96C6;
     width: 100%;
-    color: white;
     padding: 30px;
     position: relative;
 }
 
-#menuMobile, #menuAccountMobile, #userList, #buttonUser {
+.menu, #menu, #menuMobile, .buttonEnter, .categoriesAnimal, .accountIndex, .helpIndex, .circle, .containerType:hover, .buttonComment {
+    background-color: #2C96C6;
+}
+
+#menuMobile, #menuAccountMobile, #userList, #buttonUser, #subMenu, #userList, #filterCategories, #buttonAccount, #closeModal {
     display: none;
 }
 
@@ -56,7 +58,6 @@ main {
     background-color: rgba(44, 150, 198, 0.7);
     position: absolute;
     z-index: 999;
-    display: none;
 }
 
 #menuAccountMobile {
@@ -69,7 +70,6 @@ main {
 
 #userList {
     z-index: 30;
-    padding: 10px;
 }
 
 #logoMenu {
@@ -106,7 +106,7 @@ main {
     justify-content: center;
 }
 
-.center {
+.center, .textCenter, .title, .annonceP, .titlePet, .location, .buttonGrey, .containerType, .titleAccount, .modal2, .tooltip:before  {
     text-align: center;
 }
 
@@ -123,10 +123,6 @@ main {
     align-items: center;
 }
 
-.textCenter {
-    text-align: center;
-}
-
 .colorBlack {
     color: black;
 }
@@ -135,14 +131,13 @@ input.colorBlue {
     margin-bottom: 20px;
 }
 
-#logoPage {
+#logoPage, .logoAnim, .backgroundPet, .width_100, .location {
     width: 100%;
 }
 
 .linkMenu, .linkMenuMobile {
     font-size: 1.5rem;
     margin: 0 15px;
-    padding: 10px;
     cursor: url("http://curseursgogo.free.fr/curanimaux/ba.cur"), default;
 }
 
@@ -163,22 +158,11 @@ input.colorBlue {
     font-size: 21px;
 }
 
-.logoAnim {
-    width: 100%;
-}
-
 a {
     text-decoration: none;
-    color: white;
 }
-
-.backgroundPet {
-    width: 100%;
-}
-
 
 .buttonWhite {
-    border-radius: 10px;
     padding: 15px;
     background-color: rgba(255, 255, 255, 0.8);
 }
@@ -187,11 +171,8 @@ a {
     color: rgba(255, 255, 255, 0.7);
 }
 
-.width_100 {
-    width: 100%;
-}
-
-.colorWhite {
+.colorWhite, a, .menu, #menu, #menuMobile, .title3, .buttonGrey:hover, .circle,.containerType:hover, .containerType:hover > p > i.fa-chevron-circle-right,
+.star2, .modal2, #closeModal, .tooltip:before, .userAd  {
     color: white;
 }
 
@@ -205,15 +186,13 @@ a {
     font-size: 30px;
     background-color: #B7B8B8;
     height: 110px;
-    text-align: center;
-    padding: 10px;
 }
 
-.backgroundWhite, main{
+.backgroundWhite, main, .location, .buttonWhite2:hover, .linkSocial, .logoAnim2, .inputWhite, .table >p:nth-child(2n) {
     background-color: white;
 }
 
-.width_50 {
+.width_50, #delete > img {
     width: 50%;
     margin: auto;
 }
@@ -247,7 +226,8 @@ label {
     padding: 30px;
 }
 
-.radius10, .buttonWhite2 {
+.radius10, .buttonWhite2, .buttonWhite, .post, .logoAnim2,.linkAccount:hover, .containerAccount, .tooltip:before, .buttonComment,
+.userAd, .commentArticle, .buttonGreen {
     border-radius: 10px;
 }
 
@@ -255,7 +235,6 @@ label {
     padding: 8px;
     margin: 20px auto;
     width: 50%;
-    background-color: #2C96C6;
     box-shadow: 5px 5px 10px #B7B8B8;
 }
 
@@ -269,7 +248,6 @@ label {
 
 .annonceP {
     font-size: 2rem;
-    text-align: center;
 }
 
 .categories, .droite, .cat, .dog, .mâle, .femelle {
@@ -277,13 +255,11 @@ label {
     overflow: hidden;
 }
 
-.categories {
+.categories, .width_20 {
     width: 20%;
 }
 
-.categoriesAnimal{
-    font-weight: bold;
-    background-color: #2C96C6;
+.categoriesAnimal {
     padding: 5px;
 }
 
@@ -300,7 +276,6 @@ button {
     background-color: #E4E9EB;
     width: 95%;
     padding: 10px 3px;
-    border-radius: 10px;
 }
 
 select {
@@ -326,10 +301,6 @@ input[type="radio"], input[type="checkbox"] {
     font-size: 25px;
 }
 
-.title3 {
-    color: white;
-}
-
 .containerRecentPost {
     background-color: #E4E9EB;
     width: 15%;
@@ -347,10 +318,6 @@ input[type="radio"], input[type="checkbox"] {
     transform: scale(1.1);
 }
 
-.width_20 {
-    width: 20%;
-}
-
 .imagePet{
     width: 70%;
     margin: 10px;
@@ -358,12 +325,6 @@ input[type="radio"], input[type="checkbox"] {
 
 .margin8, .location{
     margin: 8px;
-}
-
-.location {
-    background-color: white;
-    width: 100%;
-    text-align: center;
 }
 
 i {
@@ -431,7 +392,6 @@ i {
 }
 
 .accountIndex, .helpIndex {
-    background-color: #2C96C6;
     padding: 100px;
 }
 
@@ -462,7 +422,6 @@ i {
 }
 
 .buttonWhite2:hover {
-    background-color: white;
     color: #898a8a;
 }
 
@@ -493,7 +452,7 @@ i {
     background-color: #B7B8B8;
 }
 
-#containerLostAd {
+#containerLostAd, .width80 {
     width: 80%;
 }
 
@@ -501,14 +460,8 @@ i {
     background-color: #f0f1f1;
 }
 
-.width80 {
-    width: 80%;
-}
-
 .titlePet {
-    font-weight: bold;
     color: #2C96C6;
-    text-align: center;
     font-size: 18px;
 }
 
@@ -554,15 +507,12 @@ p {
     border: 1px solid #B7B8B8;
     color: #B7B8B8;
     padding: 20px;
-    text-align: center;
-    box-shadow: 5px 5px 10px grey;
     width: fit-content;
     margin: 20px auto;
 }
 
 .buttonGrey:hover {
     background-color: #B7B8B8;
-    color: white;
 }
 
 .fa-facebook-square {
@@ -580,7 +530,6 @@ p {
 .linkSocial {
     font-size: 25px;
     margin: 10px;
-    background-color: white;
 }
 
 .linkSocial:hover {
@@ -600,8 +549,6 @@ p {
     border-radius: 50%;
     height: 30px;
     width: 30px;
-    background-color: #2C96C6;
-    color: white;
     font-size: 20px;
     margin: 15px;
 }
@@ -611,7 +558,6 @@ p {
     background-color: #f1f3f5;
     width: 40%;
     padding: 30px;
-    text-align: center;
     margin: 20px;
     color: #2C96C6;
     transform:
@@ -624,13 +570,7 @@ p {
 }
 
 .containerType:hover {
-    background-color: #2C96C6;
-    color: white;
     transform: translate3d(0px, 0px, -250px);
-}
-
-.containerType:hover > p > i.fa-chevron-circle-right {
-    color: white;
 }
 
 .marginR {
@@ -646,18 +586,12 @@ li {
 }
 
 .logoAnim2 {
-    background-color: white;
     width: 30%;
-    border-radius: 10px;
     margin-left: 65%;
 }
 
 .flexWrap {
     flex-wrap: wrap;
-}
-
-#filterCategories, #buttonAccount {
-    display: none;
 }
 
 .width_30 {
@@ -679,7 +613,6 @@ li {
 
 .buttonRed2 {
     background-color: #e94343;
-    padding: 10px;
     margin: 20px;
 }
 
@@ -693,7 +626,6 @@ li {
 }
 
 .titleAccount {
-    text-align: center;
     color: #1378a5;
     text-decoration: underline;
     padding: 15px;
@@ -708,25 +640,18 @@ li {
     height: 50px;
 }
 
-.linkAccount {
-    padding: 10px;
-}
-
 .linkAccount:hover {
     background-color: #E4E9EB;
-    border-radius: 10px;
 }
 
 .containerAccount {
     background-color: #E4E9EB;
     width: 50%;
-    border-radius: 10px;
     padding: 20px;
     margin: 25px auto;
 }
 
 .inputWhite {
-    background-color: white;
     width: 100%;
 }
 
@@ -746,7 +671,6 @@ li {
 }
 
 .star2 {
-    color: white;
     right: 20%;
     margin-top: 23px;
 }
@@ -765,8 +689,6 @@ li {
     width: 100%;
     padding: 50px;
     font-size: 22px;
-    text-align: center;
-    color: white;
 }
 
 .modal2, #closeModal {
@@ -778,10 +700,8 @@ li {
     top: 2px;
     right: 30px;
     background-color: transparent;
-    color: white;
     padding: 6px;
     font-size: 15px;
-    display: none;
 }
 
 #closeModal:hover {
@@ -790,12 +710,10 @@ li {
 
 #success {
     background-color: #64be64;
-    box-shadow: 5px 5px 10px grey;
 }
 
 #error, .backgroundRed {
     background-color: #fa3535;
-    box-shadow: 5px 5px 10px grey;
 }
 
 .required {
@@ -817,11 +735,7 @@ li {
     margin-left:15px;
     font-size: 12px;
     width: 200px;
-    padding: 10px;
-    border-radius: 10px;
     background: #2C96C6;
-    color: white;
-    text-align: center;
     display:none;
 }
 
@@ -837,10 +751,6 @@ input:focus, textarea:focus, select:focus {
     padding: 50px;
 }
 
-#delete > img {
-    width: 50%;
-}
-
 .colorRed {
     color: #f83c3c;
 }
@@ -849,19 +759,15 @@ input:focus, textarea:focus, select:focus {
     padding: 7px;
 }
 
-.table >p:nth-child(2n) {
-    background-color: white;
-}
-
 .buttonComment {
-    background-color: #2C96C6;
-    border-radius: 10px;
-    padding: 10px;
     margin: 15px;
 }
 
 .buttonComment:hover {
     background-color: #1378a5;
+}
+
+.buttonComment:hover, #success, #error, .buttonGrey {
     box-shadow: 5px 5px 10px grey;
 }
 
@@ -869,14 +775,11 @@ input:focus, textarea:focus, select:focus {
     margin: 20px;
     background-color: #e94343;
     padding: 20px 50px;
-    border-radius: 10px;
-    color: white;
 }
 
 .commentArticle {
     margin: 15px auto;
     background-color: #fafafd;
-    border-radius: 10px;
     padding: 15px;
     width: 70%;
 }
@@ -885,7 +788,7 @@ input:focus, textarea:focus, select:focus {
     font-size: 12px;
 }
 
-.bold {
+.bold, .titlePet, .categoriesAnimal {
     font-weight: bold;
 }
 
@@ -902,8 +805,6 @@ input:focus, textarea:focus, select:focus {
 
 .buttonGreen {
     background-color: #64be64;
-    border-radius: 10px;
-    padding: 10px;
     margin-top: 15px;
 }
 
@@ -948,9 +849,12 @@ input:focus, textarea:focus, select:focus {
 .message {
     font-size: 13px;
     background-color: rgba(29, 161, 242,0.3);
-    padding: 10px;
     border-radius: 20px;
     margin: 20px;
+}
+
+.message, .buttonGreen, .buttonComment, .tooltip:before, .linkAccount, .buttonRed2, .title, .linkMenu, .linkMenuMobile, #userList {
+    padding: 10px;
 }
 
 .containerUser {

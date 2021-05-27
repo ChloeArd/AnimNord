@@ -26,6 +26,11 @@ class FavoriteLostController {
              'favoritesUserFind' => $managerFind->favoritesByUser($user_fk)]);
     }
 
+    /**
+     * See if the user has bookmarked the ad.
+     * @param $adLost_fk
+     * @param $user_fk
+     */
     public function favorite($adLost_fk, $user_fk) {
         $manager = new FavoriteLostManager();
         $this->return("adLostCommentView", "Anim'Nord : Annonce", ['favoritesUser' => $manager->favorite($adLost_fk,$user_fk)]);

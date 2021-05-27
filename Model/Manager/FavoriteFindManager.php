@@ -35,6 +35,12 @@ class FavoriteFindManager {
         return $favorites;
     }
 
+    /**
+     * See if the user has bookmarked the ad.
+     * @param $adFind_fk
+     * @param $user_fk
+     * @return array
+     */
     public function favorite($adFind_fk, $user_fk): array {
         $favorites = [];
         $request = DB::getInstance()->prepare("SELECT * FROM favorite_find WHERE user_fk = :user_fk AND adFind_fk = :adFind_fk ");

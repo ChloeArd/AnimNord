@@ -65,6 +65,11 @@ class AdLostManager {
         return $ad;
     }
 
+    /**
+     * Allows you to display an ad based on its ID.
+     * @param int $id
+     * @return array
+     */
     public function getAd2(int $id): array {
         $ad = [];
         $request = DB::getInstance()->prepare("SELECT * FROM adlost WHERE id = :id");
@@ -178,25 +183,6 @@ class AdLostManager {
         $request = DB::getInstance()->prepare("DELETE FROM favorite_lost WHERE adLost_fk = :adLost_fk");
         $request->bindValue(":adLost_fk", $adLost->getId());
         return $request->execute();
-    }
-
-    public function filter($filterAd): array {
-        $filter = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM adlost WHERE animal = :animal, date_lost = :date_lost, sex = :sex, size = :size, fur = :fur,
-                  color = :color, dress = :dress, race = :race, city = :city");
-
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $ads_data) {
-                $user = UserManager::getManager()->getUser($ads_data['user_fk']);
-                if($user->getId()) {
-                    $filter[] = new AdLost($ads_data['id'], $ads_data['animal'],  $ads_data['name'], $ads_data['sex'], $ads_data['size'],
-                        $ads_data['fur'], $ads_data['color'], $ads_data['dress'], $ads_data['race'], $ads_data['number'], $ads_data['description'],
-                        $ads_data['date_lost'], $ads_data['date'], $ads_data['city'], $ads_data['picture'] ,$user);
-                }
-            }
-        }
-        return $filter;
     }
 
     /**

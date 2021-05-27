@@ -22,6 +22,7 @@ class AdFindController {
     }
 
     /**
+     * Displays an ad by its ID, and displays comments by the ad ID.
      * @param int $id
      */
     public function ad(int $id) {
@@ -32,6 +33,7 @@ class AdFindController {
     }
 
     /**
+     * Displays user announcements.
      * @param int $user_fk
      */
     public function adsUser(int $user_fk) {
@@ -65,25 +67,34 @@ class AdFindController {
 
                 if (count($ad['color']) === 1) {
                     $color = $ad['color'][0];
-                } elseif (count($ad['color']) === 2) {
+                }
+                elseif (count($ad['color']) === 2) {
                     $color = $ad['color'][0] . ", " . $ad['color'][1];
-                } elseif (count($ad['color']) === 3) {
+                }
+                elseif (count($ad['color']) === 3) {
                     $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2];
-                } elseif (count($ad['color']) === 4) {
+                }
+                elseif (count($ad['color']) === 4) {
                     $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3];
-                } elseif (count($ad['color']) === 5) {
+                }
+                elseif (count($ad['color']) === 5) {
                     $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4];
-                } else {
+                }
+                else {
                     $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4] . ", " . $ad['color'][5];
                 }
 
+                // Check if the image is of the correct type
                 if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
                     $maxSize = 2 * 1024 * 1024; // = 2 Mo
 
+                    // Check if the image is below 2Mo.
                     if ($files['picture']['size'] <= $maxSize) {
                         $tmpName = $files['picture']['tmp_name'];
+                        // Give a random name to the image.
                         $namePicture = getRandomName($files['picture']['name']);
 
+                        // The image is added to a folder.
                         move_uploaded_file($tmpName, "./assets/img/adFind/" . $namePicture);
 
                         $user_fk = $userManager->getUser($user_fk);
@@ -103,6 +114,10 @@ class AdFindController {
         }
     }
 
+    /**
+     * Update a ad
+     * @param $ad
+     */
     public function updateAd($ad) {
         if (isset($_SESSION["id"])) {
             if (isset($ad['id'], $ad['animal'], $ad['sex'], $ad['size'], $ad['fur'], $ad['color'], $ad['dress'], $ad['race'],
@@ -128,15 +143,20 @@ class AdFindController {
 
                 if (count($ad['color']) === 1) {
                     $color = $ad['color'][0];
-                } elseif (count($ad['color']) === 2) {
+                }
+                elseif (count($ad['color']) === 2) {
                     $color = $ad['color'][0] . ", " . $ad['color'][1];
-                } elseif (count($ad['color']) === 3) {
+                }
+                elseif (count($ad['color']) === 3) {
                     $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2];
-                } elseif (count($ad['color']) === 4) {
+                }
+                elseif (count($ad['color']) === 4) {
                     $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3];
-                } elseif (count($ad['color']) === 5) {
+                }
+                elseif (count($ad['color']) === 5) {
                     $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4];
-                } else {
+                }
+                else {
                     $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4] . ", " . $ad['color'][5];
                 }
 

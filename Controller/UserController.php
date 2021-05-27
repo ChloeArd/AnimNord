@@ -108,8 +108,9 @@ class UserController {
     }
 
 
-    /*
-     * delete a user
+    /**
+     * Delete a user
+     * @param $user
      */
     public function delete($user) {
         if (isset($_SESSION["id"])) {
@@ -125,8 +126,9 @@ class UserController {
         }
     }
 
-    /*
-     * delete a user by admin
+    /**
+     * Delete a user by admin
+     * @param $user
      */
     public function deleteUser($user) {
         if (isset($_SESSION["id"])) {
