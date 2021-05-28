@@ -117,7 +117,7 @@ class AdLostController {
     public function updateAd($ad, $files) {
         if (isset($_SESSION["id"])) {
             if (isset($ad['id'], $ad['animal'], $ad['name'], $ad['sex'], $ad['size'], $ad['fur'], $ad['color'], $ad['dress'], $ad['race'],
-                $ad['number'], $ad['description'], $ad['date_lost'], $ad['date'], $ad['city'], $ad['picture2'], $ad['user_fk'])) {
+                $ad['number'], $ad['description'], $ad['date_lost'], $ad['date'], $ad['city'], $files['picture'], $ad['picture2'], $ad['user_fk'])) {
 
                 $userManager = new UserManager();
                 $adlostManager = new AdLostManager();
@@ -152,7 +152,7 @@ class AdLostController {
                     $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4] . ", " . $ad['color'][5];
                 }
 
-                if (isset($ad['picture'])) {
+                if (!empty($files['picture'])) {
                     if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
                         $maxSize = 2 * 1024 * 1024; // = 2 Mo
 
@@ -169,14 +169,17 @@ class AdLostController {
                                 $adlostManager->update($ad);
                                 header("Location: ../index.php?controller=adlost&action=view&success=1");
                             }
-                        } else {
+                        }
+                        else {
                             header("Location: ../index.php?controller=adlost&action=update&id=$id&error=1");
                         }
-                    } else {
+                    }
+                    else {
                         header("Location: ../index.php?controller=adlost&action=update&id=$id&error=0");
                     }
 
-                } else {
+                }
+                else {
                     $user_fk = $userManager->getUser($user_fk);
                     if ($user_fk->getId()) {
                         $ad = new AdLost($id, $animal, $name, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_lost, $date, $city, $picture, $user_fk);

@@ -24,7 +24,7 @@ $adLost = $manager->getAd2($id);
 foreach ($adLost as $ad) { ?>
     <main class="width_80">
         <h1 class="flexCenter title colorWhite">Modification d'une annonce pour chien ou chat perdu</h1>
-        <form id="formAd" method="post" class="flexColumn width_50">
+        <form id="formAd" method="post" class="flexColumn width_50" enctype="multipart/form-data">
             <div class="flexRow align flexCenter">
                 <div class="circle flexCenter">
                     <span>1</span>
@@ -800,12 +800,12 @@ foreach ($adLost as $ad) { ?>
                 <p>Importer une photo <i class="far fa-image"></i></p>
             </div>
             <label for="picture">Modifier l'image (PNG, JPEG, JPG) : </label>
-            <input type="file" name="picture" id="picture" accept="image/png, image/jpeg, image/jpg" size="2000000">
+            <input type="file" name="picture" id="picture" accept="image/png, image/jpeg, image/jpg" size="2000000" value="<?=$ad->getPicture() ?>">
             <span>(Max: 2Mo)</span>
 
             <input type="hidden" name="picture2" value="<?=$ad->getPicture() ?>">
 
-            <input type="submit" class="buttonEnter colorWhite radius10 pointer" value="Modifier">
+            <input type="submit" id="updateLost" class="buttonEnter colorWhite radius10 pointer" value="Modifier">
         </form>
     </main>
 <?php

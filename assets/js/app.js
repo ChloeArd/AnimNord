@@ -64,3 +64,8 @@ function display (idClick, id, display) {
         }
     });
 }
+
+document.getElementById("updateLost").addEventListener("click", function () {
+    $file = document.getElementById("picture").value;
+    console.log($file)
+});
