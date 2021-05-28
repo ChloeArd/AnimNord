@@ -24,14 +24,26 @@ if (isset($_GET['success'])) {
     <main>
         <div id="buttonAccount"class="buttonEnter colorWhite flexCenter">Mon compte <i class="fas fa-caret-down"></i></div>
 
+        <div class="flexColumn marginAuto width_70" id="menuAccountMobile">
+            <a href="../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>" class="colorGrey margin_0_20 linkAccount"><i class="fas fa-chevron-circle-right colorGrey"></i>Mes informations</a>
+            <a href="../index.php?controller=adlost&action=view" class="colorGrey margin_0_20 linkAccount"><i class="fas fa-chevron-circle-right colorGrey"></i>Mes annonces</a>
+            <a href="../index.php?controller=adlost&favorite=view" class="colorGrey margin_0_20 linkAccount"><i class="fas fa-chevron-circle-right colorGrey"></i>Mes favoris</a>
+            <?php
+            if ($_SESSION["role_fk"] === "1") { ?>
+                <a href="../index.php?controller=user&action=all" class="colorOrange margin_0_20 linkAccount"><i class="fas fa-chevron-circle-right colorOrange"></i>Gestion des utilisateurs</a>
+                <?php
+            } ?>
+            <form method="post" action="../assets/php/disconnection.php">
+                <span class="margin_0_20 linkAccount"><i class="fas fa-sign-out-alt colorRed"></i><input type="submit" class="disconnection buttonRed" value="Me déconnecter"></span>
+            </form>
+        </div>
+
         <div class="flexRow flexCenter" id="menuAccount">
             <a href="../index.php?controller=user&action=view&id=<?=$_SESSION['id'] ?>" class="colorBlue margin_0_20 linkAccount">Mes informations</a>
             <div class="separatorVertical"></div>
             <a href="../index.php?controller=adlost&action=view" class="colorBlue margin_0_20 linkAccount">Mes annonces</a>
             <div class="separatorVertical"></div>
             <a href="../index.php?controller=adlost&favorite=view&delete=ad" class="colorBlue margin_0_20 linkAccount">Mes favoris</a>
-            <div class="separatorVertical"></div>
-            <a href="../index.php?controller=message" class="colorBlue margin_0_20 linkAccount">Mes messages</a>
             <div class="separatorVertical"></div>
             <?php
             if ($_SESSION["role_fk"] === "1") { ?>

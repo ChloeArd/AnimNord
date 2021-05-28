@@ -22,6 +22,9 @@ elseif (isset($_GET['success'])) {
         case '0':
             $return = "Vous êtes bien inscrit(e) !";
             break;
+        case '1':
+            $return = "Votre mot de passe a bien été modifié !";
+            break;
     }
 }
 ?>

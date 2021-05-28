@@ -14,7 +14,6 @@ require_once './Model/Entity/CommentLost.php';
 require_once './Model/Entity/ContentIndex.php';
 require_once './Model/Entity/FavoriteFind.php';
 require_once './Model/Entity/FavoriteLost.php';
-require_once './Model/Entity/Message.php';
 
 require_once './Model/Manager/RoleManager.php';
 require_once './Model/Manager/UserManager.php';
@@ -25,7 +24,6 @@ require_once './Model/Manager/FavoriteLostManager.php';
 require_once './Model/Manager/FavoriteFindManager.php';
 require_once './Model/Manager/CommentLostManager.php';
 require_once './Model/Manager/CommentFindManager.php';
-require_once './Model/Manager/MessageManager.php';
 
 require_once './Controller/HomeController.php';
 require_once './Controller/ContentIndexController.php';
@@ -36,7 +34,6 @@ require_once './Controller/FavoriteLostController.php';
 require_once './Controller/FavoriteFindController.php';
 require_once './Controller/CommentLostController.php';
 require_once './Controller/CommentFindController.php';
-require_once './Controller/MessageController.php';
 
 use Controller\CommentFindController;
 use Controller\CommentLostController;
@@ -46,7 +43,6 @@ use Controller\FavoriteLostController;
 use Controller\HomeController;
 use Controller\AdLostController;
 use Controller\AdFindController;
-use Controller\MessageController;
 use Controller\UserController;
 
 if (isset($_GET['controller'])) {
@@ -272,10 +268,6 @@ if (isset($_GET['controller'])) {
         case 'sendMail' :
             $controller = new HomeController();
             $controller->contactUserPage();
-            break;
-        case 'message' :
-            $controller = new MessageController();
-            $controller->messagePage();
             break;
         case 'forgetPassword' :
             $controller = new HomeController();
