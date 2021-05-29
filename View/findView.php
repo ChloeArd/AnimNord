@@ -108,7 +108,7 @@ if (isset($var['ads'])) {?>
                         foreach ($exec as $donnees) {
                             $dateLost = new DateTime($donnees['date_find']);
                             $date = new DateTime($donnees['date']); ?>
-                            <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$donnees['id']?>&user=<?=$donnees['user_fk']?>&comment=commentLost' class='post postTransform flexRow flexCenter colorGrey'>
+                            <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteFind&id=<?=$donnees['id']?>&user=<?=$donnees['user_fk']?>&comment=commentLost' class='post postTransform flexRow flexCenter colorGrey'>
                                 <div class='width_30'>
                                     <?php
                                     if ($donnees['picture'] === null || $donnees['picture'] === "") {
@@ -184,7 +184,7 @@ if (isset($var['ads'])) {?>
                     foreach ($var['ads'] as $ad) {
                         $dateFind = new DateTime($ad->getDateFind());
                         $date = new DateTime($ad->getDate()); ?>
-                        <a href='../index.php?controller=adfind&action=adComment&id=<?=$ad->getId()?>' class='post postTransform flexRow flexCenter colorGrey'>
+                        <a href='../index.php?controller=adfind&action=adComment&favorite=favoriteFind&id=<?=$ad->getId()?>' class='post postTransform flexRow flexCenter colorGrey'>
                             <div class='width_30'>
                                 <?php
                                 if ($ad->getPicture() === null || $ad->getPicture() === "") {

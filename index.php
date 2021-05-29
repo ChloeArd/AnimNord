@@ -158,7 +158,7 @@ if (isset($_GET['controller'])) {
             }
             if (isset($_GET['favorite'])) {
                 switch ($_GET['favorite']) {
-                    case 'favoriteLost' :
+                    case 'favoriteFind' :
                         $controllerFavorite->addFavorite($_GET['id'], $_SESSION['id']);
                         break;
                     case 'view' :

@@ -40,7 +40,7 @@ if (isset($var['ad'])) { ?>
                         }
                     }
                     else { ?>
-                        <form method="post" action="../index.php?controller=adfind&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>&user=<?=$ad->getUserFk()->getId() ?>&comment=commentLost">
+                        <form method="post" action="../index.php?controller=adfind&action=adComment&favorite=favoriteFind&id=<?=$ad->getId() ?>&user=<?=$ad->getUserFk()->getId() ?>&comment=commentLost">
                             <input type="hidden" name="adFind_fk" value="<?=$ad->getId() ?>">
                             <input type="hidden" name="user_fk" value="<?=$_SESSION['id'] ?>">
                             <button type="submit" name="send"><i class='far fa-star star2 size20'></i></button>
