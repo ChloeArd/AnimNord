@@ -67,9 +67,18 @@ class FavoriteFindManager {
      * @return bool
      */
     public function add (FavoriteFind $favorite): bool {
-        $request = DB::getInstance()->prepare("INSERT INTO favorite_find (adFind_fk, user_fk) VALUES (:adFind_fk, :user_fk) ");
+        $request = DB::getInstance()->prepare("SELECT * FROM favorite_find WHERE user_fk = :user_fk AND adFind_fk = :adFind_fk ");
         $request->bindValue(':adFind_fk', $favorite->getAdFindFk()->getId());
         $request->bindValue(':user_fk', $favorite->getUserFk()->getId());
+        $request->execute();
+        $favoriteFind = $request->fetch();
+        // We check if the user has not already put the ad in his favorites.
+        // If this is the case, we add the ad to our favorites.
+        if ($favoriteFind['user_fk'] != $favorite->getUserFk()->getId() && $favoriteFind['adFind_fk'] != $favorite->getAdFindFk()->getId()) {
+            $request = DB::getInstance()->prepare("INSERT INTO favorite_find (adFind_fk, user_fk) VALUES (:adFind_fk, :user_fk) ");
+            $request->bindValue(':adFind_fk', $favorite->getAdFindFk()->getId());
+            $request->bindValue(':user_fk', $favorite->getUserFk()->getId());
+        }
 
         return $request->execute() && DB::getInstance()->lastInsertId() != 0;
     }
