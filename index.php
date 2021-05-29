@@ -141,7 +141,7 @@ if (isset($_GET['controller'])) {
                         $controller->addAd($_POST, $_FILES);
                         break;
                     case 'update' :
-                        $controller->updateAd($_POST);
+                        $controller->updateAd($_POST, $_FILES);
                         break;
                     case 'view' :
                         $controller->adsUser($_SESSION['id']);

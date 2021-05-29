@@ -118,10 +118,10 @@ class AdFindController {
      * Update a ad
      * @param $ad
      */
-    public function updateAd($ad) {
+    public function updateAd($ad, $files) {
         if (isset($_SESSION["id"])) {
             if (isset($ad['id'], $ad['animal'], $ad['sex'], $ad['size'], $ad['fur'], $ad['color'], $ad['dress'], $ad['race'],
-                $ad['number'], $ad['description'], $ad['date_find'], $ad['date'], $ad['city'], $ad['picture'], $ad['user_fk'])) {
+                $ad['number'], $ad['description'], $ad['date_find'], $ad['date'], $ad['city'], $files['picture'], $ad['picture2'], $ad['user_fk'])) {
 
                 $userManager = new UserManager();
                 $adFindManager = new AdFindManager();
@@ -138,7 +138,7 @@ class AdFindController {
                 $date_find = $ad['date_find'];
                 $date = $ad['date'];
                 $city = $ad['city'];
-                $picture = htmlentities($ad['picture']);
+                $picture = htmlentities($ad['picture2']);
                 $user_fk = intval($ad['user_fk']);
 
                 if (count($ad['color']) === 1) {
@@ -160,11 +160,39 @@ class AdFindController {
                     $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4] . ", " . $ad['color'][5];
                 }
 
-                $user_fk = $userManager->getUser($user_fk);
-                if ($user_fk->getId()) {
-                    $ad = new AdFind($id, $animal, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_find, $date, $city, $picture, $user_fk);
-                    $adFindManager->update($ad);
-                    header("Location: ../index.php?controller=adlost&action=view&success=1");
+                if (!empty($files['picture']['name'])) {
+                    if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
+                        $maxSize = 2 * 1024 * 1024; // = 2 Mo
+
+                        if ($files['picture']['size'] <= $maxSize) {
+                            $tmpName = $files['picture']['tmp_name'];
+                            $namePicture = getRandomName($files['picture']['name']);
+
+                            move_uploaded_file($tmpName, "./assets/img/adFind/" . $namePicture);
+                            unlink("./assets/img/adFind/" . $picture);
+
+                            $user_fk = $userManager->getUser($user_fk);
+                            if ($user_fk->getId()) {
+                                $ad = new AdFind($id, $animal, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_find, $date, $city, $namePicture, $user_fk);
+                                $adFindManager->update($ad);
+                                header("Location: ../index.php?controller=adlost&action=view&success=1");
+                            }
+                        }
+                        else {
+                            header("Location: ../index.php?controller=adlost&action=update&id=$id&error=1");
+                        }
+                    }
+                    else {
+                        header("Location: ../index.php?controller=adlost&action=update&id=$id&error=0");
+                    }
+                }
+                else {
+                    $user_fk = $userManager->getUser($user_fk);
+                    if ($user_fk->getId()) {
+                        $ad = new AdFind($id, $animal, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_find, $date, $city, $picture, $user_fk);
+                        $adFindManager->update($ad);
+                        header("Location: ../index.php?controller=adlost&action=view&success=1");
+                    }
                 }
             }
             $this->return("update/updateFindView", "Anim'Nord : Modifier une annonce");

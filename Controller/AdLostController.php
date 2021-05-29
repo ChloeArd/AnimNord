@@ -152,7 +152,7 @@ class AdLostController {
                     $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4] . ", " . $ad['color'][5];
                 }
 
-                if (!empty($files['picture'])) {
+                if (!empty($files['picture']['name'])) {
                     if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
                         $maxSize = 2 * 1024 * 1024; // = 2 Mo
 

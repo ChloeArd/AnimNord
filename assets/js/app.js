@@ -35,11 +35,6 @@ if (document.getElementById("success")) {
     closeModal("success");
 }
 
-// When we click on "users", we make the list of users to which the user has spoken appear or disappear.
-if (document.getElementById("buttonUser")) {
-    display(document.getElementById("buttonUser"), document.getElementById("userList"), "block");
-}
-
 /**
  * Removes the modal window by clicking on the cross.
  * @param idModal
@@ -64,8 +59,3 @@ function display (idClick, id, display) {
         }
     });
 }
-
-document.getElementById("updateLost").addEventListener("click", function () {
-    $file = document.getElementById("picture").value;
-    console.log($file)
-});
