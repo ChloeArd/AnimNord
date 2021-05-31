@@ -84,30 +84,41 @@ class AdFindController {
                     $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4] . ", " . $ad['color'][5];
                 }
 
-                // Check if the image is of the correct type
-                if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
-                    $maxSize = 2 * 1024 * 1024; // = 2 Mo
+                if (!empty($files['picture']['name'])) {
+                    // Check if the image is of the correct type
+                    if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
+                        $maxSize = 2 * 1024 * 1024; // = 2 Mo
 
-                    // Check if the image is below 2Mo.
-                    if ($files['picture']['size'] <= $maxSize) {
-                        $tmpName = $files['picture']['tmp_name'];
-                        // Give a random name to the image.
-                        $namePicture = getRandomName($files['picture']['name']);
+                        // Check if the image is below 2Mo.
+                        if ($files['picture']['size'] <= $maxSize) {
+                            $tmpName = $files['picture']['tmp_name'];
+                            // Give a random name to the image.
+                            $namePicture = getRandomName($files['picture']['name']);
 
-                        // The image is added to a folder.
-                        move_uploaded_file($tmpName, "./assets/img/adFind/" . $namePicture);
+                            // The image is added to a folder.
+                            move_uploaded_file($tmpName, "./assets/img/adFind/" . $namePicture);
 
-                        $user_fk = $userManager->getUser($user_fk);
-                        if ($user_fk->getId()) {
-                            $ad = new AdFind(null, $animal, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_find, $date, $city, $namePicture, $user_fk);
-                            $adFindManager->add($ad);
-                            header("Location: ../index.php?controller=adlost&action=view&success=0");
+                            $user_fk = $userManager->getUser($user_fk);
+                            if ($user_fk->getId()) {
+                                $ad = new AdFind(null, $animal, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_find, $date, $city, $namePicture, $user_fk);
+                                $adFindManager->add($ad);
+                                header("Location: ../index.php?controller=adlost&action=view&success=0");
+                            }
+                        } else {
+                            header("Location: ../index.php?controller=adfind&action=new&error=1");
                         }
                     } else {
-                        header("Location: ../index.php?controller=adfind&action=new&error=1");
+                        header("Location: ../index.php?controller=adfind&action=new&error=0");
                     }
-                } else {
-                    header("Location: ../index.php?controller=adfind&action=new&error=0");
+                }
+                else {
+                    $picture = $files['picture']['name'];
+                    $user_fk = $userManager->getUser($user_fk);
+                    if ($user_fk->getId()) {
+                        $ad = new AdFind(null, $animal, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_find, $date, $city, $picture, $user_fk);
+                        $adFindManager->add($ad);
+                        header("Location: ../index.php?controller=adlost&action=view&success=0");
+                    }
                 }
             }
             $this->return("create/addFindView", "Anim'Nord : Ajouter une annonce de chiens et chats trouvés");
@@ -213,10 +224,9 @@ class AdFindController {
                 $user_fk = intval($ad['user_fk']);
                 $picture = htmlentities($ad['picture']);
 
-                unlink("./assets/img/adFind/$picture");
-
                 $user_fk = $userManager->getUser($user_fk);
                 if ($user_fk->getId()) {
+                    unlink("./assets/img/adFind/$picture");
                     $adFind = new AdFind($id);
                     $adFindManager->delete($adFind);
                     header("Location: ../index.php?controller=adlost&action=view&success=2");

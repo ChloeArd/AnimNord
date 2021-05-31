@@ -38,10 +38,10 @@ class UserManager {
 
     /**
      * Return a user based on id.
-     * @param int $id
+     * @param $id
      * @return User
      */
-    public function getUser(int $id): User {
+    public function getUser( $id): User {
         $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = :id");
         $request->bindParam(":id", $id);
         $request->execute();

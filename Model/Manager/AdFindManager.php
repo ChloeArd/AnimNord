@@ -172,14 +172,14 @@ class AdFindManager {
      * @return bool
      */
     public function delete (AdFind $adFind): bool {
-        $request = DB::getInstance()->prepare("DELETE FROM adfind WHERE id = :id");
-        $request->bindValue(":id", $adFind->getId());
-        $request->execute();
         $request = DB::getInstance()->prepare("DELETE FROM comment_find WHERE adFind_fk = :adFind_fk");
         $request->bindValue(":adFind_fk", $adFind->getId());
         $request->execute();
         $request = DB::getInstance()->prepare("DELETE FROM favorite_find WHERE adFind_fk = :adFind_fk");
         $request->bindValue(":adFind_fk", $adFind->getId());
+        $request->execute();
+        $request = DB::getInstance()->prepare("DELETE FROM adfind WHERE id = :id");
+        $request->bindValue(":id", $adFind->getId());
         return $request->execute();
     }
 

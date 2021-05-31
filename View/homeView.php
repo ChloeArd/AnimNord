@@ -45,7 +45,7 @@ if (isset($_GET['success'])) {
                 if (isset($var['recentLost'])) {
                     foreach ($var['recentLost'] as $ad) {
                         $date = new DateTime($ad->getDateLost())?>
-                        <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>' class='containerRecentPost flexColumn flexCenter radius10'>
+                        <a href='../index.php?controller=adlost&action=adComment&id=<?=$ad->getId() ?>' class='containerRecentPost flexColumn flexCenter radius10'>
                             <?php
                             if ($ad->getPicture() === null || $ad->getPicture() === "") {
                                 if ($ad->getAnimal() === "Chien") {?>

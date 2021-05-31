@@ -52,8 +52,7 @@ function display (idClick, id, display) {
         if (nbClick === 0) {
             $(id).css("display", display);
             nbClick++;
-        }
-        else {
+        } else {
             $(id).css("display", "none");
             nbClick = 0;
         }

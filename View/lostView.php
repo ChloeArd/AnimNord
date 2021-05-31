@@ -19,17 +19,17 @@ if (isset($var['ads'])) { ?>
 
             // If the user adds the sex, size, ... of the animal then we add its "filter" to the request to find it
             if(!empty( $_POST['sex'])) {
-                $sex = htmlentities($_POST['sex']);
+                $sex = $_POST['sex'];
                 $req .= "AND sex LIKE '%$sex%'";
             }
 
             if (!empty($_POST['size'])) {
-                $size = htmlentities($_POST['size']);
+                $size = $_POST['size'];
                 $req .= "AND size LIKE '%$size%'";
             }
 
             if (!empty($_POST['fur'])) {
-                $fur = htmlentities($_POST['fur']);
+                $fur = $_POST['fur'];
                 $req .= "AND fur LIKE '%$fur%'";
             }
 
@@ -56,7 +56,7 @@ if (isset($var['ads'])) { ?>
             }
 
             if(!empty($_POST['dress'])) {
-                $dress = htmlentities($_POST['dress']);
+                $dress = $_POST['dress'];
                 $req .= "AND dress LIKE '%$dress%'";
             }
 
@@ -71,12 +71,12 @@ if (isset($var['ads'])) { ?>
             }
 
             if(!empty($_POST['city'])) {
-                $city = htmlentities($_POST['city']);
+                $city = $_POST['city'];
                 $req .= "AND city LIKE '%$city%'";
             }
 
             if(!empty($_POST['date'])) {
-                $date_lost = htmlentities($_POST['date']);
+                $date_lost = $_POST['date'];
                 $req .= "AND date_lost LIKE '%$date_lost%'";
             }
             $req .= " ORDER BY date DESC";
@@ -107,7 +107,7 @@ if (isset($var['ads'])) { ?>
                         foreach ($exec as $donnees) {
                             $dateLost = new DateTime($donnees['date_lost']);
                             $date = new DateTime($donnees['date']); ?>
-                            <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$donnees['id']?>&user=<?=$donnees['user_fk']?>&comment=commentLost' class='post postTransform flexRow flexCenter colorGrey'>
+                            <a href='../index.php?controller=adlost&action=adComment&id=<?=$donnees['id']?>&user=<?=$donnees['user_fk']?>&comment=commentLost' class='post postTransform flexRow flexCenter colorGrey'>
                                 <div class='width_30'>
                                     <?php
                                     if ($donnees['picture'] === null || $donnees['picture'] === "") {
@@ -183,7 +183,7 @@ if (isset($var['ads'])) { ?>
                     foreach ($var['ads'] as $ad) {
                             $dateLost = new DateTime($ad->getDateLost());
                         $date = new DateTime($ad->getDate()); ?>
-                        <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=<?=$ad->getId() ?>&user=<?=$ad->getUserFk()->getId()?>&comment=commentLost' class='post postTransform flexRow flexCenter colorGrey'>
+                        <a href='../index.php?controller=adlost&action=adComment&id=<?=$ad->getId() ?>&user=<?=$ad->getUserFk()->getId()?>&comment=commentLost' class='post postTransform flexRow flexCenter colorGrey'>
                             <div class='width_30'>
                                 <?php
                                 if ($ad->getPicture() === null || $ad->getPicture() === "") {

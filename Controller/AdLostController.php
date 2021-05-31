@@ -83,26 +83,37 @@ class AdLostController {
                     $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4] . ", " . $ad['color'][5];
                 }
 
-                if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
-                    $maxSize = 2 * 1024 * 1024; // = 2 Mo
+                if (!empty($files['picture']['name'])) {
+                    if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
+                        $maxSize = 2 * 1024 * 1024; // = 2 Mo
 
-                    if ($files['picture']['size'] <= $maxSize) {
-                        $tmpName = $files['picture']['tmp_name'];
-                        $namePicture = getRandomName($files['picture']['name']);
+                        if ($files['picture']['size'] <= $maxSize) {
+                            $tmpName = $files['picture']['tmp_name'];
+                            $namePicture = getRandomName($files['picture']['name']);
 
-                        move_uploaded_file($tmpName, "./assets/img/adLost/" . $namePicture);
+                            move_uploaded_file($tmpName, "./assets/img/adLost/" . $namePicture);
 
-                        $user_fk = $userManager->getUser($user_fk);
-                        if ($user_fk->getId()) {
-                            $ad = new AdLost(null, $animal, $name, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_lost, $date, $city, $namePicture, $user_fk);
-                            $adlostManager->add($ad);
-                            header("Location: ../index.php?controller=adlost&action=view&success=3");
+                            $user_fk = $userManager->getUser($user_fk);
+                            if ($user_fk->getId()) {
+                                $ad = new AdLost(null, $animal, $name, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_lost, $date, $city, $namePicture, $user_fk);
+                                $adlostManager->add($ad);
+                                header("Location: ../index.php?controller=adlost&action=view&success=3");
+                            }
+                        } else {
+                            header("Location: ../index.php?controller=adlost&action=new&error=1");
                         }
                     } else {
-                        header("Location: ../index.php?controller=adlost&action=new&error=1");
+                        header("Location: ../index.php?controller=adlost&action=new&error=0");
                     }
-                } else {
-                    header("Location: ../index.php?controller=adlost&action=new&error=0");
+                }
+                else {
+                    $picture = $files['picture']['name'];
+                    $user_fk = $userManager->getUser($user_fk);
+                    if ($user_fk->getId()) {
+                        $ad = new AdLost(null, $animal, $name, $sex, $size, $fur, $color, $dress, $race, $number, $description, $date_lost, $date, $city, $picture, $user_fk);
+                        $adlostManager->add($ad);
+                        header("Location: ../index.php?controller=adlost&action=view&success=3");
+                    }
                 }
             }
             $this->return("create/addLostView", "Anim'Nord : Ajouter une annonce de chiens et chats perdus");
@@ -206,10 +217,9 @@ class AdLostController {
                 $user_fk = intval($ad['user_fk']);
                 $picture = htmlentities($ad['picture']);
 
-                unlink("./assets/img/adLost/" . $picture);
-
                 $user_fk = $userManager->getUser($user_fk);
                 if ($user_fk->getId()) {
+                    unlink("./assets/img/adLost/" . $picture);
                     $adlost = new AdLost($id);
                     $adlostManager->delete($adlost);
                     header("Location: ../index.php?controller=adlost&action=view&success=2");

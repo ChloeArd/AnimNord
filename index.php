@@ -72,7 +72,7 @@ if (isset($_GET['controller'])) {
                         break;
                 }
             }
-            if (isset($_GET['favorite'])) {
+            if (isset($_GET['favorite'], $_SESSION['id'])) {
                 switch ($_GET['favorite']) {
                     case 'favoriteLost' :
                         $controllerFavorite->addFavorite($_GET['id'], $_SESSION['id']);
@@ -156,7 +156,7 @@ if (isset($_GET['controller'])) {
                         break;
                 }
             }
-            if (isset($_GET['favorite'])) {
+            if (isset($_GET['favorite'], $_SESSION['id'])) {
                 switch ($_GET['favorite']) {
                     case 'favoriteFind' :
                         $controllerFavorite->addFavorite($_GET['id'], $_SESSION['id']);

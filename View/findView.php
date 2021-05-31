@@ -19,18 +19,18 @@ if (isset($var['ads'])) {?>
             $req = "SELECT * FROM adfind WHERE animal LIKE '%$animal%'";
 
             // If the user adds the sex, size, ... of the animal then we add its "filter" to the request to find it
-            if(!empty( $_POST['sex'])) {
-                $sex = htmlentities($_POST['sex']);
+            if(!empty($_POST['sex'])) {
+                $sex = $_POST['sex'];
                 $req .= "AND sex LIKE '%$sex%'";
             }
 
             if (!empty($_POST['size'])) {
-                $size = htmlentities($_POST['size']);
+                $size = $_POST['size'];
                 $req .= "AND size LIKE '%$size%'";
             }
 
             if (!empty($_POST['fur'])) {
-                $fur = htmlentities($_POST['fur']);
+                $fur = $_POST['fur'];
                 $req .= "AND fur LIKE '%$fur%'";
             }
 
@@ -57,7 +57,7 @@ if (isset($var['ads'])) {?>
             }
 
             if(!empty($_POST['dress'])) {
-                $dress = htmlentities($_POST['dress']);
+                $dress = $_POST['dress'];
                 $req .= "AND dress LIKE '%$dress%'";
             }
 
@@ -72,12 +72,12 @@ if (isset($var['ads'])) {?>
             }
 
             if(!empty($_POST['city'])) {
-                $city = htmlentities($_POST['city']);
+                $city = $_POST['city'];
                 $req .= "AND city LIKE '%$city%'";
             }
 
             if(!empty($_POST['date'])) {
-                $date_find = htmlentities($_POST['date']);
+                $date_find = $_POST['date'];
                 $req .= "AND date_find LIKE '%$date_find%'";
             }
             $req .= "ORDER BY date DESC";
@@ -108,7 +108,7 @@ if (isset($var['ads'])) {?>
                         foreach ($exec as $donnees) {
                             $dateLost = new DateTime($donnees['date_find']);
                             $date = new DateTime($donnees['date']); ?>
-                            <a href='../index.php?controller=adlost&action=adComment&favorite=favoriteFind&id=<?=$donnees['id']?>&user=<?=$donnees['user_fk']?>&comment=commentLost' class='post postTransform flexRow flexCenter colorGrey'>
+                            <a href='../index.php?controller=adfind&action=adComment&id=<?=$donnees['id']?>&user=<?=$donnees['user_fk']?>&comment=commentLost' class='post postTransform flexRow flexCenter colorGrey'>
                                 <div class='width_30'>
                                     <?php
                                     if ($donnees['picture'] === null || $donnees['picture'] === "") {
@@ -184,7 +184,7 @@ if (isset($var['ads'])) {?>
                     foreach ($var['ads'] as $ad) {
                         $dateFind = new DateTime($ad->getDateFind());
                         $date = new DateTime($ad->getDate()); ?>
-                        <a href='../index.php?controller=adfind&action=adComment&favorite=favoriteFind&id=<?=$ad->getId()?>' class='post postTransform flexRow flexCenter colorGrey'>
+                        <a href='../index.php?controller=adfind&action=adComment&id=<?=$ad->getId()?>' class='post postTransform flexRow flexCenter colorGrey'>
                             <div class='width_30'>
                                 <?php
                                 if ($ad->getPicture() === null || $ad->getPicture() === "") {

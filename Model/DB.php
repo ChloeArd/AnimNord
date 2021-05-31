@@ -9,7 +9,7 @@ use PDOException;
 class DB {
 
     private string $server = 'localhost';
-    private string $db = 'animnord';
+    private string $nameDb = 'animnord';
     private string $user = 'root';
     private string $password = '';
 
@@ -21,7 +21,7 @@ class DB {
      */
     public function __construct() {
         try {
-            self::$dbInstance = new PDO("mysql:host=$this->server;dbname=$this->db;charset=utf8", $this->user, $this->password);
+            self::$dbInstance = new PDO("mysql:host=$this->server;dbname=$this->nameDb;charset=utf8", $this->user, $this->password);
             self::$dbInstance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             self::$dbInstance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         }
