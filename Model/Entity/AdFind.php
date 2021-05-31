@@ -282,6 +282,4 @@ class AdFind {
         $this->user_fk = $user_fk;
         return $user_fk;
     }
-
-
 }

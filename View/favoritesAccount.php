@@ -47,7 +47,7 @@
                         <input type="hidden" name="user_fk" value="<?=$_SESSION['id'] ?>">
                         <button type="submit" name="send"><i class='fas fa-star star size15'></i></button>
                     </form>
-                    <a class='post postTransform flexRow flexCenter colorGrey'>
+                    <a href="../index.php?controller=adlost&action=adComment&id=<?=$ad->getAdLostFk()->getId()?>&user=<?=$ad->getUserFk()->getId()?>&comment=commentLost" class='post postTransform flexRow flexCenter colorGrey'>
                         <div class='width_30'>
                             <?php
                             if ($ad->getAdLostFk()->getPicture() === null || $ad->getAdLostFk()->getPicture() === "") {
@@ -109,7 +109,7 @@
                     <input type="hidden" name="user_fk" value="<?=$_SESSION['id'] ?>">
                     <button type="submit" name="send"><i class='fas fa-star star size15'></i></button>
                 </form>
-                <a class='post postTransform flexRow flexCenter colorGrey'>
+                <a href="../index.php?controller=adfind&action=adComment&id=<?=$ad->getId()?>&user=<?=$ad->getUserFk()->getId()?>&comment=commentLost" class='post postTransform flexRow flexCenter colorGrey'>
                     <div class='width_30'>
                         <?php
                         if ($ad->getAdFindFk()->getPicture() === null || $ad->getAdFindFk()->getPicture() === "") {

@@ -6,13 +6,12 @@ if (isset($_GET['error'])) {
     $id = "error";
     switch ($_GET['error']) {
         case '0':
-            $return = "Vous devez vous déconnecter puis vous reconnecter pour changer de mot de passe !";
+            $return = "Votre mot de passe actuel est incorrect !";
             break;
     }
 }
 
-if ($_GET['id'] === $_SESSION['id']) {
-?>
+if ($_GET['id'] === $_SESSION['id']) { ?>
     <div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
     <main>
         <div>

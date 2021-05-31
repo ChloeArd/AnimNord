@@ -72,8 +72,7 @@ class UserController {
                     $number = preg_match('@[0-9]@', $newPassword);
 
                     if ($maj && $min && $number && strlen($newPassword) > 8) {
-                        $password = password_hash($newPassword, PASSWORD_BCRYPT);
-                        $user = new User($id, '', '', '', '', $password);
+                        $user = new User($id, '', '', '', '', $newPassword);
                         $userManager->updatePasswordUser($user);
                         header("Location: ../index.php?controller=user&action=view&id=" . $_SESSION['id'] . "&success=1");
                     }

@@ -87,8 +87,11 @@ class UserManager {
     public function updatePasswordUser(User $user): bool {
         $request = DB::getInstance()->prepare("UPDATE user SET password = :password WHERE id = :id");
         $request->bindValue(':id', $user->getId());
-        $request->bindValue(':password', $user->setPassword($user->getPassword()));
-
+        // We update the superglobal session to be able to put the new password of the user.
+        $_SESSION['password'] = $user->setPassword($user->getPassword());
+        // The password is encrypted in the database.
+        $password = password_hash($user->setPassword($user->getPassword()), PASSWORD_BCRYPT);
+        $request->bindValue(':password', $password);
         return $request->execute();
 
     }

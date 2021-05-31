@@ -66,7 +66,7 @@ if (isset($_GET['success'])) {
                         $date = new DateTime($ad->getDate()); ?>
                         <a class="colorBlack" href="../index.php?controller=adlost&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit"></i></a>
                         <a class="colorBlack" href="../index.php?controller=adlost&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
-                        <a class='post postTransform flexRow flexCenter colorGrey'>
+                        <a href="../index.php?controller=adlost&action=adComment&id=<?=$ad->getId()?>&user=<?=$ad->getUserFk()->getId()?>&comment=commentLost" class='post postTransform flexRow flexCenter colorGrey'>
                             <div class='width_30'>
                                 <?php
                                 if ($ad->getPicture() === null || $ad->getPicture() === "") {
@@ -125,7 +125,7 @@ if (isset($_GET['success'])) {
                             $date = new DateTime($ad->getDate()); ?>
                             <a class="colorBlack" href="../index.php?controller=adfind&action=update&id=<?=$ad->getId() ?>"><i class="far fa-edit"></i></a>
                             <a class="colorBlack" href="../index.php?controller=adfind&action=delete&id=<?=$ad->getId() ?>"><i class="far fa-trash-alt"></i></a>
-                            <a class='post postTransform flexRow flexCenter colorGrey'>
+                            <a href="../index.php?controller=adfind&action=adComment&id=<?=$ad->getId()?>&user=<?=$ad->getUserFk()->getId()?>&comment=commentLost" class='post postTransform flexRow flexCenter colorGrey'>
                                 <div class='width_30'>
                                     <?php
                                     if ($ad->getPicture() === null || $ad->getPicture() === "") {
