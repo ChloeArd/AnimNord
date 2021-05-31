@@ -22,12 +22,12 @@ class FavoriteFindManager {
         $request->bindParam(":user_fk", $user_fk);
         $result = $request->execute();
         if($result) {
-            foreach ($request->fetchAll() as $favorites_data) {
+            foreach ($request->fetchAll() as $info) {
                 $user = UserManager::getManager()->getUser($user_fk);
-                $adLost = AdFindManager::getManager()->getAd($favorites_data['adFind_fk']);
+                $adLost = AdFindManager::getManager()->getAd($info['adFind_fk']);
                 if($user->getId()) {
                     if ($adLost->getId()) {
-                        $favorites[] = new FavoriteFind($favorites_data['id'], $adLost, $user);
+                        $favorites[] = new FavoriteFind($info['id'], $adLost, $user);
                     }
                 }
             }
@@ -48,12 +48,12 @@ class FavoriteFindManager {
         $request->bindParam(":adFind_fk", $adFind_fk);
         $result = $request->execute();
         if($result) {
-            foreach ($request->fetchAll() as $favorite) {
+            foreach ($request->fetchAll() as $info) {
                 $user = UserManager::getManager()->getUser($user_fk);
                 $adLost = AdFindManager::getManager()->getAd($adFind_fk);
                 if($user->getId()) {
                     if ($adLost->getId()) {
-                        $favorites[] = new FavoriteFind($favorite['id'], $adLost, $user);
+                        $favorites[] = new FavoriteFind($info['id'], $adLost, $user);
                     }
                 }
             }

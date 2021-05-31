@@ -16,11 +16,11 @@
      public function getRole(int $id) {
          $request = DB::getInstance()->prepare("SELECT * FROM role WHERE id = $id");
          $request->execute();
-         $role_data = $request->fetch();
+         $info = $request->fetch();
          $role = new Role();
-         if ($role_data) {
-             $role->setId($role_data['id']);
-             $role->setRole($role_data['role']);
+         if ($info) {
+             $role->setId($info['id']);
+             $role->setRole($info['role']);
          }
          return $role;
      }
@@ -35,8 +35,8 @@
          $request->execute();
          $roles_response = $request->fetchAll();
          if($roles_response) {
-             foreach($roles_response as $db) {
-                 $roles[] = new Role($db['id'], $db['role']);
+             foreach($roles_response as $info) {
+                 $roles[] = new Role($info['id'], $info['role']);
              }
          }
          return $roles;

@@ -2,7 +2,6 @@
 namespace Model\User;
 
 use Model\DB;
-use Model\Entity\Role;
 use Model\Entity\User;
 use Model\Role\RoleManager;
 use Model\Manager\Traits\ManagerTrait;
@@ -26,10 +25,10 @@ class UserManager {
         $request = DB::getInstance()->prepare("SELECT * FROM user");
         $result = $request->execute();
         if($result) {
-            foreach($request->fetchAll() as $db) {
-                $role = RoleManager::getManager()->getRole($db['role_fk']);
+            foreach($request->fetchAll() as $info) {
+                $role = RoleManager::getManager()->getRole($info['role_fk']);
                 if ($role->getId()) {
-                    $users[] = new User($db['id'], $db['firstname'], $db['lastname'] ,$db['email'], $db['phone'],'', $role);
+                    $users[] = new User($info['id'], $info['firstname'], $info['lastname'], $info['email'], $info['phone'],'', $role);
                 }
             }
         }
@@ -45,16 +44,16 @@ class UserManager {
         $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = :id");
         $request->bindParam(":id", $id);
         $request->execute();
-        $user_data = $request->fetch();
+        $info = $request->fetch();
         $user = new User();
-        if ($user_data) {
-            $user->setId($user_data['id']);
-            $user->setFirstname($user_data['firstname']);
-            $user->setLastname($user_data['lastname']);
-            $user->setEmail($user_data['email']);
-            $user->setPhone($user_data['phone']);
+        if ($info) {
+            $user->setId($info['id']);
+            $user->setFirstname($info['firstname']);
+            $user->setLastname($info['lastname']);
+            $user->setEmail($info['email']);
+            $user->setPhone($info['phone']);
             $user->setPassword(''); // We do not display the password
-            $role = $this->roleManager->getRole($user_data['role_fk']);
+            $role = $this->roleManager->getRole($info['role_fk']);
             $user->setRoleFk($role);
         }
         return $user;
@@ -69,12 +68,11 @@ class UserManager {
         $user = [];
         $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = :id");
         $request->bindParam(":id", $id);
-        $result = $request->execute();
-        if($result) {
-            foreach($request->fetchAll() as $db) {
-                $role = RoleManager::getManager()->getRole($db['role_fk']);
+        if($request->execute()) {
+            foreach($request->fetchAll() as $info) {
+                $role = RoleManager::getManager()->getRole($info['role_fk']);
                 if ($role->getId()) {
-                    $user[] = new User($db['id'], $db['firstname'], $db['lastname'] ,$db['email'], $db['phone'],'', $role);
+                    $user[] = new User($info['id'], $info['firstname'], $info['lastname'] ,$info['email'], $info['phone'],'', $role);
                 }
             }
         }
@@ -150,9 +148,11 @@ class UserManager {
         $request->execute();
         $request = DB::getInstance()->prepare("DELETE FROM user WHERE id = :id");
         $request->bindParam(":id", $id);
+
         session_start();
         session_unset();
         session_destroy();
+
         return $request->execute();
     }
 }

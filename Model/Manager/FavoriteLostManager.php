@@ -22,14 +22,13 @@ class FavoriteLostManager {
         $favorites = [];
         $request = DB::getInstance()->prepare("SELECT * FROM favorite_lost WHERE user_fk = :user_fk ORDER by id DESC ");
         $request->bindParam(":user_fk", $user_fk);
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $favorites_data) {
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
                 $user = UserManager::getManager()->getUser($user_fk);
-                $adLost = AdLostManager::getManager()->getAd($favorites_data['adLost_fk']);
+                $adLost = AdLostManager::getManager()->getAd($info['adLost_fk']);
                 if($user->getId()) {
                     if ($adLost->getId()) {
-                        $favorites[] = new FavoriteLost($favorites_data['id'], $adLost, $user);
+                        $favorites[] = new FavoriteLost($info['id'], $adLost, $user);
                     }
                 }
             }
@@ -48,14 +47,13 @@ class FavoriteLostManager {
         $request = DB::getInstance()->prepare("SELECT * FROM favorite_lost WHERE user_fk = :user_fk AND adLost_fk = :adLost_fk ");
         $request->bindParam(":user_fk", $user_fk);
         $request->bindParam(":adLost_fk", $adLost_fk);
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $favorite) {
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
                 $user = UserManager::getManager()->getUser($user_fk);
                 $adLost = AdLostManager::getManager()->getAd($adLost_fk);
                 if($user->getId()) {
                     if ($adLost->getId()) {
-                        $favorites[] = new FavoriteLost($favorite['id'], $adLost, $user);
+                        $favorites[] = new FavoriteLost($info['id'], $adLost, $user);
                     }
                 }
             }

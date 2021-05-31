@@ -23,12 +23,11 @@ class ContentIndexManager {
     public function getContents(): array {
         $contentIndex = [];
         $request = DB::getInstance()->prepare("SELECT * FROM content_index");
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $contentIndex_data) {
-                $user = UserManager::getManager()->getUser($contentIndex_data['user_fk']);
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
+                $user = UserManager::getManager()->getUser($info['user_fk']);
                 if($user->getId()) {
-                    $contentIndex[] = new ContentIndex($contentIndex_data['id'], $contentIndex_data['picture'],  $contentIndex_data['text1'], $contentIndex_data['text2'], $user);
+                    $contentIndex[] = new ContentIndex($info['id'], $info['picture'],  $info['text1'], $info['text2'], $user);
                 }
             }
         }
@@ -44,12 +43,11 @@ class ContentIndexManager {
         $contentIndex = [];
         $request = DB::getInstance()->prepare("SELECT * FROM content_index WHERE id = :id");
         $request->bindParam(":id", $id);
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $contentIndex_data) {
-                $user = UserManager::getManager()->getUser($contentIndex_data['user_fk']);
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
+                $user = UserManager::getManager()->getUser($info['user_fk']);
                 if($user->getId()) {
-                    $contentIndex[] = new ContentIndex($contentIndex_data['id'], $contentIndex_data['picture'],  $contentIndex_data['text1'], $contentIndex_data['text2'], $user);
+                    $contentIndex[] = new ContentIndex($info['id'], $info['picture'],  $info['text1'], $info['text2'], $user);
                 }
             }
         }

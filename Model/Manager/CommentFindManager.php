@@ -22,14 +22,13 @@ class CommentFindManager {
         $comments = [];
         $request = DB::getInstance()->prepare("SELECT * FROM comment_find WHERE adFind_fk = :adFind_fk ORDER BY id DESC");
         $request->bindParam(":adFind_fk", $adFind_fk);
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $comment_data) {
-                $user = UserManager::getManager()->getUser($comment_data['user_fk']);
-                $adFind = AdFindManager::getManager()->getAd($comment_data['adFind_fk']);
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
+                $user = UserManager::getManager()->getUser($info['user_fk']);
+                $adFind = AdFindManager::getManager()->getAd($info['adFind_fk']);
                 if($user->getId()) {
                     if ($adFind->getId()) {
-                        $comments[] = new CommentFind($comment_data['id'], $comment_data['content'], $comment_data['date'], $adFind, $user);
+                        $comments[] = new CommentFind($info['id'], $info['content'], $info['date'], $adFind, $user);
                     }
                 }
             }
@@ -46,15 +45,14 @@ class CommentFindManager {
         $comments = [];
         $request = DB::getInstance()->prepare("SELECT * FROM comment_find WHERE id = :id");
         $request->bindParam(":id", $id);
-        $result = $request->execute();
-        if($result) {
+        if($request->execute()) {
             $data = $request->fetchAll();
-            foreach ($data as $comment_data) {
-                $user = UserManager::getManager()->getUser($comment_data['user_fk']);
-                $adFind = AdFindManager::getManager()->getAd($comment_data['adFind_fk']);
+            foreach ($data as $info) {
+                $user = UserManager::getManager()->getUser($info['user_fk']);
+                $adFind = AdFindManager::getManager()->getAd($info['adFind_fk']);
                 if($user->getId()) {
                     if ($adFind->getId()) {
-                        $comments[] = new CommentFind($comment_data['id'], $comment_data['content'], $comment_data['date'], $adFind, $user);
+                        $comments[] = new CommentFind($info['id'], $info['content'], $info['date'], $adFind, $user);
                     }
                 }
             }

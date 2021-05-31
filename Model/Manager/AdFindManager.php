@@ -19,14 +19,13 @@ class AdFindManager {
     public function getAds(): array {
         $ads = [];
         $request = DB::getInstance()->prepare("SELECT * FROM adfind ORDER by id DESC");
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $ads_data) {
-                $user = UserManager::getManager()->getUser($ads_data['user_fk']);
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
+                $user = UserManager::getManager()->getUser($info['user_fk']);
                 if($user->getId()) {
-                    $ads[] = new AdFind($ads_data['id'], $ads_data['animal'], $ads_data['sex'], $ads_data['size'],
-                        $ads_data['fur'], $ads_data['color'], $ads_data['dress'], $ads_data['race'], $ads_data['number'], $ads_data['description'],
-                        $ads_data['date_find'], $ads_data['date'], $ads_data['city'], $ads_data['picture'] ,$user);
+                    $ads[] = new AdFind($info['id'], $info['animal'], $info['sex'], $info['size'],
+                        $info['fur'], $info['color'], $info['dress'], $info['race'], $info['number'], $info['description'],
+                        $info['date_find'], $info['date'], $info['city'], $info['picture'] ,$user);
                 }
             }
         }
@@ -72,14 +71,13 @@ class AdFindManager {
         $ad = [];
         $request = DB::getInstance()->prepare("SELECT * FROM adfind WHERE id = :id");
         $request->bindParam(":id", $id);
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $ad_data) {
-                $user = UserManager::getManager()->getUser($ad_data['user_fk']);
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
+                $user = UserManager::getManager()->getUser($info['user_fk']);
                 if($user->getId()) {
-                    $ad[] = new AdFind($ad_data['id'], $ad_data['animal'], $ad_data['sex'], $ad_data['size'],
-                        $ad_data['fur'], $ad_data['color'], $ad_data['dress'], $ad_data['race'], $ad_data['number'], $ad_data['description'],
-                        $ad_data['date_find'], $ad_data['date'], $ad_data['city'], $ad_data['picture'] ,$user);
+                    $ad[] = new AdFind($info['id'], $info['animal'], $info['sex'], $info['size'],
+                        $info['fur'], $info['color'], $info['dress'], $info['race'], $info['number'], $info['description'],
+                        $info['date_find'], $info['date'], $info['city'], $info['picture'] ,$user);
                 }
             }
         }
@@ -95,14 +93,13 @@ class AdFindManager {
         $ads = [];
         $request = DB::getInstance()->prepare("SELECT * FROM adfind WHERE user_fk = :user_fk ORDER by id DESC ");
         $request->bindParam(":user_fk", $user_fk);
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $ads_data) {
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
                 $user = UserManager::getManager()->getUser($user_fk);
                 if($user->getId()) {
-                    $ads[] = new AdFind($ads_data['id'], $ads_data['animal'], $ads_data['sex'], $ads_data['size'],
-                        $ads_data['fur'], $ads_data['color'], $ads_data['dress'], $ads_data['race'], $ads_data['number'], $ads_data['description'],
-                        $ads_data['date_find'], $ads_data['date'], $ads_data['city'], $ads_data['picture'] ,$user);
+                    $ads[] = new AdFind($info['id'], $info['animal'], $info['sex'], $info['size'],
+                        $info['fur'], $info['color'], $info['dress'], $info['race'], $info['number'], $info['description'],
+                        $info['date_find'], $info['date'], $info['city'], $info['picture'] ,$user);
                 }
             }
         }
@@ -190,14 +187,13 @@ class AdFindManager {
     public function recentAdFind(): array {
         $recent = [];
         $request = DB::getInstance()->prepare("SELECT * FROM adfind ORDER by id DESC LIMIT 0,4");
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $ad) {
-                $user = UserManager::getManager()->getUser($ad['user_fk']);
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
+                $user = UserManager::getManager()->getUser($info['user_fk']);
                 if($user->getId()) {
-                    $recent[] = new AdFind($ad['id'], $ad['animal'], $ad['sex'], $ad['size'],
-                        $ad['fur'], $ad['color'], $ad['dress'], $ad['race'], $ad['number'], $ad['description'],
-                        $ad['date_find'], $ad['date'], $ad['city'], $ad['picture'] ,$user);
+                    $recent[] = new AdFind($info['id'], $info['animal'], $info['sex'], $info['size'],
+                        $info['fur'], $info['color'], $info['dress'], $info['race'], $info['number'], $info['description'],
+                        $info['date_find'], $info['date'], $info['city'], $info['picture'] ,$user);
                 }
             }
         }

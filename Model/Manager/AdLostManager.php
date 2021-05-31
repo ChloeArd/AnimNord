@@ -20,14 +20,13 @@ class AdLostManager {
     public function getAds(): array {
         $ads = [];
         $request = DB::getInstance()->prepare("SELECT * FROM adlost ORDER by id DESC");
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $ads_data) {
-                $user = UserManager::getManager()->getUser($ads_data['user_fk']);
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
+                $user = UserManager::getManager()->getUser($info['user_fk']);
                 if($user->getId()) {
-                    $ads[] = new AdLost($ads_data['id'], $ads_data['animal'],  $ads_data['name'], $ads_data['sex'], $ads_data['size'],
-                        $ads_data['fur'], $ads_data['color'], $ads_data['dress'], $ads_data['race'], $ads_data['number'], $ads_data['description'],
-                        $ads_data['date_lost'], $ads_data['date'], $ads_data['city'], $ads_data['picture'] ,$user);
+                    $ads[] = new AdLost($info['id'], $info['animal'],  $info['name'], $info['sex'], $info['size'],
+                        $info['fur'], $info['color'], $info['dress'], $info['race'], $info['number'], $info['description'],
+                        $info['date_lost'], $info['date'], $info['city'], $info['picture'] ,$user);
                 }
             }
         }
@@ -74,14 +73,13 @@ class AdLostManager {
         $ad = [];
         $request = DB::getInstance()->prepare("SELECT * FROM adlost WHERE id = :id");
         $request->bindParam(":id", $id);
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $data) {
-                $user = UserManager::getManager()->getUser($data['user_fk']);
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
+                $user = UserManager::getManager()->getUser($info['user_fk']);
                 if ($user->getId()) {
-                    $ad[] = new AdLost($data['id'], $data['animal'], $data['name'], $data['sex'], $data['size'],
-                        $data['fur'], $data['color'], $data['dress'], $data['race'], $data['number'], $data['description'],
-                        $data['date_lost'], $data['date'], $data['city'], $data['picture'], $user);
+                    $ad[] = new AdLost($info['id'], $info['animal'], $info['name'], $info['sex'], $info['size'],
+                        $info['fur'], $info['color'], $info['dress'], $info['race'], $info['number'], $info['description'],
+                        $info['date_lost'], $info['date'], $info['city'], $info['picture'], $user);
                 }
             }
         }
@@ -96,14 +94,13 @@ class AdLostManager {
         $ads = [];
         $request = DB::getInstance()->prepare("SELECT * FROM adlost WHERE user_fk = :user_fk ORDER by id DESC ");
         $request->bindParam(":user_fk", $user_fk);
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $ads_data) {
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
                 $user = UserManager::getManager()->getUser($user_fk);
                 if($user->getId()) {
-                    $ads[] = new AdLost($ads_data['id'], $ads_data['animal'],  $ads_data['name'], $ads_data['sex'], $ads_data['size'],
-                        $ads_data['fur'], $ads_data['color'], $ads_data['dress'], $ads_data['race'], $ads_data['number'], $ads_data['description'],
-                        $ads_data['date_lost'], $ads_data['date'], $ads_data['city'], $ads_data['picture'] ,$user);
+                    $ads[] = new AdLost($info['id'], $info['animal'],  $info['name'], $info['sex'], $info['size'],
+                        $info['fur'], $info['color'], $info['dress'], $info['race'], $info['number'], $info['description'],
+                        $info['date_lost'], $info['date'], $info['city'], $info['picture'] ,$user);
                 }
             }
         }
@@ -193,18 +190,16 @@ class AdLostManager {
     public function recentAdLost(): array {
         $recent = [];
         $request = DB::getInstance()->prepare("SELECT * FROM adlost ORDER by id DESC LIMIT 0,4");
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $ad) {
-                $user = UserManager::getManager()->getUser($ad['user_fk']);
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
+                $user = UserManager::getManager()->getUser($info['user_fk']);
                 if($user->getId()) {
-                    $recent[] = new AdLost($ad['id'], $ad['animal'],  $ad['name'], $ad['sex'], $ad['size'],
-                        $ad['fur'], $ad['color'], $ad['dress'], $ad['race'], $ad['number'], $ad['description'],
-                        $ad['date_lost'], $ad['date'], $ad['city'], $ad['picture'] ,$user);
+                    $recent[] = new AdLost($info['id'], $info['animal'],  $info['name'], $info['sex'], $info['size'],
+                        $info['fur'], $info['color'], $info['dress'], $info['race'], $info['number'], $info['description'],
+                        $info['date_lost'], $info['date'], $info['city'], $info['picture'] ,$user);
                 }
             }
         }
         return $recent;
     }
-
 }

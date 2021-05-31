@@ -22,14 +22,13 @@ class CommentLostManager {
         $comments = [];
         $request = DB::getInstance()->prepare("SELECT * FROM comment_lost WHERE adLost_fk = :adLost_fk ORDER BY id DESC");
         $request->bindParam(":adLost_fk", $adLost_fk);
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $comment_data) {
-                $user = UserManager::getManager()->getUser($comment_data['user_fk']);
-                $adLost = AdLostManager::getManager()->getAd($comment_data['adLost_fk']);
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
+                $user = UserManager::getManager()->getUser($info['user_fk']);
+                $adLost = AdLostManager::getManager()->getAd($info['adLost_fk']);
                 if($user->getId()) {
                     if ($adLost->getId()) {
-                        $comments[] = new CommentLost($comment_data['id'], $comment_data['content'], $comment_data['date'], $adLost, $user);
+                        $comments[] = new CommentLost($info['id'], $info['content'], $info['date'], $adLost, $user);
                     }
                 }
             }
@@ -46,14 +45,13 @@ class CommentLostManager {
         $comments = [];
         $request = DB::getInstance()->prepare("SELECT * FROM comment_lost WHERE id = :id");
         $request->bindParam(":id", $id);
-        $result = $request->execute();
-        if($result) {
-            foreach ($request->fetchAll() as $comment_data) {
-                $user = UserManager::getManager()->getUser($comment_data['user_fk']);
-                $adLost = AdLostManager::getManager()->getAd($comment_data['adLost_fk']);
+        if($request->execute()) {
+            foreach ($request->fetchAll() as $info) {
+                $user = UserManager::getManager()->getUser($info['user_fk']);
+                $adLost = AdLostManager::getManager()->getAd($info['adLost_fk']);
                 if($user->getId()) {
                     if ($adLost->getId()) {
-                        $comments[] = new CommentLost($comment_data['id'], $comment_data['content'], $comment_data['date'], $adLost, $user);
+                        $comments[] = new CommentLost($info['id'], $info['content'], $info['date'], $adLost, $user);
                     }
                 }
             }
