@@ -11,6 +11,9 @@ if (isset($_GET['error'])) {
         case '1' :
             $return = "Le poids du fichier est trop élevé, la limite est de 2 Mo !";
             break;
+        case '2' :
+            $return = "Le champ obligatoire de la/les couleur(s) du pelage doit être coché !";
+            break;
     }
 }
 ?>

@@ -1,4 +1,24 @@
 <?php
+$return = "";
+$id = "";
+
+if (isset($_GET['error'])) {
+    $id = "error";
+    switch ($_GET['error']) {
+        case '0':
+            $return = "Vous avez fourni un mauvais type de fichier !";
+            break;
+        case '1' :
+            $return = "Le poids du fichier est trop élevé, la limite est de 2 Mo !";
+            break;
+        case '2' :
+            $return = "Le champ obligatoire de la/les couleur(s) du pelage doit être coché !";
+            break;
+    }
+}
+?>
+<div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
+<?php
 date_default_timezone_set("Europe/Paris");
 $id = $_GET['id'];
 $manager = new \Model\AdFind\AdFindManager();

@@ -47,7 +47,7 @@ class AdFindController {
      */
     public function addAd($ad, $files) {
         if (isset($_SESSION["id"])) {
-            if (isset($ad['animal'], $ad['sex'], $ad['size'], $ad['fur'], $ad['color'], $ad['dress'], $ad['race'],
+            if (isset($ad['animal'], $ad['sex'], $ad['size'], $ad['fur'], $ad['dress'], $ad['race'],
                 $ad['number'], $ad['description'], $ad['date_find'], $ad['date'], $ad['city'], $files['picture'], $ad['user_fk'])) {
                 $userManager = new UserManager();
                 $adFindManager = new AdFindManager();
@@ -65,23 +65,28 @@ class AdFindController {
                 $city = $ad['city'];
                 $user_fk = intval($ad['user_fk']);
 
-                if (count($ad['color']) === 1) {
-                    $color = $ad['color'][0];
-                }
-                elseif (count($ad['color']) === 2) {
-                    $color = $ad['color'][0] . ", " . $ad['color'][1];
-                }
-                elseif (count($ad['color']) === 3) {
-                    $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2];
-                }
-                elseif (count($ad['color']) === 4) {
-                    $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3];
-                }
-                elseif (count($ad['color']) === 5) {
-                    $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4];
+                if (isset($ad['color'])) {
+                    if (count($ad['color']) === 1) {
+                        $color = $ad['color'][0];
+                    }
+                    elseif (count($ad['color']) === 2) {
+                        $color = $ad['color'][0] . ", " . $ad['color'][1];
+                    }
+                    elseif (count($ad['color']) === 3) {
+                        $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2];
+                    }
+                    elseif (count($ad['color']) === 4) {
+                        $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3];
+                    }
+                    elseif (count($ad['color']) === 5) {
+                        $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4];
+                    }
+                    else {
+                        $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4] . ", " . $ad['color'][5];
+                    }
                 }
                 else {
-                    $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4] . ", " . $ad['color'][5];
+                    header("Location: ../index.php?controller=adfind&action=new&error=2");
                 }
 
                 if (!empty($files['picture']['name'])) {
@@ -131,7 +136,7 @@ class AdFindController {
      */
     public function updateAd($ad, $files) {
         if (isset($_SESSION["id"])) {
-            if (isset($ad['id'], $ad['animal'], $ad['sex'], $ad['size'], $ad['fur'], $ad['color'], $ad['dress'], $ad['race'],
+            if (isset($ad['id'], $ad['animal'], $ad['sex'], $ad['size'], $ad['fur'], $ad['dress'], $ad['race'],
                 $ad['number'], $ad['description'], $ad['date_find'], $ad['date'], $ad['city'], $files['picture'], $ad['picture2'], $ad['user_fk'])) {
 
                 $userManager = new UserManager();
@@ -152,23 +157,23 @@ class AdFindController {
                 $picture = htmlentities($ad['picture2']);
                 $user_fk = intval($ad['user_fk']);
 
-                if (count($ad['color']) === 1) {
-                    $color = $ad['color'][0];
-                }
-                elseif (count($ad['color']) === 2) {
-                    $color = $ad['color'][0] . ", " . $ad['color'][1];
-                }
-                elseif (count($ad['color']) === 3) {
-                    $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2];
-                }
-                elseif (count($ad['color']) === 4) {
-                    $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3];
-                }
-                elseif (count($ad['color']) === 5) {
-                    $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4];
+                if (isset($ad['color'])) {
+                    if (count($ad['color']) === 1) {
+                        $color = $ad['color'][0];
+                    } elseif (count($ad['color']) === 2) {
+                        $color = $ad['color'][0] . ", " . $ad['color'][1];
+                    } elseif (count($ad['color']) === 3) {
+                        $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2];
+                    } elseif (count($ad['color']) === 4) {
+                        $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3];
+                    } elseif (count($ad['color']) === 5) {
+                        $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4];
+                    } else {
+                        $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4] . ", " . $ad['color'][5];
+                    }
                 }
                 else {
-                    $color = $ad['color'][0] . ", " . $ad['color'][1] . ", " . $ad['color'][2] . ", " . $ad['color'][3] . ", " . $ad['color'][4] . ", " . $ad['color'][5];
+                    header("Location: ../index.php?controller=adfind&action=update&id=$id&error=2");
                 }
 
                 if (!empty($files['picture']['name'])) {
