@@ -1,4 +1,4 @@
-    <form method="post" action="" class="categories">
+    <form method="post" action="" class="categories" id="categories">
         <div class="categorie flexColumn flexCenter">
             <label class="width_100 center colorWhite categoriesAnimal" for="animal"> Animal :
                 <span class="size12 required">*</span>

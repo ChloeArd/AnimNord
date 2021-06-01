@@ -10,17 +10,17 @@ if (menu) {
 
 // When we click on "logoMenu", we bring up the sub menu or disappear.
 if (document.getElementById("logoMenu")) {
-    display(document.getElementById("logoMenu"), document.getElementById("subMenu"), "flex")
+    display("logoMenu", "subMenu", "flex")
 }
 
 // When we click on "filter", we bring up the categories on filter or disappear.
 if (document.getElementById("filterCategories")) {
-    display(document.getElementById("filterCategories"), document.getElementsByClassName("categories"), "block");
+    display("filterCategories","categories", "block");
 }
 
 // When we click on "Mon compte", we bring up the sub menu or disappear.
 if (document.getElementById("buttonAccount")) {
-    display(document.getElementById("buttonAccount"), document.getElementById("menuAccountMobile"), "flex");
+    display("buttonAccount", "menuAccountMobile", "flex");
 }
 
 // If the modal window has the error ID then it appears and clicking on the cross makes it disappear.
@@ -48,12 +48,13 @@ function closeModal (idModal) {
 // Allows you to make what you want to appear or disappear
 function display (idClick, id, display) {
     let nbClick = 0;
-    $(idClick).click(function () {
+    document.getElementById(idClick).addEventListener("click", function () {
         if (nbClick === 0) {
-            $(id).css("display", display);
+            document.getElementById(id).style.display = display;
             nbClick++;
-        } else {
-            $(id).css("display", "none");
+        }
+        else {
+            document.getElementById(id).style.display = "none";
             nbClick = 0;
         }
     });
