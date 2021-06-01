@@ -9,7 +9,7 @@ if (isset($_GET['error'])){
             $return = "L'email n'est pas valide !";
             break;
         case '1':
-            $return = "Problème lors de l'envoie du mail.";
+            $return = "Tous les champs ne sont pas rempli.";
             break;
     }
 }

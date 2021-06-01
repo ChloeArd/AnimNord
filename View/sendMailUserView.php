@@ -36,12 +36,12 @@ foreach ($user as $info) {
                 <p class="backgroundGrey margin_15_0"><?=$info->getEmail() . "<span class='colorGrey'> (" .$info->getFirstname() . " " . $info->getLastname() . ") </span>" ?></p>
                 <?php
                 if (isset($_SESSION["id"])) { ?>
-                    <label for="sender"> Votre Adresse E-mail</label>
+                    <label for="sender"> Votre adresse E-mail</label>
                     <input type="email" id="sender" name="sender" pattern=".*\S.*" value="<?=$_SESSION['email'] ?>" required>
                     <?php
                 }
                 else { ?>
-                <label for="sender"> Votre Adresse E-mail</label>
+                <label for="sender"> Votre adresse E-mail</label>
                 <input type="email" id="sender" name="sender" pattern=".*\S.*" required>
                     <?php
                 } ?>
