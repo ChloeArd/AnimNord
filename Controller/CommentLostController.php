@@ -43,7 +43,7 @@ class CommentLostController {
                 if($user_fk->getId()) {
                     $comment = new CommentLost(null, $content, $date, $adLost_fk, $user_fk);
                     $commentManager->add($comment);
-                    header("Location: ../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=" . $fields['adLost_fk'] . "&comment=commentLost&success=0");
+                    header("Location: ../index.php?controller=adlost&action=adComment&id=" . $fields['adLost_fk'] . "&comment=commentLost&success=0");
                 }
             }
         }
@@ -65,7 +65,7 @@ class CommentLostController {
 
                     $comment = new CommentLost($id, $content);
                     $commentManager->update($comment);
-                    header("Location: ../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=" . $fields['adLost_fk'] . "&comment=commentLost&success=1");
+                    header("Location: ../index.php?controller=adlost&action=adComment&id=" . $fields['adLost_fk'] . "&comment=commentLost&success=1");
                 }
                 $this->return('update/updateCommentLostView', "Anim'Nord : Modifier un commentaire");
             }
@@ -83,7 +83,7 @@ class CommentLostController {
                     $commentManager = new CommentLostManager();
                     $id = intval($fields['id']);
                     $commentManager->delete($id);
-                    header("Location: ../index.php?controller=adlost&action=adComment&favorite=favoriteLost&id=" . $fields['adLost_fk'] . "&comment=commentLost&success=2");
+                    header("Location: ../index.php?controller=adlost&action=adComment&id=" . $fields['adLost_fk'] . "&comment=commentLost&success=2");
                 }
                 $this->return('delete/deleteCommentLostView', "Anim'Nord : Supprimer un commentaire");
             }
