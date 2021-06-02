@@ -104,9 +104,13 @@ class UserManager {
     public function updateUser(User $user): bool {
         $request = DB::getInstance()->prepare("UPDATE user SET firstname = :firstname, lastname = :lastname, email = :email, phone = :phone WHERE id = :id");
         $request->bindValue(':id', $user->getId());
+        $_SESSION['firstname'] = $user->setFirstname($user->getFirstname());
         $request->bindValue(':firstname', $user->setFirstname($user->getFirstname()));
+        $_SESSION['lastname'] = $user->setLastname($user->getLastname());
         $request->bindValue(':lastname', $user->setLastname($user->getLastname()));
+        $_SESSION['email'] = $user->setEmail($user->getEmail());
         $request->bindValue(':email', $user->setEmail($user->getEmail()));
+        $_SESSION['phone'] = $user->setPhone($user->getPhone());
         $request->bindValue(':phone', $user->setPhone($user->getPhone()));
 
         return $request->execute();
