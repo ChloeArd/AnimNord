@@ -9,7 +9,7 @@ if (isset($_GET['error'])) {
             $return = "Vous avez fourni un mauvais type de fichier !";
             break;
         case '1' :
-            $return = "Le poids du fichier est trop élevé, la limite est de 2 Mo !";
+            $return = "Le poids du fichier est trop élevé, la limite est de 6 Mo !";
             break;
         case '2' :
             $return = "Le champ obligatoire de la/les couleur(s) du pelage doit être coché !";

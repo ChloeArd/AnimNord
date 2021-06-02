@@ -26,7 +26,7 @@ foreach ($adlost as $ad) { ?>
             <input type="hidden" name="picture" value="<?=$ad->getPicture() ?>">
             <input type="hidden" name="user_fk" value="<?=$ad->getUserFk()->getId() ?>">
             <input type="hidden" name="id" value="<?=$ad->getId()?>">
-            <input type="submit" class="buttonEnter colorWhite radius10 pointer backgroundRed" value="Supprimer l'annonce">
+            <input type="submit" class="buttonEnter colorWhite radius10 pointer backgroundRed" value="Supprimer">
         </form>
     </main>
     <?php

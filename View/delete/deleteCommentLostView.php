@@ -14,7 +14,7 @@ foreach ($commentLost as $comment) {
         <form id="delete" class="width_80 flexColumn flexCenter" method="post" action="">
             <input type="hidden" name="id" value="<?=$comment->getId()?>">
             <input type="hidden" name="adLost_fk" value="<?=$comment->getAdLostFk()->getId() ?>">
-            <input type="submit" class="buttonEnter colorWhite radius10 pointer backgroundRed" value="Supprimer le commentaire">
+            <input type="submit" class="buttonEnter colorWhite radius10 pointer backgroundRed" value="Supprimer">
         </form>
     </main>
     <?php

@@ -81,6 +81,6 @@ class FavoriteLostController {
                 }
             }
         }
-        $this->return("favoritesAccount", "Anim'Nord : Mes favoris");
+        $this->return("favoritesAccountView", "Anim'Nord : Mes favoris");
     }
 }

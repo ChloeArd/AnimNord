@@ -18,7 +18,7 @@ class FavoriteFindController {
      */
     public function favoritesUser(int $user_fk) {
         $manager = new FavoriteFindManager();
-        $this->return("favoritesAccount", "Anim'Nord : Mes favoris", ['favoritesUserFind' => $manager->favoritesByUser($user_fk)]);
+        $this->return("favoritesAccountView", "Anim'Nord : Mes favoris", ['favoritesUserFind' => $manager->favoritesByUser($user_fk)]);
     }
 
     /**
@@ -76,6 +76,6 @@ class FavoriteFindController {
                 }
             }
         }
-        $this->return("favoritesAccount", "Anim'Nord : Mes favoris");
+        $this->return("favoritesAccountView", "Anim'Nord : Mes favoris");
     }
 }

@@ -92,7 +92,7 @@ class AdFindController {
                 if (!empty($files['picture']['name'])) {
                     // Check if the image is of the correct type
                     if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
-                        $maxSize = 2 * 1024 * 1024; // = 2 Mo
+                        $maxSize = 6 * 1024 * 1024; // = 6 Mo
 
                         // Check if the image is below 2Mo.
                         if ($files['picture']['size'] <= $maxSize) {
@@ -178,7 +178,7 @@ class AdFindController {
 
                 if (!empty($files['picture']['name'])) {
                     if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
-                        $maxSize = 2 * 1024 * 1024; // = 2 Mo
+                        $maxSize = 6 * 1024 * 1024; // = 6 Mo
 
                         if ($files['picture']['size'] <= $maxSize) {
                             $tmpName = $files['picture']['tmp_name'];

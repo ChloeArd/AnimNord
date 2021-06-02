@@ -10,7 +10,7 @@ if ($_GET['id'] === $_SESSION['id']) {
             <form id="delete" class="width_80 flexColumn flexCenter" method="post" action="">
                 <p class="size20 colorBlue"><?=$info->getFirstname() . " " . $info->getLastname() ?></p>
                 <input type="hidden" name="id" value="<?=$info->getId()?>">
-                <input type="submit" class="buttonEnter colorWhite radius10 pointer backgroundRed" value="Supprimer mon compte">
+                <input type="submit" class="buttonEnter colorWhite radius10 pointer backgroundRed" value="Supprimer">
             </form>
         </main>
     <?php
