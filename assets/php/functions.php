@@ -1,22 +1,6 @@
 <?php
 
 /**
- * Return true if all params are set, false if at least one is missing.
- * @param string ...$params
- * @return bool
- */
-function issetPostParams(string ...$params): bool {
-    foreach ($params as $param) {
-        if (!isset($_POST[$param])) {
-        // If only one given parameter is not there, then I return false.
-           return false;
-        }
-    }
-    //If we get this far, it means that all the parameters are present.
-    return true;
-}
-
-/**
  * * Clean up the content of a variable.
  * @param $data
  * @return string
