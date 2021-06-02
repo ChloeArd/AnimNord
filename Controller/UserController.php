@@ -27,7 +27,7 @@ class UserController {
      */
     public function user(int $id) {
         $manager = new UserManager();
-        $this->return('informationAccount', "Anim'Nord : Informations", ['user' => $manager->getUserID($id)]);
+        $this->return('informationAccountView', "Anim'Nord : Informations", ['user' => $manager->getUserID($id)]);
     }
 
     /**

@@ -21,7 +21,7 @@ class FavoriteLostController {
     public function favoritesUser(int $user_fk) {
         $manager = new FavoriteLostManager();
         $managerFind = new FavoriteFindManager();
-        $this->return("favoritesAccount", "Anim'Nord : Mes favoris",
+        $this->return("favoritesAccountView", "Anim'Nord : Mes favoris",
             ['favoritesUser' => $manager->favoritesByUser($user_fk),
              'favoritesUserFind' => $managerFind->favoritesByUser($user_fk)]);
     }
