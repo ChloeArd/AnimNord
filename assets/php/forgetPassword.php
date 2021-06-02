@@ -28,7 +28,7 @@ if (isset($_POST["email"])) {
                 $stmt->bindParam(":email", $email);
                 $stmt->execute();
                 $recovery = $stmt->fetch();
-                if ($recovery['email'] == $email) {
+                if ($recovery['email']) {
                     $stmt = $bdd->prepare("UPDATE recovery SET code = :code WHERE email = :email");
                     $stmt->bindParam(":code", $code);
                     $stmt->bindParam(":email", $email);
