@@ -24,7 +24,7 @@ if (isset($_POST["email"])) {
                 for ($i = 0; $i < 8; $i++) {
                     $code .= mt_rand(0,9);
                 }
-                $stmt = $bdd->prepare("SELECT id FROM recovery WHERE email = :email");
+                $stmt = $bdd->prepare("SELECT * FROM recovery WHERE email = :email");
                 $stmt->bindParam(":email", $email);
                 $stmt->execute();
                 $recovery = $stmt->fetch();
