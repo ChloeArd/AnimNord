@@ -55,7 +55,7 @@ if (isset($_GET['page'])) {
             <h1 class="flexCenter title colorWhite"> Code de vérification pour le mot de passe oublié </h1>
             <a href="../index.php?controller=connection" class="colorBlue underline link margin_0_20">< Retour à la connexion </a>
             <div id="connect" class="backgroundWhite flexCenter width_100">
-                <form method="post" action="#" class="flexColumn width_50">
+                <form method="post" action="../assets/php/forgetPassword.php" class="flexColumn width_50">
                     <label for="code"> Code de vérification </label>
                     <input type="text" id="code" name="code" pattern=".*\S.*" required>
                     <input type="submit" name="submitCode" class="buttonEnter colorWhite radius10 pointer" value="Entrer">
@@ -69,7 +69,7 @@ if (isset($_GET['page'])) {
             <h1 class="flexCenter title colorWhite"> Nouveau mot de passe </h1>
             <a href="../index.php?controller=connection" class="colorBlue underline link margin_0_20">< Retour à la connexion </a>
             <div id="connect" class="backgroundWhite flexCenter width_100">
-                <form method="post" action="#" class="flexColumn width_50">
+                <form method="post" action="../assets/php/forgetPassword.php" class="flexColumn width_50">
                     <label for="password"> Nouveau mot de passe</label>
                     <input type="password" id="password" name="password" pattern=".*\S.*" required>
                     <label for="repeatPassword"> Confirmation du nouveau mot de passe </label>
@@ -86,7 +86,7 @@ else { ?>
         <h1 class="flexCenter title colorWhite"> Mot de passe oublié  </h1>
         <a href="../index.php?controller=connection" class="colorBlue underline link margin_0_20">< Retour à la connexion </a>
         <div id="connect" class="backgroundWhite flexCenter width_100">
-            <form method="post" action="#" class="flexColumn width_50">
+            <form method="post" action="../assets/php/forgetPassword.php" class="flexColumn width_50">
                 <label for="email"> Adresse E-mail </label>
                 <input type="email" id="email" name="email" pattern=".*\S.*" required>
                 <input type="submit" class="buttonEnter colorWhite radius10 pointer" value="Entrer">

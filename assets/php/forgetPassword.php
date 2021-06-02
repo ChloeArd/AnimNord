@@ -8,15 +8,14 @@ $bdd = DB::getInstance();
 
 if (isset($_POST["email"])) {
     if (!empty($_POST['email'])) {
-        $email = sanitize($_POST['email']);
+        $email = $_POST['email'];
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // We check if the email address exists in database.
             $stmt = $bdd->prepare("SELECT * FROM user WHERE email = :email");
             $stmt->bindParam(":email", $email);
-            $stmt->execute(array($email));
-            $count = $stmt->rowCount();
-            if ($count == 1) {
-                $user = $stmt->fetch();
+            $stmt->execute();
+            $user = $stmt->fetch();
+            if ($user['email'] == $email) {
                 $fisrtname = $user['firstname'];
                 $lastname = $user['lastname'];
 
@@ -27,19 +26,19 @@ if (isset($_POST["email"])) {
                 }
                 $stmt = $bdd->prepare("SELECT id FROM recovery WHERE email = :email");
                 $stmt->bindParam(":email", $email);
-                $stmt->execute(array($email));
-                $count = $stmt->rowCount();
-                if ($count == 1) {
+                $stmt->execute();
+                $recovery = $stmt->fetch();
+                if ($recovery['email'] == $email) {
                     $stmt = $bdd->prepare("UPDATE recovery SET code = :code WHERE email = :email");
                     $stmt->bindParam(":code", $code);
                     $stmt->bindParam(":email", $email);
-                    $stmt->execute(array($code, $email));
+                    $stmt->execute();
                 }
                 else {
                     $stmt = $bdd->prepare("INSERT INTO recovery (code, email) VALUES (:code, :email)");
                     $stmt->bindParam(":code", $code);
                     $stmt->bindParam(":email", $email);
-                    $stmt->execute(array($code, $email));
+                    $stmt->execute();
                 }
                 $to = $email;
                 $from = "chloe.ardoise@gmail.com";
@@ -54,46 +53,46 @@ if (isset($_POST["email"])) {
                     "X-Mailer" => "PHP/" . phpversion()
                 );
                 mail($to, $subject, $message, $headers, "-f ".$from);
-                header("Location: ../index.php?controller=forgetPassword&page=code&success=0");
+                header("Location: ../../index.php?controller=forgetPassword&page=code&success=0");
             }
             else {
-                header("Location: ../index.php?controller=forgetPassword&error=0");
+                header("Location: ../../index.php?controller=forgetPassword&error=0");
             }
         }
         else {
-            header("Location: ../index.php?controller=forgetPassword&error=1");
+            header("Location: ../../index.php?controller=forgetPassword&error=1");
         }
     }
     else {
-        header("Location: ../index.php?controller=forgetPassword&error=2");
+        header("Location: ../../index.php?controller=forgetPassword&error=2");
     }
 }
 
 if (isset($_POST['code'])) {
     if (!empty($_POST['code'])) {
-        $code = sanitize($_POST['code']);
-        $stmt = $bdd->prepare("SELECT id From recovery WHERE email = :email AND code = :code");
+        $code = $_POST['code'];
+        $stmt = $bdd->prepare("SELECT * From recovery WHERE email = :email AND code = :code");
         $stmt->bindParam(":email", $_SESSION['email']);
         $stmt->bindParam(":code", $code);
-        $stmt->execute(array($_SESSION['email'], $code));
-        $count = $stmt->rowCount();
-        if ($count == 1) {
+        $stmt->execute();
+        $recovery = $stmt->fetch();
+        if ($recovery['email'] == $_SESSION['email'] && $recovery['code'] == $code) {
             $stmt = $bdd->prepare("UPDATE recovery SET confirm = 1 WHERE email = :email");
             $stmt->bindParam(":email", $_SESSION['email']);
-            $stmt->execute(array($_SESSION['email']));
-            header("Location: ../index.php?controller=forgetPassword&page=newPass&success=1");
+            $stmt->execute();
+            header("Location: ../../index.php?controller=forgetPassword&page=newPass&success=1");
         }
         else {
-            header("Location: ../index.php?controller=forgetPassword&page=code&error=3");
+            header("Location: ../../index.php?controller=forgetPassword&page=code&error=3");
         }
     }
     else {
-        header("Location: ../index.php?controller=forgetPassword&page=code&error=4");
+        header("Location: ../../index.php?controller=forgetPassword&page=code&error=4");
     }
 }
 
 if (isset($_POST['password'], $_POST['repeatPassword'])) {
-    $stmt = $bdd->prepare("SELECT confirm FROM recovery WHERE email :email");
+    $stmt = $bdd->prepare("SELECT * FROM recovery WHERE email = :email");
     $stmt->bindParam(":email", $_SESSION['email']);
     $stmt->execute();
     $confirm = $stmt->fetch();
@@ -107,32 +106,30 @@ if (isset($_POST['password'], $_POST['repeatPassword'])) {
             $number = preg_match('@[0-9]@', $password);
 
             if($maj && $min && $number && strlen($password) > 8) {
-                if ($password == $repeatPassword) {
+                if ($password === $repeatPassword) {
                     $encryptedPassword = password_hash($password, PASSWORD_BCRYPT);
                     $stmt = $bdd->prepare("UPDATE user SET password = :password WHERE email = :email");
                     $stmt->bindParam(':password', $encryptedPassword);
                     $stmt->bindParam(':email', $_SESSION['email']);
-                    $stmt = $bdd->prepare("DELETE FROM recovery WHERE email : email");
+                    $stmt->execute();
+                    $stmt = $bdd->prepare("DELETE FROM recovery WHERE email = :email");
                     $stmt->bindParam(":email", $_SESSION['email']);
                     $stmt->execute();
-                    header("Location: ../index.php?controller=connect&success=1");
+                    header("Location: ../../index.php?controller=connection&success=1");
                 }
                 else {
-                    header("Location: ../index.php?controller=forgetPassword&page=newPass&error=5");
+                    header("Location: ../../index.php?controller=forgetPassword&page=newPass&error=5");
                 }
             }
             else {
-                header("Location: ../index.php?controller=forgetPassword&page=newPass&error=6");
+                header("Location: ../../index.php?controller=forgetPassword&page=newPass&error=6");
             }
         }
         else {
-            header("Location: ../index.php?controller=forgetPassword&page=newPass&error=7");
+            header("Location: ../../index.php?controller=forgetPassword&page=newPass&error=7");
         }
     }
     else {
-        header("Location: ../index.php?controller=forgetPassword&page=newPass&error=8");
+        header("Location: ../../index.php?controller=forgetPassword&page=newPass&error=8");
     }
-}
-else {
-    header("Location: ../index.php?controller=forgetPassword&page=newPass&error=7");
 }

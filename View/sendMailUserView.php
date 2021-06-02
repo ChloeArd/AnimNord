@@ -31,7 +31,7 @@ foreach ($user as $info) {
     <main class="width_80">
         <h1 class="flexCenter title colorWhite"> Envoyer un E-mail </h1>
         <div id="contact" class="backgroundWhite flexCenter width_100">
-            <form method="post" action="../assets/php/sendMail.php" class="flexColumn width_50">
+            <form method="post" action="../assets/php/sendMailUser.php" class="flexColumn width_50">
                 <label>À</label>
                 <p class="backgroundGrey margin_15_0"><?=$info->getEmail() . "<span class='colorGrey'> (" .$info->getFirstname() . " " . $info->getLastname() . ") </span>" ?></p>
                 <?php
@@ -50,6 +50,7 @@ foreach ($user as $info) {
                 <label for="message">Message</label>
                 <textarea id="message" name="message"></textarea>
                 <input type="hidden" name="recipient" value="<?=$info->getEmail() ?>">
+                <input type="hidden" name="id" value="<?=$info->getId() ?>">
                 <input type="submit" class="buttonEnter colorWhite radius10 pointer" value="Envoyer">
             </form>
         </div>

@@ -13,12 +13,12 @@ $headers = array(
 if (isset($_POST["mail"], $_POST["message"], $_POST["subject"])){
     if(filter_var($from, FILTER_VALIDATE_EMAIL)){
         mail($to, $subject, $message, $headers, "-f ".$from);
-        header('Location: ../index.php?controller=contact&success=0');
+        header('Location: ../../index.php?controller=contact&success=0');
     }
     else {
-        header('Location: ../index.php?controller=contact&error=0');
+        header('Location: ../../index.php?controller=contact&error=0');
     }
 }
 else {
-    header('Location: ../index.php?controller=contact&error=1');
+    header('Location: ../../index.php?controller=contact&error=1');
 }
