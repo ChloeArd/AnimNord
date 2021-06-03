@@ -23,6 +23,7 @@ if (document.getElementById("buttonAccount")) {
     display("buttonAccount", "menuAccountMobile", "flex");
 }
 
+// When we click on "Loi RGPD", we bring up the information about the law or disappear.
 if (document.getElementById("law")) {
     display("law", "infoLaw", "block");
 }
