@@ -5,7 +5,8 @@ namespace Controller\Traits;
 trait ReturnViewTrait {
 
     /**
-     * Allows you to display the right pages, the right content, the structure page, the title of the page and the information you want to have.
+     * Allows you to display the right pages, the right content, the structure page, the title of the page and the information
+     * you want to have.
      * @param string $view
      * @param string $title
      * @param array|null $var

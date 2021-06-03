@@ -3,8 +3,6 @@
 namespace Controller;
 
 use Controller\Traits\ReturnViewTrait;
-use Model\DB;
-use Model\Entity\Role;
 use Model\Entity\User;
 use Model\Role\RoleManager;
 use Model\User\UserManager;

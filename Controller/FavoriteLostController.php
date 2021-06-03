@@ -3,7 +3,6 @@
 namespace Controller;
 
 use Controller\Traits\ReturnViewTrait;
-use Model\Entity\AdLost;
 use Model\AdLost\AdLostManager;
 use Model\FavoriteFind\FavoriteFindManager;
 use Model\User\UserManager;

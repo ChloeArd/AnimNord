@@ -803,8 +803,8 @@ foreach ($adLost as $ad) { ?>
                 <p>Importer une photo <i class="far fa-image"></i></p>
             </div>
             <label for="picture">Modifier l'image (PNG, JPEG, JPG) : </label>
-            <input type="file" name="picture" id="picture" accept="image/png, image/jpeg, image/jpg" value="<?=$ad->getPicture() ?>" size="2000000">
-            <span>(Max: 2Mo)</span>
+            <input type="file" name="picture" id="picture" accept="image/png, image/jpeg, image/jpg">
+            <span>(Max: 6Mo)</span>
 
             <input type="hidden" name="picture2" value="<?=$ad->getPicture() ?>">
 
