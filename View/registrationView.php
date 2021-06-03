@@ -36,6 +36,12 @@ if (isset($_GET['error'])) {
             <input type="tel" id="phone" name="phone" minlength="9" maxlength="14" pattern=".*\S.*" required>
             <label class="size15 tooltip" data-text="Le mot de passe est obligatoire et doit contenir au moins une majuscule, une minuscule, un chiffre, avoir minimum 10 caractères" for="password"> Mot de passe <span class="size15 colorBlue required">*</span></label>
             <input type="password" id="password" name="password" pattern=".*\S.*" required>
+            <p id="law" class="colorGrey">Loi RGPD <i class="fas fa-caret-down"></i></p>
+            <p id="infoLaw" class="colorGrey size12">
+                Depuis la loi n° 78-17 du 6 janvier 1978, toutes les informations recueillies sur ce formulaire, vous seront accessible, vous pourrez les rectifier, demander leur effacement en supprimant votre compte ou exercer votre droit à la limitation du traitement de vos données.
+                Lorsque vous posterez une annonce, vos informations seront diffusées et vue par tous les utilisateurs accédant à l'annonce. Elles seront mises en œuvre pour pouvoir vous contacter à propos de l'annonce poster, de connaître l'identité
+                de la personne qui commente une annonce. Ces informations sont les suivantes : Prénom, nom, E-mail, téléphone.
+            </p>
             <input type="submit" class="buttonEnter colorWhite radius10 pointer" value="Créer mon compte">
             <a href="../index.php?controller=registration" class="buttonGrey">Déjà un compte ?</a>
         </form>

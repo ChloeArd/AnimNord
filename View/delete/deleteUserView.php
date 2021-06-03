@@ -7,6 +7,8 @@ if ($_GET['id'] === $_SESSION['id']) {
     foreach ($user as $info) { ?>
         <main class="flexCenter flexColumn">
             <h1 class="margin_15_0 colorRed center">Voulez-vous vraiment supprimer votre compte ?</h1>
+            <p class="colorGrey">En supprimant votre compte, vous effacez toutes les annonces, commentaires que vous avez postés et vos favoris.</p>
+
             <form id="delete" class="width_80 flexColumn flexCenter" method="post" action="">
                 <p class="size20 colorBlue"><?=$info->getFirstname() . " " . $info->getLastname() ?></p>
                 <input type="hidden" name="id" value="<?=$info->getId()?>">

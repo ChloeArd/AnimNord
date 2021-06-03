@@ -23,6 +23,10 @@ if (document.getElementById("buttonAccount")) {
     display("buttonAccount", "menuAccountMobile", "flex");
 }
 
+if (document.getElementById("law")) {
+    display("law", "infoLaw", "block");
+}
+
 // If the modal window has the error ID then it appears and clicking on the cross makes it disappear.
 if (document.getElementById("error")) {
     document.getElementById("closeModal").style.display = "block";

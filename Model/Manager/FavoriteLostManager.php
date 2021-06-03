@@ -70,14 +70,16 @@ class FavoriteLostManager {
         $request = DB::getInstance()->prepare("SELECT * FROM favorite_lost WHERE user_fk = :user_fk AND adLost_fk = :adLost_fk ");
         $request->bindValue(':adLost_fk', $favorite->getAdLostFk()->getId());
         $request->bindValue(':user_fk', $favorite->getUserFk()->getId());
-        $request->execute();
+        $result = $request->execute();
         $favoriteLost = $request->fetch();
         // We check if the user has not already put the ad in his favorites.
         // If this is the case, we add the ad to our favorites.
-        if ($favoriteLost['user_fk'] != $favorite->getUserFk()->getId() && $favoriteLost['adLost_fk'] != $favorite->getAdLostFk()->getId()) {
+        if ($result) {
+        if ($favoriteLost['user_fk'] != $favorite->getUserFk()->getId() && $favoriteLost['adLost_fk'] != $favorite->getAdLostFk()->getId()){
             $request = DB::getInstance()->prepare("INSERT INTO favorite_lost (adLost_fk, user_fk) VALUES (:adLost_fk, :user_fk) ");
             $request->bindValue(':adLost_fk', $favorite->getAdLostFk()->getId());
             $request->bindValue(':user_fk', $favorite->getUserFk()->getId());
+        }
         }
         return $request->execute() && DB::getInstance()->lastInsertId() != 0;
     }

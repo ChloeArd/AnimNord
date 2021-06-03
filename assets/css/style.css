@@ -50,7 +50,7 @@ main {
     background-color: #2C96C6;
 }
 
-#menuMobile, #menuAccountMobile, #userList, #buttonUser, #subMenu, #userList, #filterCategories, #buttonAccount, #closeModal {
+#menuMobile, #menuAccountMobile, #userList, #buttonUser, #subMenu, #userList, #filterCategories, #buttonAccount, #closeModal, #infoLaw {
     display: none;
 }
 
@@ -242,7 +242,7 @@ label {
     background-color: #1378a5;
 }
 
-.pointer {
+.pointer, #law, .buttonEnter, .star {
     cursor: pointer;
 }
 
