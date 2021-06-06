@@ -15,6 +15,7 @@ if (isset($_POST["email"])) {
             $stmt->bindParam(":email", $email);
             $stmt->execute();
             $user = $stmt->fetch();
+            // Check if the email match.
             if ($user['email'] == $email) {
                 $fisrtname = $user['firstname'];
                 $lastname = $user['lastname'];
@@ -22,12 +23,14 @@ if (isset($_POST["email"])) {
                 $_SESSION['email'] = $email;
                 $code = "";
                 for ($i = 0; $i < 8; $i++) {
+                    // code creation.
                     $code .= mt_rand(0,9);
                 }
                 $stmt = $bdd->prepare("SELECT * FROM recovery WHERE email = :email");
                 $stmt->bindParam(":email", $email);
                 $stmt->execute();
                 $recovery = $stmt->fetch();
+                //Check if the email is already in the database
                 if ($recovery['email']) {
                     $stmt = $bdd->prepare("UPDATE recovery SET code = :code WHERE email = :email");
                     $stmt->bindParam(":code", $code);
@@ -52,6 +55,7 @@ if (isset($_POST["email"])) {
                     "Reply-To" => $from,
                     "X-Mailer" => "PHP/" . phpversion()
                 );
+                // send mail.
                 mail($to, $subject, $message, $headers, "-f ".$from);
                 header("Location: ../../index.php?controller=forgetPassword&page=code&success=0");
             }
@@ -76,8 +80,11 @@ if (isset($_POST['code'])) {
         $stmt->bindParam(":code", $code);
         $stmt->execute();
         $recovery = $stmt->fetch();
+        // Check if the code is that of the user's email
         if ($recovery['email'] == $_SESSION['email'] && $recovery['code'] == $code) {
-            $stmt = $bdd->prepare("UPDATE recovery SET confirm = 1 WHERE email = :email");
+            // I confirm that the code is good.
+            $stmt = $bdd->prepare("UPDATE recovery SET confirm = :confirm WHERE email = :email");
+            $stmt->bindValue(":confirm", 1);
             $stmt->bindParam(":email", $_SESSION['email']);
             $stmt->execute();
             header("Location: ../../index.php?controller=forgetPassword&page=newPass&success=1");
@@ -97,6 +104,7 @@ if (isset($_POST['password'], $_POST['repeatPassword'])) {
     $stmt->execute();
     $confirm = $stmt->fetch();
     $confirm = $confirm['confirm'];
+    // I check if the code has been confirmed.
     if ($confirm == 1) {
         $password = sanitize($_POST['password']);
         $repeatPassword = sanitize($_POST['repeatPassword']);
@@ -105,13 +113,16 @@ if (isset($_POST['password'], $_POST['repeatPassword'])) {
             $min = preg_match('@[a-z]@', $password);
             $number = preg_match('@[0-9]@', $password);
 
+            // Checks if the password contains upper case, lower case, number and at least 8 characters.
             if($maj && $min && $number && strlen($password) > 8) {
                 if ($password === $repeatPassword) {
                     $encryptedPassword = password_hash($password, PASSWORD_BCRYPT);
+                    // I change the user's password.
                     $stmt = $bdd->prepare("UPDATE user SET password = :password WHERE email = :email");
                     $stmt->bindParam(':password', $encryptedPassword);
                     $stmt->bindParam(':email', $_SESSION['email']);
                     $stmt->execute();
+                    // Delete all coming from user's email in recovery.
                     $stmt = $bdd->prepare("DELETE FROM recovery WHERE email = :email");
                     $stmt->bindParam(":email", $_SESSION['email']);
                     $stmt->execute();

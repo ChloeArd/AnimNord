@@ -43,10 +43,14 @@ class UserController {
                 $email = htmlentities(trim($fields['email']));
                 $phone = htmlentities(trim($fields['phone']));
 
-                $user = new User($id, $firstname, $lastname, $email, $phone);
-                $userManager->updateUser($user);
-
-                header("Location: ../index.php?controller=user&action=view&id=" . $_SESSION['id'] . "&success=0");
+                if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $user = new User($id, $firstname, $lastname, $email, $phone);
+                    $userManager->updateUser($user);
+                    header("Location: ../index.php?controller=user&action=view&id=" . $_SESSION['id'] . "&success=0");
+                }
+                else {
+                    header("Location: ../index.php?controller=user&action=update&id=" . $_SESSION['id'] . "&error=0");
+                }
             }
             $this->return('update/updatePersonalInfoUserView', "Anim'Nord : Modification des informations personnelles");
         }
@@ -69,10 +73,14 @@ class UserController {
                     $min = preg_match('@[a-z]@', $newPassword);
                     $number = preg_match('@[0-9]@', $newPassword);
 
-                    if ($maj && $min && $number && strlen($newPassword) > 8) {
+                    if ($maj && $min && $number && strlen($newPassword) >= 8) {
                         $user = new User($id, '', '', '', '', $newPassword);
                         $userManager->updatePasswordUser($user);
                         header("Location: ../index.php?controller=user&action=view&id=" . $_SESSION['id'] . "&success=1");
+                    }
+                    else {
+                        header("Location: ../index.php?controller=user&action=updatePass&id=" . $_SESSION['id'] . "&error=1");
+
                     }
                 } else {
                     header("Location: ../index.php?controller=user&action=updatePass&id=" . $_SESSION['id'] . "&error=0");

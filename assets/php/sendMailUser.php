@@ -15,6 +15,7 @@ if (isset($_POST["sender"], $_POST['recipient'], $_POST["message"], $_POST["subj
     );
 
     if(filter_var($from, FILTER_VALIDATE_EMAIL)){
+        // send mail
         mail($to, $subject, $message, $headers, "-f ".$from);
         header("Location: ../../index.php?controller=sendMail&id=$id&success=0");
     }

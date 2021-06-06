@@ -127,7 +127,7 @@ main {
     color: black;
 }
 
-input.colorBlue {
+input.colorBlue, .end {
     margin-bottom: 20px;
 }
 
@@ -356,6 +356,7 @@ i {
 }
 
 .question {
+    animation-duration: 15s;
     animation-name: size;
     position: absolute;
     width: 50%;

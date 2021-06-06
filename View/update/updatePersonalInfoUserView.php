@@ -1,8 +1,20 @@
 <?php
 $manager = new \Model\User\UserManager();
 $user = $manager->getUserID($_GET ['id']);
+$return = "";
+$id = "";
+
+if (isset($_GET['error'])) {
+    $id = "error";
+    switch ($_GET['error']) {
+        case '0':
+            $return = "Votre E-mail n'est pas valide !";
+            break;
+    }
+}
 
 if ($_GET['id'] === $_SESSION['id']) { ?>
+    <div id='<?= $id?>' class='modal2 colorWhite'><?= $return?><button id='closeModal' class='buttonClassic'><i class='fas fa-times'></i></button></div>
     <main>
         <div>
             <?php foreach ($user as $user1) {?>

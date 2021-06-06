@@ -70,11 +70,11 @@ foreach ($adLost as $ad) { ?>
             <label for="fur"> Poils : <span class="size15 colorBlue required">*</span></label>
             <select id="fur" name="fur" class="size15 categoriePet">
                 <option><?=$ad->getFur() ?></option>
-                <option>Nue</option>
-                <option>Court</option>
-                <option>Mi-long</option>
-                <option>Long</option>
-                <option>Bouclé</option>
+                <option>Nus</option>
+                <option>Courts</option>
+                <option>Mi-longs</option>
+                <option>Longs</option>
+                <option>Bouclés</option>
             </select>
             <label for="color"> Couleur(s) du pelage : <span class="size15 colorBlue required">*</span></label>
             <div class="categoriePet">
@@ -106,15 +106,15 @@ foreach ($adLost as $ad) { ?>
             <label for="dress">Robe : <span class="size15 colorBlue required">*</span></label>
             <select id="dress" name="dress" class="size15 categoriePet">
                 <option><?=$ad->getDress() ?></option>
-                <option>Uni</option>
-                <option>Tacheté</option>
-                <option>Rayé</option>
+                <option>Unie</option>
+                <option>Tachetée</option>
+                <option>Rayée</option>
                 <option>Tabby</option>
-                <option>Bringé</option>
-                <option>Colourpoint</option>
-                <option>Bicolor</option>
+                <option>Bringée</option>
+                <option>Colourpointe</option>
+                <option>Bicolore</option>
                 <option>Tricolore</option>
-                <option>Pluricolor</option>
+                <option>Pluricolore</option>
             </select>
             <label for="race">Race : <span class="size15 colorBlue required">*</span></label>
             <input type="text" name="race" id="race" placeholder="Ex : berger allemand" class="categoriePet" value="<?=$ad->getRace() ?>" pattern=".*\S.*" required>

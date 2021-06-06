@@ -1,7 +1,6 @@
 <?php
 
 use Model\DB;
-
 include "functions.php";
 require "../../Model/DB.php";
 
@@ -14,6 +13,7 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["phon
     $phone = sanitize($_POST['phone']);
     $password = sanitize($_POST["password"]);
 
+    // I encrypt the password.
     $encryptedPassword = password_hash($password, PASSWORD_BCRYPT);
 
     $requete = $bdd->prepare("SELECT * FROM user WHERE email = :email OR phone = :phone");
@@ -23,15 +23,18 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["phon
 
     if ($state) {
         $user = $requete->fetch();
+        // Checks if email or phone is not in use.
         if ($user['email'] === $email ||  $user['phone'] === $phone) {
             header("Location: ../../index.php?controller=registration&error=0");
         }
+        // Check if the email address is valid.
         elseif (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $maj = preg_match('@[A-Z]@', $password);
             $min = preg_match('@[a-z]@', $password);
             $number = preg_match('@[0-9]@', $password);
 
-            if($maj && $min && $number && strlen($password) > 8) {
+            // Checks if the password contains upper case, lower case, number and at least 8 characters.
+            if($maj && $min && $number && strlen($password) >= 8) {
                 // People who register automatically have role 2 : user.
                 $sql = "INSERT INTO user VALUES (null, '$firstname', '$lastname', '$email', '$phone', '$encryptedPassword', 2)";
                 $bdd->exec($sql);

@@ -32,7 +32,6 @@ if (isset($_POST["email"], $_POST["password"])) {
         $_SESSION['phone'] = $user['phone'];
         $_SESSION['password'] = $password;
         $_SESSION['role_fk'] = $user['role_fk'];
-
         $id = $_SESSION['id'];
         header("Location: ../../index.php?controller=user&action=view&id=$id");
     }

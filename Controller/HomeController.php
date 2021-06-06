@@ -53,4 +53,9 @@
      public function forgetPassword() {
          $this->return("forgetPasswordView", "Anim'Nord : Mot de passe oublié");
      }
+
+     // page legal notice
+     public function legalNotice() {
+         $this->return("legalNoticeView", "Anim'Nord : Mention légales");
+     }
  }

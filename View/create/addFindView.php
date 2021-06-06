@@ -61,11 +61,11 @@ date_default_timezone_set("Europe/Paris");
         </select>
         <label for="fur"> Poils : <span class="size15 colorBlue required">*</span></label>
         <select id="fur" name="fur" class="size15 categoriePet">
-            <option>Nue</option>
-            <option>Court</option>
-            <option>Mi-long</option>
-            <option>Long</option>
-            <option>Bouclé</option>
+            <option>Nu</option>
+            <option>Courts</option>
+            <option>Mi-longs</option>
+            <option>Longs</option>
+            <option>Bouclés</option>
         </select>
         <label for="color"> Couleur(s) du pelage : <span class="size15 colorBlue required">*</span></label>
         <div class="categoriePet">
@@ -96,15 +96,15 @@ date_default_timezone_set("Europe/Paris");
         </div>
         <label for="dress">Robe : <span class="size15 colorBlue required">*</span></label>
         <select id="dress" name="dress" class="size15 categoriePet">
-            <option>Uni</option>
-            <option>Tacheté</option>
-            <option>Rayé</option>
+            <option>Unie</option>
+            <option>Tachetée</option>
+            <option>Rayée</option>
             <option>Tabby</option>
-            <option>Bringé</option>
-            <option>Colourpoint</option>
-            <option>Bicolor</option>
+            <option>Bringée</option>
+            <option>Colourpointe</option>
+            <option>Bicolore</option>
             <option>Tricolore</option>
-            <option>Pluricolor</option>
+            <option>Pluricolore</option>
         </select>
         <label for="race">Race : <span class="size15 colorBlue required">*</span></label>
         <input type="text" name="race" id="race" placeholder="Ex : berger allemand" class="categoriePet" pattern=".*\S.*" required>

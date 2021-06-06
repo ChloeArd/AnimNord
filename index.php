@@ -273,6 +273,10 @@ if (isset($_GET['controller'])) {
             $controller = new HomeController();
             $controller->forgetPassword();
             break;
+        case 'legalNotice' :
+            $controller = new HomeController();
+            $controller->legalNotice();
+            break;
         default:
             break;
     }

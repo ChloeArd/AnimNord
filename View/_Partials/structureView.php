@@ -74,7 +74,7 @@
             </div>
             <div class="separatorHorizontal2"></div>
             <div id="containerlinkFooter" class="flexRow">
-                <a href="#" class="linkFooter underline">Mention légales</a>
+                <a href="../../index.php?controller=legalNotice" class="linkFooter underline">Mentions légales</a>
                 <a href="../../index.php?controller=contact" class="linkFooter underline">Contact</a>
             </div>
         </footer>

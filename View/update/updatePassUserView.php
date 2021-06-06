@@ -8,6 +8,9 @@ if (isset($_GET['error'])) {
         case '0':
             $return = "Votre mot de passe actuel est incorrect !";
             break;
+        case '1':
+            $return = "Votre nouveau mot de passe ne contient soit pas de majuscule, minuscule, chiffre ou est plus petit que 8 caractères !";
+            break;
     }
 }
 

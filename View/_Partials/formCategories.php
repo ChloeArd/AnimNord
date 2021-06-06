@@ -55,11 +55,11 @@
             <label class="colorWhite width_100 center categoriesAnimal" for="fur"> Poils :</label>
             <select id="fur" name="fur" class="size15 categoriePet">
                 <option></option>
-                <option>Nue</option>
-                <option>Court</option>
-                <option>Mi-long</option>
-                <option>Long</option>
-                <option>Bouclé</option>
+                <option>Nu</option>
+                <option>Courts</option>
+                <option>Mi-longs</option>
+                <option>Longs</option>
+                <option>Bouclés</option>
             </select>
         </div>
         <div class="categorie flexColumn flexCenter">
@@ -95,15 +95,15 @@
             <label class="colorWhite width_100 center categoriesAnimal" for="dress">Robe :</label>
             <select id="dress" name="dress" class="size15 categoriePet">
                 <option></option>
-                <option>Uni</option>
-                <option>Tacheté</option>
-                <option>Rayé</option>
+                <option>Unie</option>
+                <option>Tachetée</option>
+                <option>Rayée</option>
                 <option>Tabby</option>
-                <option>Bringé</option>
-                <option>Colourpoint</option>
-                <option>Bicolor</option>
+                <option>Bringée</option>
+                <option>Colourpointe</option>
+                <option>Bicolore</option>
                 <option>Tricolore</option>
-                <option>Pluricolor</option>
+                <option>Pluricolore</option>
             </select>
         </div>
         <div class="categorie flexColumn flexCenter">
