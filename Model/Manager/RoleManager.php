@@ -5,6 +5,8 @@
  use Model\Entity\Role;
  use Model\Manager\Traits\ManagerTrait;
 
+ require_once "Model/Manager/Traits/ManagerTrait.php";
+
  class RoleManager {
 
      use ManagerTrait;
