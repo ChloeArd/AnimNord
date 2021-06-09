@@ -51,7 +51,6 @@ class AdLostController {
         if (isset($_SESSION["id"])) {
             if (isset($ad['animal'], $ad['name'], $ad['sex'], $ad['size'], $ad['fur'], $ad['dress'], $ad['race'],
                 $ad['number'], $ad['description'], $ad['date_lost'], $ad['date'], $ad['city'], $files['picture'], $ad['user_fk'])) {
-
                 $userManager = new UserManager();
                 $adlostManager = new AdLostManager();
 
@@ -69,8 +68,11 @@ class AdLostController {
                 $city = $ad['city'];
                 $user_fk = intval($ad['user_fk']);
 
+                // I check if the input of name "color" exists.
                 if (isset($ad['color'])) {
+                    // I count the number of boxes that have been checked, ie the number of colors it contains.
                     if (count($ad['color']) === 1) {
+                        // I store the colors in a variable.
                         $color = $ad['color'][0];
                     }
                     elseif (count($ad['color']) === 2) {
@@ -93,14 +95,18 @@ class AdLostController {
                     header("Location: ../index.php?controller=adlost&action=new&error=2");
                 }
 
+                // If the user added an image.
                 if (!empty($files['picture']['name'])) {
+                    // I check if he is the right type.
                     if (in_array($files['picture']['type'], ['image/jpg', 'image/jpeg', 'image/png', ".jpg"])) {
                         $maxSize = 6 * 1024 * 1024; // = 6 Mo
 
+                        // if it is less than or equal to 6 MB.
                         if ($files['picture']['size'] <= $maxSize) {
                             $tmpName = $files['picture']['tmp_name'];
+                            // I give it a random name made up of numbers and letters.
                             $namePicture = getRandomName($files['picture']['name']);
-
+                            // I add the image in the corresponding folder to store it and retrieve it when I want.
                             move_uploaded_file($tmpName, "./assets/img/adLost/" . $namePicture);
 
                             $user_fk = $userManager->getUser($user_fk);
@@ -116,6 +122,7 @@ class AdLostController {
                         header("Location: ../index.php?controller=adlost&action=new&error=0");
                     }
                 }
+                // If the user has not added an image, we add the ad without an image, because the image is null.
                 else {
                     $picture = $files['picture']['name'];
                     $user_fk = $userManager->getUser($user_fk);
