@@ -42,7 +42,7 @@ class UserController {
                 $lastname = htmlentities(strtoupper(trim($fields['lastname'])));
                 $email = htmlentities(trim($fields['email']));
                 $phone = htmlentities(trim($fields['phone']));
-
+                // Check if the email is valid.
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $user = new User($id, $firstname, $lastname, $email, $phone);
                     $userManager->updateUser($user);
@@ -68,11 +68,12 @@ class UserController {
                 $currentPassword = htmlentities($fields['currentPassword']);
                 $newPassword = htmlentities($fields['newPassword']);
 
+                // Checks if the current password entered by the user is the same as the one stored in the session variable.
                 if ($currentPassword === $_SESSION['password']) {
                     $maj = preg_match('@[A-Z]@', $newPassword);
                     $min = preg_match('@[a-z]@', $newPassword);
                     $number = preg_match('@[0-9]@', $newPassword);
-
+                    // Checks if the new password contains an uppercase, a lowercase, a number and that it has a length greater than or equal to 8.
                     if ($maj && $min && $number && strlen($newPassword) >= 8) {
                         $user = new User($id, '', '', '', '', $newPassword);
                         $userManager->updatePasswordUser($user);
