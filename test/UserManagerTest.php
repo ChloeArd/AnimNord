@@ -1,31 +1,37 @@
 <?php
 
-use Model\DB;
 use Model\Entity\User;
-use Model\Role\RoleManager;
+use Model\User\UserManager;
 use PHPUnit\Framework\TestCase;
 require_once "Model/Entity/User.php";
 require_once "Model/DB.php";
 require_once "Model/Manager/RoleManager.php";
 require_once "Model/Entity/Role.php";
+require dirname(__FILE__). "/../Model/Manager/UserManager.php";
 
 class UserManagerTest extends TestCase {
 
-    // I check if the first name that I add corresponds to the user that I retrieved by an ID in the database.
-    public function testGetUserID() {
-        $bdd = DB::getInstance();
-        $request = $bdd->prepare("SELECT * from user WHERE id = :id");
-        $request->bindValue(":id", 1);
-        if($request->execute()) {
-            foreach($request->fetchAll() as $info) {
-                $role = RoleManager::getManager()->getRole($info['role_fk']);
-                if ($role->getId()) {
-                    $user[] = new User($info['id'], $info['firstname'], $info['lastname'] ,$info['email'], $info['phone'],'', $role);
-                    // Checks if the two values entered in the parameters are of the same type and have the same value.
-                    $this->assertSame(htmlentities("Chloé"), $info['firstname']);
-                }
-            }
-        }
+    private UserManager $objet;
 
+    public function __construct(?string $name = null, array $data = [], $dataName = '') {
+        parent::__construct($name, $data, $dataName);
+        $this->objet = new UserManager();
+    }
+
+    // Testing getUser.
+    public function testGetUser() {
+        $result = $this->objet->getUser(1);
+        $this->assertSame(htmlentities(ucfirst("Chloé")), $result->getFirstname());
+    }
+
+    // Testing update.
+    public function testUpdate() {
+        $user = new User(1);
+        $user->setFirstname(htmlentities(ucfirst("Chlochlo")));
+        $user->setLastname(htmlentities(strtoupper("ARD")));
+        $user->setEmail("chloe.ardoise@gmail.com");
+        $user->setPhone("0765897856");
+        $result = $this->objet->updateUser($user);
+        $this->assertNotNull($result);
     }
 }
