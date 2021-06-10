@@ -35,9 +35,17 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["phon
 
             // Checks if the password contains upper case, lower case, number and at least 8 characters.
             if($maj && $min && $number && strlen($password) >= 8) {
+                $sql = $bdd->prepare("INSERT INTO user (firstname, lastname, email, phone, password, role_fk) 
+                        VALUES (:firstname, :lastname, :email, :phone, :password, :role_fk)");
+
+                $sql->bindValue(':firstname', $firstname);
+                $sql->bindValue(':lastname', $lastname);
+                $sql->bindValue(':email', $email);
+                $sql->bindValue(':phone', $phone);
+                $sql->bindValue(':password', $encryptedPassword);
                 // People who register automatically have role 2 : user.
-                $sql = "INSERT INTO user VALUES (null, '$firstname', '$lastname', '$email', '$phone', '$encryptedPassword', 2)";
-                $bdd->exec($sql);
+                $sql->bindValue(':role_fk', 2);
+                $sql->execute();
 
                 header("Location: ../../index.php?controller=connection&success=0");
             }
