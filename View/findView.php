@@ -16,22 +16,22 @@ if (isset($var['ads'])) {?>
             $animal = htmlentities($_POST['animal']);
 
             // We must know the animal
-            $req = "SELECT * FROM adfind WHERE animal LIKE '%$animal%'";
+            $req = "SELECT * FROM adfind WHERE animal LIKE :animal";
 
             // If the user adds the sex, size, ... of the animal then we add its "filter" to the request to find it
             if(!empty($_POST['sex'])) {
                 $sex = $_POST['sex'];
-                $req .= "AND sex LIKE '%$sex%'";
+                $req .= " AND sex LIKE '%$sex%'";
             }
 
             if (!empty($_POST['size'])) {
                 $size = $_POST['size'];
-                $req .= "AND size LIKE '%$size%'";
+                $req .= " AND size LIKE '%$size%'";
             }
 
             if (!empty($_POST['fur'])) {
                 $fur = $_POST['fur'];
-                $req .= "AND fur LIKE '%$fur%'";
+                $req .= " AND fur LIKE '%$fur%'";
             }
 
             if(!empty($_POST['color'])) {
@@ -58,32 +58,34 @@ if (isset($var['ads'])) {?>
 
             if(!empty($_POST['dress'])) {
                 $dress = $_POST['dress'];
-                $req .= "AND dress LIKE '%$dress%'";
+                $req .= " AND dress LIKE '%$dress%'";
             }
 
             if(!empty($_POST['race'])) {
                 $race = htmlentities(ucfirst($_POST['race']));
-                $req .= "AND race LIKE '%$race%'";
+                $req .= " AND race LIKE '%$race%'";
             }
 
             if(!empty($_POST['number'])) {
                 $number = htmlentities(strtoupper($_POST['number']));
-                $req .= "AND number LIKE '%$number%'";
+                $req .= " AND number LIKE '%$number%'";
             }
 
             if(!empty($_POST['city'])) {
                 $city = $_POST['city'];
-                $req .= "AND city LIKE '%$city%'";
+                $req .= " AND city LIKE '%$city%'";
             }
 
             if(!empty($_POST['date'])) {
                 $date_find = $_POST['date'];
-                $req .= "AND date_find LIKE '%$date_find%'";
+                $req .= " AND date_find LIKE '%$date_find%'";
             }
-            $req .= "ORDER BY date DESC";
+            $req .= " ORDER BY date DESC";
 
-            $exec = $bdd->query($req);
-            $nb_resultats = $exec->rowCount(); // count a result
+            $request = $bdd->prepare($req);
+            $request->bindValue(":animal",  "%$animal%");
+            $request->execute();
+            $nb_resultats = $request->rowCount(); // count a result
 
             // if there is one result or several results we display the result (s) on the page
             if($nb_resultats != 0) { ?>
@@ -105,7 +107,7 @@ if (isset($var['ads'])) {?>
                             } ?>
                         </div>
                         <?php
-                        foreach ($exec as $donnees) {
+                        foreach ($request as $donnees) {
                             $dateLost = new DateTime($donnees['date_find']);
                             $date = new DateTime($donnees['date']); ?>
                             <a href='../index.php?controller=adfind&action=adComment&id=<?=$donnees['id']?>&user=<?=$donnees['user_fk']?>&comment=commentLost' class='post postTransform flexRow flexCenter colorGrey'>
