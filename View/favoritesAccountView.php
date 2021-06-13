@@ -96,7 +96,7 @@
         }?>
     </div>
     <div>
-        <h1 class="titleAccount">Mes favoris de chiens et de chats perdus</h1>
+        <h1 class="titleAccount">Mes favoris de chiens et de chats trouvés</h1>
         <div id="containerLostAd" class="marginAuto">
             <?php
             if (isset($var['favoritesUserFind'])) {
