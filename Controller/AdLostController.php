@@ -245,11 +245,20 @@ class AdLostController {
                 $picture = htmlentities($ad['picture']);
 
                 $user_fk = $userManager->getUser($user_fk);
-                if ($user_fk->getId()) {
-                    unlink("./assets/img/adLost/" . $picture);
-                    $adlost = new AdLost($id);
-                    $adlostManager->delete($adlost);
-                    header("Location: ../index.php?controller=adlost&action=view&success=2");
+                if ($picture === "" || $picture === null) {
+                    if ($user_fk->getId()) {
+                        $adlost = new AdLost($id);
+                        $adlostManager->delete($adlost);
+                        header("Location: ../index.php?controller=adlost&action=view&success=2");
+                    }
+                }
+                else {
+                    if ($user_fk->getId()) {
+                        unlink("./assets/img/adLost/" . $picture);
+                        $adlost = new AdLost($id);
+                        $adlostManager->delete($adlost);
+                        header("Location: ../index.php?controller=adlost&action=view&success=2");
+                    }
                 }
             }
             $this->return("delete/deleteLostView", "Anim'Nord : Supprimer une annonce");
