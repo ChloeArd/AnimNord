@@ -4,7 +4,7 @@ use Model\DB;
 include "functions.php";
 require "../../Model/DB.php";
 
-if (isset($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["phone"], $_POST["password"])) {
+if (isset($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["phone"], $_POST["password"], $_POST['password2'])) {
     $bdd = DB::getInstance();
 
     $firstname = sanitize(ucfirst($_POST["firstname"]));
@@ -12,6 +12,7 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["phon
     $email = trim($_POST["email"]);
     $phone = sanitize($_POST['phone']);
     $password = sanitize($_POST["password"]);
+    $password2 = sanitize($_POST['password2']);
 
     // I encrypt the password.
     $encryptedPassword = password_hash($password, PASSWORD_BCRYPT);
@@ -24,7 +25,7 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["phon
     if ($state) {
         $user = $requete->fetch();
         // Checks if email or phone is not in use.
-        if ($user['email'] === $email ||  $user['phone'] === $phone) {
+        if ($user['email'] === $email || $user['phone'] === $phone) {
             header("Location: ../../index.php?controller=registration&error=0");
         }
         // Check if the email address is valid.
@@ -33,24 +34,28 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["phon
             $min = preg_match('@[a-z]@', $password);
             $number = preg_match('@[0-9]@', $password);
 
-            // Checks if the password contains upper case, lower case, number and at least 8 characters.
-            if($maj && $min && $number && strlen($password) >= 8) {
-                $sql = $bdd->prepare("INSERT INTO user (firstname, lastname, email, phone, password, role_fk) 
+            if ($password === $password2) {
+                // Checks if the password contains upper case, lower case, number and at least 8 characters.
+                if ($maj && $min && $number && strlen($password) >= 8) {
+                    $sql = $bdd->prepare("INSERT INTO user (firstname, lastname, email, phone, password, role_fk) 
                         VALUES (:firstname, :lastname, :email, :phone, :password, :role_fk)");
 
-                $sql->bindValue(':firstname', $firstname);
-                $sql->bindValue(':lastname', $lastname);
-                $sql->bindValue(':email', $email);
-                $sql->bindValue(':phone', $phone);
-                $sql->bindValue(':password', $encryptedPassword);
-                // People who register automatically have role 2 : user.
-                $sql->bindValue(':role_fk', 2);
-                $sql->execute();
+                    $sql->bindValue(':firstname', $firstname);
+                    $sql->bindValue(':lastname', $lastname);
+                    $sql->bindValue(':email', $email);
+                    $sql->bindValue(':phone', $phone);
+                    $sql->bindValue(':password', $encryptedPassword);
+                    // People who register automatically have role 2 : user.
+                    $sql->bindValue(':role_fk', 2);
+                    $sql->execute();
 
-                header("Location: ../../index.php?controller=connection&success=0");
+                    header("Location: ../../index.php?controller=connection&success=0");
+                } else {
+                    header("Location: ../../index.php?controller=registration&error=1");
+                }
             }
             else {
-                header("Location: ../../index.php?controller=registration&error=1");
+                header("Location: ../../index.php?controller=registration&error=4");
             }
         }
         else {
